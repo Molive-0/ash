@@ -1,8 +1,9 @@
 #![allow(unused_qualifications)]
-use crate::vk::*;
 use core::ffi::*;
+
+use crate::vk::*;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1 static function pointers"]
+///Raw Vulkan 1 static function pointers
 pub struct StaticFn {
     pub get_instance_proc_addr: PFN_vkGetInstanceProcAddr,
 }
@@ -12,6 +13,7 @@ impl StaticFn {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             get_instance_proc_addr: unsafe {
@@ -36,7 +38,7 @@ impl StaticFn {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1 entry point function pointers"]
+///Raw Vulkan 1 entry point function pointers
 pub struct EntryFnV1_0 {
     pub create_instance: PFN_vkCreateInstance,
     pub enumerate_instance_extension_properties: PFN_vkEnumerateInstanceExtensionProperties,
@@ -48,6 +50,7 @@ impl EntryFnV1_0 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             create_instance: unsafe {
@@ -110,7 +113,7 @@ impl EntryFnV1_0 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1 instance-level function pointers"]
+///Raw Vulkan 1 instance-level function pointers
 pub struct InstanceFnV1_0 {
     pub destroy_instance: PFN_vkDestroyInstance,
     pub enumerate_physical_devices: PFN_vkEnumeratePhysicalDevices,
@@ -133,6 +136,7 @@ impl InstanceFnV1_0 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             destroy_instance: unsafe {
@@ -393,7 +397,7 @@ impl InstanceFnV1_0 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1 device-level function pointers"]
+///Raw Vulkan 1 device-level function pointers
 pub struct DeviceFnV1_0 {
     pub destroy_device: PFN_vkDestroyDevice,
     pub get_device_queue: PFN_vkGetDeviceQueue,
@@ -522,6 +526,7 @@ impl DeviceFnV1_0 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             destroy_device: unsafe {
@@ -2678,7 +2683,7 @@ impl DeviceFnV1_0 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.1 entry point function pointers"]
+///Raw Vulkan 1.1 entry point function pointers
 pub struct EntryFnV1_1 {
     pub enumerate_instance_version: PFN_vkEnumerateInstanceVersion,
 }
@@ -2688,6 +2693,7 @@ impl EntryFnV1_1 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             enumerate_instance_version: unsafe {
@@ -2711,7 +2717,7 @@ impl EntryFnV1_1 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.1 instance-level function pointers"]
+///Raw Vulkan 1.1 instance-level function pointers
 pub struct InstanceFnV1_1 {
     pub enumerate_physical_device_groups: PFN_vkEnumeratePhysicalDeviceGroups,
     pub get_physical_device_features2: PFN_vkGetPhysicalDeviceFeatures2,
@@ -2735,6 +2741,7 @@ impl InstanceFnV1_1 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             enumerate_physical_device_groups: unsafe {
@@ -2964,24 +2971,24 @@ impl InstanceFnV1_1 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.1 device-level function pointers"]
+///Raw Vulkan 1.1 device-level function pointers
 pub struct DeviceFnV1_1 {
-    pub bind_buffer_memory2: PFN_vkBindBufferMemory2,
-    pub bind_image_memory2: PFN_vkBindImageMemory2,
+    pub bind_buffer_memory2:                   PFN_vkBindBufferMemory2,
+    pub bind_image_memory2:                    PFN_vkBindImageMemory2,
     pub get_device_group_peer_memory_features: PFN_vkGetDeviceGroupPeerMemoryFeatures,
-    pub cmd_set_device_mask: PFN_vkCmdSetDeviceMask,
-    pub cmd_dispatch_base: PFN_vkCmdDispatchBase,
-    pub get_image_memory_requirements2: PFN_vkGetImageMemoryRequirements2,
-    pub get_buffer_memory_requirements2: PFN_vkGetBufferMemoryRequirements2,
+    pub cmd_set_device_mask:                   PFN_vkCmdSetDeviceMask,
+    pub cmd_dispatch_base:                     PFN_vkCmdDispatchBase,
+    pub get_image_memory_requirements2:        PFN_vkGetImageMemoryRequirements2,
+    pub get_buffer_memory_requirements2:       PFN_vkGetBufferMemoryRequirements2,
     pub get_image_sparse_memory_requirements2: PFN_vkGetImageSparseMemoryRequirements2,
-    pub trim_command_pool: PFN_vkTrimCommandPool,
-    pub get_device_queue2: PFN_vkGetDeviceQueue2,
-    pub create_sampler_ycbcr_conversion: PFN_vkCreateSamplerYcbcrConversion,
-    pub destroy_sampler_ycbcr_conversion: PFN_vkDestroySamplerYcbcrConversion,
-    pub create_descriptor_update_template: PFN_vkCreateDescriptorUpdateTemplate,
-    pub destroy_descriptor_update_template: PFN_vkDestroyDescriptorUpdateTemplate,
-    pub update_descriptor_set_with_template: PFN_vkUpdateDescriptorSetWithTemplate,
-    pub get_descriptor_set_layout_support: PFN_vkGetDescriptorSetLayoutSupport,
+    pub trim_command_pool:                     PFN_vkTrimCommandPool,
+    pub get_device_queue2:                     PFN_vkGetDeviceQueue2,
+    pub create_sampler_ycbcr_conversion:       PFN_vkCreateSamplerYcbcrConversion,
+    pub destroy_sampler_ycbcr_conversion:      PFN_vkDestroySamplerYcbcrConversion,
+    pub create_descriptor_update_template:     PFN_vkCreateDescriptorUpdateTemplate,
+    pub destroy_descriptor_update_template:    PFN_vkDestroyDescriptorUpdateTemplate,
+    pub update_descriptor_set_with_template:   PFN_vkUpdateDescriptorSetWithTemplate,
+    pub get_descriptor_set_layout_support:     PFN_vkGetDescriptorSetLayoutSupport,
 }
 unsafe impl Send for DeviceFnV1_1 {}
 unsafe impl Sync for DeviceFnV1_1 {}
@@ -2989,9 +2996,10 @@ impl DeviceFnV1_1 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
-            bind_buffer_memory2: unsafe {
+            bind_buffer_memory2:                   unsafe {
                 unsafe extern "system" fn bind_buffer_memory2(
                     _device: crate::vk::Device,
                     _bind_info_count: u32,
@@ -3007,7 +3015,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            bind_image_memory2: unsafe {
+            bind_image_memory2:                    unsafe {
                 unsafe extern "system" fn bind_image_memory2(
                     _device: crate::vk::Device,
                     _bind_info_count: u32,
@@ -3045,7 +3053,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            cmd_set_device_mask: unsafe {
+            cmd_set_device_mask:                   unsafe {
                 unsafe extern "system" fn cmd_set_device_mask(
                     _command_buffer: CommandBuffer,
                     _device_mask: u32,
@@ -3060,7 +3068,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            cmd_dispatch_base: unsafe {
+            cmd_dispatch_base:                     unsafe {
                 unsafe extern "system" fn cmd_dispatch_base(
                     _command_buffer: CommandBuffer,
                     _base_group_x: u32,
@@ -3080,7 +3088,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            get_image_memory_requirements2: unsafe {
+            get_image_memory_requirements2:        unsafe {
                 unsafe extern "system" fn get_image_memory_requirements2(
                     _device: crate::vk::Device,
                     _p_info: *const ImageMemoryRequirementsInfo2<'_>,
@@ -3099,7 +3107,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            get_buffer_memory_requirements2: unsafe {
+            get_buffer_memory_requirements2:       unsafe {
                 unsafe extern "system" fn get_buffer_memory_requirements2(
                     _device: crate::vk::Device,
                     _p_info: *const BufferMemoryRequirementsInfo2<'_>,
@@ -3140,7 +3148,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            trim_command_pool: unsafe {
+            trim_command_pool:                     unsafe {
                 unsafe extern "system" fn trim_command_pool(
                     _device: crate::vk::Device,
                     _command_pool: CommandPool,
@@ -3156,7 +3164,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            get_device_queue2: unsafe {
+            get_device_queue2:                     unsafe {
                 unsafe extern "system" fn get_device_queue2(
                     _device: crate::vk::Device,
                     _p_queue_info: *const DeviceQueueInfo2<'_>,
@@ -3172,7 +3180,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            create_sampler_ycbcr_conversion: unsafe {
+            create_sampler_ycbcr_conversion:       unsafe {
                 unsafe extern "system" fn create_sampler_ycbcr_conversion(
                     _device: crate::vk::Device,
                     _p_create_info: *const SamplerYcbcrConversionCreateInfo<'_>,
@@ -3193,7 +3201,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            destroy_sampler_ycbcr_conversion: unsafe {
+            destroy_sampler_ycbcr_conversion:      unsafe {
                 unsafe extern "system" fn destroy_sampler_ycbcr_conversion(
                     _device: crate::vk::Device,
                     _ycbcr_conversion: SamplerYcbcrConversion,
@@ -3213,7 +3221,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            create_descriptor_update_template: unsafe {
+            create_descriptor_update_template:     unsafe {
                 unsafe extern "system" fn create_descriptor_update_template(
                     _device: crate::vk::Device,
                     _p_create_info: *const DescriptorUpdateTemplateCreateInfo<'_>,
@@ -3234,7 +3242,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            destroy_descriptor_update_template: unsafe {
+            destroy_descriptor_update_template:    unsafe {
                 unsafe extern "system" fn destroy_descriptor_update_template(
                     _device: crate::vk::Device,
                     _descriptor_update_template: DescriptorUpdateTemplate,
@@ -3254,7 +3262,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            update_descriptor_set_with_template: unsafe {
+            update_descriptor_set_with_template:   unsafe {
                 unsafe extern "system" fn update_descriptor_set_with_template(
                     _device: crate::vk::Device,
                     _descriptor_set: DescriptorSet,
@@ -3275,7 +3283,7 @@ impl DeviceFnV1_1 {
                     ::core::mem::transmute(val)
                 }
             },
-            get_descriptor_set_layout_support: unsafe {
+            get_descriptor_set_layout_support:     unsafe {
                 unsafe extern "system" fn get_descriptor_set_layout_support(
                     _device: crate::vk::Device,
                     _p_create_info: *const DescriptorSetLayoutCreateInfo<'_>,
@@ -3299,13 +3307,13 @@ impl DeviceFnV1_1 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.2 entry point function pointers"]
+///Raw Vulkan 1.2 entry point function pointers
 pub struct EntryFnV1_2;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.2 instance-level function pointers"]
+///Raw Vulkan 1.2 instance-level function pointers
 pub struct InstanceFnV1_2;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.2 device-level function pointers"]
+///Raw Vulkan 1.2 device-level function pointers
 pub struct DeviceFnV1_2 {
     pub cmd_draw_indirect_count: PFN_vkCmdDrawIndirectCount,
     pub cmd_draw_indexed_indirect_count: PFN_vkCmdDrawIndexedIndirectCount,
@@ -3327,6 +3335,7 @@ impl DeviceFnV1_2 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             cmd_draw_indirect_count: unsafe {
@@ -3569,10 +3578,10 @@ impl DeviceFnV1_2 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.3 entry point function pointers"]
+///Raw Vulkan 1.3 entry point function pointers
 pub struct EntryFnV1_3;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.3 instance-level function pointers"]
+///Raw Vulkan 1.3 instance-level function pointers
 pub struct InstanceFnV1_3 {
     pub get_physical_device_tool_properties: PFN_vkGetPhysicalDeviceToolProperties,
 }
@@ -3582,6 +3591,7 @@ impl InstanceFnV1_3 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             get_physical_device_tool_properties: unsafe {
@@ -3608,7 +3618,7 @@ impl InstanceFnV1_3 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.3 device-level function pointers"]
+///Raw Vulkan 1.3 device-level function pointers
 pub struct DeviceFnV1_3 {
     pub create_private_data_slot: PFN_vkCreatePrivateDataSlot,
     pub destroy_private_data_slot: PFN_vkDestroyPrivateDataSlot,
@@ -3653,6 +3663,7 @@ impl DeviceFnV1_3 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             create_private_data_slot: unsafe {
@@ -4294,13 +4305,13 @@ impl DeviceFnV1_3 {
     }
 }
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.4 entry point function pointers"]
+///Raw Vulkan 1.4 entry point function pointers
 pub struct EntryFnV1_4;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.4 instance-level function pointers"]
+///Raw Vulkan 1.4 instance-level function pointers
 pub struct InstanceFnV1_4;
 #[derive(Clone)]
-#[doc = "Raw Vulkan 1.4 device-level function pointers"]
+///Raw Vulkan 1.4 device-level function pointers
 pub struct DeviceFnV1_4 {
     pub cmd_set_line_stipple: PFN_vkCmdSetLineStipple,
     pub map_memory2: PFN_vkMapMemory2,
@@ -4328,6 +4339,7 @@ impl DeviceFnV1_4 {
     pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
         Self::load_erased(&mut f)
     }
+
     fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
         Self {
             cmd_set_line_stipple: unsafe {

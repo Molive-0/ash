@@ -1,51 +1,51 @@
 #![allow(unused_imports)]
-use crate::vk::*;
 use core::ffi::*;
-#[doc = "Extensions tagged AMD"]
+
+use crate::vk::*;
+///Extensions tagged AMD
 pub mod amd {
-    #[doc = "VK_AMD_rasterization_order"]
+    ///VK_AMD_rasterization_order
     pub mod rasterization_order {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_RASTERIZATION_ORDER_NAME as NAME,
-            crate::vk::AMD_RASTERIZATION_ORDER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_RASTERIZATION_ORDER_NAME as NAME,
+            AMD_RASTERIZATION_ORDER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_trinary_minmax"]
+    ///VK_AMD_shader_trinary_minmax
     pub mod shader_trinary_minmax {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_TRINARY_MINMAX_NAME as NAME,
-            crate::vk::AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_TRINARY_MINMAX_NAME as NAME,
+            AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_explicit_vertex_parameter"]
+    ///VK_AMD_shader_explicit_vertex_parameter
     pub mod shader_explicit_vertex_parameter {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_NAME as NAME,
-            crate::vk::AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_NAME as NAME,
+            AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_gcn_shader"]
+    ///VK_AMD_gcn_shader
     pub mod gcn_shader {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_GCN_SHADER_NAME as NAME,
-            crate::vk::AMD_GCN_SHADER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_GCN_SHADER_NAME as NAME, AMD_GCN_SHADER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_draw_indirect_count"]
+    ///VK_AMD_draw_indirect_count
     pub mod draw_indirect_count {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_DRAW_INDIRECT_COUNT_NAME as NAME,
-            crate::vk::AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_DRAW_INDIRECT_COUNT_NAME as NAME,
+            AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_AMD_draw_indirect_count device-level functions"]
+        ///VK_AMD_draw_indirect_count device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -56,19 +56,21 @@ pub mod amd {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMD_draw_indirect_count device-level function pointers"]
+        ///Raw VK_AMD_draw_indirect_count device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_indirect_count_amd: PFN_vkCmdDrawIndirectCount,
+            pub cmd_draw_indirect_count_amd:         PFN_vkCmdDrawIndirectCount,
             pub cmd_draw_indexed_indirect_count_amd: PFN_vkCmdDrawIndexedIndirectCount,
         }
         unsafe impl Send for DeviceFn {}
@@ -77,9 +79,10 @@ pub mod amd {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_indirect_count_amd: unsafe {
+                    cmd_draw_indirect_count_amd:         unsafe {
                         unsafe extern "system" fn cmd_draw_indirect_count_amd(
                             _command_buffer: CommandBuffer,
                             _buffer: Buffer,
@@ -132,49 +135,47 @@ pub mod amd {
             }
         }
     }
-    #[doc = "VK_AMD_negative_viewport_height"]
+    ///VK_AMD_negative_viewport_height
     pub mod negative_viewport_height {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_NEGATIVE_VIEWPORT_HEIGHT_NAME as NAME,
-            crate::vk::AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_NEGATIVE_VIEWPORT_HEIGHT_NAME as NAME,
+            AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_gpu_shader_half_float"]
+    ///VK_AMD_gpu_shader_half_float
     pub mod gpu_shader_half_float {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_GPU_SHADER_HALF_FLOAT_NAME as NAME,
-            crate::vk::AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_GPU_SHADER_HALF_FLOAT_NAME as NAME,
+            AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_ballot"]
+    ///VK_AMD_shader_ballot
     pub mod shader_ballot {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_BALLOT_NAME as NAME,
-            crate::vk::AMD_SHADER_BALLOT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_BALLOT_NAME as NAME, AMD_SHADER_BALLOT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_texture_gather_bias_lod"]
+    ///VK_AMD_texture_gather_bias_lod
     pub mod texture_gather_bias_lod {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_TEXTURE_GATHER_BIAS_LOD_NAME as NAME,
-            crate::vk::AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_TEXTURE_GATHER_BIAS_LOD_NAME as NAME,
+            AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_info"]
+    ///VK_AMD_shader_info
     pub mod shader_info {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_INFO_NAME as NAME,
-            crate::vk::AMD_SHADER_INFO_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_INFO_NAME as NAME, AMD_SHADER_INFO_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_AMD_shader_info device-level functions"]
+        ///VK_AMD_shader_info device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -185,17 +186,19 @@ pub mod amd {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMD_shader_info device-level function pointers"]
+        ///Raw VK_AMD_shader_info device-level function pointers
         pub struct DeviceFn {
             pub get_shader_info_amd: PFN_vkGetShaderInfoAMD,
         }
@@ -205,6 +208,7 @@ pub mod amd {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_shader_info_amd: unsafe {
@@ -230,49 +234,47 @@ pub mod amd {
             }
         }
     }
-    #[doc = "VK_AMD_shader_image_load_store_lod"]
+    ///VK_AMD_shader_image_load_store_lod
     pub mod shader_image_load_store_lod {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_IMAGE_LOAD_STORE_LOD_NAME as NAME,
-            crate::vk::AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_IMAGE_LOAD_STORE_LOD_NAME as NAME,
+            AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_gpu_shader_int16"]
+    ///VK_AMD_gpu_shader_int16
     pub mod gpu_shader_int16 {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_GPU_SHADER_INT16_NAME as NAME,
-            crate::vk::AMD_GPU_SHADER_INT16_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_GPU_SHADER_INT16_NAME as NAME, AMD_GPU_SHADER_INT16_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_mixed_attachment_samples"]
+    ///VK_AMD_mixed_attachment_samples
     pub mod mixed_attachment_samples {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_MIXED_ATTACHMENT_SAMPLES_NAME as NAME,
-            crate::vk::AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_MIXED_ATTACHMENT_SAMPLES_NAME as NAME,
+            AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_fragment_mask"]
+    ///VK_AMD_shader_fragment_mask
     pub mod shader_fragment_mask {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_FRAGMENT_MASK_NAME as NAME,
-            crate::vk::AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_FRAGMENT_MASK_NAME as NAME,
+            AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_buffer_marker"]
+    ///VK_AMD_buffer_marker
     pub mod buffer_marker {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_BUFFER_MARKER_NAME as NAME,
-            crate::vk::AMD_BUFFER_MARKER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_BUFFER_MARKER_NAME as NAME, AMD_BUFFER_MARKER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_AMD_buffer_marker device-level functions"]
+        ///VK_AMD_buffer_marker device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -283,19 +285,21 @@ pub mod amd {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMD_buffer_marker device-level function pointers"]
+        ///Raw VK_AMD_buffer_marker device-level function pointers
         pub struct DeviceFn {
-            pub cmd_write_buffer_marker_amd: PFN_vkCmdWriteBufferMarkerAMD,
+            pub cmd_write_buffer_marker_amd:  PFN_vkCmdWriteBufferMarkerAMD,
             pub cmd_write_buffer_marker2_amd: PFN_vkCmdWriteBufferMarker2AMD,
         }
         unsafe impl Send for DeviceFn {}
@@ -304,9 +308,10 @@ pub mod amd {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_write_buffer_marker_amd: unsafe {
+                    cmd_write_buffer_marker_amd:  unsafe {
                         unsafe extern "system" fn cmd_write_buffer_marker_amd(
                             _command_buffer: CommandBuffer,
                             _pipeline_stage: PipelineStageFlags,
@@ -354,41 +359,41 @@ pub mod amd {
             }
         }
     }
-    #[doc = "VK_AMD_pipeline_compiler_control"]
+    ///VK_AMD_pipeline_compiler_control
     pub mod pipeline_compiler_control {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_PIPELINE_COMPILER_CONTROL_NAME as NAME,
-            crate::vk::AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_PIPELINE_COMPILER_CONTROL_NAME as NAME,
+            AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_core_properties"]
+    ///VK_AMD_shader_core_properties
     pub mod shader_core_properties {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_CORE_PROPERTIES_NAME as NAME,
-            crate::vk::AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_CORE_PROPERTIES_NAME as NAME,
+            AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_memory_overallocation_behavior"]
+    ///VK_AMD_memory_overallocation_behavior
     pub mod memory_overallocation_behavior {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_MEMORY_OVERALLOCATION_BEHAVIOR_NAME as NAME,
-            crate::vk::AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_MEMORY_OVERALLOCATION_BEHAVIOR_NAME as NAME,
+            AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_display_native_hdr"]
+    ///VK_AMD_display_native_hdr
     pub mod display_native_hdr {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_DISPLAY_NATIVE_HDR_NAME as NAME,
-            crate::vk::AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_DISPLAY_NATIVE_HDR_NAME as NAME,
+            AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_AMD_display_native_hdr device-level functions"]
+        ///VK_AMD_display_native_hdr device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -399,17 +404,19 @@ pub mod amd {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMD_display_native_hdr device-level function pointers"]
+        ///Raw VK_AMD_display_native_hdr device-level function pointers
         pub struct DeviceFn {
             pub set_local_dimming_amd: PFN_vkSetLocalDimmingAMD,
         }
@@ -419,6 +426,7 @@ pub mod amd {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     set_local_dimming_amd: unsafe {
@@ -444,41 +452,38 @@ pub mod amd {
             }
         }
     }
-    #[doc = "VK_AMD_shader_core_properties2"]
+    ///VK_AMD_shader_core_properties2
     pub mod shader_core_properties2 {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_CORE_PROPERTIES2_NAME as NAME,
-            crate::vk::AMD_SHADER_CORE_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_CORE_PROPERTIES2_NAME as NAME,
+            AMD_SHADER_CORE_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_device_coherent_memory"]
+    ///VK_AMD_device_coherent_memory
     pub mod device_coherent_memory {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_DEVICE_COHERENT_MEMORY_NAME as NAME,
-            crate::vk::AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_DEVICE_COHERENT_MEMORY_NAME as NAME,
+            AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_shader_early_and_late_fragment_tests"]
+    ///VK_AMD_shader_early_and_late_fragment_tests
     pub mod shader_early_and_late_fragment_tests {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_NAME as NAME,
-            crate::vk::AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_NAME as NAME,
+            AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_AMD_anti_lag"]
+    ///VK_AMD_anti_lag
     pub mod anti_lag {
         use super::super::*;
-        pub use {
-            crate::vk::AMD_ANTI_LAG_NAME as NAME,
-            crate::vk::AMD_ANTI_LAG_SPEC_VERSION as SPEC_VERSION,
-        };
-        #[doc = "VK_AMD_anti_lag device-level functions"]
+        pub use crate::vk::{AMD_ANTI_LAG_NAME as NAME, AMD_ANTI_LAG_SPEC_VERSION as SPEC_VERSION};
+        ///VK_AMD_anti_lag device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -489,17 +494,19 @@ pub mod amd {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMD_anti_lag device-level function pointers"]
+        ///Raw VK_AMD_anti_lag device-level function pointers
         pub struct DeviceFn {
             pub anti_lag_update_amd: PFN_vkAntiLagUpdateAMD,
         }
@@ -509,6 +516,7 @@ pub mod amd {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     anti_lag_update_amd: unsafe {
@@ -531,19 +539,18 @@ pub mod amd {
         }
     }
 }
-#[doc = "Extensions tagged AMDX"]
+///Extensions tagged AMDX
 pub mod amdx {
-    #[doc = "VK_AMDX_shader_enqueue"]
+    ///VK_AMDX_shader_enqueue
     pub mod shader_enqueue {
         use super::super::*;
-        pub use {
-            crate::vk::AMDX_SHADER_ENQUEUE_NAME as NAME,
-            crate::vk::AMDX_SHADER_ENQUEUE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            AMDX_SHADER_ENQUEUE_NAME as NAME, AMDX_SHADER_ENQUEUE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_AMDX_shader_enqueue device-level functions"]
+        ///VK_AMDX_shader_enqueue device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -554,17 +561,19 @@ pub mod amdx {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_AMDX_shader_enqueue device-level function pointers"]
+        ///Raw VK_AMDX_shader_enqueue device-level function pointers
         pub struct DeviceFn {
             pub create_execution_graph_pipelines_amdx: PFN_vkCreateExecutionGraphPipelinesAMDX,
             pub get_execution_graph_pipeline_scratch_size_amdx:
@@ -582,6 +591,7 @@ pub mod amdx {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_execution_graph_pipelines_amdx: unsafe {
@@ -743,19 +753,18 @@ pub mod amdx {
         }
     }
 }
-#[doc = "Extensions tagged ANDROID"]
+///Extensions tagged ANDROID
 pub mod android {
-    #[doc = "VK_ANDROID_native_buffer"]
+    ///VK_ANDROID_native_buffer
     pub mod native_buffer {
         use super::super::*;
-        pub use {
-            crate::vk::ANDROID_NATIVE_BUFFER_NAME as NAME,
-            crate::vk::ANDROID_NATIVE_BUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ANDROID_NATIVE_BUFFER_NAME as NAME, ANDROID_NATIVE_BUFFER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_ANDROID_native_buffer device-level functions"]
+        ///VK_ANDROID_native_buffer device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -766,21 +775,23 @@ pub mod android {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_ANDROID_native_buffer device-level function pointers"]
+        ///Raw VK_ANDROID_native_buffer device-level function pointers
         pub struct DeviceFn {
-            pub get_swapchain_gralloc_usage_android: PFN_vkGetSwapchainGrallocUsageANDROID,
-            pub acquire_image_android: PFN_vkAcquireImageANDROID,
-            pub queue_signal_release_image_android: PFN_vkQueueSignalReleaseImageANDROID,
+            pub get_swapchain_gralloc_usage_android:  PFN_vkGetSwapchainGrallocUsageANDROID,
+            pub acquire_image_android:                PFN_vkAcquireImageANDROID,
+            pub queue_signal_release_image_android:   PFN_vkQueueSignalReleaseImageANDROID,
             pub get_swapchain_gralloc_usage2_android: PFN_vkGetSwapchainGrallocUsage2ANDROID,
         }
         unsafe impl Send for DeviceFn {}
@@ -789,9 +800,10 @@ pub mod android {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_swapchain_gralloc_usage_android: unsafe {
+                    get_swapchain_gralloc_usage_android:  unsafe {
                         unsafe extern "system" fn get_swapchain_gralloc_usage_android(
                             _device: crate::vk::Device,
                             _format: Format,
@@ -813,7 +825,7 @@ pub mod android {
                             ::core::mem::transmute(val)
                         }
                     },
-                    acquire_image_android: unsafe {
+                    acquire_image_android:                unsafe {
                         unsafe extern "system" fn acquire_image_android(
                             _device: crate::vk::Device,
                             _image: Image,
@@ -834,7 +846,7 @@ pub mod android {
                             ::core::mem::transmute(val)
                         }
                     },
-                    queue_signal_release_image_android: unsafe {
+                    queue_signal_release_image_android:   unsafe {
                         unsafe extern "system" fn queue_signal_release_image_android(
                             _queue: Queue,
                             _wait_semaphore_count: u32,
@@ -885,17 +897,18 @@ pub mod android {
             }
         }
     }
-    #[doc = "VK_ANDROID_external_memory_android_hardware_buffer"]
+    ///VK_ANDROID_external_memory_android_hardware_buffer
     pub mod external_memory_android_hardware_buffer {
         use super::super::*;
-        pub use {
-            crate::vk::ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_NAME as NAME,
-            crate::vk::ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_NAME as NAME,
+            ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_ANDROID_external_memory_android_hardware_buffer device-level functions"]
+        ///VK_ANDROID_external_memory_android_hardware_buffer device-level
+        /// functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -906,17 +919,20 @@ pub mod android {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_ANDROID_external_memory_android_hardware_buffer device-level function pointers"]
+        ///Raw VK_ANDROID_external_memory_android_hardware_buffer device-level
+        /// function pointers
         pub struct DeviceFn {
             pub get_android_hardware_buffer_properties_android:
                 PFN_vkGetAndroidHardwareBufferPropertiesANDROID,
@@ -929,6 +945,7 @@ pub mod android {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_android_hardware_buffer_properties_android: unsafe {
@@ -952,7 +969,7 @@ pub mod android {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_memory_android_hardware_buffer_android: unsafe {
+                    get_memory_android_hardware_buffer_android:     unsafe {
                         unsafe extern "system" fn get_memory_android_hardware_buffer_android(
                             _device: crate::vk::Device,
                             _p_info: *const MemoryGetAndroidHardwareBufferInfoANDROID<'_>,
@@ -977,71 +994,70 @@ pub mod android {
             }
         }
     }
-    #[doc = "VK_ANDROID_external_format_resolve"]
+    ///VK_ANDROID_external_format_resolve
     pub mod external_format_resolve {
         use super::super::*;
-        pub use {
-            crate::vk::ANDROID_EXTERNAL_FORMAT_RESOLVE_NAME as NAME,
-            crate::vk::ANDROID_EXTERNAL_FORMAT_RESOLVE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ANDROID_EXTERNAL_FORMAT_RESOLVE_NAME as NAME,
+            ANDROID_EXTERNAL_FORMAT_RESOLVE_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged ARM"]
+///Extensions tagged ARM
 pub mod arm {
-    #[doc = "VK_ARM_rasterization_order_attachment_access"]
+    ///VK_ARM_rasterization_order_attachment_access
     pub mod rasterization_order_attachment_access {
         use super::super::*;
-        pub use {
-            crate::vk::ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_NAME as NAME,
-            crate::vk::ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_NAME as NAME,
+            ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_ARM_shader_core_properties"]
+    ///VK_ARM_shader_core_properties
     pub mod shader_core_properties {
         use super::super::*;
-        pub use {
-            crate::vk::ARM_SHADER_CORE_PROPERTIES_NAME as NAME,
-            crate::vk::ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ARM_SHADER_CORE_PROPERTIES_NAME as NAME,
+            ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_ARM_scheduling_controls"]
+    ///VK_ARM_scheduling_controls
     pub mod scheduling_controls {
         use super::super::*;
-        pub use {
-            crate::vk::ARM_SCHEDULING_CONTROLS_NAME as NAME,
-            crate::vk::ARM_SCHEDULING_CONTROLS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ARM_SCHEDULING_CONTROLS_NAME as NAME,
+            ARM_SCHEDULING_CONTROLS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_ARM_render_pass_striped"]
+    ///VK_ARM_render_pass_striped
     pub mod render_pass_striped {
         use super::super::*;
-        pub use {
-            crate::vk::ARM_RENDER_PASS_STRIPED_NAME as NAME,
-            crate::vk::ARM_RENDER_PASS_STRIPED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ARM_RENDER_PASS_STRIPED_NAME as NAME,
+            ARM_RENDER_PASS_STRIPED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_ARM_shader_core_builtins"]
+    ///VK_ARM_shader_core_builtins
     pub mod shader_core_builtins {
         use super::super::*;
-        pub use {
-            crate::vk::ARM_SHADER_CORE_BUILTINS_NAME as NAME,
-            crate::vk::ARM_SHADER_CORE_BUILTINS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            ARM_SHADER_CORE_BUILTINS_NAME as NAME,
+            ARM_SHADER_CORE_BUILTINS_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged EXT"]
+///Extensions tagged EXT
 pub mod ext {
-    #[doc = "VK_EXT_debug_report"]
+    ///VK_EXT_debug_report
     pub mod debug_report {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEBUG_REPORT_NAME as NAME,
-            crate::vk::EXT_DEBUG_REPORT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEBUG_REPORT_NAME as NAME, EXT_DEBUG_REPORT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_debug_report instance-level functions"]
+        ///VK_EXT_debug_report instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -1052,21 +1068,23 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_debug_report instance-level function pointers"]
+        ///Raw VK_EXT_debug_report instance-level function pointers
         pub struct InstanceFn {
-            pub create_debug_report_callback_ext: PFN_vkCreateDebugReportCallbackEXT,
+            pub create_debug_report_callback_ext:  PFN_vkCreateDebugReportCallbackEXT,
             pub destroy_debug_report_callback_ext: PFN_vkDestroyDebugReportCallbackEXT,
-            pub debug_report_message_ext: PFN_vkDebugReportMessageEXT,
+            pub debug_report_message_ext:          PFN_vkDebugReportMessageEXT,
         }
         unsafe impl Send for InstanceFn {}
         unsafe impl Sync for InstanceFn {}
@@ -1074,9 +1092,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_debug_report_callback_ext: unsafe {
+                    create_debug_report_callback_ext:  unsafe {
                         unsafe extern "system" fn create_debug_report_callback_ext(
                             _instance: crate::vk::Instance,
                             _p_create_info: *const DebugReportCallbackCreateInfoEXT<'_>,
@@ -1119,7 +1138,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    debug_report_message_ext: unsafe {
+                    debug_report_message_ext:          unsafe {
                         unsafe extern "system" fn debug_report_message_ext(
                             _instance: crate::vk::Instance,
                             _flags: DebugReportFlagsEXT,
@@ -1148,25 +1167,24 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_depth_range_unrestricted"]
+    ///VK_EXT_depth_range_unrestricted
     pub mod depth_range_unrestricted {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_RANGE_UNRESTRICTED_NAME as NAME,
-            crate::vk::EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_RANGE_UNRESTRICTED_NAME as NAME,
+            EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_debug_marker"]
+    ///VK_EXT_debug_marker
     pub mod debug_marker {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEBUG_MARKER_NAME as NAME,
-            crate::vk::EXT_DEBUG_MARKER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEBUG_MARKER_NAME as NAME, EXT_DEBUG_MARKER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_debug_marker device-level functions"]
+        ///VK_EXT_debug_marker device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -1177,23 +1195,25 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_debug_marker device-level function pointers"]
+        ///Raw VK_EXT_debug_marker device-level function pointers
         pub struct DeviceFn {
-            pub debug_marker_set_object_tag_ext: PFN_vkDebugMarkerSetObjectTagEXT,
+            pub debug_marker_set_object_tag_ext:  PFN_vkDebugMarkerSetObjectTagEXT,
             pub debug_marker_set_object_name_ext: PFN_vkDebugMarkerSetObjectNameEXT,
-            pub cmd_debug_marker_begin_ext: PFN_vkCmdDebugMarkerBeginEXT,
-            pub cmd_debug_marker_end_ext: PFN_vkCmdDebugMarkerEndEXT,
-            pub cmd_debug_marker_insert_ext: PFN_vkCmdDebugMarkerInsertEXT,
+            pub cmd_debug_marker_begin_ext:       PFN_vkCmdDebugMarkerBeginEXT,
+            pub cmd_debug_marker_end_ext:         PFN_vkCmdDebugMarkerEndEXT,
+            pub cmd_debug_marker_insert_ext:      PFN_vkCmdDebugMarkerInsertEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -1201,9 +1221,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    debug_marker_set_object_tag_ext: unsafe {
+                    debug_marker_set_object_tag_ext:  unsafe {
                         unsafe extern "system" fn debug_marker_set_object_tag_ext(
                             _device: crate::vk::Device,
                             _p_tag_info: *const DebugMarkerObjectTagInfoEXT<'_>,
@@ -1241,7 +1262,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_debug_marker_begin_ext: unsafe {
+                    cmd_debug_marker_begin_ext:       unsafe {
                         unsafe extern "system" fn cmd_debug_marker_begin_ext(
                             _command_buffer: CommandBuffer,
                             _p_marker_info: *const DebugMarkerMarkerInfoEXT<'_>,
@@ -1260,7 +1281,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_debug_marker_end_ext: unsafe {
+                    cmd_debug_marker_end_ext:         unsafe {
                         unsafe extern "system" fn cmd_debug_marker_end_ext(
                             _command_buffer: CommandBuffer,
                         ) {
@@ -1278,7 +1299,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_debug_marker_insert_ext: unsafe {
+                    cmd_debug_marker_insert_ext:      unsafe {
                         unsafe extern "system" fn cmd_debug_marker_insert_ext(
                             _command_buffer: CommandBuffer,
                             _p_marker_info: *const DebugMarkerMarkerInfoEXT<'_>,
@@ -1301,17 +1322,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_transform_feedback"]
+    ///VK_EXT_transform_feedback
     pub mod transform_feedback {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_TRANSFORM_FEEDBACK_NAME as NAME,
-            crate::vk::EXT_TRANSFORM_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_TRANSFORM_FEEDBACK_NAME as NAME,
+            EXT_TRANSFORM_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_transform_feedback device-level functions"]
+        ///VK_EXT_transform_feedback device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -1322,24 +1343,26 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_transform_feedback device-level function pointers"]
+        ///Raw VK_EXT_transform_feedback device-level function pointers
         pub struct DeviceFn {
             pub cmd_bind_transform_feedback_buffers_ext: PFN_vkCmdBindTransformFeedbackBuffersEXT,
-            pub cmd_begin_transform_feedback_ext: PFN_vkCmdBeginTransformFeedbackEXT,
-            pub cmd_end_transform_feedback_ext: PFN_vkCmdEndTransformFeedbackEXT,
-            pub cmd_begin_query_indexed_ext: PFN_vkCmdBeginQueryIndexedEXT,
-            pub cmd_end_query_indexed_ext: PFN_vkCmdEndQueryIndexedEXT,
-            pub cmd_draw_indirect_byte_count_ext: PFN_vkCmdDrawIndirectByteCountEXT,
+            pub cmd_begin_transform_feedback_ext:        PFN_vkCmdBeginTransformFeedbackEXT,
+            pub cmd_end_transform_feedback_ext:          PFN_vkCmdEndTransformFeedbackEXT,
+            pub cmd_begin_query_indexed_ext:             PFN_vkCmdBeginQueryIndexedEXT,
+            pub cmd_end_query_indexed_ext:               PFN_vkCmdEndQueryIndexedEXT,
+            pub cmd_draw_indirect_byte_count_ext:        PFN_vkCmdDrawIndirectByteCountEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -1347,6 +1370,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_bind_transform_feedback_buffers_ext: unsafe {
@@ -1373,7 +1397,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_begin_transform_feedback_ext: unsafe {
+                    cmd_begin_transform_feedback_ext:        unsafe {
                         unsafe extern "system" fn cmd_begin_transform_feedback_ext(
                             _command_buffer: CommandBuffer,
                             _first_counter_buffer: u32,
@@ -1396,7 +1420,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_transform_feedback_ext: unsafe {
+                    cmd_end_transform_feedback_ext:          unsafe {
                         unsafe extern "system" fn cmd_end_transform_feedback_ext(
                             _command_buffer: CommandBuffer,
                             _first_counter_buffer: u32,
@@ -1418,7 +1442,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_begin_query_indexed_ext: unsafe {
+                    cmd_begin_query_indexed_ext:             unsafe {
                         unsafe extern "system" fn cmd_begin_query_indexed_ext(
                             _command_buffer: CommandBuffer,
                             _query_pool: QueryPool,
@@ -1440,7 +1464,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_query_indexed_ext: unsafe {
+                    cmd_end_query_indexed_ext:               unsafe {
                         unsafe extern "system" fn cmd_end_query_indexed_ext(
                             _command_buffer: CommandBuffer,
                             _query_pool: QueryPool,
@@ -1461,7 +1485,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_draw_indirect_byte_count_ext: unsafe {
+                    cmd_draw_indirect_byte_count_ext:        unsafe {
                         unsafe extern "system" fn cmd_draw_indirect_byte_count_ext(
                             _command_buffer: CommandBuffer,
                             _instance_count: u32,
@@ -1489,65 +1513,63 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_validation_flags"]
+    ///VK_EXT_validation_flags
     pub mod validation_flags {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VALIDATION_FLAGS_NAME as NAME,
-            crate::vk::EXT_VALIDATION_FLAGS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VALIDATION_FLAGS_NAME as NAME, EXT_VALIDATION_FLAGS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_subgroup_ballot"]
+    ///VK_EXT_shader_subgroup_ballot
     pub mod shader_subgroup_ballot {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_SUBGROUP_BALLOT_NAME as NAME,
-            crate::vk::EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_SUBGROUP_BALLOT_NAME as NAME,
+            EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_subgroup_vote"]
+    ///VK_EXT_shader_subgroup_vote
     pub mod shader_subgroup_vote {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_SUBGROUP_VOTE_NAME as NAME,
-            crate::vk::EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_SUBGROUP_VOTE_NAME as NAME,
+            EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_texture_compression_astc_hdr"]
+    ///VK_EXT_texture_compression_astc_hdr
     pub mod texture_compression_astc_hdr {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_TEXTURE_COMPRESSION_ASTC_HDR_NAME as NAME,
-            crate::vk::EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_TEXTURE_COMPRESSION_ASTC_HDR_NAME as NAME,
+            EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_astc_decode_mode"]
+    ///VK_EXT_astc_decode_mode
     pub mod astc_decode_mode {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ASTC_DECODE_MODE_NAME as NAME,
-            crate::vk::EXT_ASTC_DECODE_MODE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ASTC_DECODE_MODE_NAME as NAME, EXT_ASTC_DECODE_MODE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pipeline_robustness"]
+    ///VK_EXT_pipeline_robustness
     pub mod pipeline_robustness {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_ROBUSTNESS_NAME as NAME,
-            crate::vk::EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_ROBUSTNESS_NAME as NAME,
+            EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_conditional_rendering"]
+    ///VK_EXT_conditional_rendering
     pub mod conditional_rendering {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_CONDITIONAL_RENDERING_NAME as NAME,
-            crate::vk::EXT_CONDITIONAL_RENDERING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_CONDITIONAL_RENDERING_NAME as NAME,
+            EXT_CONDITIONAL_RENDERING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_conditional_rendering device-level functions"]
+        ///VK_EXT_conditional_rendering device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -1558,20 +1580,22 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_conditional_rendering device-level function pointers"]
+        ///Raw VK_EXT_conditional_rendering device-level function pointers
         pub struct DeviceFn {
             pub cmd_begin_conditional_rendering_ext: PFN_vkCmdBeginConditionalRenderingEXT,
-            pub cmd_end_conditional_rendering_ext: PFN_vkCmdEndConditionalRenderingEXT,
+            pub cmd_end_conditional_rendering_ext:   PFN_vkCmdEndConditionalRenderingEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -1579,6 +1603,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_begin_conditional_rendering_ext: unsafe {
@@ -1603,7 +1628,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_conditional_rendering_ext: unsafe {
+                    cmd_end_conditional_rendering_ext:   unsafe {
                         unsafe extern "system" fn cmd_end_conditional_rendering_ext(
                             _command_buffer: CommandBuffer,
                         ) {
@@ -1626,17 +1651,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_direct_mode_display"]
+    ///VK_EXT_direct_mode_display
     pub mod direct_mode_display {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DIRECT_MODE_DISPLAY_NAME as NAME,
-            crate::vk::EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DIRECT_MODE_DISPLAY_NAME as NAME,
+            EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_direct_mode_display instance-level functions"]
+        ///VK_EXT_direct_mode_display instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -1647,17 +1672,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_direct_mode_display instance-level function pointers"]
+        ///Raw VK_EXT_direct_mode_display instance-level function pointers
         pub struct InstanceFn {
             pub release_display_ext: PFN_vkReleaseDisplayEXT,
         }
@@ -1667,6 +1694,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     release_display_ext: unsafe {
@@ -1688,17 +1716,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_acquire_xlib_display"]
+    ///VK_EXT_acquire_xlib_display
     pub mod acquire_xlib_display {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ACQUIRE_XLIB_DISPLAY_NAME as NAME,
-            crate::vk::EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ACQUIRE_XLIB_DISPLAY_NAME as NAME,
+            EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_acquire_xlib_display instance-level functions"]
+        ///VK_EXT_acquire_xlib_display instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -1709,19 +1737,21 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_acquire_xlib_display instance-level function pointers"]
+        ///Raw VK_EXT_acquire_xlib_display instance-level function pointers
         pub struct InstanceFn {
-            pub acquire_xlib_display_ext: PFN_vkAcquireXlibDisplayEXT,
+            pub acquire_xlib_display_ext:      PFN_vkAcquireXlibDisplayEXT,
             pub get_rand_r_output_display_ext: PFN_vkGetRandROutputDisplayEXT,
         }
         unsafe impl Send for InstanceFn {}
@@ -1730,9 +1760,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    acquire_xlib_display_ext: unsafe {
+                    acquire_xlib_display_ext:      unsafe {
                         unsafe extern "system" fn acquire_xlib_display_ext(
                             _physical_device: PhysicalDevice,
                             _dpy: *mut Display,
@@ -1777,17 +1808,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_display_surface_counter"]
+    ///VK_EXT_display_surface_counter
     pub mod display_surface_counter {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DISPLAY_SURFACE_COUNTER_NAME as NAME,
-            crate::vk::EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DISPLAY_SURFACE_COUNTER_NAME as NAME,
+            EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_display_surface_counter instance-level functions"]
+        ///VK_EXT_display_surface_counter instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -1798,17 +1829,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_display_surface_counter instance-level function pointers"]
+        ///Raw VK_EXT_display_surface_counter instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_surface_capabilities2_ext:
                 PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT,
@@ -1819,6 +1852,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_surface_capabilities2_ext: unsafe {
@@ -1846,17 +1880,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_display_control"]
+    ///VK_EXT_display_control
     pub mod display_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DISPLAY_CONTROL_NAME as NAME,
-            crate::vk::EXT_DISPLAY_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DISPLAY_CONTROL_NAME as NAME, EXT_DISPLAY_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_display_control device-level functions"]
+        ///VK_EXT_display_control device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -1867,22 +1900,24 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_display_control device-level function pointers"]
+        ///Raw VK_EXT_display_control device-level function pointers
         pub struct DeviceFn {
-            pub display_power_control_ext: PFN_vkDisplayPowerControlEXT,
-            pub register_device_event_ext: PFN_vkRegisterDeviceEventEXT,
+            pub display_power_control_ext:  PFN_vkDisplayPowerControlEXT,
+            pub register_device_event_ext:  PFN_vkRegisterDeviceEventEXT,
             pub register_display_event_ext: PFN_vkRegisterDisplayEventEXT,
-            pub get_swapchain_counter_ext: PFN_vkGetSwapchainCounterEXT,
+            pub get_swapchain_counter_ext:  PFN_vkGetSwapchainCounterEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -1890,9 +1925,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    display_power_control_ext: unsafe {
+                    display_power_control_ext:  unsafe {
                         unsafe extern "system" fn display_power_control_ext(
                             _device: crate::vk::Device,
                             _display: DisplayKHR,
@@ -1912,7 +1948,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    register_device_event_ext: unsafe {
+                    register_device_event_ext:  unsafe {
                         unsafe extern "system" fn register_device_event_ext(
                             _device: crate::vk::Device,
                             _p_device_event_info: *const DeviceEventInfoEXT<'_>,
@@ -1955,7 +1991,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_swapchain_counter_ext: unsafe {
+                    get_swapchain_counter_ext:  unsafe {
                         unsafe extern "system" fn get_swapchain_counter_ext(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -1980,17 +2016,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_discard_rectangles"]
+    ///VK_EXT_discard_rectangles
     pub mod discard_rectangles {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DISCARD_RECTANGLES_NAME as NAME,
-            crate::vk::EXT_DISCARD_RECTANGLES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DISCARD_RECTANGLES_NAME as NAME,
+            EXT_DISCARD_RECTANGLES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_discard_rectangles device-level functions"]
+        ///VK_EXT_discard_rectangles device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2001,21 +2037,23 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_discard_rectangles device-level function pointers"]
+        ///Raw VK_EXT_discard_rectangles device-level function pointers
         pub struct DeviceFn {
-            pub cmd_set_discard_rectangle_ext: PFN_vkCmdSetDiscardRectangleEXT,
+            pub cmd_set_discard_rectangle_ext:        PFN_vkCmdSetDiscardRectangleEXT,
             pub cmd_set_discard_rectangle_enable_ext: PFN_vkCmdSetDiscardRectangleEnableEXT,
-            pub cmd_set_discard_rectangle_mode_ext: PFN_vkCmdSetDiscardRectangleModeEXT,
+            pub cmd_set_discard_rectangle_mode_ext:   PFN_vkCmdSetDiscardRectangleModeEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -2023,9 +2061,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_discard_rectangle_ext: unsafe {
+                    cmd_set_discard_rectangle_ext:        unsafe {
                         unsafe extern "system" fn cmd_set_discard_rectangle_ext(
                             _command_buffer: CommandBuffer,
                             _first_discard_rectangle: u32,
@@ -2066,7 +2105,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_discard_rectangle_mode_ext: unsafe {
+                    cmd_set_discard_rectangle_mode_ext:   unsafe {
                         unsafe extern "system" fn cmd_set_discard_rectangle_mode_ext(
                             _command_buffer: CommandBuffer,
                             _discard_rectangle_mode: DiscardRectangleModeEXT,
@@ -2090,41 +2129,39 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_conservative_rasterization"]
+    ///VK_EXT_conservative_rasterization
     pub mod conservative_rasterization {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_CONSERVATIVE_RASTERIZATION_NAME as NAME,
-            crate::vk::EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_CONSERVATIVE_RASTERIZATION_NAME as NAME,
+            EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_depth_clip_enable"]
+    ///VK_EXT_depth_clip_enable
     pub mod depth_clip_enable {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_CLIP_ENABLE_NAME as NAME,
-            crate::vk::EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_CLIP_ENABLE_NAME as NAME, EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_swapchain_colorspace"]
+    ///VK_EXT_swapchain_colorspace
     pub mod swapchain_colorspace {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SWAPCHAIN_COLORSPACE_NAME as NAME,
-            crate::vk::EXT_SWAPCHAIN_COLORSPACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SWAPCHAIN_COLORSPACE_NAME as NAME,
+            EXT_SWAPCHAIN_COLORSPACE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_hdr_metadata"]
+    ///VK_EXT_hdr_metadata
     pub mod hdr_metadata {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_HDR_METADATA_NAME as NAME,
-            crate::vk::EXT_HDR_METADATA_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_HDR_METADATA_NAME as NAME, EXT_HDR_METADATA_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_hdr_metadata device-level functions"]
+        ///VK_EXT_hdr_metadata device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2135,17 +2172,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_hdr_metadata device-level function pointers"]
+        ///Raw VK_EXT_hdr_metadata device-level function pointers
         pub struct DeviceFn {
             pub set_hdr_metadata_ext: PFN_vkSetHdrMetadataEXT,
         }
@@ -2155,6 +2194,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     set_hdr_metadata_ext: unsafe {
@@ -2178,33 +2218,32 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_external_memory_dma_buf"]
+    ///VK_EXT_external_memory_dma_buf
     pub mod external_memory_dma_buf {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTERNAL_MEMORY_DMA_BUF_NAME as NAME,
-            crate::vk::EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTERNAL_MEMORY_DMA_BUF_NAME as NAME,
+            EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_queue_family_foreign"]
+    ///VK_EXT_queue_family_foreign
     pub mod queue_family_foreign {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_QUEUE_FAMILY_FOREIGN_NAME as NAME,
-            crate::vk::EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_QUEUE_FAMILY_FOREIGN_NAME as NAME,
+            EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_debug_utils"]
+    ///VK_EXT_debug_utils
     pub mod debug_utils {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEBUG_UTILS_NAME as NAME,
-            crate::vk::EXT_DEBUG_UTILS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEBUG_UTILS_NAME as NAME, EXT_DEBUG_UTILS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_debug_utils instance-level functions"]
+        ///VK_EXT_debug_utils instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -2215,21 +2254,23 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_debug_utils instance-level function pointers"]
+        ///Raw VK_EXT_debug_utils instance-level function pointers
         pub struct InstanceFn {
-            pub create_debug_utils_messenger_ext: PFN_vkCreateDebugUtilsMessengerEXT,
+            pub create_debug_utils_messenger_ext:  PFN_vkCreateDebugUtilsMessengerEXT,
             pub destroy_debug_utils_messenger_ext: PFN_vkDestroyDebugUtilsMessengerEXT,
-            pub submit_debug_utils_message_ext: PFN_vkSubmitDebugUtilsMessageEXT,
+            pub submit_debug_utils_message_ext:    PFN_vkSubmitDebugUtilsMessageEXT,
         }
         unsafe impl Send for InstanceFn {}
         unsafe impl Sync for InstanceFn {}
@@ -2237,9 +2278,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_debug_utils_messenger_ext: unsafe {
+                    create_debug_utils_messenger_ext:  unsafe {
                         unsafe extern "system" fn create_debug_utils_messenger_ext(
                             _instance: crate::vk::Instance,
                             _p_create_info: *const DebugUtilsMessengerCreateInfoEXT<'_>,
@@ -2282,7 +2324,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    submit_debug_utils_message_ext: unsafe {
+                    submit_debug_utils_message_ext:    unsafe {
                         unsafe extern "system" fn submit_debug_utils_message_ext(
                             _instance: crate::vk::Instance,
                             _message_severity: DebugUtilsMessageSeverityFlagsEXT,
@@ -2306,10 +2348,10 @@ pub mod ext {
                 }
             }
         }
-        #[doc = "VK_EXT_debug_utils device-level functions"]
+        ///VK_EXT_debug_utils device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2320,26 +2362,28 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_debug_utils device-level function pointers"]
+        ///Raw VK_EXT_debug_utils device-level function pointers
         pub struct DeviceFn {
-            pub set_debug_utils_object_name_ext: PFN_vkSetDebugUtilsObjectNameEXT,
-            pub set_debug_utils_object_tag_ext: PFN_vkSetDebugUtilsObjectTagEXT,
-            pub queue_begin_debug_utils_label_ext: PFN_vkQueueBeginDebugUtilsLabelEXT,
-            pub queue_end_debug_utils_label_ext: PFN_vkQueueEndDebugUtilsLabelEXT,
+            pub set_debug_utils_object_name_ext:    PFN_vkSetDebugUtilsObjectNameEXT,
+            pub set_debug_utils_object_tag_ext:     PFN_vkSetDebugUtilsObjectTagEXT,
+            pub queue_begin_debug_utils_label_ext:  PFN_vkQueueBeginDebugUtilsLabelEXT,
+            pub queue_end_debug_utils_label_ext:    PFN_vkQueueEndDebugUtilsLabelEXT,
             pub queue_insert_debug_utils_label_ext: PFN_vkQueueInsertDebugUtilsLabelEXT,
-            pub cmd_begin_debug_utils_label_ext: PFN_vkCmdBeginDebugUtilsLabelEXT,
-            pub cmd_end_debug_utils_label_ext: PFN_vkCmdEndDebugUtilsLabelEXT,
-            pub cmd_insert_debug_utils_label_ext: PFN_vkCmdInsertDebugUtilsLabelEXT,
+            pub cmd_begin_debug_utils_label_ext:    PFN_vkCmdBeginDebugUtilsLabelEXT,
+            pub cmd_end_debug_utils_label_ext:      PFN_vkCmdEndDebugUtilsLabelEXT,
+            pub cmd_insert_debug_utils_label_ext:   PFN_vkCmdInsertDebugUtilsLabelEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -2347,9 +2391,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    set_debug_utils_object_name_ext: unsafe {
+                    set_debug_utils_object_name_ext:    unsafe {
                         unsafe extern "system" fn set_debug_utils_object_name_ext(
                             _device: crate::vk::Device,
                             _p_name_info: *const DebugUtilsObjectNameInfoEXT<'_>,
@@ -2368,7 +2413,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    set_debug_utils_object_tag_ext: unsafe {
+                    set_debug_utils_object_tag_ext:     unsafe {
                         unsafe extern "system" fn set_debug_utils_object_tag_ext(
                             _device: crate::vk::Device,
                             _p_tag_info: *const DebugUtilsObjectTagInfoEXT<'_>,
@@ -2387,7 +2432,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    queue_begin_debug_utils_label_ext: unsafe {
+                    queue_begin_debug_utils_label_ext:  unsafe {
                         unsafe extern "system" fn queue_begin_debug_utils_label_ext(
                             _queue: Queue,
                             _p_label_info: *const DebugUtilsLabelEXT<'_>,
@@ -2407,7 +2452,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    queue_end_debug_utils_label_ext: unsafe {
+                    queue_end_debug_utils_label_ext:    unsafe {
                         unsafe extern "system" fn queue_end_debug_utils_label_ext(_queue: Queue) {
                             panic!(concat!(
                                 "Unable to load ",
@@ -2443,7 +2488,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_begin_debug_utils_label_ext: unsafe {
+                    cmd_begin_debug_utils_label_ext:    unsafe {
                         unsafe extern "system" fn cmd_begin_debug_utils_label_ext(
                             _command_buffer: CommandBuffer,
                             _p_label_info: *const DebugUtilsLabelEXT<'_>,
@@ -2462,7 +2507,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_debug_utils_label_ext: unsafe {
+                    cmd_end_debug_utils_label_ext:      unsafe {
                         unsafe extern "system" fn cmd_end_debug_utils_label_ext(
                             _command_buffer: CommandBuffer,
                         ) {
@@ -2480,7 +2525,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_insert_debug_utils_label_ext: unsafe {
+                    cmd_insert_debug_utils_label_ext:   unsafe {
                         unsafe extern "system" fn cmd_insert_debug_utils_label_ext(
                             _command_buffer: CommandBuffer,
                             _p_label_info: *const DebugUtilsLabelEXT<'_>,
@@ -2503,41 +2548,40 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_sampler_filter_minmax"]
+    ///VK_EXT_sampler_filter_minmax
     pub mod sampler_filter_minmax {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SAMPLER_FILTER_MINMAX_NAME as NAME,
-            crate::vk::EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SAMPLER_FILTER_MINMAX_NAME as NAME,
+            EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_inline_uniform_block"]
+    ///VK_EXT_inline_uniform_block
     pub mod inline_uniform_block {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_INLINE_UNIFORM_BLOCK_NAME as NAME,
-            crate::vk::EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_INLINE_UNIFORM_BLOCK_NAME as NAME,
+            EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_stencil_export"]
+    ///VK_EXT_shader_stencil_export
     pub mod shader_stencil_export {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_STENCIL_EXPORT_NAME as NAME,
-            crate::vk::EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_STENCIL_EXPORT_NAME as NAME,
+            EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_sample_locations"]
+    ///VK_EXT_sample_locations
     pub mod sample_locations {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SAMPLE_LOCATIONS_NAME as NAME,
-            crate::vk::EXT_SAMPLE_LOCATIONS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SAMPLE_LOCATIONS_NAME as NAME, EXT_SAMPLE_LOCATIONS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_sample_locations instance-level functions"]
+        ///VK_EXT_sample_locations instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -2548,17 +2592,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_sample_locations instance-level function pointers"]
+        ///Raw VK_EXT_sample_locations instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_multisample_properties_ext:
                 PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT,
@@ -2569,6 +2615,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_multisample_properties_ext: unsafe {
@@ -2595,10 +2642,10 @@ pub mod ext {
                 }
             }
         }
-        #[doc = "VK_EXT_sample_locations device-level functions"]
+        ///VK_EXT_sample_locations device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2609,17 +2656,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_sample_locations device-level function pointers"]
+        ///Raw VK_EXT_sample_locations device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_sample_locations_ext: PFN_vkCmdSetSampleLocationsEXT,
         }
@@ -2629,6 +2678,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_sample_locations_ext: unsafe {
@@ -2654,33 +2704,33 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_blend_operation_advanced"]
+    ///VK_EXT_blend_operation_advanced
     pub mod blend_operation_advanced {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_BLEND_OPERATION_ADVANCED_NAME as NAME,
-            crate::vk::EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_BLEND_OPERATION_ADVANCED_NAME as NAME,
+            EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_post_depth_coverage"]
+    ///VK_EXT_post_depth_coverage
     pub mod post_depth_coverage {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_POST_DEPTH_COVERAGE_NAME as NAME,
-            crate::vk::EXT_POST_DEPTH_COVERAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_POST_DEPTH_COVERAGE_NAME as NAME,
+            EXT_POST_DEPTH_COVERAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_image_drm_format_modifier"]
+    ///VK_EXT_image_drm_format_modifier
     pub mod image_drm_format_modifier {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_DRM_FORMAT_MODIFIER_NAME as NAME,
-            crate::vk::EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_DRM_FORMAT_MODIFIER_NAME as NAME,
+            EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_image_drm_format_modifier device-level functions"]
+        ///VK_EXT_image_drm_format_modifier device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2691,17 +2741,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_image_drm_format_modifier device-level function pointers"]
+        ///Raw VK_EXT_image_drm_format_modifier device-level function pointers
         pub struct DeviceFn {
             pub get_image_drm_format_modifier_properties_ext:
                 PFN_vkGetImageDrmFormatModifierPropertiesEXT,
@@ -2712,6 +2764,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_image_drm_format_modifier_properties_ext: unsafe {
@@ -2739,17 +2792,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_validation_cache"]
+    ///VK_EXT_validation_cache
     pub mod validation_cache {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VALIDATION_CACHE_NAME as NAME,
-            crate::vk::EXT_VALIDATION_CACHE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VALIDATION_CACHE_NAME as NAME, EXT_VALIDATION_CACHE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_validation_cache device-level functions"]
+        ///VK_EXT_validation_cache device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2760,21 +2812,23 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_validation_cache device-level function pointers"]
+        ///Raw VK_EXT_validation_cache device-level function pointers
         pub struct DeviceFn {
-            pub create_validation_cache_ext: PFN_vkCreateValidationCacheEXT,
-            pub destroy_validation_cache_ext: PFN_vkDestroyValidationCacheEXT,
-            pub merge_validation_caches_ext: PFN_vkMergeValidationCachesEXT,
+            pub create_validation_cache_ext:   PFN_vkCreateValidationCacheEXT,
+            pub destroy_validation_cache_ext:  PFN_vkDestroyValidationCacheEXT,
+            pub merge_validation_caches_ext:   PFN_vkMergeValidationCachesEXT,
             pub get_validation_cache_data_ext: PFN_vkGetValidationCacheDataEXT,
         }
         unsafe impl Send for DeviceFn {}
@@ -2783,9 +2837,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_validation_cache_ext: unsafe {
+                    create_validation_cache_ext:   unsafe {
                         unsafe extern "system" fn create_validation_cache_ext(
                             _device: crate::vk::Device,
                             _p_create_info: *const ValidationCacheCreateInfoEXT<'_>,
@@ -2806,7 +2861,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_validation_cache_ext: unsafe {
+                    destroy_validation_cache_ext:  unsafe {
                         unsafe extern "system" fn destroy_validation_cache_ext(
                             _device: crate::vk::Device,
                             _validation_cache: ValidationCacheEXT,
@@ -2826,7 +2881,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    merge_validation_caches_ext: unsafe {
+                    merge_validation_caches_ext:   unsafe {
                         unsafe extern "system" fn merge_validation_caches_ext(
                             _device: crate::vk::Device,
                             _dst_cache: ValidationCacheEXT,
@@ -2872,49 +2927,47 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_descriptor_indexing"]
+    ///VK_EXT_descriptor_indexing
     pub mod descriptor_indexing {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DESCRIPTOR_INDEXING_NAME as NAME,
-            crate::vk::EXT_DESCRIPTOR_INDEXING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DESCRIPTOR_INDEXING_NAME as NAME,
+            EXT_DESCRIPTOR_INDEXING_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_viewport_index_layer"]
+    ///VK_EXT_shader_viewport_index_layer
     pub mod shader_viewport_index_layer {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_VIEWPORT_INDEX_LAYER_NAME as NAME,
-            crate::vk::EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_VIEWPORT_INDEX_LAYER_NAME as NAME,
+            EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_filter_cubic"]
+    ///VK_EXT_filter_cubic
     pub mod filter_cubic {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FILTER_CUBIC_NAME as NAME,
-            crate::vk::EXT_FILTER_CUBIC_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FILTER_CUBIC_NAME as NAME, EXT_FILTER_CUBIC_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_global_priority"]
+    ///VK_EXT_global_priority
     pub mod global_priority {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_GLOBAL_PRIORITY_NAME as NAME,
-            crate::vk::EXT_GLOBAL_PRIORITY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_GLOBAL_PRIORITY_NAME as NAME, EXT_GLOBAL_PRIORITY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_external_memory_host"]
+    ///VK_EXT_external_memory_host
     pub mod external_memory_host {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTERNAL_MEMORY_HOST_NAME as NAME,
-            crate::vk::EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTERNAL_MEMORY_HOST_NAME as NAME,
+            EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_external_memory_host device-level functions"]
+        ///VK_EXT_external_memory_host device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -2925,17 +2978,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_external_memory_host device-level function pointers"]
+        ///Raw VK_EXT_external_memory_host device-level function pointers
         pub struct DeviceFn {
             pub get_memory_host_pointer_properties_ext: PFN_vkGetMemoryHostPointerPropertiesEXT,
         }
@@ -2945,6 +3000,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_memory_host_pointer_properties_ext: unsafe {
@@ -2975,17 +3031,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_calibrated_timestamps"]
+    ///VK_EXT_calibrated_timestamps
     pub mod calibrated_timestamps {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_CALIBRATED_TIMESTAMPS_NAME as NAME,
-            crate::vk::EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_CALIBRATED_TIMESTAMPS_NAME as NAME,
+            EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_calibrated_timestamps instance-level functions"]
+        ///VK_EXT_calibrated_timestamps instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -2996,17 +3052,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_calibrated_timestamps instance-level function pointers"]
+        ///Raw VK_EXT_calibrated_timestamps instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_calibrateable_time_domains_ext:
                 PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR,
@@ -3017,6 +3075,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_calibrateable_time_domains_ext: unsafe {
@@ -3043,10 +3102,10 @@ pub mod ext {
                 }
             }
         }
-        #[doc = "VK_EXT_calibrated_timestamps device-level functions"]
+        ///VK_EXT_calibrated_timestamps device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3057,17 +3116,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_calibrated_timestamps device-level function pointers"]
+        ///Raw VK_EXT_calibrated_timestamps device-level function pointers
         pub struct DeviceFn {
             pub get_calibrated_timestamps_ext: PFN_vkGetCalibratedTimestampsKHR,
         }
@@ -3077,6 +3138,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_calibrated_timestamps_ext: unsafe {
@@ -3105,41 +3167,39 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_vertex_attribute_divisor"]
+    ///VK_EXT_vertex_attribute_divisor
     pub mod vertex_attribute_divisor {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VERTEX_ATTRIBUTE_DIVISOR_NAME as NAME,
-            crate::vk::EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VERTEX_ATTRIBUTE_DIVISOR_NAME as NAME,
+            EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pipeline_creation_feedback"]
+    ///VK_EXT_pipeline_creation_feedback
     pub mod pipeline_creation_feedback {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_CREATION_FEEDBACK_NAME as NAME,
-            crate::vk::EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_CREATION_FEEDBACK_NAME as NAME,
+            EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pci_bus_info"]
+    ///VK_EXT_pci_bus_info
     pub mod pci_bus_info {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PCI_BUS_INFO_NAME as NAME,
-            crate::vk::EXT_PCI_BUS_INFO_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PCI_BUS_INFO_NAME as NAME, EXT_PCI_BUS_INFO_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_metal_surface"]
+    ///VK_EXT_metal_surface
     pub mod metal_surface {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_METAL_SURFACE_NAME as NAME,
-            crate::vk::EXT_METAL_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_METAL_SURFACE_NAME as NAME, EXT_METAL_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_metal_surface instance-level functions"]
+        ///VK_EXT_metal_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -3150,17 +3210,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_metal_surface instance-level function pointers"]
+        ///Raw VK_EXT_metal_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_metal_surface_ext: PFN_vkCreateMetalSurfaceEXT,
         }
@@ -3170,6 +3232,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_metal_surface_ext: unsafe {
@@ -3197,65 +3260,63 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_fragment_density_map"]
+    ///VK_EXT_fragment_density_map
     pub mod fragment_density_map {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FRAGMENT_DENSITY_MAP_NAME as NAME,
-            crate::vk::EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FRAGMENT_DENSITY_MAP_NAME as NAME,
+            EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_scalar_block_layout"]
+    ///VK_EXT_scalar_block_layout
     pub mod scalar_block_layout {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SCALAR_BLOCK_LAYOUT_NAME as NAME,
-            crate::vk::EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SCALAR_BLOCK_LAYOUT_NAME as NAME,
+            EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_subgroup_size_control"]
+    ///VK_EXT_subgroup_size_control
     pub mod subgroup_size_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SUBGROUP_SIZE_CONTROL_NAME as NAME,
-            crate::vk::EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SUBGROUP_SIZE_CONTROL_NAME as NAME,
+            EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_image_atomic_int64"]
+    ///VK_EXT_shader_image_atomic_int64
     pub mod shader_image_atomic_int64 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_IMAGE_ATOMIC_INT64_NAME as NAME,
-            crate::vk::EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_IMAGE_ATOMIC_INT64_NAME as NAME,
+            EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_memory_budget"]
+    ///VK_EXT_memory_budget
     pub mod memory_budget {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MEMORY_BUDGET_NAME as NAME,
-            crate::vk::EXT_MEMORY_BUDGET_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MEMORY_BUDGET_NAME as NAME, EXT_MEMORY_BUDGET_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_memory_priority"]
+    ///VK_EXT_memory_priority
     pub mod memory_priority {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MEMORY_PRIORITY_NAME as NAME,
-            crate::vk::EXT_MEMORY_PRIORITY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MEMORY_PRIORITY_NAME as NAME, EXT_MEMORY_PRIORITY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_buffer_device_address"]
+    ///VK_EXT_buffer_device_address
     pub mod buffer_device_address {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_BUFFER_DEVICE_ADDRESS_NAME as NAME,
-            crate::vk::EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_BUFFER_DEVICE_ADDRESS_NAME as NAME,
+            EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_buffer_device_address device-level functions"]
+        ///VK_EXT_buffer_device_address device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3266,17 +3327,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_buffer_device_address device-level function pointers"]
+        ///Raw VK_EXT_buffer_device_address device-level function pointers
         pub struct DeviceFn {
             pub get_buffer_device_address_ext: PFN_vkGetBufferDeviceAddress,
         }
@@ -3286,6 +3349,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_buffer_device_address_ext: unsafe {
@@ -3311,17 +3375,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_tooling_info"]
+    ///VK_EXT_tooling_info
     pub mod tooling_info {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_TOOLING_INFO_NAME as NAME,
-            crate::vk::EXT_TOOLING_INFO_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_TOOLING_INFO_NAME as NAME, EXT_TOOLING_INFO_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_tooling_info instance-level functions"]
+        ///VK_EXT_tooling_info instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -3332,17 +3395,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_tooling_info instance-level function pointers"]
+        ///Raw VK_EXT_tooling_info instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_tool_properties_ext: PFN_vkGetPhysicalDeviceToolProperties,
         }
@@ -3352,6 +3417,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_tool_properties_ext: unsafe {
@@ -3379,57 +3445,56 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_separate_stencil_usage"]
+    ///VK_EXT_separate_stencil_usage
     pub mod separate_stencil_usage {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SEPARATE_STENCIL_USAGE_NAME as NAME,
-            crate::vk::EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SEPARATE_STENCIL_USAGE_NAME as NAME,
+            EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_validation_features"]
+    ///VK_EXT_validation_features
     pub mod validation_features {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VALIDATION_FEATURES_NAME as NAME,
-            crate::vk::EXT_VALIDATION_FEATURES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VALIDATION_FEATURES_NAME as NAME,
+            EXT_VALIDATION_FEATURES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_fragment_shader_interlock"]
+    ///VK_EXT_fragment_shader_interlock
     pub mod fragment_shader_interlock {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FRAGMENT_SHADER_INTERLOCK_NAME as NAME,
-            crate::vk::EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FRAGMENT_SHADER_INTERLOCK_NAME as NAME,
+            EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_ycbcr_image_arrays"]
+    ///VK_EXT_ycbcr_image_arrays
     pub mod ycbcr_image_arrays {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_YCBCR_IMAGE_ARRAYS_NAME as NAME,
-            crate::vk::EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_YCBCR_IMAGE_ARRAYS_NAME as NAME,
+            EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_provoking_vertex"]
+    ///VK_EXT_provoking_vertex
     pub mod provoking_vertex {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PROVOKING_VERTEX_NAME as NAME,
-            crate::vk::EXT_PROVOKING_VERTEX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PROVOKING_VERTEX_NAME as NAME, EXT_PROVOKING_VERTEX_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_full_screen_exclusive"]
+    ///VK_EXT_full_screen_exclusive
     pub mod full_screen_exclusive {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FULL_SCREEN_EXCLUSIVE_NAME as NAME,
-            crate::vk::EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FULL_SCREEN_EXCLUSIVE_NAME as NAME,
+            EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_full_screen_exclusive instance-level functions"]
+        ///VK_EXT_full_screen_exclusive instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -3440,17 +3505,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_full_screen_exclusive instance-level function pointers"]
+        ///Raw VK_EXT_full_screen_exclusive instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_surface_present_modes2_ext:
                 PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT,
@@ -3461,6 +3528,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_surface_present_modes2_ext: unsafe {
@@ -3488,10 +3556,10 @@ pub mod ext {
                 }
             }
         }
-        #[doc = "VK_EXT_full_screen_exclusive device-level functions"]
+        ///VK_EXT_full_screen_exclusive device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3502,17 +3570,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_full_screen_exclusive device-level function pointers"]
+        ///Raw VK_EXT_full_screen_exclusive device-level function pointers
         pub struct DeviceFn {
             pub acquire_full_screen_exclusive_mode_ext: PFN_vkAcquireFullScreenExclusiveModeEXT,
             pub release_full_screen_exclusive_mode_ext: PFN_vkReleaseFullScreenExclusiveModeEXT,
@@ -3525,9 +3595,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    acquire_full_screen_exclusive_mode_ext: unsafe {
+                    acquire_full_screen_exclusive_mode_ext:      unsafe {
                         unsafe extern "system" fn acquire_full_screen_exclusive_mode_ext(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -3547,7 +3618,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    release_full_screen_exclusive_mode_ext: unsafe {
+                    release_full_screen_exclusive_mode_ext:      unsafe {
                         unsafe extern "system" fn release_full_screen_exclusive_mode_ext(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -3592,17 +3663,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_headless_surface"]
+    ///VK_EXT_headless_surface
     pub mod headless_surface {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_HEADLESS_SURFACE_NAME as NAME,
-            crate::vk::EXT_HEADLESS_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_HEADLESS_SURFACE_NAME as NAME, EXT_HEADLESS_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_headless_surface instance-level functions"]
+        ///VK_EXT_headless_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -3613,17 +3683,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_headless_surface instance-level function pointers"]
+        ///Raw VK_EXT_headless_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_headless_surface_ext: PFN_vkCreateHeadlessSurfaceEXT,
         }
@@ -3633,6 +3705,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_headless_surface_ext: unsafe {
@@ -3660,17 +3733,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_line_rasterization"]
+    ///VK_EXT_line_rasterization
     pub mod line_rasterization {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_LINE_RASTERIZATION_NAME as NAME,
-            crate::vk::EXT_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_LINE_RASTERIZATION_NAME as NAME,
+            EXT_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_line_rasterization device-level functions"]
+        ///VK_EXT_line_rasterization device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3681,17 +3754,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_line_rasterization device-level function pointers"]
+        ///Raw VK_EXT_line_rasterization device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_line_stipple_ext: PFN_vkCmdSetLineStipple,
         }
@@ -3701,6 +3776,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_line_stipple_ext: unsafe {
@@ -3727,25 +3803,24 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_shader_atomic_float"]
+    ///VK_EXT_shader_atomic_float
     pub mod shader_atomic_float {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_ATOMIC_FLOAT_NAME as NAME,
-            crate::vk::EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_ATOMIC_FLOAT_NAME as NAME,
+            EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_host_query_reset"]
+    ///VK_EXT_host_query_reset
     pub mod host_query_reset {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_HOST_QUERY_RESET_NAME as NAME,
-            crate::vk::EXT_HOST_QUERY_RESET_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_HOST_QUERY_RESET_NAME as NAME, EXT_HOST_QUERY_RESET_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_host_query_reset device-level functions"]
+        ///VK_EXT_host_query_reset device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3756,17 +3831,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_host_query_reset device-level function pointers"]
+        ///Raw VK_EXT_host_query_reset device-level function pointers
         pub struct DeviceFn {
             pub reset_query_pool_ext: PFN_vkResetQueryPool,
         }
@@ -3776,6 +3853,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     reset_query_pool_ext: unsafe {
@@ -3799,25 +3877,24 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_index_type_uint8"]
+    ///VK_EXT_index_type_uint8
     pub mod index_type_uint8 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_INDEX_TYPE_UINT8_NAME as NAME,
-            crate::vk::EXT_INDEX_TYPE_UINT8_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_INDEX_TYPE_UINT8_NAME as NAME, EXT_INDEX_TYPE_UINT8_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_extended_dynamic_state"]
+    ///VK_EXT_extended_dynamic_state
     pub mod extended_dynamic_state {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE_NAME as NAME,
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTENDED_DYNAMIC_STATE_NAME as NAME,
+            EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_extended_dynamic_state device-level functions"]
+        ///VK_EXT_extended_dynamic_state device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -3828,30 +3905,32 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_extended_dynamic_state device-level function pointers"]
+        ///Raw VK_EXT_extended_dynamic_state device-level function pointers
         pub struct DeviceFn {
-            pub cmd_set_cull_mode_ext: PFN_vkCmdSetCullMode,
-            pub cmd_set_front_face_ext: PFN_vkCmdSetFrontFace,
-            pub cmd_set_primitive_topology_ext: PFN_vkCmdSetPrimitiveTopology,
-            pub cmd_set_viewport_with_count_ext: PFN_vkCmdSetViewportWithCount,
-            pub cmd_set_scissor_with_count_ext: PFN_vkCmdSetScissorWithCount,
-            pub cmd_bind_vertex_buffers2_ext: PFN_vkCmdBindVertexBuffers2,
-            pub cmd_set_depth_test_enable_ext: PFN_vkCmdSetDepthTestEnable,
-            pub cmd_set_depth_write_enable_ext: PFN_vkCmdSetDepthWriteEnable,
-            pub cmd_set_depth_compare_op_ext: PFN_vkCmdSetDepthCompareOp,
+            pub cmd_set_cull_mode_ext:                PFN_vkCmdSetCullMode,
+            pub cmd_set_front_face_ext:               PFN_vkCmdSetFrontFace,
+            pub cmd_set_primitive_topology_ext:       PFN_vkCmdSetPrimitiveTopology,
+            pub cmd_set_viewport_with_count_ext:      PFN_vkCmdSetViewportWithCount,
+            pub cmd_set_scissor_with_count_ext:       PFN_vkCmdSetScissorWithCount,
+            pub cmd_bind_vertex_buffers2_ext:         PFN_vkCmdBindVertexBuffers2,
+            pub cmd_set_depth_test_enable_ext:        PFN_vkCmdSetDepthTestEnable,
+            pub cmd_set_depth_write_enable_ext:       PFN_vkCmdSetDepthWriteEnable,
+            pub cmd_set_depth_compare_op_ext:         PFN_vkCmdSetDepthCompareOp,
             pub cmd_set_depth_bounds_test_enable_ext: PFN_vkCmdSetDepthBoundsTestEnable,
-            pub cmd_set_stencil_test_enable_ext: PFN_vkCmdSetStencilTestEnable,
-            pub cmd_set_stencil_op_ext: PFN_vkCmdSetStencilOp,
+            pub cmd_set_stencil_test_enable_ext:      PFN_vkCmdSetStencilTestEnable,
+            pub cmd_set_stencil_op_ext:               PFN_vkCmdSetStencilOp,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -3859,9 +3938,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_cull_mode_ext: unsafe {
+                    cmd_set_cull_mode_ext:                unsafe {
                         unsafe extern "system" fn cmd_set_cull_mode_ext(
                             _command_buffer: CommandBuffer,
                             _cull_mode: CullModeFlags,
@@ -3879,7 +3959,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_front_face_ext: unsafe {
+                    cmd_set_front_face_ext:               unsafe {
                         unsafe extern "system" fn cmd_set_front_face_ext(
                             _command_buffer: CommandBuffer,
                             _front_face: FrontFace,
@@ -3897,7 +3977,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_primitive_topology_ext: unsafe {
+                    cmd_set_primitive_topology_ext:       unsafe {
                         unsafe extern "system" fn cmd_set_primitive_topology_ext(
                             _command_buffer: CommandBuffer,
                             _primitive_topology: PrimitiveTopology,
@@ -3916,7 +3996,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_viewport_with_count_ext: unsafe {
+                    cmd_set_viewport_with_count_ext:      unsafe {
                         unsafe extern "system" fn cmd_set_viewport_with_count_ext(
                             _command_buffer: CommandBuffer,
                             _viewport_count: u32,
@@ -3936,7 +4016,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_scissor_with_count_ext: unsafe {
+                    cmd_set_scissor_with_count_ext:       unsafe {
                         unsafe extern "system" fn cmd_set_scissor_with_count_ext(
                             _command_buffer: CommandBuffer,
                             _scissor_count: u32,
@@ -3956,7 +4036,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_bind_vertex_buffers2_ext: unsafe {
+                    cmd_bind_vertex_buffers2_ext:         unsafe {
                         unsafe extern "system" fn cmd_bind_vertex_buffers2_ext(
                             _command_buffer: CommandBuffer,
                             _first_binding: u32,
@@ -3980,7 +4060,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_depth_test_enable_ext: unsafe {
+                    cmd_set_depth_test_enable_ext:        unsafe {
                         unsafe extern "system" fn cmd_set_depth_test_enable_ext(
                             _command_buffer: CommandBuffer,
                             _depth_test_enable: Bool32,
@@ -3999,7 +4079,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_depth_write_enable_ext: unsafe {
+                    cmd_set_depth_write_enable_ext:       unsafe {
                         unsafe extern "system" fn cmd_set_depth_write_enable_ext(
                             _command_buffer: CommandBuffer,
                             _depth_write_enable: Bool32,
@@ -4018,7 +4098,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_depth_compare_op_ext: unsafe {
+                    cmd_set_depth_compare_op_ext:         unsafe {
                         unsafe extern "system" fn cmd_set_depth_compare_op_ext(
                             _command_buffer: CommandBuffer,
                             _depth_compare_op: CompareOp,
@@ -4057,7 +4137,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_stencil_test_enable_ext: unsafe {
+                    cmd_set_stencil_test_enable_ext:      unsafe {
                         unsafe extern "system" fn cmd_set_stencil_test_enable_ext(
                             _command_buffer: CommandBuffer,
                             _stencil_test_enable: Bool32,
@@ -4076,7 +4156,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_stencil_op_ext: unsafe {
+                    cmd_set_stencil_op_ext:               unsafe {
                         unsafe extern "system" fn cmd_set_stencil_op_ext(
                             _command_buffer: CommandBuffer,
                             _face_mask: StencilFaceFlags,
@@ -4102,17 +4182,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_host_image_copy"]
+    ///VK_EXT_host_image_copy
     pub mod host_image_copy {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_HOST_IMAGE_COPY_NAME as NAME,
-            crate::vk::EXT_HOST_IMAGE_COPY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_HOST_IMAGE_COPY_NAME as NAME, EXT_HOST_IMAGE_COPY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_host_image_copy device-level functions"]
+        ///VK_EXT_host_image_copy device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4123,22 +4202,24 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_host_image_copy device-level function pointers"]
+        ///Raw VK_EXT_host_image_copy device-level function pointers
         pub struct DeviceFn {
-            pub copy_memory_to_image_ext: PFN_vkCopyMemoryToImage,
-            pub copy_image_to_memory_ext: PFN_vkCopyImageToMemory,
-            pub copy_image_to_image_ext: PFN_vkCopyImageToImage,
-            pub transition_image_layout_ext: PFN_vkTransitionImageLayout,
+            pub copy_memory_to_image_ext:          PFN_vkCopyMemoryToImage,
+            pub copy_image_to_memory_ext:          PFN_vkCopyImageToMemory,
+            pub copy_image_to_image_ext:           PFN_vkCopyImageToImage,
+            pub transition_image_layout_ext:       PFN_vkTransitionImageLayout,
             pub get_image_subresource_layout2_ext: PFN_vkGetImageSubresourceLayout2,
         }
         unsafe impl Send for DeviceFn {}
@@ -4147,9 +4228,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    copy_memory_to_image_ext: unsafe {
+                    copy_memory_to_image_ext:          unsafe {
                         unsafe extern "system" fn copy_memory_to_image_ext(
                             _device: crate::vk::Device,
                             _p_copy_memory_to_image_info: *const CopyMemoryToImageInfo<'_>,
@@ -4168,7 +4250,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_image_to_memory_ext: unsafe {
+                    copy_image_to_memory_ext:          unsafe {
                         unsafe extern "system" fn copy_image_to_memory_ext(
                             _device: crate::vk::Device,
                             _p_copy_image_to_memory_info: *const CopyImageToMemoryInfo<'_>,
@@ -4187,7 +4269,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_image_to_image_ext: unsafe {
+                    copy_image_to_image_ext:           unsafe {
                         unsafe extern "system" fn copy_image_to_image_ext(
                             _device: crate::vk::Device,
                             _p_copy_image_to_image_info: *const CopyImageToImageInfo<'_>,
@@ -4205,7 +4287,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    transition_image_layout_ext: unsafe {
+                    transition_image_layout_ext:       unsafe {
                         unsafe extern "system" fn transition_image_layout_ext(
                             _device: crate::vk::Device,
                             _transition_count: u32,
@@ -4251,41 +4333,40 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_map_memory_placed"]
+    ///VK_EXT_map_memory_placed
     pub mod map_memory_placed {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MAP_MEMORY_PLACED_NAME as NAME,
-            crate::vk::EXT_MAP_MEMORY_PLACED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MAP_MEMORY_PLACED_NAME as NAME, EXT_MAP_MEMORY_PLACED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_atomic_float2"]
+    ///VK_EXT_shader_atomic_float2
     pub mod shader_atomic_float2 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_ATOMIC_FLOAT2_NAME as NAME,
-            crate::vk::EXT_SHADER_ATOMIC_FLOAT2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_ATOMIC_FLOAT2_NAME as NAME,
+            EXT_SHADER_ATOMIC_FLOAT2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_surface_maintenance1"]
+    ///VK_EXT_surface_maintenance1
     pub mod surface_maintenance1 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SURFACE_MAINTENANCE1_NAME as NAME,
-            crate::vk::EXT_SURFACE_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SURFACE_MAINTENANCE1_NAME as NAME,
+            EXT_SURFACE_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_swapchain_maintenance1"]
+    ///VK_EXT_swapchain_maintenance1
     pub mod swapchain_maintenance1 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SWAPCHAIN_MAINTENANCE1_NAME as NAME,
-            crate::vk::EXT_SWAPCHAIN_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SWAPCHAIN_MAINTENANCE1_NAME as NAME,
+            EXT_SWAPCHAIN_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_swapchain_maintenance1 device-level functions"]
+        ///VK_EXT_swapchain_maintenance1 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4296,17 +4377,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_swapchain_maintenance1 device-level function pointers"]
+        ///Raw VK_EXT_swapchain_maintenance1 device-level function pointers
         pub struct DeviceFn {
             pub release_swapchain_images_ext: PFN_vkReleaseSwapchainImagesEXT,
         }
@@ -4316,6 +4399,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     release_swapchain_images_ext: unsafe {
@@ -4341,33 +4425,33 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_shader_demote_to_helper_invocation"]
+    ///VK_EXT_shader_demote_to_helper_invocation
     pub mod shader_demote_to_helper_invocation {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_NAME as NAME,
-            crate::vk::EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_NAME as NAME,
+            EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_texel_buffer_alignment"]
+    ///VK_EXT_texel_buffer_alignment
     pub mod texel_buffer_alignment {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_TEXEL_BUFFER_ALIGNMENT_NAME as NAME,
-            crate::vk::EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_TEXEL_BUFFER_ALIGNMENT_NAME as NAME,
+            EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_depth_bias_control"]
+    ///VK_EXT_depth_bias_control
     pub mod depth_bias_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_BIAS_CONTROL_NAME as NAME,
-            crate::vk::EXT_DEPTH_BIAS_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_BIAS_CONTROL_NAME as NAME,
+            EXT_DEPTH_BIAS_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_depth_bias_control device-level functions"]
+        ///VK_EXT_depth_bias_control device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4378,17 +4462,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_depth_bias_control device-level function pointers"]
+        ///Raw VK_EXT_depth_bias_control device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_depth_bias2_ext: PFN_vkCmdSetDepthBias2EXT,
         }
@@ -4398,6 +4484,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_depth_bias2_ext: unsafe {
@@ -4422,25 +4509,25 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_device_memory_report"]
+    ///VK_EXT_device_memory_report
     pub mod device_memory_report {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEVICE_MEMORY_REPORT_NAME as NAME,
-            crate::vk::EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEVICE_MEMORY_REPORT_NAME as NAME,
+            EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_acquire_drm_display"]
+    ///VK_EXT_acquire_drm_display
     pub mod acquire_drm_display {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ACQUIRE_DRM_DISPLAY_NAME as NAME,
-            crate::vk::EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ACQUIRE_DRM_DISPLAY_NAME as NAME,
+            EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_acquire_drm_display instance-level functions"]
+        ///VK_EXT_acquire_drm_display instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -4451,20 +4538,22 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_acquire_drm_display instance-level function pointers"]
+        ///Raw VK_EXT_acquire_drm_display instance-level function pointers
         pub struct InstanceFn {
             pub acquire_drm_display_ext: PFN_vkAcquireDrmDisplayEXT,
-            pub get_drm_display_ext: PFN_vkGetDrmDisplayEXT,
+            pub get_drm_display_ext:     PFN_vkGetDrmDisplayEXT,
         }
         unsafe impl Send for InstanceFn {}
         unsafe impl Sync for InstanceFn {}
@@ -4472,6 +4561,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     acquire_drm_display_ext: unsafe {
@@ -4494,7 +4584,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_drm_display_ext: unsafe {
+                    get_drm_display_ext:     unsafe {
                         unsafe extern "system" fn get_drm_display_ext(
                             _physical_device: PhysicalDevice,
                             _drm_fd: i32,
@@ -4515,33 +4605,31 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_robustness2"]
+    ///VK_EXT_robustness2
     pub mod robustness2 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ROBUSTNESS2_NAME as NAME,
-            crate::vk::EXT_ROBUSTNESS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ROBUSTNESS2_NAME as NAME, EXT_ROBUSTNESS2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_custom_border_color"]
+    ///VK_EXT_custom_border_color
     pub mod custom_border_color {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_CUSTOM_BORDER_COLOR_NAME as NAME,
-            crate::vk::EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_CUSTOM_BORDER_COLOR_NAME as NAME,
+            EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_private_data"]
+    ///VK_EXT_private_data
     pub mod private_data {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PRIVATE_DATA_NAME as NAME,
-            crate::vk::EXT_PRIVATE_DATA_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PRIVATE_DATA_NAME as NAME, EXT_PRIVATE_DATA_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_private_data device-level functions"]
+        ///VK_EXT_private_data device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4552,22 +4640,24 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_private_data device-level function pointers"]
+        ///Raw VK_EXT_private_data device-level function pointers
         pub struct DeviceFn {
-            pub create_private_data_slot_ext: PFN_vkCreatePrivateDataSlot,
+            pub create_private_data_slot_ext:  PFN_vkCreatePrivateDataSlot,
             pub destroy_private_data_slot_ext: PFN_vkDestroyPrivateDataSlot,
-            pub set_private_data_ext: PFN_vkSetPrivateData,
-            pub get_private_data_ext: PFN_vkGetPrivateData,
+            pub set_private_data_ext:          PFN_vkSetPrivateData,
+            pub get_private_data_ext:          PFN_vkGetPrivateData,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -4575,9 +4665,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_private_data_slot_ext: unsafe {
+                    create_private_data_slot_ext:  unsafe {
                         unsafe extern "system" fn create_private_data_slot_ext(
                             _device: crate::vk::Device,
                             _p_create_info: *const PrivateDataSlotCreateInfo<'_>,
@@ -4618,7 +4709,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    set_private_data_ext: unsafe {
+                    set_private_data_ext:          unsafe {
                         unsafe extern "system" fn set_private_data_ext(
                             _device: crate::vk::Device,
                             _object_type: ObjectType,
@@ -4636,7 +4727,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_private_data_ext: unsafe {
+                    get_private_data_ext:          unsafe {
                         unsafe extern "system" fn get_private_data_ext(
                             _device: crate::vk::Device,
                             _object_type: ObjectType,
@@ -4658,25 +4749,24 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_pipeline_creation_cache_control"]
+    ///VK_EXT_pipeline_creation_cache_control
     pub mod pipeline_creation_cache_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_CREATION_CACHE_CONTROL_NAME as NAME,
-            crate::vk::EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_CREATION_CACHE_CONTROL_NAME as NAME,
+            EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_metal_objects"]
+    ///VK_EXT_metal_objects
     pub mod metal_objects {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_METAL_OBJECTS_NAME as NAME,
-            crate::vk::EXT_METAL_OBJECTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_METAL_OBJECTS_NAME as NAME, EXT_METAL_OBJECTS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_metal_objects device-level functions"]
+        ///VK_EXT_metal_objects device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4687,17 +4777,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_metal_objects device-level function pointers"]
+        ///Raw VK_EXT_metal_objects device-level function pointers
         pub struct DeviceFn {
             pub export_metal_objects_ext: PFN_vkExportMetalObjectsEXT,
         }
@@ -4707,6 +4799,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     export_metal_objects_ext: unsafe {
@@ -4732,17 +4825,16 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_descriptor_buffer"]
+    ///VK_EXT_descriptor_buffer
     pub mod descriptor_buffer {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DESCRIPTOR_BUFFER_NAME as NAME,
-            crate::vk::EXT_DESCRIPTOR_BUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DESCRIPTOR_BUFFER_NAME as NAME, EXT_DESCRIPTOR_BUFFER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_descriptor_buffer device-level functions"]
+        ///VK_EXT_descriptor_buffer device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -4753,17 +4845,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_descriptor_buffer device-level function pointers"]
+        ///Raw VK_EXT_descriptor_buffer device-level function pointers
         pub struct DeviceFn {
             pub get_descriptor_set_layout_size_ext: PFN_vkGetDescriptorSetLayoutSizeEXT,
             pub get_descriptor_set_layout_binding_offset_ext:
@@ -4790,6 +4884,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_descriptor_set_layout_size_ext: unsafe {
@@ -5030,25 +5125,24 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_graphics_pipeline_library"]
+    ///VK_EXT_graphics_pipeline_library
     pub mod graphics_pipeline_library {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_GRAPHICS_PIPELINE_LIBRARY_NAME as NAME,
-            crate::vk::EXT_GRAPHICS_PIPELINE_LIBRARY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_GRAPHICS_PIPELINE_LIBRARY_NAME as NAME,
+            EXT_GRAPHICS_PIPELINE_LIBRARY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_mesh_shader"]
+    ///VK_EXT_mesh_shader
     pub mod mesh_shader {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MESH_SHADER_NAME as NAME,
-            crate::vk::EXT_MESH_SHADER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MESH_SHADER_NAME as NAME, EXT_MESH_SHADER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_mesh_shader device-level functions"]
+        ///VK_EXT_mesh_shader device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5059,20 +5153,22 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_mesh_shader device-level function pointers"]
+        ///Raw VK_EXT_mesh_shader device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_mesh_tasks_ext: PFN_vkCmdDrawMeshTasksEXT,
-            pub cmd_draw_mesh_tasks_indirect_ext: PFN_vkCmdDrawMeshTasksIndirectEXT,
+            pub cmd_draw_mesh_tasks_ext:                PFN_vkCmdDrawMeshTasksEXT,
+            pub cmd_draw_mesh_tasks_indirect_ext:       PFN_vkCmdDrawMeshTasksIndirectEXT,
             pub cmd_draw_mesh_tasks_indirect_count_ext: PFN_vkCmdDrawMeshTasksIndirectCountEXT,
         }
         unsafe impl Send for DeviceFn {}
@@ -5081,9 +5177,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_mesh_tasks_ext: unsafe {
+                    cmd_draw_mesh_tasks_ext:                unsafe {
                         unsafe extern "system" fn cmd_draw_mesh_tasks_ext(
                             _command_buffer: CommandBuffer,
                             _group_count_x: u32,
@@ -5103,7 +5200,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_draw_mesh_tasks_indirect_ext: unsafe {
+                    cmd_draw_mesh_tasks_indirect_ext:       unsafe {
                         unsafe extern "system" fn cmd_draw_mesh_tasks_indirect_ext(
                             _command_buffer: CommandBuffer,
                             _buffer: Buffer,
@@ -5154,41 +5251,40 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_ycbcr_2plane_444_formats"]
+    ///VK_EXT_ycbcr_2plane_444_formats
     pub mod ycbcr_2plane_444_formats {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_YCBCR_2PLANE_444_FORMATS_NAME as NAME,
-            crate::vk::EXT_YCBCR_2PLANE_444_FORMATS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_YCBCR_2PLANE_444_FORMATS_NAME as NAME,
+            EXT_YCBCR_2PLANE_444_FORMATS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_fragment_density_map2"]
+    ///VK_EXT_fragment_density_map2
     pub mod fragment_density_map2 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FRAGMENT_DENSITY_MAP2_NAME as NAME,
-            crate::vk::EXT_FRAGMENT_DENSITY_MAP2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FRAGMENT_DENSITY_MAP2_NAME as NAME,
+            EXT_FRAGMENT_DENSITY_MAP2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_image_robustness"]
+    ///VK_EXT_image_robustness
     pub mod image_robustness {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_ROBUSTNESS_NAME as NAME,
-            crate::vk::EXT_IMAGE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_ROBUSTNESS_NAME as NAME, EXT_IMAGE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_image_compression_control"]
+    ///VK_EXT_image_compression_control
     pub mod image_compression_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_COMPRESSION_CONTROL_NAME as NAME,
-            crate::vk::EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_COMPRESSION_CONTROL_NAME as NAME,
+            EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_image_compression_control device-level functions"]
+        ///VK_EXT_image_compression_control device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5199,17 +5295,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_image_compression_control device-level function pointers"]
+        ///Raw VK_EXT_image_compression_control device-level function pointers
         pub struct DeviceFn {
             pub get_image_subresource_layout2_ext: PFN_vkGetImageSubresourceLayout2,
         }
@@ -5219,6 +5317,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_image_subresource_layout2_ext: unsafe {
@@ -5247,33 +5346,31 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_attachment_feedback_loop_layout"]
+    ///VK_EXT_attachment_feedback_loop_layout
     pub mod attachment_feedback_loop_layout {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_NAME as NAME,
-            crate::vk::EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_NAME as NAME,
+            EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_4444_formats"]
+    ///VK_EXT_4444_formats
     pub mod _4444_formats {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_4444_FORMATS_NAME as NAME,
-            crate::vk::EXT_4444_FORMATS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_4444_FORMATS_NAME as NAME, EXT_4444_FORMATS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_device_fault"]
+    ///VK_EXT_device_fault
     pub mod device_fault {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEVICE_FAULT_NAME as NAME,
-            crate::vk::EXT_DEVICE_FAULT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEVICE_FAULT_NAME as NAME, EXT_DEVICE_FAULT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_device_fault device-level functions"]
+        ///VK_EXT_device_fault device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5284,17 +5381,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_device_fault device-level function pointers"]
+        ///Raw VK_EXT_device_fault device-level function pointers
         pub struct DeviceFn {
             pub get_device_fault_info_ext: PFN_vkGetDeviceFaultInfoEXT,
         }
@@ -5304,6 +5403,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_device_fault_info_ext: unsafe {
@@ -5330,25 +5430,23 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_rgba10x6_formats"]
+    ///VK_EXT_rgba10x6_formats
     pub mod rgba10x6_formats {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_RGBA10X6_FORMATS_NAME as NAME,
-            crate::vk::EXT_RGBA10X6_FORMATS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_RGBA10X6_FORMATS_NAME as NAME, EXT_RGBA10X6_FORMATS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_directfb_surface"]
+    ///VK_EXT_directfb_surface
     pub mod directfb_surface {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DIRECTFB_SURFACE_NAME as NAME,
-            crate::vk::EXT_DIRECTFB_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DIRECTFB_SURFACE_NAME as NAME, EXT_DIRECTFB_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_directfb_surface instance-level functions"]
+        ///VK_EXT_directfb_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -5359,17 +5457,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_directfb_surface instance-level function pointers"]
+        ///Raw VK_EXT_directfb_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_direct_fb_surface_ext: PFN_vkCreateDirectFBSurfaceEXT,
             pub get_physical_device_direct_fb_presentation_support_ext:
@@ -5381,6 +5481,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_direct_fb_surface_ext: unsafe {
@@ -5429,17 +5530,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_vertex_input_dynamic_state"]
+    ///VK_EXT_vertex_input_dynamic_state
     pub mod vertex_input_dynamic_state {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VERTEX_INPUT_DYNAMIC_STATE_NAME as NAME,
-            crate::vk::EXT_VERTEX_INPUT_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VERTEX_INPUT_DYNAMIC_STATE_NAME as NAME,
+            EXT_VERTEX_INPUT_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_vertex_input_dynamic_state device-level functions"]
+        ///VK_EXT_vertex_input_dynamic_state device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5450,17 +5551,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_vertex_input_dynamic_state device-level function pointers"]
+        ///Raw VK_EXT_vertex_input_dynamic_state device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_vertex_input_ext: PFN_vkCmdSetVertexInputEXT,
         }
@@ -5470,6 +5573,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_vertex_input_ext: unsafe {
@@ -5498,57 +5602,57 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_physical_device_drm"]
+    ///VK_EXT_physical_device_drm
     pub mod physical_device_drm {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PHYSICAL_DEVICE_DRM_NAME as NAME,
-            crate::vk::EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PHYSICAL_DEVICE_DRM_NAME as NAME,
+            EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_device_address_binding_report"]
+    ///VK_EXT_device_address_binding_report
     pub mod device_address_binding_report {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEVICE_ADDRESS_BINDING_REPORT_NAME as NAME,
-            crate::vk::EXT_DEVICE_ADDRESS_BINDING_REPORT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEVICE_ADDRESS_BINDING_REPORT_NAME as NAME,
+            EXT_DEVICE_ADDRESS_BINDING_REPORT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_depth_clip_control"]
+    ///VK_EXT_depth_clip_control
     pub mod depth_clip_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_CLIP_CONTROL_NAME as NAME,
-            crate::vk::EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_CLIP_CONTROL_NAME as NAME,
+            EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_primitive_topology_list_restart"]
+    ///VK_EXT_primitive_topology_list_restart
     pub mod primitive_topology_list_restart {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_NAME as NAME,
-            crate::vk::EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_NAME as NAME,
+            EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_present_mode_fifo_latest_ready"]
+    ///VK_EXT_present_mode_fifo_latest_ready
     pub mod present_mode_fifo_latest_ready {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PRESENT_MODE_FIFO_LATEST_READY_NAME as NAME,
-            crate::vk::EXT_PRESENT_MODE_FIFO_LATEST_READY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PRESENT_MODE_FIFO_LATEST_READY_NAME as NAME,
+            EXT_PRESENT_MODE_FIFO_LATEST_READY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pipeline_properties"]
+    ///VK_EXT_pipeline_properties
     pub mod pipeline_properties {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_PROPERTIES_NAME as NAME,
-            crate::vk::EXT_PIPELINE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_PROPERTIES_NAME as NAME,
+            EXT_PIPELINE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_pipeline_properties device-level functions"]
+        ///VK_EXT_pipeline_properties device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5559,24 +5663,27 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[allow(non_camel_case_types)]
-        #[doc = "Implemented for all types that can be passed as argument to `pipeline_properties` in [`PFN_vkGetPipelinePropertiesEXT`]"]
+        ///Implemented for all types that can be passed as argument to
+        /// `pipeline_properties` in [`PFN_vkGetPipelinePropertiesEXT`]
         pub unsafe trait GetPipelinePropertiesEXTParamPipelineProperties {}
         unsafe impl GetPipelinePropertiesEXTParamPipelineProperties
             for PipelinePropertiesIdentifierEXT<'_>
         {
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_pipeline_properties device-level function pointers"]
+        ///Raw VK_EXT_pipeline_properties device-level function pointers
         pub struct DeviceFn {
             pub get_pipeline_properties_ext: PFN_vkGetPipelinePropertiesEXT,
         }
@@ -5586,6 +5693,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_pipeline_properties_ext: unsafe {
@@ -5612,33 +5720,32 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_frame_boundary"]
+    ///VK_EXT_frame_boundary
     pub mod frame_boundary {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_FRAME_BOUNDARY_NAME as NAME,
-            crate::vk::EXT_FRAME_BOUNDARY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_FRAME_BOUNDARY_NAME as NAME, EXT_FRAME_BOUNDARY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_multisampled_render_to_single_sampled"]
+    ///VK_EXT_multisampled_render_to_single_sampled
     pub mod multisampled_render_to_single_sampled {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_NAME as NAME,
-            crate::vk::EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_NAME as NAME,
+            EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_extended_dynamic_state2"]
+    ///VK_EXT_extended_dynamic_state2
     pub mod extended_dynamic_state2 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE2_NAME as NAME,
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTENDED_DYNAMIC_STATE2_NAME as NAME,
+            EXT_EXTENDED_DYNAMIC_STATE2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_extended_dynamic_state2 device-level functions"]
+        ///VK_EXT_extended_dynamic_state2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5649,23 +5756,25 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_extended_dynamic_state2 device-level function pointers"]
+        ///Raw VK_EXT_extended_dynamic_state2 device-level function pointers
         pub struct DeviceFn {
-            pub cmd_set_patch_control_points_ext: PFN_vkCmdSetPatchControlPointsEXT,
+            pub cmd_set_patch_control_points_ext:      PFN_vkCmdSetPatchControlPointsEXT,
             pub cmd_set_rasterizer_discard_enable_ext: PFN_vkCmdSetRasterizerDiscardEnable,
-            pub cmd_set_depth_bias_enable_ext: PFN_vkCmdSetDepthBiasEnable,
-            pub cmd_set_logic_op_ext: PFN_vkCmdSetLogicOpEXT,
-            pub cmd_set_primitive_restart_enable_ext: PFN_vkCmdSetPrimitiveRestartEnable,
+            pub cmd_set_depth_bias_enable_ext:         PFN_vkCmdSetDepthBiasEnable,
+            pub cmd_set_logic_op_ext:                  PFN_vkCmdSetLogicOpEXT,
+            pub cmd_set_primitive_restart_enable_ext:  PFN_vkCmdSetPrimitiveRestartEnable,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -5673,9 +5782,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_patch_control_points_ext: unsafe {
+                    cmd_set_patch_control_points_ext:      unsafe {
                         unsafe extern "system" fn cmd_set_patch_control_points_ext(
                             _command_buffer: CommandBuffer,
                             _patch_control_points: u32,
@@ -5714,7 +5824,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_depth_bias_enable_ext: unsafe {
+                    cmd_set_depth_bias_enable_ext:         unsafe {
                         unsafe extern "system" fn cmd_set_depth_bias_enable_ext(
                             _command_buffer: CommandBuffer,
                             _depth_bias_enable: Bool32,
@@ -5733,7 +5843,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_logic_op_ext: unsafe {
+                    cmd_set_logic_op_ext:                  unsafe {
                         unsafe extern "system" fn cmd_set_logic_op_ext(
                             _command_buffer: CommandBuffer,
                             _logic_op: LogicOp,
@@ -5748,7 +5858,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_primitive_restart_enable_ext: unsafe {
+                    cmd_set_primitive_restart_enable_ext:  unsafe {
                         unsafe extern "system" fn cmd_set_primitive_restart_enable_ext(
                             _command_buffer: CommandBuffer,
                             _primitive_restart_enable: Bool32,
@@ -5772,17 +5882,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_color_write_enable"]
+    ///VK_EXT_color_write_enable
     pub mod color_write_enable {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_COLOR_WRITE_ENABLE_NAME as NAME,
-            crate::vk::EXT_COLOR_WRITE_ENABLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_COLOR_WRITE_ENABLE_NAME as NAME,
+            EXT_COLOR_WRITE_ENABLE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_color_write_enable device-level functions"]
+        ///VK_EXT_color_write_enable device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5793,17 +5903,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_color_write_enable device-level function pointers"]
+        ///Raw VK_EXT_color_write_enable device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_color_write_enable_ext: PFN_vkCmdSetColorWriteEnableEXT,
         }
@@ -5813,6 +5925,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_color_write_enable_ext: unsafe {
@@ -5839,41 +5952,40 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_primitives_generated_query"]
+    ///VK_EXT_primitives_generated_query
     pub mod primitives_generated_query {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PRIMITIVES_GENERATED_QUERY_NAME as NAME,
-            crate::vk::EXT_PRIMITIVES_GENERATED_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PRIMITIVES_GENERATED_QUERY_NAME as NAME,
+            EXT_PRIMITIVES_GENERATED_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_global_priority_query"]
+    ///VK_EXT_global_priority_query
     pub mod global_priority_query {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_GLOBAL_PRIORITY_QUERY_NAME as NAME,
-            crate::vk::EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_GLOBAL_PRIORITY_QUERY_NAME as NAME,
+            EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_image_view_min_lod"]
+    ///VK_EXT_image_view_min_lod
     pub mod image_view_min_lod {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_VIEW_MIN_LOD_NAME as NAME,
-            crate::vk::EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_VIEW_MIN_LOD_NAME as NAME,
+            EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_multi_draw"]
+    ///VK_EXT_multi_draw
     pub mod multi_draw {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MULTI_DRAW_NAME as NAME,
-            crate::vk::EXT_MULTI_DRAW_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MULTI_DRAW_NAME as NAME, EXT_MULTI_DRAW_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_multi_draw device-level functions"]
+        ///VK_EXT_multi_draw device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5884,19 +5996,21 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_multi_draw device-level function pointers"]
+        ///Raw VK_EXT_multi_draw device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_multi_ext: PFN_vkCmdDrawMultiEXT,
+            pub cmd_draw_multi_ext:         PFN_vkCmdDrawMultiEXT,
             pub cmd_draw_multi_indexed_ext: PFN_vkCmdDrawMultiIndexedEXT,
         }
         unsafe impl Send for DeviceFn {}
@@ -5905,9 +6019,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_multi_ext: unsafe {
+                    cmd_draw_multi_ext:         unsafe {
                         unsafe extern "system" fn cmd_draw_multi_ext(
                             _command_buffer: CommandBuffer,
                             _draw_count: u32,
@@ -5954,33 +6069,31 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_image_2d_view_of_3d"]
+    ///VK_EXT_image_2d_view_of_3d
     pub mod image_2d_view_of_3d {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_2D_VIEW_OF_3D_NAME as NAME,
-            crate::vk::EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_2D_VIEW_OF_3D_NAME as NAME,
+            EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_tile_image"]
+    ///VK_EXT_shader_tile_image
     pub mod shader_tile_image {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_TILE_IMAGE_NAME as NAME,
-            crate::vk::EXT_SHADER_TILE_IMAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_TILE_IMAGE_NAME as NAME, EXT_SHADER_TILE_IMAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_opacity_micromap"]
+    ///VK_EXT_opacity_micromap
     pub mod opacity_micromap {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_OPACITY_MICROMAP_NAME as NAME,
-            crate::vk::EXT_OPACITY_MICROMAP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_OPACITY_MICROMAP_NAME as NAME, EXT_OPACITY_MICROMAP_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_opacity_micromap device-level functions"]
+        ///VK_EXT_opacity_micromap device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -5991,32 +6104,34 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_opacity_micromap device-level function pointers"]
+        ///Raw VK_EXT_opacity_micromap device-level function pointers
         pub struct DeviceFn {
-            pub create_micromap_ext: PFN_vkCreateMicromapEXT,
-            pub destroy_micromap_ext: PFN_vkDestroyMicromapEXT,
-            pub cmd_build_micromaps_ext: PFN_vkCmdBuildMicromapsEXT,
-            pub build_micromaps_ext: PFN_vkBuildMicromapsEXT,
-            pub copy_micromap_ext: PFN_vkCopyMicromapEXT,
-            pub copy_micromap_to_memory_ext: PFN_vkCopyMicromapToMemoryEXT,
-            pub copy_memory_to_micromap_ext: PFN_vkCopyMemoryToMicromapEXT,
-            pub write_micromaps_properties_ext: PFN_vkWriteMicromapsPropertiesEXT,
-            pub cmd_copy_micromap_ext: PFN_vkCmdCopyMicromapEXT,
-            pub cmd_copy_micromap_to_memory_ext: PFN_vkCmdCopyMicromapToMemoryEXT,
-            pub cmd_copy_memory_to_micromap_ext: PFN_vkCmdCopyMemoryToMicromapEXT,
-            pub cmd_write_micromaps_properties_ext: PFN_vkCmdWriteMicromapsPropertiesEXT,
+            pub create_micromap_ext:                   PFN_vkCreateMicromapEXT,
+            pub destroy_micromap_ext:                  PFN_vkDestroyMicromapEXT,
+            pub cmd_build_micromaps_ext:               PFN_vkCmdBuildMicromapsEXT,
+            pub build_micromaps_ext:                   PFN_vkBuildMicromapsEXT,
+            pub copy_micromap_ext:                     PFN_vkCopyMicromapEXT,
+            pub copy_micromap_to_memory_ext:           PFN_vkCopyMicromapToMemoryEXT,
+            pub copy_memory_to_micromap_ext:           PFN_vkCopyMemoryToMicromapEXT,
+            pub write_micromaps_properties_ext:        PFN_vkWriteMicromapsPropertiesEXT,
+            pub cmd_copy_micromap_ext:                 PFN_vkCmdCopyMicromapEXT,
+            pub cmd_copy_micromap_to_memory_ext:       PFN_vkCmdCopyMicromapToMemoryEXT,
+            pub cmd_copy_memory_to_micromap_ext:       PFN_vkCmdCopyMemoryToMicromapEXT,
+            pub cmd_write_micromaps_properties_ext:    PFN_vkCmdWriteMicromapsPropertiesEXT,
             pub get_device_micromap_compatibility_ext: PFN_vkGetDeviceMicromapCompatibilityEXT,
-            pub get_micromap_build_sizes_ext: PFN_vkGetMicromapBuildSizesEXT,
+            pub get_micromap_build_sizes_ext:          PFN_vkGetMicromapBuildSizesEXT,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -6024,9 +6139,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_micromap_ext: unsafe {
+                    create_micromap_ext:                   unsafe {
                         unsafe extern "system" fn create_micromap_ext(
                             _device: crate::vk::Device,
                             _p_create_info: *const MicromapCreateInfoEXT<'_>,
@@ -6043,7 +6159,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_micromap_ext: unsafe {
+                    destroy_micromap_ext:                  unsafe {
                         unsafe extern "system" fn destroy_micromap_ext(
                             _device: crate::vk::Device,
                             _micromap: MicromapEXT,
@@ -6059,7 +6175,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_build_micromaps_ext: unsafe {
+                    cmd_build_micromaps_ext:               unsafe {
                         unsafe extern "system" fn cmd_build_micromaps_ext(
                             _command_buffer: CommandBuffer,
                             _info_count: u32,
@@ -6079,7 +6195,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    build_micromaps_ext: unsafe {
+                    build_micromaps_ext:                   unsafe {
                         unsafe extern "system" fn build_micromaps_ext(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -6096,7 +6212,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_micromap_ext: unsafe {
+                    copy_micromap_ext:                     unsafe {
                         unsafe extern "system" fn copy_micromap_ext(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -6112,7 +6228,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_micromap_to_memory_ext: unsafe {
+                    copy_micromap_to_memory_ext:           unsafe {
                         unsafe extern "system" fn copy_micromap_to_memory_ext(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -6132,7 +6248,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_memory_to_micromap_ext: unsafe {
+                    copy_memory_to_micromap_ext:           unsafe {
                         unsafe extern "system" fn copy_memory_to_micromap_ext(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -6152,7 +6268,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    write_micromaps_properties_ext: unsafe {
+                    write_micromaps_properties_ext:        unsafe {
                         unsafe extern "system" fn write_micromaps_properties_ext(
                             _device: crate::vk::Device,
                             _micromap_count: u32,
@@ -6176,7 +6292,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_micromap_ext: unsafe {
+                    cmd_copy_micromap_ext:                 unsafe {
                         unsafe extern "system" fn cmd_copy_micromap_ext(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyMicromapInfoEXT<'_>,
@@ -6194,7 +6310,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_micromap_to_memory_ext: unsafe {
+                    cmd_copy_micromap_to_memory_ext:       unsafe {
                         unsafe extern "system" fn cmd_copy_micromap_to_memory_ext(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyMicromapToMemoryInfoEXT<'_>,
@@ -6213,7 +6329,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_memory_to_micromap_ext: unsafe {
+                    cmd_copy_memory_to_micromap_ext:       unsafe {
                         unsafe extern "system" fn cmd_copy_memory_to_micromap_ext(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyMemoryToMicromapInfoEXT<'_>,
@@ -6232,7 +6348,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_write_micromaps_properties_ext: unsafe {
+                    cmd_write_micromaps_properties_ext:    unsafe {
                         unsafe extern "system" fn cmd_write_micromaps_properties_ext(
                             _command_buffer: CommandBuffer,
                             _micromap_count: u32,
@@ -6277,7 +6393,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_micromap_build_sizes_ext: unsafe {
+                    get_micromap_build_sizes_ext:          unsafe {
                         unsafe extern "system" fn get_micromap_build_sizes_ext(
                             _device: crate::vk::Device,
                             _build_type: AccelerationStructureBuildTypeKHR,
@@ -6302,33 +6418,33 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_load_store_op_none"]
+    ///VK_EXT_load_store_op_none
     pub mod load_store_op_none {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_LOAD_STORE_OP_NONE_NAME as NAME,
-            crate::vk::EXT_LOAD_STORE_OP_NONE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_LOAD_STORE_OP_NONE_NAME as NAME,
+            EXT_LOAD_STORE_OP_NONE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_border_color_swizzle"]
+    ///VK_EXT_border_color_swizzle
     pub mod border_color_swizzle {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_BORDER_COLOR_SWIZZLE_NAME as NAME,
-            crate::vk::EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_BORDER_COLOR_SWIZZLE_NAME as NAME,
+            EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pageable_device_local_memory"]
+    ///VK_EXT_pageable_device_local_memory
     pub mod pageable_device_local_memory {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_NAME as NAME,
-            crate::vk::EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_NAME as NAME,
+            EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_pageable_device_local_memory device-level functions"]
+        ///VK_EXT_pageable_device_local_memory device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -6339,17 +6455,20 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_pageable_device_local_memory device-level function pointers"]
+        ///Raw VK_EXT_pageable_device_local_memory device-level function
+        /// pointers
         pub struct DeviceFn {
             pub set_device_memory_priority_ext: PFN_vkSetDeviceMemoryPriorityEXT,
         }
@@ -6359,6 +6478,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     set_device_memory_priority_ext: unsafe {
@@ -6385,65 +6505,65 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_image_sliced_view_of_3d"]
+    ///VK_EXT_image_sliced_view_of_3d
     pub mod image_sliced_view_of_3d {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_SLICED_VIEW_OF_3D_NAME as NAME,
-            crate::vk::EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_SLICED_VIEW_OF_3D_NAME as NAME,
+            EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_depth_clamp_zero_one"]
+    ///VK_EXT_depth_clamp_zero_one
     pub mod depth_clamp_zero_one {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_CLAMP_ZERO_ONE_NAME as NAME,
-            crate::vk::EXT_DEPTH_CLAMP_ZERO_ONE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_CLAMP_ZERO_ONE_NAME as NAME,
+            EXT_DEPTH_CLAMP_ZERO_ONE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_non_seamless_cube_map"]
+    ///VK_EXT_non_seamless_cube_map
     pub mod non_seamless_cube_map {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_NON_SEAMLESS_CUBE_MAP_NAME as NAME,
-            crate::vk::EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_NON_SEAMLESS_CUBE_MAP_NAME as NAME,
+            EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_image_compression_control_swapchain"]
+    ///VK_EXT_image_compression_control_swapchain
     pub mod image_compression_control_swapchain {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_NAME as NAME,
-            crate::vk::EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_NAME as NAME,
+            EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_nested_command_buffer"]
+    ///VK_EXT_nested_command_buffer
     pub mod nested_command_buffer {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_NESTED_COMMAND_BUFFER_NAME as NAME,
-            crate::vk::EXT_NESTED_COMMAND_BUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_NESTED_COMMAND_BUFFER_NAME as NAME,
+            EXT_NESTED_COMMAND_BUFFER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_external_memory_acquire_unmodified"]
+    ///VK_EXT_external_memory_acquire_unmodified
     pub mod external_memory_acquire_unmodified {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_NAME as NAME,
-            crate::vk::EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_NAME as NAME,
+            EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_extended_dynamic_state3"]
+    ///VK_EXT_extended_dynamic_state3
     pub mod extended_dynamic_state3 {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE3_NAME as NAME,
-            crate::vk::EXT_EXTENDED_DYNAMIC_STATE3_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_EXTENDED_DYNAMIC_STATE3_NAME as NAME,
+            EXT_EXTENDED_DYNAMIC_STATE3_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_extended_dynamic_state3 device-level functions"]
+        ///VK_EXT_extended_dynamic_state3 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -6454,17 +6574,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_extended_dynamic_state3 device-level function pointers"]
+        ///Raw VK_EXT_extended_dynamic_state3 device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_depth_clamp_enable_ext: PFN_vkCmdSetDepthClampEnableEXT,
             pub cmd_set_polygon_mode_ext: PFN_vkCmdSetPolygonModeEXT,
@@ -6509,6 +6631,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_depth_clamp_enable_ext: unsafe {
@@ -7134,25 +7257,25 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_subpass_merge_feedback"]
+    ///VK_EXT_subpass_merge_feedback
     pub mod subpass_merge_feedback {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SUBPASS_MERGE_FEEDBACK_NAME as NAME,
-            crate::vk::EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SUBPASS_MERGE_FEEDBACK_NAME as NAME,
+            EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_module_identifier"]
+    ///VK_EXT_shader_module_identifier
     pub mod shader_module_identifier {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_MODULE_IDENTIFIER_NAME as NAME,
-            crate::vk::EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_MODULE_IDENTIFIER_NAME as NAME,
+            EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_shader_module_identifier device-level functions"]
+        ///VK_EXT_shader_module_identifier device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -7163,19 +7286,21 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_shader_module_identifier device-level function pointers"]
+        ///Raw VK_EXT_shader_module_identifier device-level function pointers
         pub struct DeviceFn {
-            pub get_shader_module_identifier_ext: PFN_vkGetShaderModuleIdentifierEXT,
+            pub get_shader_module_identifier_ext:             PFN_vkGetShaderModuleIdentifierEXT,
             pub get_shader_module_create_info_identifier_ext:
                 PFN_vkGetShaderModuleCreateInfoIdentifierEXT,
         }
@@ -7185,9 +7310,10 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_shader_module_identifier_ext: unsafe {
+                    get_shader_module_identifier_ext:             unsafe {
                         unsafe extern "system" fn get_shader_module_identifier_ext(
                             _device: crate::vk::Device,
                             _shader_module: ShaderModule,
@@ -7233,41 +7359,39 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_rasterization_order_attachment_access"]
+    ///VK_EXT_rasterization_order_attachment_access
     pub mod rasterization_order_attachment_access {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_NAME as NAME,
-            crate::vk::EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_NAME as NAME,
+            EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_legacy_dithering"]
+    ///VK_EXT_legacy_dithering
     pub mod legacy_dithering {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_LEGACY_DITHERING_NAME as NAME,
-            crate::vk::EXT_LEGACY_DITHERING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_LEGACY_DITHERING_NAME as NAME, EXT_LEGACY_DITHERING_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pipeline_protected_access"]
+    ///VK_EXT_pipeline_protected_access
     pub mod pipeline_protected_access {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_PROTECTED_ACCESS_NAME as NAME,
-            crate::vk::EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_PROTECTED_ACCESS_NAME as NAME,
+            EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_shader_object"]
+    ///VK_EXT_shader_object
     pub mod shader_object {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_OBJECT_NAME as NAME,
-            crate::vk::EXT_SHADER_OBJECT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_OBJECT_NAME as NAME, EXT_SHADER_OBJECT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_shader_object device-level functions"]
+        ///VK_EXT_shader_object device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -7278,17 +7402,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_shader_object device-level function pointers"]
+        ///Raw VK_EXT_shader_object device-level function pointers
         pub struct DeviceFn {
             pub create_shaders_ext: PFN_vkCreateShadersEXT,
             pub destroy_shader_ext: PFN_vkDestroyShaderEXT,
@@ -7356,6 +7482,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_shaders_ext: unsafe {
@@ -8425,57 +8552,56 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_mutable_descriptor_type"]
+    ///VK_EXT_mutable_descriptor_type
     pub mod mutable_descriptor_type {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_MUTABLE_DESCRIPTOR_TYPE_NAME as NAME,
-            crate::vk::EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_MUTABLE_DESCRIPTOR_TYPE_NAME as NAME,
+            EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_legacy_vertex_attributes"]
+    ///VK_EXT_legacy_vertex_attributes
     pub mod legacy_vertex_attributes {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_LEGACY_VERTEX_ATTRIBUTES_NAME as NAME,
-            crate::vk::EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_LEGACY_VERTEX_ATTRIBUTES_NAME as NAME,
+            EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_layer_settings"]
+    ///VK_EXT_layer_settings
     pub mod layer_settings {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_LAYER_SETTINGS_NAME as NAME,
-            crate::vk::EXT_LAYER_SETTINGS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_LAYER_SETTINGS_NAME as NAME, EXT_LAYER_SETTINGS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_pipeline_library_group_handles"]
+    ///VK_EXT_pipeline_library_group_handles
     pub mod pipeline_library_group_handles {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_PIPELINE_LIBRARY_GROUP_HANDLES_NAME as NAME,
-            crate::vk::EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_PIPELINE_LIBRARY_GROUP_HANDLES_NAME as NAME,
+            EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_dynamic_rendering_unused_attachments"]
+    ///VK_EXT_dynamic_rendering_unused_attachments
     pub mod dynamic_rendering_unused_attachments {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_NAME as NAME,
-            crate::vk::EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_NAME as NAME,
+            EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_attachment_feedback_loop_dynamic_state"]
+    ///VK_EXT_attachment_feedback_loop_dynamic_state
     pub mod attachment_feedback_loop_dynamic_state {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_NAME as NAME,
-            crate::vk::EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_NAME as NAME,
+            EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_attachment_feedback_loop_dynamic_state device-level functions"]
+        ///VK_EXT_attachment_feedback_loop_dynamic_state device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -8486,17 +8612,20 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_attachment_feedback_loop_dynamic_state device-level function pointers"]
+        ///Raw VK_EXT_attachment_feedback_loop_dynamic_state device-level
+        /// function pointers
         pub struct DeviceFn {
             pub cmd_set_attachment_feedback_loop_enable_ext:
                 PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT,
@@ -8507,6 +8636,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_attachment_feedback_loop_enable_ext: unsafe {
@@ -8533,25 +8663,25 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_shader_replicated_composites"]
+    ///VK_EXT_shader_replicated_composites
     pub mod shader_replicated_composites {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_SHADER_REPLICATED_COMPOSITES_NAME as NAME,
-            crate::vk::EXT_SHADER_REPLICATED_COMPOSITES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_SHADER_REPLICATED_COMPOSITES_NAME as NAME,
+            EXT_SHADER_REPLICATED_COMPOSITES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_EXT_device_generated_commands"]
+    ///VK_EXT_device_generated_commands
     pub mod device_generated_commands {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEVICE_GENERATED_COMMANDS_NAME as NAME,
-            crate::vk::EXT_DEVICE_GENERATED_COMMANDS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEVICE_GENERATED_COMMANDS_NAME as NAME,
+            EXT_DEVICE_GENERATED_COMMANDS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_device_generated_commands device-level functions"]
+        ///VK_EXT_device_generated_commands device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -8562,17 +8692,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_device_generated_commands device-level function pointers"]
+        ///Raw VK_EXT_device_generated_commands device-level function pointers
         pub struct DeviceFn {
             pub get_generated_commands_memory_requirements_ext:
                 PFN_vkGetGeneratedCommandsMemoryRequirementsEXT,
@@ -8580,7 +8712,7 @@ pub mod ext {
             pub cmd_execute_generated_commands_ext: PFN_vkCmdExecuteGeneratedCommandsEXT,
             pub create_indirect_commands_layout_ext: PFN_vkCreateIndirectCommandsLayoutEXT,
             pub destroy_indirect_commands_layout_ext: PFN_vkDestroyIndirectCommandsLayoutEXT,
-            pub create_indirect_execution_set_ext: PFN_vkCreateIndirectExecutionSetEXT,
+            pub create_indirect_execution_set_ext:              PFN_vkCreateIndirectExecutionSetEXT,
             pub destroy_indirect_execution_set_ext: PFN_vkDestroyIndirectExecutionSetEXT,
             pub update_indirect_execution_set_pipeline_ext:
                 PFN_vkUpdateIndirectExecutionSetPipelineEXT,
@@ -8592,6 +8724,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_generated_commands_memory_requirements_ext: unsafe {
@@ -8615,7 +8748,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_preprocess_generated_commands_ext: unsafe {
+                    cmd_preprocess_generated_commands_ext:          unsafe {
                         unsafe extern "system" fn cmd_preprocess_generated_commands_ext(
                             _command_buffer: CommandBuffer,
                             _p_generated_commands_info: *const GeneratedCommandsInfoEXT<'_>,
@@ -8636,7 +8769,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_execute_generated_commands_ext: unsafe {
+                    cmd_execute_generated_commands_ext:             unsafe {
                         unsafe extern "system" fn cmd_execute_generated_commands_ext(
                             _command_buffer: CommandBuffer,
                             _is_preprocessed: Bool32,
@@ -8657,7 +8790,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_indirect_commands_layout_ext: unsafe {
+                    create_indirect_commands_layout_ext:            unsafe {
                         unsafe extern "system" fn create_indirect_commands_layout_ext(
                             _device: crate::vk::Device,
                             _p_create_info: *const IndirectCommandsLayoutCreateInfoEXT<'_>,
@@ -8679,7 +8812,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_indirect_commands_layout_ext: unsafe {
+                    destroy_indirect_commands_layout_ext:           unsafe {
                         unsafe extern "system" fn destroy_indirect_commands_layout_ext(
                             _device: crate::vk::Device,
                             _indirect_commands_layout: IndirectCommandsLayoutEXT,
@@ -8700,7 +8833,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_indirect_execution_set_ext: unsafe {
+                    create_indirect_execution_set_ext:              unsafe {
                         unsafe extern "system" fn create_indirect_execution_set_ext(
                             _device: crate::vk::Device,
                             _p_create_info: *const IndirectExecutionSetCreateInfoEXT<'_>,
@@ -8722,7 +8855,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_indirect_execution_set_ext: unsafe {
+                    destroy_indirect_execution_set_ext:             unsafe {
                         unsafe extern "system" fn destroy_indirect_execution_set_ext(
                             _device: crate::vk::Device,
                             _indirect_execution_set: IndirectExecutionSetEXT,
@@ -8743,7 +8876,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    update_indirect_execution_set_pipeline_ext: unsafe {
+                    update_indirect_execution_set_pipeline_ext:     unsafe {
                         unsafe extern "system" fn update_indirect_execution_set_pipeline_ext(
                             _device: crate::vk::Device,
                             _indirect_execution_set: IndirectExecutionSetEXT,
@@ -8767,7 +8900,7 @@ pub mod ext {
                             ::core::mem::transmute(val)
                         }
                     },
-                    update_indirect_execution_set_shader_ext: unsafe {
+                    update_indirect_execution_set_shader_ext:       unsafe {
                         unsafe extern "system" fn update_indirect_execution_set_shader_ext(
                             _device: crate::vk::Device,
                             _indirect_execution_set: IndirectExecutionSetEXT,
@@ -8793,17 +8926,17 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_depth_clamp_control"]
+    ///VK_EXT_depth_clamp_control
     pub mod depth_clamp_control {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_DEPTH_CLAMP_CONTROL_NAME as NAME,
-            crate::vk::EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_DEPTH_CLAMP_CONTROL_NAME as NAME,
+            EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_EXT_depth_clamp_control device-level functions"]
+        ///VK_EXT_depth_clamp_control device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -8814,17 +8947,19 @@ pub mod ext {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_EXT_depth_clamp_control device-level function pointers"]
+        ///Raw VK_EXT_depth_clamp_control device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_depth_clamp_range_ext: PFN_vkCmdSetDepthClampRangeEXT,
         }
@@ -8834,6 +8969,7 @@ pub mod ext {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_depth_clamp_range_ext: unsafe {
@@ -8860,28 +8996,28 @@ pub mod ext {
             }
         }
     }
-    #[doc = "VK_EXT_vertex_attribute_robustness"]
+    ///VK_EXT_vertex_attribute_robustness
     pub mod vertex_attribute_robustness {
         use super::super::*;
-        pub use {
-            crate::vk::EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_NAME as NAME,
-            crate::vk::EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_NAME as NAME,
+            EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged FUCHSIA"]
+///Extensions tagged FUCHSIA
 pub mod fuchsia {
-    #[doc = "VK_FUCHSIA_imagepipe_surface"]
+    ///VK_FUCHSIA_imagepipe_surface
     pub mod imagepipe_surface {
         use super::super::*;
-        pub use {
-            crate::vk::FUCHSIA_IMAGEPIPE_SURFACE_NAME as NAME,
-            crate::vk::FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            FUCHSIA_IMAGEPIPE_SURFACE_NAME as NAME,
+            FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_FUCHSIA_imagepipe_surface instance-level functions"]
+        ///VK_FUCHSIA_imagepipe_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -8892,17 +9028,19 @@ pub mod fuchsia {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_FUCHSIA_imagepipe_surface instance-level function pointers"]
+        ///Raw VK_FUCHSIA_imagepipe_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_image_pipe_surface_fuchsia: PFN_vkCreateImagePipeSurfaceFUCHSIA,
         }
@@ -8912,6 +9050,7 @@ pub mod fuchsia {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_image_pipe_surface_fuchsia: unsafe {
@@ -8940,17 +9079,17 @@ pub mod fuchsia {
             }
         }
     }
-    #[doc = "VK_FUCHSIA_external_memory"]
+    ///VK_FUCHSIA_external_memory
     pub mod external_memory {
         use super::super::*;
-        pub use {
-            crate::vk::FUCHSIA_EXTERNAL_MEMORY_NAME as NAME,
-            crate::vk::FUCHSIA_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            FUCHSIA_EXTERNAL_MEMORY_NAME as NAME,
+            FUCHSIA_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_FUCHSIA_external_memory device-level functions"]
+        ///VK_FUCHSIA_external_memory device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -8961,19 +9100,21 @@ pub mod fuchsia {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_FUCHSIA_external_memory device-level function pointers"]
+        ///Raw VK_FUCHSIA_external_memory device-level function pointers
         pub struct DeviceFn {
-            pub get_memory_zircon_handle_fuchsia: PFN_vkGetMemoryZirconHandleFUCHSIA,
+            pub get_memory_zircon_handle_fuchsia:            PFN_vkGetMemoryZirconHandleFUCHSIA,
             pub get_memory_zircon_handle_properties_fuchsia:
                 PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA,
         }
@@ -8983,9 +9124,10 @@ pub mod fuchsia {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_memory_zircon_handle_fuchsia: unsafe {
+                    get_memory_zircon_handle_fuchsia:            unsafe {
                         unsafe extern "system" fn get_memory_zircon_handle_fuchsia(
                             _device: crate::vk::Device,
                             _p_get_zircon_handle_info: *const MemoryGetZirconHandleInfoFUCHSIA<'_>,
@@ -9032,17 +9174,17 @@ pub mod fuchsia {
             }
         }
     }
-    #[doc = "VK_FUCHSIA_external_semaphore"]
+    ///VK_FUCHSIA_external_semaphore
     pub mod external_semaphore {
         use super::super::*;
-        pub use {
-            crate::vk::FUCHSIA_EXTERNAL_SEMAPHORE_NAME as NAME,
-            crate::vk::FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            FUCHSIA_EXTERNAL_SEMAPHORE_NAME as NAME,
+            FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_FUCHSIA_external_semaphore device-level functions"]
+        ///VK_FUCHSIA_external_semaphore device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9053,20 +9195,22 @@ pub mod fuchsia {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_FUCHSIA_external_semaphore device-level function pointers"]
+        ///Raw VK_FUCHSIA_external_semaphore device-level function pointers
         pub struct DeviceFn {
             pub import_semaphore_zircon_handle_fuchsia: PFN_vkImportSemaphoreZirconHandleFUCHSIA,
-            pub get_semaphore_zircon_handle_fuchsia: PFN_vkGetSemaphoreZirconHandleFUCHSIA,
+            pub get_semaphore_zircon_handle_fuchsia:    PFN_vkGetSemaphoreZirconHandleFUCHSIA,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -9074,6 +9218,7 @@ pub mod fuchsia {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     import_semaphore_zircon_handle_fuchsia: unsafe {
@@ -9096,7 +9241,7 @@ pub mod fuchsia {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_semaphore_zircon_handle_fuchsia: unsafe {
+                    get_semaphore_zircon_handle_fuchsia:    unsafe {
                         unsafe extern "system" fn get_semaphore_zircon_handle_fuchsia(
                             _device: crate::vk::Device,
                             _p_get_zircon_handle_info: *const SemaphoreGetZirconHandleInfoFUCHSIA<
@@ -9123,17 +9268,17 @@ pub mod fuchsia {
             }
         }
     }
-    #[doc = "VK_FUCHSIA_buffer_collection"]
+    ///VK_FUCHSIA_buffer_collection
     pub mod buffer_collection {
         use super::super::*;
-        pub use {
-            crate::vk::FUCHSIA_BUFFER_COLLECTION_NAME as NAME,
-            crate::vk::FUCHSIA_BUFFER_COLLECTION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            FUCHSIA_BUFFER_COLLECTION_NAME as NAME,
+            FUCHSIA_BUFFER_COLLECTION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_FUCHSIA_buffer_collection device-level functions"]
+        ///VK_FUCHSIA_buffer_collection device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9144,17 +9289,19 @@ pub mod fuchsia {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_FUCHSIA_buffer_collection device-level function pointers"]
+        ///Raw VK_FUCHSIA_buffer_collection device-level function pointers
         pub struct DeviceFn {
             pub create_buffer_collection_fuchsia: PFN_vkCreateBufferCollectionFUCHSIA,
             pub set_buffer_collection_image_constraints_fuchsia:
@@ -9171,9 +9318,10 @@ pub mod fuchsia {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_buffer_collection_fuchsia: unsafe {
+                    create_buffer_collection_fuchsia:                 unsafe {
                         unsafe extern "system" fn create_buffer_collection_fuchsia(
                             _device: crate::vk::Device,
                             _p_create_info: *const BufferCollectionCreateInfoFUCHSIA<'_>,
@@ -9195,7 +9343,7 @@ pub mod fuchsia {
                             ::core::mem::transmute(val)
                         }
                     },
-                    set_buffer_collection_image_constraints_fuchsia: unsafe {
+                    set_buffer_collection_image_constraints_fuchsia:  unsafe {
                         unsafe extern "system" fn set_buffer_collection_image_constraints_fuchsia(
                             _device: crate::vk::Device,
                             _collection: BufferCollectionFUCHSIA,
@@ -9237,7 +9385,7 @@ pub mod fuchsia {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_buffer_collection_fuchsia: unsafe {
+                    destroy_buffer_collection_fuchsia:                unsafe {
                         unsafe extern "system" fn destroy_buffer_collection_fuchsia(
                             _device: crate::vk::Device,
                             _collection: BufferCollectionFUCHSIA,
@@ -9258,7 +9406,7 @@ pub mod fuchsia {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_buffer_collection_properties_fuchsia: unsafe {
+                    get_buffer_collection_properties_fuchsia:         unsafe {
                         unsafe extern "system" fn get_buffer_collection_properties_fuchsia(
                             _device: crate::vk::Device,
                             _collection: BufferCollectionFUCHSIA,
@@ -9284,19 +9432,19 @@ pub mod fuchsia {
         }
     }
 }
-#[doc = "Extensions tagged GGP"]
+///Extensions tagged GGP
 pub mod ggp {
-    #[doc = "VK_GGP_stream_descriptor_surface"]
+    ///VK_GGP_stream_descriptor_surface
     pub mod stream_descriptor_surface {
         use super::super::*;
-        pub use {
-            crate::vk::GGP_STREAM_DESCRIPTOR_SURFACE_NAME as NAME,
-            crate::vk::GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GGP_STREAM_DESCRIPTOR_SURFACE_NAME as NAME,
+            GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_GGP_stream_descriptor_surface instance-level functions"]
+        ///VK_GGP_stream_descriptor_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -9307,17 +9455,20 @@ pub mod ggp {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_GGP_stream_descriptor_surface instance-level function pointers"]
+        ///Raw VK_GGP_stream_descriptor_surface instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub create_stream_descriptor_surface_ggp: PFN_vkCreateStreamDescriptorSurfaceGGP,
         }
@@ -9327,6 +9478,7 @@ pub mod ggp {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_stream_descriptor_surface_ggp: unsafe {
@@ -9355,28 +9507,26 @@ pub mod ggp {
             }
         }
     }
-    #[doc = "VK_GGP_frame_token"]
+    ///VK_GGP_frame_token
     pub mod frame_token {
         use super::super::*;
-        pub use {
-            crate::vk::GGP_FRAME_TOKEN_NAME as NAME,
-            crate::vk::GGP_FRAME_TOKEN_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GGP_FRAME_TOKEN_NAME as NAME, GGP_FRAME_TOKEN_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged GOOGLE"]
+///Extensions tagged GOOGLE
 pub mod google {
-    #[doc = "VK_GOOGLE_display_timing"]
+    ///VK_GOOGLE_display_timing
     pub mod display_timing {
         use super::super::*;
-        pub use {
-            crate::vk::GOOGLE_DISPLAY_TIMING_NAME as NAME,
-            crate::vk::GOOGLE_DISPLAY_TIMING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GOOGLE_DISPLAY_TIMING_NAME as NAME, GOOGLE_DISPLAY_TIMING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_GOOGLE_display_timing device-level functions"]
+        ///VK_GOOGLE_display_timing device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9387,19 +9537,21 @@ pub mod google {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_GOOGLE_display_timing device-level function pointers"]
+        ///Raw VK_GOOGLE_display_timing device-level function pointers
         pub struct DeviceFn {
-            pub get_refresh_cycle_duration_google: PFN_vkGetRefreshCycleDurationGOOGLE,
+            pub get_refresh_cycle_duration_google:   PFN_vkGetRefreshCycleDurationGOOGLE,
             pub get_past_presentation_timing_google: PFN_vkGetPastPresentationTimingGOOGLE,
         }
         unsafe impl Send for DeviceFn {}
@@ -9408,9 +9560,10 @@ pub mod google {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_refresh_cycle_duration_google: unsafe {
+                    get_refresh_cycle_duration_google:   unsafe {
                         unsafe extern "system" fn get_refresh_cycle_duration_google(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -9457,52 +9610,51 @@ pub mod google {
             }
         }
     }
-    #[doc = "VK_GOOGLE_hlsl_functionality1"]
+    ///VK_GOOGLE_hlsl_functionality1
     pub mod hlsl_functionality1 {
         use super::super::*;
-        pub use {
-            crate::vk::GOOGLE_HLSL_FUNCTIONALITY1_NAME as NAME,
-            crate::vk::GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GOOGLE_HLSL_FUNCTIONALITY1_NAME as NAME,
+            GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_GOOGLE_decorate_string"]
+    ///VK_GOOGLE_decorate_string
     pub mod decorate_string {
         use super::super::*;
-        pub use {
-            crate::vk::GOOGLE_DECORATE_STRING_NAME as NAME,
-            crate::vk::GOOGLE_DECORATE_STRING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GOOGLE_DECORATE_STRING_NAME as NAME,
+            GOOGLE_DECORATE_STRING_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_GOOGLE_user_type"]
+    ///VK_GOOGLE_user_type
     pub mod user_type {
         use super::super::*;
-        pub use {
-            crate::vk::GOOGLE_USER_TYPE_NAME as NAME,
-            crate::vk::GOOGLE_USER_TYPE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GOOGLE_USER_TYPE_NAME as NAME, GOOGLE_USER_TYPE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_GOOGLE_surfaceless_query"]
+    ///VK_GOOGLE_surfaceless_query
     pub mod surfaceless_query {
         use super::super::*;
-        pub use {
-            crate::vk::GOOGLE_SURFACELESS_QUERY_NAME as NAME,
-            crate::vk::GOOGLE_SURFACELESS_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            GOOGLE_SURFACELESS_QUERY_NAME as NAME,
+            GOOGLE_SURFACELESS_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged HUAWEI"]
+///Extensions tagged HUAWEI
 pub mod huawei {
-    #[doc = "VK_HUAWEI_subpass_shading"]
+    ///VK_HUAWEI_subpass_shading
     pub mod subpass_shading {
         use super::super::*;
-        pub use {
-            crate::vk::HUAWEI_SUBPASS_SHADING_NAME as NAME,
-            crate::vk::HUAWEI_SUBPASS_SHADING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            HUAWEI_SUBPASS_SHADING_NAME as NAME,
+            HUAWEI_SUBPASS_SHADING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_HUAWEI_subpass_shading device-level functions"]
+        ///VK_HUAWEI_subpass_shading device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9513,17 +9665,19 @@ pub mod huawei {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_HUAWEI_subpass_shading device-level function pointers"]
+        ///Raw VK_HUAWEI_subpass_shading device-level function pointers
         pub struct DeviceFn {
             pub get_device_subpass_shading_max_workgroup_size_huawei:
                 PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI,
@@ -9535,6 +9689,7 @@ pub mod huawei {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_device_subpass_shading_max_workgroup_size_huawei: unsafe {
@@ -9580,17 +9735,17 @@ pub mod huawei {
             }
         }
     }
-    #[doc = "VK_HUAWEI_invocation_mask"]
+    ///VK_HUAWEI_invocation_mask
     pub mod invocation_mask {
         use super::super::*;
-        pub use {
-            crate::vk::HUAWEI_INVOCATION_MASK_NAME as NAME,
-            crate::vk::HUAWEI_INVOCATION_MASK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            HUAWEI_INVOCATION_MASK_NAME as NAME,
+            HUAWEI_INVOCATION_MASK_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_HUAWEI_invocation_mask device-level functions"]
+        ///VK_HUAWEI_invocation_mask device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9601,17 +9756,19 @@ pub mod huawei {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_HUAWEI_invocation_mask device-level function pointers"]
+        ///Raw VK_HUAWEI_invocation_mask device-level function pointers
         pub struct DeviceFn {
             pub cmd_bind_invocation_mask_huawei: PFN_vkCmdBindInvocationMaskHUAWEI,
         }
@@ -9621,6 +9778,7 @@ pub mod huawei {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_bind_invocation_mask_huawei: unsafe {
@@ -9647,17 +9805,17 @@ pub mod huawei {
             }
         }
     }
-    #[doc = "VK_HUAWEI_cluster_culling_shader"]
+    ///VK_HUAWEI_cluster_culling_shader
     pub mod cluster_culling_shader {
         use super::super::*;
-        pub use {
-            crate::vk::HUAWEI_CLUSTER_CULLING_SHADER_NAME as NAME,
-            crate::vk::HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            HUAWEI_CLUSTER_CULLING_SHADER_NAME as NAME,
+            HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_HUAWEI_cluster_culling_shader device-level functions"]
+        ///VK_HUAWEI_cluster_culling_shader device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9668,19 +9826,21 @@ pub mod huawei {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_HUAWEI_cluster_culling_shader device-level function pointers"]
+        ///Raw VK_HUAWEI_cluster_culling_shader device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_cluster_huawei: PFN_vkCmdDrawClusterHUAWEI,
+            pub cmd_draw_cluster_huawei:          PFN_vkCmdDrawClusterHUAWEI,
             pub cmd_draw_cluster_indirect_huawei: PFN_vkCmdDrawClusterIndirectHUAWEI,
         }
         unsafe impl Send for DeviceFn {}
@@ -9689,9 +9849,10 @@ pub mod huawei {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_cluster_huawei: unsafe {
+                    cmd_draw_cluster_huawei:          unsafe {
                         unsafe extern "system" fn cmd_draw_cluster_huawei(
                             _command_buffer: CommandBuffer,
                             _group_count_x: u32,
@@ -9737,63 +9898,60 @@ pub mod huawei {
             }
         }
     }
-    #[doc = "VK_HUAWEI_hdr_vivid"]
+    ///VK_HUAWEI_hdr_vivid
     pub mod hdr_vivid {
         use super::super::*;
-        pub use {
-            crate::vk::HUAWEI_HDR_VIVID_NAME as NAME,
-            crate::vk::HUAWEI_HDR_VIVID_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            HUAWEI_HDR_VIVID_NAME as NAME, HUAWEI_HDR_VIVID_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged IMG"]
+///Extensions tagged IMG
 pub mod img {
-    #[doc = "VK_IMG_filter_cubic"]
+    ///VK_IMG_filter_cubic
     pub mod filter_cubic {
         use super::super::*;
-        pub use {
-            crate::vk::IMG_FILTER_CUBIC_NAME as NAME,
-            crate::vk::IMG_FILTER_CUBIC_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            IMG_FILTER_CUBIC_NAME as NAME, IMG_FILTER_CUBIC_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_IMG_format_pvrtc"]
+    ///VK_IMG_format_pvrtc
     pub mod format_pvrtc {
         use super::super::*;
-        pub use {
-            crate::vk::IMG_FORMAT_PVRTC_NAME as NAME,
-            crate::vk::IMG_FORMAT_PVRTC_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            IMG_FORMAT_PVRTC_NAME as NAME, IMG_FORMAT_PVRTC_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_IMG_relaxed_line_rasterization"]
+    ///VK_IMG_relaxed_line_rasterization
     pub mod relaxed_line_rasterization {
         use super::super::*;
-        pub use {
-            crate::vk::IMG_RELAXED_LINE_RASTERIZATION_NAME as NAME,
-            crate::vk::IMG_RELAXED_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            IMG_RELAXED_LINE_RASTERIZATION_NAME as NAME,
+            IMG_RELAXED_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged INTEL"]
+///Extensions tagged INTEL
 pub mod intel {
-    #[doc = "VK_INTEL_shader_integer_functions2"]
+    ///VK_INTEL_shader_integer_functions2
     pub mod shader_integer_functions2 {
         use super::super::*;
-        pub use {
-            crate::vk::INTEL_SHADER_INTEGER_FUNCTIONS2_NAME as NAME,
-            crate::vk::INTEL_SHADER_INTEGER_FUNCTIONS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            INTEL_SHADER_INTEGER_FUNCTIONS2_NAME as NAME,
+            INTEL_SHADER_INTEGER_FUNCTIONS2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_INTEL_performance_query"]
+    ///VK_INTEL_performance_query
     pub mod performance_query {
         use super::super::*;
-        pub use {
-            crate::vk::INTEL_PERFORMANCE_QUERY_NAME as NAME,
-            crate::vk::INTEL_PERFORMANCE_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            INTEL_PERFORMANCE_QUERY_NAME as NAME,
+            INTEL_PERFORMANCE_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_INTEL_performance_query device-level functions"]
+        ///VK_INTEL_performance_query device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -9804,28 +9962,30 @@ pub mod intel {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_INTEL_performance_query device-level function pointers"]
+        ///Raw VK_INTEL_performance_query device-level function pointers
         pub struct DeviceFn {
-            pub initialize_performance_api_intel: PFN_vkInitializePerformanceApiINTEL,
-            pub uninitialize_performance_api_intel: PFN_vkUninitializePerformanceApiINTEL,
-            pub cmd_set_performance_marker_intel: PFN_vkCmdSetPerformanceMarkerINTEL,
-            pub cmd_set_performance_stream_marker_intel: PFN_vkCmdSetPerformanceStreamMarkerINTEL,
-            pub cmd_set_performance_override_intel: PFN_vkCmdSetPerformanceOverrideINTEL,
+            pub initialize_performance_api_intel:          PFN_vkInitializePerformanceApiINTEL,
+            pub uninitialize_performance_api_intel:        PFN_vkUninitializePerformanceApiINTEL,
+            pub cmd_set_performance_marker_intel:          PFN_vkCmdSetPerformanceMarkerINTEL,
+            pub cmd_set_performance_stream_marker_intel:   PFN_vkCmdSetPerformanceStreamMarkerINTEL,
+            pub cmd_set_performance_override_intel:        PFN_vkCmdSetPerformanceOverrideINTEL,
             pub acquire_performance_configuration_intel: PFN_vkAcquirePerformanceConfigurationINTEL,
             pub release_performance_configuration_intel: PFN_vkReleasePerformanceConfigurationINTEL,
             pub queue_set_performance_configuration_intel:
                 PFN_vkQueueSetPerformanceConfigurationINTEL,
-            pub get_performance_parameter_intel: PFN_vkGetPerformanceParameterINTEL,
+            pub get_performance_parameter_intel:           PFN_vkGetPerformanceParameterINTEL,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -9833,9 +9993,10 @@ pub mod intel {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    initialize_performance_api_intel: unsafe {
+                    initialize_performance_api_intel:          unsafe {
                         unsafe extern "system" fn initialize_performance_api_intel(
                             _device: crate::vk::Device,
                             _p_initialize_info: *const InitializePerformanceApiInfoINTEL<'_>,
@@ -9855,7 +10016,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    uninitialize_performance_api_intel: unsafe {
+                    uninitialize_performance_api_intel:        unsafe {
                         unsafe extern "system" fn uninitialize_performance_api_intel(
                             _device: crate::vk::Device,
                         ) {
@@ -9874,7 +10035,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_performance_marker_intel: unsafe {
+                    cmd_set_performance_marker_intel:          unsafe {
                         unsafe extern "system" fn cmd_set_performance_marker_intel(
                             _command_buffer: CommandBuffer,
                             _p_marker_info: *const PerformanceMarkerInfoINTEL<'_>,
@@ -9894,7 +10055,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_performance_stream_marker_intel: unsafe {
+                    cmd_set_performance_stream_marker_intel:   unsafe {
                         unsafe extern "system" fn cmd_set_performance_stream_marker_intel(
                             _command_buffer: CommandBuffer,
                             _p_marker_info: *const PerformanceStreamMarkerInfoINTEL<'_>,
@@ -9914,7 +10075,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_performance_override_intel: unsafe {
+                    cmd_set_performance_override_intel:        unsafe {
                         unsafe extern "system" fn cmd_set_performance_override_intel(
                             _command_buffer: CommandBuffer,
                             _p_override_info: *const PerformanceOverrideInfoINTEL<'_>,
@@ -9934,7 +10095,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    acquire_performance_configuration_intel: unsafe {
+                    acquire_performance_configuration_intel:   unsafe {
                         unsafe extern "system" fn acquire_performance_configuration_intel(
                             _device: crate::vk::Device,
                             _p_acquire_info: *const PerformanceConfigurationAcquireInfoINTEL<'_>,
@@ -9955,7 +10116,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    release_performance_configuration_intel: unsafe {
+                    release_performance_configuration_intel:   unsafe {
                         unsafe extern "system" fn release_performance_configuration_intel(
                             _device: crate::vk::Device,
                             _configuration: PerformanceConfigurationINTEL,
@@ -9995,7 +10156,7 @@ pub mod intel {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_performance_parameter_intel: unsafe {
+                    get_performance_parameter_intel:           unsafe {
                         unsafe extern "system" fn get_performance_parameter_intel(
                             _device: crate::vk::Device,
                             _parameter: PerformanceParameterTypeINTEL,
@@ -10021,19 +10182,16 @@ pub mod intel {
         }
     }
 }
-#[doc = "Extensions tagged KHR"]
+///Extensions tagged KHR
 pub mod khr {
-    #[doc = "VK_KHR_surface"]
+    ///VK_KHR_surface
     pub mod surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SURFACE_NAME as NAME,
-            crate::vk::KHR_SURFACE_SPEC_VERSION as SPEC_VERSION,
-        };
-        #[doc = "VK_KHR_surface instance-level functions"]
+        pub use crate::vk::{KHR_SURFACE_NAME as NAME, KHR_SURFACE_SPEC_VERSION as SPEC_VERSION};
+        ///VK_KHR_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10044,17 +10202,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_surface instance-level function pointers"]
+        ///Raw VK_KHR_surface instance-level function pointers
         pub struct InstanceFn {
             pub destroy_surface_khr: PFN_vkDestroySurfaceKHR,
             pub get_physical_device_surface_support_khr: PFN_vkGetPhysicalDeviceSurfaceSupportKHR,
@@ -10070,6 +10230,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     destroy_surface_khr: unsafe {
@@ -10179,17 +10340,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_swapchain"]
+    ///VK_KHR_swapchain
     pub mod swapchain {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SWAPCHAIN_NAME as NAME,
-            crate::vk::KHR_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SWAPCHAIN_NAME as NAME, KHR_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_swapchain instance-level functions"]
+        ///VK_KHR_swapchain instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10200,17 +10360,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_swapchain instance-level function pointers"]
+        ///Raw VK_KHR_swapchain instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_present_rectangles_khr:
                 PFN_vkGetPhysicalDevicePresentRectanglesKHR,
@@ -10221,6 +10383,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_present_rectangles_khr: unsafe {
@@ -10248,10 +10411,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_swapchain device-level functions"]
+        ///VK_KHR_swapchain device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -10262,17 +10425,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_swapchain device-level function pointers"]
+        ///Raw VK_KHR_swapchain device-level function pointers
         pub struct DeviceFn {
             pub create_swapchain_khr: PFN_vkCreateSwapchainKHR,
             pub destroy_swapchain_khr: PFN_vkDestroySwapchainKHR,
@@ -10291,6 +10456,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_swapchain_khr: unsafe {
@@ -10452,17 +10618,14 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_display"]
+    ///VK_KHR_display
     pub mod display {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DISPLAY_NAME as NAME,
-            crate::vk::KHR_DISPLAY_SPEC_VERSION as SPEC_VERSION,
-        };
-        #[doc = "VK_KHR_display instance-level functions"]
+        pub use crate::vk::{KHR_DISPLAY_NAME as NAME, KHR_DISPLAY_SPEC_VERSION as SPEC_VERSION};
+        ///VK_KHR_display instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10473,17 +10636,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_display instance-level function pointers"]
+        ///Raw VK_KHR_display instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_display_properties_khr:
                 PFN_vkGetPhysicalDeviceDisplayPropertiesKHR,
@@ -10501,6 +10666,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_display_properties_khr: unsafe {
@@ -10658,17 +10824,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_display_swapchain"]
+    ///VK_KHR_display_swapchain
     pub mod display_swapchain {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DISPLAY_SWAPCHAIN_NAME as NAME,
-            crate::vk::KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DISPLAY_SWAPCHAIN_NAME as NAME, KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_display_swapchain device-level functions"]
+        ///VK_KHR_display_swapchain device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -10679,17 +10844,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_display_swapchain device-level function pointers"]
+        ///Raw VK_KHR_display_swapchain device-level function pointers
         pub struct DeviceFn {
             pub create_shared_swapchains_khr: PFN_vkCreateSharedSwapchainsKHR,
         }
@@ -10699,6 +10866,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_shared_swapchains_khr: unsafe {
@@ -10727,17 +10895,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_xlib_surface"]
+    ///VK_KHR_xlib_surface
     pub mod xlib_surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_XLIB_SURFACE_NAME as NAME,
-            crate::vk::KHR_XLIB_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_XLIB_SURFACE_NAME as NAME, KHR_XLIB_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_xlib_surface instance-level functions"]
+        ///VK_KHR_xlib_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10748,17 +10915,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_xlib_surface instance-level function pointers"]
+        ///Raw VK_KHR_xlib_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_xlib_surface_khr: PFN_vkCreateXlibSurfaceKHR,
             pub get_physical_device_xlib_presentation_support_khr:
@@ -10770,6 +10939,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_xlib_surface_khr: unsafe {
@@ -10819,17 +10989,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_xcb_surface"]
+    ///VK_KHR_xcb_surface
     pub mod xcb_surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_XCB_SURFACE_NAME as NAME,
-            crate::vk::KHR_XCB_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_XCB_SURFACE_NAME as NAME, KHR_XCB_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_xcb_surface instance-level functions"]
+        ///VK_KHR_xcb_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10840,17 +11009,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_xcb_surface instance-level function pointers"]
+        ///Raw VK_KHR_xcb_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_xcb_surface_khr: PFN_vkCreateXcbSurfaceKHR,
             pub get_physical_device_xcb_presentation_support_khr:
@@ -10862,6 +11033,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_xcb_surface_khr: unsafe {
@@ -10910,17 +11082,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_wayland_surface"]
+    ///VK_KHR_wayland_surface
     pub mod wayland_surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_WAYLAND_SURFACE_NAME as NAME,
-            crate::vk::KHR_WAYLAND_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_WAYLAND_SURFACE_NAME as NAME, KHR_WAYLAND_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_wayland_surface instance-level functions"]
+        ///VK_KHR_wayland_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -10931,17 +11102,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_wayland_surface instance-level function pointers"]
+        ///Raw VK_KHR_wayland_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_wayland_surface_khr: PFN_vkCreateWaylandSurfaceKHR,
             pub get_physical_device_wayland_presentation_support_khr:
@@ -10953,6 +11126,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_wayland_surface_khr: unsafe {
@@ -11001,17 +11175,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_android_surface"]
+    ///VK_KHR_android_surface
     pub mod android_surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_ANDROID_SURFACE_NAME as NAME,
-            crate::vk::KHR_ANDROID_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_ANDROID_SURFACE_NAME as NAME, KHR_ANDROID_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_android_surface instance-level functions"]
+        ///VK_KHR_android_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -11022,17 +11195,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_android_surface instance-level function pointers"]
+        ///Raw VK_KHR_android_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_android_surface_khr: PFN_vkCreateAndroidSurfaceKHR,
         }
@@ -11042,6 +11217,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_android_surface_khr: unsafe {
@@ -11069,17 +11245,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_win32_surface"]
+    ///VK_KHR_win32_surface
     pub mod win32_surface {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_WIN32_SURFACE_NAME as NAME,
-            crate::vk::KHR_WIN32_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_WIN32_SURFACE_NAME as NAME, KHR_WIN32_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_win32_surface instance-level functions"]
+        ///VK_KHR_win32_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -11090,17 +11265,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_win32_surface instance-level function pointers"]
+        ///Raw VK_KHR_win32_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_win32_surface_khr: PFN_vkCreateWin32SurfaceKHR,
             pub get_physical_device_win32_presentation_support_khr:
@@ -11112,6 +11289,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_win32_surface_khr: unsafe {
@@ -11159,25 +11337,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_sampler_mirror_clamp_to_edge"]
+    ///VK_KHR_sampler_mirror_clamp_to_edge
     pub mod sampler_mirror_clamp_to_edge {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_NAME as NAME,
-            crate::vk::KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_NAME as NAME,
+            KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_queue"]
+    ///VK_KHR_video_queue
     pub mod video_queue {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_QUEUE_NAME as NAME,
-            crate::vk::KHR_VIDEO_QUEUE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_QUEUE_NAME as NAME, KHR_VIDEO_QUEUE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_video_queue instance-level functions"]
+        ///VK_KHR_video_queue instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -11188,17 +11365,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_video_queue instance-level function pointers"]
+        ///Raw VK_KHR_video_queue instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_video_capabilities_khr:
                 PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR,
@@ -11211,9 +11390,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_physical_device_video_capabilities_khr: unsafe {
+                    get_physical_device_video_capabilities_khr:      unsafe {
                         unsafe extern "system" fn get_physical_device_video_capabilities_khr(
                             _physical_device: PhysicalDevice,
                             _p_video_profile: *const VideoProfileInfoKHR<'_>,
@@ -11259,10 +11439,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_video_queue device-level functions"]
+        ///VK_KHR_video_queue device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -11273,29 +11453,31 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_video_queue device-level function pointers"]
+        ///Raw VK_KHR_video_queue device-level function pointers
         pub struct DeviceFn {
-            pub create_video_session_khr: PFN_vkCreateVideoSessionKHR,
-            pub destroy_video_session_khr: PFN_vkDestroyVideoSessionKHR,
+            pub create_video_session_khr:                  PFN_vkCreateVideoSessionKHR,
+            pub destroy_video_session_khr:                 PFN_vkDestroyVideoSessionKHR,
             pub get_video_session_memory_requirements_khr:
                 PFN_vkGetVideoSessionMemoryRequirementsKHR,
-            pub bind_video_session_memory_khr: PFN_vkBindVideoSessionMemoryKHR,
-            pub create_video_session_parameters_khr: PFN_vkCreateVideoSessionParametersKHR,
-            pub update_video_session_parameters_khr: PFN_vkUpdateVideoSessionParametersKHR,
-            pub destroy_video_session_parameters_khr: PFN_vkDestroyVideoSessionParametersKHR,
-            pub cmd_begin_video_coding_khr: PFN_vkCmdBeginVideoCodingKHR,
-            pub cmd_end_video_coding_khr: PFN_vkCmdEndVideoCodingKHR,
-            pub cmd_control_video_coding_khr: PFN_vkCmdControlVideoCodingKHR,
+            pub bind_video_session_memory_khr:             PFN_vkBindVideoSessionMemoryKHR,
+            pub create_video_session_parameters_khr:       PFN_vkCreateVideoSessionParametersKHR,
+            pub update_video_session_parameters_khr:       PFN_vkUpdateVideoSessionParametersKHR,
+            pub destroy_video_session_parameters_khr:      PFN_vkDestroyVideoSessionParametersKHR,
+            pub cmd_begin_video_coding_khr:                PFN_vkCmdBeginVideoCodingKHR,
+            pub cmd_end_video_coding_khr:                  PFN_vkCmdEndVideoCodingKHR,
+            pub cmd_control_video_coding_khr:              PFN_vkCmdControlVideoCodingKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -11303,9 +11485,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_video_session_khr: unsafe {
+                    create_video_session_khr:                  unsafe {
                         unsafe extern "system" fn create_video_session_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const VideoSessionCreateInfoKHR<'_>,
@@ -11326,7 +11509,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_video_session_khr: unsafe {
+                    destroy_video_session_khr:                 unsafe {
                         unsafe extern "system" fn destroy_video_session_khr(
                             _device: crate::vk::Device,
                             _video_session: VideoSessionKHR,
@@ -11368,7 +11551,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    bind_video_session_memory_khr: unsafe {
+                    bind_video_session_memory_khr:             unsafe {
                         unsafe extern "system" fn bind_video_session_memory_khr(
                             _device: crate::vk::Device,
                             _video_session: VideoSessionKHR,
@@ -11389,7 +11572,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_video_session_parameters_khr: unsafe {
+                    create_video_session_parameters_khr:       unsafe {
                         unsafe extern "system" fn create_video_session_parameters_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const VideoSessionParametersCreateInfoKHR<'_>,
@@ -11411,7 +11594,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    update_video_session_parameters_khr: unsafe {
+                    update_video_session_parameters_khr:       unsafe {
                         unsafe extern "system" fn update_video_session_parameters_khr(
                             _device: crate::vk::Device,
                             _video_session_parameters: VideoSessionParametersKHR,
@@ -11432,7 +11615,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_video_session_parameters_khr: unsafe {
+                    destroy_video_session_parameters_khr:      unsafe {
                         unsafe extern "system" fn destroy_video_session_parameters_khr(
                             _device: crate::vk::Device,
                             _video_session_parameters: VideoSessionParametersKHR,
@@ -11453,7 +11636,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_begin_video_coding_khr: unsafe {
+                    cmd_begin_video_coding_khr:                unsafe {
                         unsafe extern "system" fn cmd_begin_video_coding_khr(
                             _command_buffer: CommandBuffer,
                             _p_begin_info: *const VideoBeginCodingInfoKHR<'_>,
@@ -11472,7 +11655,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_video_coding_khr: unsafe {
+                    cmd_end_video_coding_khr:                  unsafe {
                         unsafe extern "system" fn cmd_end_video_coding_khr(
                             _command_buffer: CommandBuffer,
                             _p_end_coding_info: *const VideoEndCodingInfoKHR<'_>,
@@ -11491,7 +11674,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_control_video_coding_khr: unsafe {
+                    cmd_control_video_coding_khr:              unsafe {
                         unsafe extern "system" fn cmd_control_video_coding_khr(
                             _command_buffer: CommandBuffer,
                             _p_coding_control_info: *const VideoCodingControlInfoKHR<'_>,
@@ -11514,17 +11697,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_video_decode_queue"]
+    ///VK_KHR_video_decode_queue
     pub mod video_decode_queue {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_DECODE_QUEUE_NAME as NAME,
-            crate::vk::KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_DECODE_QUEUE_NAME as NAME,
+            KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_video_decode_queue device-level functions"]
+        ///VK_KHR_video_decode_queue device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -11535,17 +11718,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_video_decode_queue device-level function pointers"]
+        ///Raw VK_KHR_video_decode_queue device-level function pointers
         pub struct DeviceFn {
             pub cmd_decode_video_khr: PFN_vkCmdDecodeVideoKHR,
         }
@@ -11555,6 +11740,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_decode_video_khr: unsafe {
@@ -11576,41 +11762,37 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_video_encode_h264"]
+    ///VK_KHR_video_encode_h264
     pub mod video_encode_h264 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_ENCODE_H264_NAME as NAME,
-            crate::vk::KHR_VIDEO_ENCODE_H264_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_ENCODE_H264_NAME as NAME, KHR_VIDEO_ENCODE_H264_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_encode_h265"]
+    ///VK_KHR_video_encode_h265
     pub mod video_encode_h265 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_ENCODE_H265_NAME as NAME,
-            crate::vk::KHR_VIDEO_ENCODE_H265_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_ENCODE_H265_NAME as NAME, KHR_VIDEO_ENCODE_H265_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_decode_h264"]
+    ///VK_KHR_video_decode_h264
     pub mod video_decode_h264 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_DECODE_H264_NAME as NAME,
-            crate::vk::KHR_VIDEO_DECODE_H264_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_DECODE_H264_NAME as NAME, KHR_VIDEO_DECODE_H264_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_dynamic_rendering"]
+    ///VK_KHR_dynamic_rendering
     pub mod dynamic_rendering {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DYNAMIC_RENDERING_NAME as NAME,
-            crate::vk::KHR_DYNAMIC_RENDERING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DYNAMIC_RENDERING_NAME as NAME, KHR_DYNAMIC_RENDERING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_dynamic_rendering device-level functions"]
+        ///VK_KHR_dynamic_rendering device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -11621,20 +11803,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_dynamic_rendering device-level function pointers"]
+        ///Raw VK_KHR_dynamic_rendering device-level function pointers
         pub struct DeviceFn {
             pub cmd_begin_rendering_khr: PFN_vkCmdBeginRendering,
-            pub cmd_end_rendering_khr: PFN_vkCmdEndRendering,
+            pub cmd_end_rendering_khr:   PFN_vkCmdEndRendering,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -11642,6 +11826,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_begin_rendering_khr: unsafe {
@@ -11663,7 +11848,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_rendering_khr: unsafe {
+                    cmd_end_rendering_khr:   unsafe {
                         unsafe extern "system" fn cmd_end_rendering_khr(
                             _command_buffer: CommandBuffer,
                         ) {
@@ -11684,25 +11869,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_multiview"]
+    ///VK_KHR_multiview
     pub mod multiview {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MULTIVIEW_NAME as NAME,
-            crate::vk::KHR_MULTIVIEW_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MULTIVIEW_NAME as NAME, KHR_MULTIVIEW_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_get_physical_device_properties2"]
+    ///VK_KHR_get_physical_device_properties2
     pub mod get_physical_device_properties2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_GET_PHYSICAL_DEVICE_PROPERTIES2_NAME as NAME,
-            crate::vk::KHR_GET_PHYSICAL_DEVICE_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_GET_PHYSICAL_DEVICE_PROPERTIES2_NAME as NAME,
+            KHR_GET_PHYSICAL_DEVICE_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_get_physical_device_properties2 instance-level functions"]
+        ///VK_KHR_get_physical_device_properties2 instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -11713,17 +11897,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_get_physical_device_properties2 instance-level function pointers"]
+        ///Raw VK_KHR_get_physical_device_properties2 instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_features2_khr: PFN_vkGetPhysicalDeviceFeatures2,
             pub get_physical_device_properties2_khr: PFN_vkGetPhysicalDeviceProperties2,
@@ -11744,6 +11931,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_features2_khr: unsafe {
@@ -11895,17 +12083,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_device_group"]
+    ///VK_KHR_device_group
     pub mod device_group {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DEVICE_GROUP_NAME as NAME,
-            crate::vk::KHR_DEVICE_GROUP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DEVICE_GROUP_NAME as NAME, KHR_DEVICE_GROUP_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_device_group instance-level functions"]
+        ///VK_KHR_device_group instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -11916,17 +12103,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_device_group instance-level function pointers"]
+        ///Raw VK_KHR_device_group instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_present_rectangles_khr:
                 PFN_vkGetPhysicalDevicePresentRectanglesKHR,
@@ -11937,6 +12126,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_present_rectangles_khr: unsafe {
@@ -11964,10 +12154,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_device_group device-level functions"]
+        ///VK_KHR_device_group device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -11978,17 +12168,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_device_group device-level function pointers"]
+        ///Raw VK_KHR_device_group device-level function pointers
         pub struct DeviceFn {
             pub get_device_group_peer_memory_features_khr: PFN_vkGetDeviceGroupPeerMemoryFeatures,
             pub cmd_set_device_mask_khr: PFN_vkCmdSetDeviceMask,
@@ -12005,6 +12197,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_device_group_peer_memory_features_khr: unsafe {
@@ -12136,25 +12329,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_draw_parameters"]
+    ///VK_KHR_shader_draw_parameters
     pub mod shader_draw_parameters {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_DRAW_PARAMETERS_NAME as NAME,
-            crate::vk::KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_DRAW_PARAMETERS_NAME as NAME,
+            KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance1"]
+    ///VK_KHR_maintenance1
     pub mod maintenance1 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE1_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE1_NAME as NAME, KHR_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_maintenance1 device-level functions"]
+        ///VK_KHR_maintenance1 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12165,17 +12357,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_maintenance1 device-level function pointers"]
+        ///Raw VK_KHR_maintenance1 device-level function pointers
         pub struct DeviceFn {
             pub trim_command_pool_khr: PFN_vkTrimCommandPool,
         }
@@ -12185,6 +12379,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     trim_command_pool_khr: unsafe {
@@ -12210,17 +12405,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_device_group_creation"]
+    ///VK_KHR_device_group_creation
     pub mod device_group_creation {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DEVICE_GROUP_CREATION_NAME as NAME,
-            crate::vk::KHR_DEVICE_GROUP_CREATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DEVICE_GROUP_CREATION_NAME as NAME,
+            KHR_DEVICE_GROUP_CREATION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_device_group_creation instance-level functions"]
+        ///VK_KHR_device_group_creation instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -12231,17 +12426,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_device_group_creation instance-level function pointers"]
+        ///Raw VK_KHR_device_group_creation instance-level function pointers
         pub struct InstanceFn {
             pub enumerate_physical_device_groups_khr: PFN_vkEnumeratePhysicalDeviceGroups,
         }
@@ -12251,6 +12448,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     enumerate_physical_device_groups_khr: unsafe {
@@ -12280,17 +12478,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_memory_capabilities"]
+    ///VK_KHR_external_memory_capabilities
     pub mod external_memory_capabilities {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_MEMORY_CAPABILITIES_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_MEMORY_CAPABILITIES_NAME as NAME,
+            KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_memory_capabilities instance-level functions"]
+        ///VK_KHR_external_memory_capabilities instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -12301,17 +12499,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_memory_capabilities instance-level function pointers"]
+        ///Raw VK_KHR_external_memory_capabilities instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_external_buffer_properties_khr:
                 PFN_vkGetPhysicalDeviceExternalBufferProperties,
@@ -12322,6 +12523,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_external_buffer_properties_khr: unsafe {
@@ -12349,25 +12551,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_memory"]
+    ///VK_KHR_external_memory
     pub mod external_memory {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_MEMORY_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_MEMORY_NAME as NAME, KHR_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_external_memory_win32"]
+    ///VK_KHR_external_memory_win32
     pub mod external_memory_win32 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_MEMORY_WIN32_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_MEMORY_WIN32_NAME as NAME,
+            KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_memory_win32 device-level functions"]
+        ///VK_KHR_external_memory_win32 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12378,19 +12579,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_memory_win32 device-level function pointers"]
+        ///Raw VK_KHR_external_memory_win32 device-level function pointers
         pub struct DeviceFn {
-            pub get_memory_win32_handle_khr: PFN_vkGetMemoryWin32HandleKHR,
+            pub get_memory_win32_handle_khr:            PFN_vkGetMemoryWin32HandleKHR,
             pub get_memory_win32_handle_properties_khr: PFN_vkGetMemoryWin32HandlePropertiesKHR,
         }
         unsafe impl Send for DeviceFn {}
@@ -12399,9 +12602,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_memory_win32_handle_khr: unsafe {
+                    get_memory_win32_handle_khr:            unsafe {
                         unsafe extern "system" fn get_memory_win32_handle_khr(
                             _device: crate::vk::Device,
                             _p_get_win32_handle_info: *const MemoryGetWin32HandleInfoKHR<'_>,
@@ -12449,17 +12653,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_memory_fd"]
+    ///VK_KHR_external_memory_fd
     pub mod external_memory_fd {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_MEMORY_FD_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_MEMORY_FD_NAME as NAME,
+            KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_memory_fd device-level functions"]
+        ///VK_KHR_external_memory_fd device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12470,19 +12674,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_memory_fd device-level function pointers"]
+        ///Raw VK_KHR_external_memory_fd device-level function pointers
         pub struct DeviceFn {
-            pub get_memory_fd_khr: PFN_vkGetMemoryFdKHR,
+            pub get_memory_fd_khr:            PFN_vkGetMemoryFdKHR,
             pub get_memory_fd_properties_khr: PFN_vkGetMemoryFdPropertiesKHR,
         }
         unsafe impl Send for DeviceFn {}
@@ -12491,9 +12697,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_memory_fd_khr: unsafe {
+                    get_memory_fd_khr:            unsafe {
                         unsafe extern "system" fn get_memory_fd_khr(
                             _device: crate::vk::Device,
                             _p_get_fd_info: *const MemoryGetFdInfoKHR<'_>,
@@ -12534,25 +12741,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_win32_keyed_mutex"]
+    ///VK_KHR_win32_keyed_mutex
     pub mod win32_keyed_mutex {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_WIN32_KEYED_MUTEX_NAME as NAME,
-            crate::vk::KHR_WIN32_KEYED_MUTEX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_WIN32_KEYED_MUTEX_NAME as NAME, KHR_WIN32_KEYED_MUTEX_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_external_semaphore_capabilities"]
+    ///VK_KHR_external_semaphore_capabilities
     pub mod external_semaphore_capabilities {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_NAME as NAME,
+            KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_semaphore_capabilities instance-level functions"]
+        ///VK_KHR_external_semaphore_capabilities instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -12563,17 +12769,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_semaphore_capabilities instance-level function pointers"]
+        ///Raw VK_KHR_external_semaphore_capabilities instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_external_semaphore_properties_khr:
                 PFN_vkGetPhysicalDeviceExternalSemaphoreProperties,
@@ -12584,6 +12793,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_external_semaphore_properties_khr: unsafe {
@@ -12613,25 +12823,25 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_semaphore"]
+    ///VK_KHR_external_semaphore
     pub mod external_semaphore {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_SEMAPHORE_NAME as NAME,
+            KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_external_semaphore_win32"]
+    ///VK_KHR_external_semaphore_win32
     pub mod external_semaphore_win32 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_WIN32_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_SEMAPHORE_WIN32_NAME as NAME,
+            KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_semaphore_win32 device-level functions"]
+        ///VK_KHR_external_semaphore_win32 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12642,20 +12852,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_semaphore_win32 device-level function pointers"]
+        ///Raw VK_KHR_external_semaphore_win32 device-level function pointers
         pub struct DeviceFn {
             pub import_semaphore_win32_handle_khr: PFN_vkImportSemaphoreWin32HandleKHR,
-            pub get_semaphore_win32_handle_khr: PFN_vkGetSemaphoreWin32HandleKHR,
+            pub get_semaphore_win32_handle_khr:    PFN_vkGetSemaphoreWin32HandleKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -12663,6 +12875,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     import_semaphore_win32_handle_khr: unsafe {
@@ -12685,7 +12898,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_semaphore_win32_handle_khr: unsafe {
+                    get_semaphore_win32_handle_khr:    unsafe {
                         unsafe extern "system" fn get_semaphore_win32_handle_khr(
                             _device: crate::vk::Device,
                             _p_get_win32_handle_info: *const SemaphoreGetWin32HandleInfoKHR<'_>,
@@ -12709,17 +12922,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_semaphore_fd"]
+    ///VK_KHR_external_semaphore_fd
     pub mod external_semaphore_fd {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_FD_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_SEMAPHORE_FD_NAME as NAME,
+            KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_semaphore_fd device-level functions"]
+        ///VK_KHR_external_semaphore_fd device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12730,20 +12943,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_semaphore_fd device-level function pointers"]
+        ///Raw VK_KHR_external_semaphore_fd device-level function pointers
         pub struct DeviceFn {
             pub import_semaphore_fd_khr: PFN_vkImportSemaphoreFdKHR,
-            pub get_semaphore_fd_khr: PFN_vkGetSemaphoreFdKHR,
+            pub get_semaphore_fd_khr:    PFN_vkGetSemaphoreFdKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -12751,6 +12966,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     import_semaphore_fd_khr: unsafe {
@@ -12772,7 +12988,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_semaphore_fd_khr: unsafe {
+                    get_semaphore_fd_khr:    unsafe {
                         unsafe extern "system" fn get_semaphore_fd_khr(
                             _device: crate::vk::Device,
                             _p_get_fd_info: *const SemaphoreGetFdInfoKHR<'_>,
@@ -12792,17 +13008,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_push_descriptor"]
+    ///VK_KHR_push_descriptor
     pub mod push_descriptor {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PUSH_DESCRIPTOR_NAME as NAME,
-            crate::vk::KHR_PUSH_DESCRIPTOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PUSH_DESCRIPTOR_NAME as NAME, KHR_PUSH_DESCRIPTOR_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_push_descriptor device-level functions"]
+        ///VK_KHR_push_descriptor device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12813,19 +13028,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_push_descriptor device-level function pointers"]
+        ///Raw VK_KHR_push_descriptor device-level function pointers
         pub struct DeviceFn {
-            pub cmd_push_descriptor_set_khr: PFN_vkCmdPushDescriptorSet,
+            pub cmd_push_descriptor_set_khr:               PFN_vkCmdPushDescriptorSet,
             pub cmd_push_descriptor_set_with_template_khr: PFN_vkCmdPushDescriptorSetWithTemplate,
         }
         unsafe impl Send for DeviceFn {}
@@ -12834,9 +13051,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_push_descriptor_set_khr: unsafe {
+                    cmd_push_descriptor_set_khr:               unsafe {
                         unsafe extern "system" fn cmd_push_descriptor_set_khr(
                             _command_buffer: CommandBuffer,
                             _pipeline_bind_point: PipelineBindPoint,
@@ -12886,41 +13104,40 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_float16_int8"]
+    ///VK_KHR_shader_float16_int8
     pub mod shader_float16_int8 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_FLOAT16_INT8_NAME as NAME,
-            crate::vk::KHR_SHADER_FLOAT16_INT8_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_FLOAT16_INT8_NAME as NAME,
+            KHR_SHADER_FLOAT16_INT8_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_16bit_storage"]
+    ///VK_KHR_16bit_storage
     pub mod _16bit_storage {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_16BIT_STORAGE_NAME as NAME,
-            crate::vk::KHR_16BIT_STORAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_16BIT_STORAGE_NAME as NAME, KHR_16BIT_STORAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_incremental_present"]
+    ///VK_KHR_incremental_present
     pub mod incremental_present {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_INCREMENTAL_PRESENT_NAME as NAME,
-            crate::vk::KHR_INCREMENTAL_PRESENT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_INCREMENTAL_PRESENT_NAME as NAME,
+            KHR_INCREMENTAL_PRESENT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_descriptor_update_template"]
+    ///VK_KHR_descriptor_update_template
     pub mod descriptor_update_template {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DESCRIPTOR_UPDATE_TEMPLATE_NAME as NAME,
-            crate::vk::KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DESCRIPTOR_UPDATE_TEMPLATE_NAME as NAME,
+            KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_descriptor_update_template device-level functions"]
+        ///VK_KHR_descriptor_update_template device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -12931,21 +13148,23 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_descriptor_update_template device-level function pointers"]
+        ///Raw VK_KHR_descriptor_update_template device-level function pointers
         pub struct DeviceFn {
-            pub create_descriptor_update_template_khr: PFN_vkCreateDescriptorUpdateTemplate,
-            pub destroy_descriptor_update_template_khr: PFN_vkDestroyDescriptorUpdateTemplate,
-            pub update_descriptor_set_with_template_khr: PFN_vkUpdateDescriptorSetWithTemplate,
+            pub create_descriptor_update_template_khr:     PFN_vkCreateDescriptorUpdateTemplate,
+            pub destroy_descriptor_update_template_khr:    PFN_vkDestroyDescriptorUpdateTemplate,
+            pub update_descriptor_set_with_template_khr:   PFN_vkUpdateDescriptorSetWithTemplate,
             pub cmd_push_descriptor_set_with_template_khr: PFN_vkCmdPushDescriptorSetWithTemplate,
         }
         unsafe impl Send for DeviceFn {}
@@ -12954,9 +13173,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_descriptor_update_template_khr: unsafe {
+                    create_descriptor_update_template_khr:     unsafe {
                         unsafe extern "system" fn create_descriptor_update_template_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const DescriptorUpdateTemplateCreateInfo<'_>,
@@ -12978,7 +13198,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_descriptor_update_template_khr: unsafe {
+                    destroy_descriptor_update_template_khr:    unsafe {
                         unsafe extern "system" fn destroy_descriptor_update_template_khr(
                             _device: crate::vk::Device,
                             _descriptor_update_template: DescriptorUpdateTemplate,
@@ -12999,7 +13219,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    update_descriptor_set_with_template_khr: unsafe {
+                    update_descriptor_set_with_template_khr:   unsafe {
                         unsafe extern "system" fn update_descriptor_set_with_template_khr(
                             _device: crate::vk::Device,
                             _descriptor_set: DescriptorSet,
@@ -13048,25 +13268,25 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_imageless_framebuffer"]
+    ///VK_KHR_imageless_framebuffer
     pub mod imageless_framebuffer {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_IMAGELESS_FRAMEBUFFER_NAME as NAME,
-            crate::vk::KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_IMAGELESS_FRAMEBUFFER_NAME as NAME,
+            KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_create_renderpass2"]
+    ///VK_KHR_create_renderpass2
     pub mod create_renderpass2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_CREATE_RENDERPASS2_NAME as NAME,
-            crate::vk::KHR_CREATE_RENDERPASS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_CREATE_RENDERPASS2_NAME as NAME,
+            KHR_CREATE_RENDERPASS2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_create_renderpass2 device-level functions"]
+        ///VK_KHR_create_renderpass2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13077,22 +13297,24 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_create_renderpass2 device-level function pointers"]
+        ///Raw VK_KHR_create_renderpass2 device-level function pointers
         pub struct DeviceFn {
-            pub create_render_pass2_khr: PFN_vkCreateRenderPass2,
+            pub create_render_pass2_khr:    PFN_vkCreateRenderPass2,
             pub cmd_begin_render_pass2_khr: PFN_vkCmdBeginRenderPass2,
-            pub cmd_next_subpass2_khr: PFN_vkCmdNextSubpass2,
-            pub cmd_end_render_pass2_khr: PFN_vkCmdEndRenderPass2,
+            pub cmd_next_subpass2_khr:      PFN_vkCmdNextSubpass2,
+            pub cmd_end_render_pass2_khr:   PFN_vkCmdEndRenderPass2,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -13100,9 +13322,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_render_pass2_khr: unsafe {
+                    create_render_pass2_khr:    unsafe {
                         unsafe extern "system" fn create_render_pass2_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const RenderPassCreateInfo2<'_>,
@@ -13143,7 +13366,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_next_subpass2_khr: unsafe {
+                    cmd_next_subpass2_khr:      unsafe {
                         unsafe extern "system" fn cmd_next_subpass2_khr(
                             _command_buffer: CommandBuffer,
                             _p_subpass_begin_info: *const SubpassBeginInfo<'_>,
@@ -13162,7 +13385,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_end_render_pass2_khr: unsafe {
+                    cmd_end_render_pass2_khr:   unsafe {
                         unsafe extern "system" fn cmd_end_render_pass2_khr(
                             _command_buffer: CommandBuffer,
                             _p_subpass_end_info: *const SubpassEndInfo<'_>,
@@ -13185,17 +13408,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shared_presentable_image"]
+    ///VK_KHR_shared_presentable_image
     pub mod shared_presentable_image {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHARED_PRESENTABLE_IMAGE_NAME as NAME,
-            crate::vk::KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHARED_PRESENTABLE_IMAGE_NAME as NAME,
+            KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_shared_presentable_image device-level functions"]
+        ///VK_KHR_shared_presentable_image device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13206,17 +13429,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_shared_presentable_image device-level function pointers"]
+        ///Raw VK_KHR_shared_presentable_image device-level function pointers
         pub struct DeviceFn {
             pub get_swapchain_status_khr: PFN_vkGetSwapchainStatusKHR,
         }
@@ -13226,6 +13451,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_swapchain_status_khr: unsafe {
@@ -13251,17 +13477,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_fence_capabilities"]
+    ///VK_KHR_external_fence_capabilities
     pub mod external_fence_capabilities {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_FENCE_CAPABILITIES_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_FENCE_CAPABILITIES_NAME as NAME,
+            KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_fence_capabilities instance-level functions"]
+        ///VK_KHR_external_fence_capabilities instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -13272,17 +13498,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_fence_capabilities instance-level function pointers"]
+        ///Raw VK_KHR_external_fence_capabilities instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_external_fence_properties_khr:
                 PFN_vkGetPhysicalDeviceExternalFenceProperties,
@@ -13293,6 +13522,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_external_fence_properties_khr: unsafe {
@@ -13320,25 +13550,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_fence"]
+    ///VK_KHR_external_fence
     pub mod external_fence {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_FENCE_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_FENCE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_FENCE_NAME as NAME, KHR_EXTERNAL_FENCE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_external_fence_win32"]
+    ///VK_KHR_external_fence_win32
     pub mod external_fence_win32 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_FENCE_WIN32_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_FENCE_WIN32_NAME as NAME,
+            KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_fence_win32 device-level functions"]
+        ///VK_KHR_external_fence_win32 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13349,20 +13578,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_fence_win32 device-level function pointers"]
+        ///Raw VK_KHR_external_fence_win32 device-level function pointers
         pub struct DeviceFn {
             pub import_fence_win32_handle_khr: PFN_vkImportFenceWin32HandleKHR,
-            pub get_fence_win32_handle_khr: PFN_vkGetFenceWin32HandleKHR,
+            pub get_fence_win32_handle_khr:    PFN_vkGetFenceWin32HandleKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -13370,6 +13601,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     import_fence_win32_handle_khr: unsafe {
@@ -13393,7 +13625,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_fence_win32_handle_khr: unsafe {
+                    get_fence_win32_handle_khr:    unsafe {
                         unsafe extern "system" fn get_fence_win32_handle_khr(
                             _device: crate::vk::Device,
                             _p_get_win32_handle_info: *const FenceGetWin32HandleInfoKHR<'_>,
@@ -13417,17 +13649,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_external_fence_fd"]
+    ///VK_KHR_external_fence_fd
     pub mod external_fence_fd {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_EXTERNAL_FENCE_FD_NAME as NAME,
-            crate::vk::KHR_EXTERNAL_FENCE_FD_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_EXTERNAL_FENCE_FD_NAME as NAME, KHR_EXTERNAL_FENCE_FD_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_external_fence_fd device-level functions"]
+        ///VK_KHR_external_fence_fd device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13438,20 +13669,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_external_fence_fd device-level function pointers"]
+        ///Raw VK_KHR_external_fence_fd device-level function pointers
         pub struct DeviceFn {
             pub import_fence_fd_khr: PFN_vkImportFenceFdKHR,
-            pub get_fence_fd_khr: PFN_vkGetFenceFdKHR,
+            pub get_fence_fd_khr:    PFN_vkGetFenceFdKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -13459,6 +13692,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     import_fence_fd_khr: unsafe {
@@ -13476,7 +13710,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_fence_fd_khr: unsafe {
+                    get_fence_fd_khr:    unsafe {
                         unsafe extern "system" fn get_fence_fd_khr(
                             _device: crate::vk::Device,
                             _p_get_fd_info: *const FenceGetFdInfoKHR<'_>,
@@ -13496,17 +13730,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_performance_query"]
+    ///VK_KHR_performance_query
     pub mod performance_query {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PERFORMANCE_QUERY_NAME as NAME,
-            crate::vk::KHR_PERFORMANCE_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PERFORMANCE_QUERY_NAME as NAME, KHR_PERFORMANCE_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_performance_query instance-level functions"]
+        ///VK_KHR_performance_query instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -13517,17 +13750,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_performance_query instance-level function pointers"]
+        ///Raw VK_KHR_performance_query instance-level function pointers
         pub struct InstanceFn {
             pub enumerate_physical_device_queue_family_performance_query_counters_khr:
                 PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR,
@@ -13540,6 +13775,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     enumerate_physical_device_queue_family_performance_query_counters_khr: unsafe {
@@ -13562,7 +13798,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_physical_device_queue_family_performance_query_passes_khr: unsafe {
+                    get_physical_device_queue_family_performance_query_passes_khr:         unsafe {
                         unsafe extern "system" fn get_physical_device_queue_family_performance_query_passes_khr(
                             _physical_device: PhysicalDevice,
                             _p_performance_query_create_info : * const QueryPoolPerformanceCreateInfoKHR < '_ >,
@@ -13588,10 +13824,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_performance_query device-level functions"]
+        ///VK_KHR_performance_query device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13602,17 +13838,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_performance_query device-level function pointers"]
+        ///Raw VK_KHR_performance_query device-level function pointers
         pub struct DeviceFn {
             pub acquire_profiling_lock_khr: PFN_vkAcquireProfilingLockKHR,
             pub release_profiling_lock_khr: PFN_vkReleaseProfilingLockKHR,
@@ -13623,6 +13861,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     acquire_profiling_lock_khr: unsafe {
@@ -13666,25 +13905,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_maintenance2"]
+    ///VK_KHR_maintenance2
     pub mod maintenance2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE2_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE2_NAME as NAME, KHR_MAINTENANCE2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_get_surface_capabilities2"]
+    ///VK_KHR_get_surface_capabilities2
     pub mod get_surface_capabilities2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_GET_SURFACE_CAPABILITIES2_NAME as NAME,
-            crate::vk::KHR_GET_SURFACE_CAPABILITIES2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_GET_SURFACE_CAPABILITIES2_NAME as NAME,
+            KHR_GET_SURFACE_CAPABILITIES2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_get_surface_capabilities2 instance-level functions"]
+        ///VK_KHR_get_surface_capabilities2 instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -13695,17 +13933,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_get_surface_capabilities2 instance-level function pointers"]
+        ///Raw VK_KHR_get_surface_capabilities2 instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_surface_capabilities2_khr:
                 PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR,
@@ -13717,6 +13958,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_surface_capabilities2_khr: unsafe {
@@ -13740,7 +13982,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_physical_device_surface_formats2_khr: unsafe {
+                    get_physical_device_surface_formats2_khr:      unsafe {
                         unsafe extern "system" fn get_physical_device_surface_formats2_khr(
                             _physical_device: PhysicalDevice,
                             _p_surface_info: *const PhysicalDeviceSurfaceInfo2KHR<'_>,
@@ -13766,25 +14008,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_variable_pointers"]
+    ///VK_KHR_variable_pointers
     pub mod variable_pointers {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VARIABLE_POINTERS_NAME as NAME,
-            crate::vk::KHR_VARIABLE_POINTERS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VARIABLE_POINTERS_NAME as NAME, KHR_VARIABLE_POINTERS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_get_display_properties2"]
+    ///VK_KHR_get_display_properties2
     pub mod get_display_properties2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_GET_DISPLAY_PROPERTIES2_NAME as NAME,
-            crate::vk::KHR_GET_DISPLAY_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_GET_DISPLAY_PROPERTIES2_NAME as NAME,
+            KHR_GET_DISPLAY_PROPERTIES2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_get_display_properties2 instance-level functions"]
+        ///VK_KHR_get_display_properties2 instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -13795,17 +14036,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_get_display_properties2 instance-level function pointers"]
+        ///Raw VK_KHR_get_display_properties2 instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_display_properties2_khr:
                 PFN_vkGetPhysicalDeviceDisplayProperties2KHR,
@@ -13820,9 +14063,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_physical_device_display_properties2_khr: unsafe {
+                    get_physical_device_display_properties2_khr:       unsafe {
                         unsafe extern "system" fn get_physical_device_display_properties2_khr(
                             _physical_device: PhysicalDevice,
                             _p_property_count: *mut u32,
@@ -13864,7 +14108,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_display_mode_properties2_khr: unsafe {
+                    get_display_mode_properties2_khr:                  unsafe {
                         unsafe extern "system" fn get_display_mode_properties2_khr(
                             _physical_device: PhysicalDevice,
                             _display: DisplayKHR,
@@ -13886,7 +14130,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_display_plane_capabilities2_khr: unsafe {
+                    get_display_plane_capabilities2_khr:               unsafe {
                         unsafe extern "system" fn get_display_plane_capabilities2_khr(
                             _physical_device: PhysicalDevice,
                             _p_display_plane_info: *const DisplayPlaneInfo2KHR<'_>,
@@ -13911,41 +14155,41 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_dedicated_allocation"]
+    ///VK_KHR_dedicated_allocation
     pub mod dedicated_allocation {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DEDICATED_ALLOCATION_NAME as NAME,
-            crate::vk::KHR_DEDICATED_ALLOCATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DEDICATED_ALLOCATION_NAME as NAME,
+            KHR_DEDICATED_ALLOCATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_storage_buffer_storage_class"]
+    ///VK_KHR_storage_buffer_storage_class
     pub mod storage_buffer_storage_class {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_STORAGE_BUFFER_STORAGE_CLASS_NAME as NAME,
-            crate::vk::KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_STORAGE_BUFFER_STORAGE_CLASS_NAME as NAME,
+            KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_relaxed_block_layout"]
+    ///VK_KHR_relaxed_block_layout
     pub mod relaxed_block_layout {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_RELAXED_BLOCK_LAYOUT_NAME as NAME,
-            crate::vk::KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_RELAXED_BLOCK_LAYOUT_NAME as NAME,
+            KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_get_memory_requirements2"]
+    ///VK_KHR_get_memory_requirements2
     pub mod get_memory_requirements2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_GET_MEMORY_REQUIREMENTS2_NAME as NAME,
-            crate::vk::KHR_GET_MEMORY_REQUIREMENTS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_GET_MEMORY_REQUIREMENTS2_NAME as NAME,
+            KHR_GET_MEMORY_REQUIREMENTS2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_get_memory_requirements2 device-level functions"]
+        ///VK_KHR_get_memory_requirements2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -13956,20 +14200,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_get_memory_requirements2 device-level function pointers"]
+        ///Raw VK_KHR_get_memory_requirements2 device-level function pointers
         pub struct DeviceFn {
-            pub get_image_memory_requirements2_khr: PFN_vkGetImageMemoryRequirements2,
-            pub get_buffer_memory_requirements2_khr: PFN_vkGetBufferMemoryRequirements2,
+            pub get_image_memory_requirements2_khr:        PFN_vkGetImageMemoryRequirements2,
+            pub get_buffer_memory_requirements2_khr:       PFN_vkGetBufferMemoryRequirements2,
             pub get_image_sparse_memory_requirements2_khr: PFN_vkGetImageSparseMemoryRequirements2,
         }
         unsafe impl Send for DeviceFn {}
@@ -13978,9 +14224,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_image_memory_requirements2_khr: unsafe {
+                    get_image_memory_requirements2_khr:        unsafe {
                         unsafe extern "system" fn get_image_memory_requirements2_khr(
                             _device: crate::vk::Device,
                             _p_info: *const ImageMemoryRequirementsInfo2<'_>,
@@ -14001,7 +14248,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_buffer_memory_requirements2_khr: unsafe {
+                    get_buffer_memory_requirements2_khr:       unsafe {
                         unsafe extern "system" fn get_buffer_memory_requirements2_khr(
                             _device: crate::vk::Device,
                             _p_info: *const BufferMemoryRequirementsInfo2<'_>,
@@ -14048,25 +14295,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_image_format_list"]
+    ///VK_KHR_image_format_list
     pub mod image_format_list {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_IMAGE_FORMAT_LIST_NAME as NAME,
-            crate::vk::KHR_IMAGE_FORMAT_LIST_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_IMAGE_FORMAT_LIST_NAME as NAME, KHR_IMAGE_FORMAT_LIST_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_acceleration_structure"]
+    ///VK_KHR_acceleration_structure
     pub mod acceleration_structure {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_ACCELERATION_STRUCTURE_NAME as NAME,
-            crate::vk::KHR_ACCELERATION_STRUCTURE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_ACCELERATION_STRUCTURE_NAME as NAME,
+            KHR_ACCELERATION_STRUCTURE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_acceleration_structure device-level functions"]
+        ///VK_KHR_acceleration_structure device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14077,17 +14323,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_acceleration_structure device-level function pointers"]
+        ///Raw VK_KHR_acceleration_structure device-level function pointers
         pub struct DeviceFn {
             pub create_acceleration_structure_khr: PFN_vkCreateAccelerationStructureKHR,
             pub destroy_acceleration_structure_khr: PFN_vkDestroyAccelerationStructureKHR,
@@ -14122,9 +14370,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_acceleration_structure_khr: unsafe {
+                    create_acceleration_structure_khr:                   unsafe {
                         unsafe extern "system" fn create_acceleration_structure_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const AccelerationStructureCreateInfoKHR<'_>,
@@ -14146,7 +14395,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_acceleration_structure_khr: unsafe {
+                    destroy_acceleration_structure_khr:                  unsafe {
                         unsafe extern "system" fn destroy_acceleration_structure_khr(
                             _device: crate::vk::Device,
                             _acceleration_structure: AccelerationStructureKHR,
@@ -14167,7 +14416,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_build_acceleration_structures_khr: unsafe {
+                    cmd_build_acceleration_structures_khr:               unsafe {
                         unsafe extern "system" fn cmd_build_acceleration_structures_khr(
                             _command_buffer: CommandBuffer,
                             _info_count: u32,
@@ -14189,7 +14438,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_build_acceleration_structures_indirect_khr: unsafe {
+                    cmd_build_acceleration_structures_indirect_khr:      unsafe {
                         unsafe extern "system" fn cmd_build_acceleration_structures_indirect_khr(
                             _command_buffer: CommandBuffer,
                             _info_count: u32,
@@ -14213,7 +14462,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    build_acceleration_structures_khr: unsafe {
+                    build_acceleration_structures_khr:                   unsafe {
                         unsafe extern "system" fn build_acceleration_structures_khr(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -14236,7 +14485,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_acceleration_structure_khr: unsafe {
+                    copy_acceleration_structure_khr:                     unsafe {
                         unsafe extern "system" fn copy_acceleration_structure_khr(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -14257,7 +14506,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_acceleration_structure_to_memory_khr: unsafe {
+                    copy_acceleration_structure_to_memory_khr:           unsafe {
                         unsafe extern "system" fn copy_acceleration_structure_to_memory_khr(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -14278,7 +14527,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    copy_memory_to_acceleration_structure_khr: unsafe {
+                    copy_memory_to_acceleration_structure_khr:           unsafe {
                         unsafe extern "system" fn copy_memory_to_acceleration_structure_khr(
                             _device: crate::vk::Device,
                             _deferred_operation: DeferredOperationKHR,
@@ -14299,7 +14548,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    write_acceleration_structures_properties_khr: unsafe {
+                    write_acceleration_structures_properties_khr:        unsafe {
                         unsafe extern "system" fn write_acceleration_structures_properties_khr(
                             _device: crate::vk::Device,
                             _acceleration_structure_count: u32,
@@ -14324,7 +14573,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_acceleration_structure_khr: unsafe {
+                    cmd_copy_acceleration_structure_khr:                 unsafe {
                         unsafe extern "system" fn cmd_copy_acceleration_structure_khr(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyAccelerationStructureInfoKHR<'_>,
@@ -14344,7 +14593,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_acceleration_structure_to_memory_khr: unsafe {
+                    cmd_copy_acceleration_structure_to_memory_khr:       unsafe {
                         unsafe extern "system" fn cmd_copy_acceleration_structure_to_memory_khr(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyAccelerationStructureToMemoryInfoKHR<'_>,
@@ -14364,7 +14613,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_memory_to_acceleration_structure_khr: unsafe {
+                    cmd_copy_memory_to_acceleration_structure_khr:       unsafe {
                         unsafe extern "system" fn cmd_copy_memory_to_acceleration_structure_khr(
                             _command_buffer: CommandBuffer,
                             _p_info: *const CopyMemoryToAccelerationStructureInfoKHR<'_>,
@@ -14384,7 +14633,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_acceleration_structure_device_address_khr: unsafe {
+                    get_acceleration_structure_device_address_khr:       unsafe {
                         unsafe extern "system" fn get_acceleration_structure_device_address_khr(
                             _device: crate::vk::Device,
                             _p_info: *const AccelerationStructureDeviceAddressInfoKHR<'_>,
@@ -14404,7 +14653,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_write_acceleration_structures_properties_khr: unsafe {
+                    cmd_write_acceleration_structures_properties_khr:    unsafe {
                         unsafe extern "system" fn cmd_write_acceleration_structures_properties_khr(
                             _command_buffer: CommandBuffer,
                             _acceleration_structure_count: u32,
@@ -14449,7 +14698,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_acceleration_structure_build_sizes_khr: unsafe {
+                    get_acceleration_structure_build_sizes_khr:          unsafe {
                         unsafe extern "system" fn get_acceleration_structure_build_sizes_khr(
                             _device: crate::vk::Device,
                             _build_type: AccelerationStructureBuildTypeKHR,
@@ -14476,17 +14725,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_ray_tracing_pipeline"]
+    ///VK_KHR_ray_tracing_pipeline
     pub mod ray_tracing_pipeline {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_RAY_TRACING_PIPELINE_NAME as NAME,
-            crate::vk::KHR_RAY_TRACING_PIPELINE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_RAY_TRACING_PIPELINE_NAME as NAME,
+            KHR_RAY_TRACING_PIPELINE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_ray_tracing_pipeline device-level functions"]
+        ///VK_KHR_ray_tracing_pipeline device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14497,17 +14746,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_ray_tracing_pipeline device-level function pointers"]
+        ///Raw VK_KHR_ray_tracing_pipeline device-level function pointers
         pub struct DeviceFn {
             pub cmd_trace_rays_khr: PFN_vkCmdTraceRaysKHR,
             pub create_ray_tracing_pipelines_khr: PFN_vkCreateRayTracingPipelinesKHR,
@@ -14526,6 +14777,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_trace_rays_khr: unsafe {
@@ -14691,25 +14943,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_ray_query"]
+    ///VK_KHR_ray_query
     pub mod ray_query {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_RAY_QUERY_NAME as NAME,
-            crate::vk::KHR_RAY_QUERY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_RAY_QUERY_NAME as NAME, KHR_RAY_QUERY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_sampler_ycbcr_conversion"]
+    ///VK_KHR_sampler_ycbcr_conversion
     pub mod sampler_ycbcr_conversion {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SAMPLER_YCBCR_CONVERSION_NAME as NAME,
-            crate::vk::KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SAMPLER_YCBCR_CONVERSION_NAME as NAME,
+            KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_sampler_ycbcr_conversion device-level functions"]
+        ///VK_KHR_sampler_ycbcr_conversion device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14720,19 +14971,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_sampler_ycbcr_conversion device-level function pointers"]
+        ///Raw VK_KHR_sampler_ycbcr_conversion device-level function pointers
         pub struct DeviceFn {
-            pub create_sampler_ycbcr_conversion_khr: PFN_vkCreateSamplerYcbcrConversion,
+            pub create_sampler_ycbcr_conversion_khr:  PFN_vkCreateSamplerYcbcrConversion,
             pub destroy_sampler_ycbcr_conversion_khr: PFN_vkDestroySamplerYcbcrConversion,
         }
         unsafe impl Send for DeviceFn {}
@@ -14741,9 +14994,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_sampler_ycbcr_conversion_khr: unsafe {
+                    create_sampler_ycbcr_conversion_khr:  unsafe {
                         unsafe extern "system" fn create_sampler_ycbcr_conversion_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const SamplerYcbcrConversionCreateInfo<'_>,
@@ -14790,17 +15044,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_bind_memory2"]
+    ///VK_KHR_bind_memory2
     pub mod bind_memory2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_BIND_MEMORY2_NAME as NAME,
-            crate::vk::KHR_BIND_MEMORY2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_BIND_MEMORY2_NAME as NAME, KHR_BIND_MEMORY2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_bind_memory2 device-level functions"]
+        ///VK_KHR_bind_memory2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14811,20 +15064,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_bind_memory2 device-level function pointers"]
+        ///Raw VK_KHR_bind_memory2 device-level function pointers
         pub struct DeviceFn {
             pub bind_buffer_memory2_khr: PFN_vkBindBufferMemory2,
-            pub bind_image_memory2_khr: PFN_vkBindImageMemory2,
+            pub bind_image_memory2_khr:  PFN_vkBindImageMemory2,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -14832,6 +15087,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     bind_buffer_memory2_khr: unsafe {
@@ -14854,7 +15110,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    bind_image_memory2_khr: unsafe {
+                    bind_image_memory2_khr:  unsafe {
                         unsafe extern "system" fn bind_image_memory2_khr(
                             _device: crate::vk::Device,
                             _bind_info_count: u32,
@@ -14877,25 +15133,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_portability_subset"]
+    ///VK_KHR_portability_subset
     pub mod portability_subset {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PORTABILITY_SUBSET_NAME as NAME,
-            crate::vk::KHR_PORTABILITY_SUBSET_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PORTABILITY_SUBSET_NAME as NAME,
+            KHR_PORTABILITY_SUBSET_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance3"]
+    ///VK_KHR_maintenance3
     pub mod maintenance3 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE3_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE3_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE3_NAME as NAME, KHR_MAINTENANCE3_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_maintenance3 device-level functions"]
+        ///VK_KHR_maintenance3 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14906,17 +15161,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_maintenance3 device-level function pointers"]
+        ///Raw VK_KHR_maintenance3 device-level function pointers
         pub struct DeviceFn {
             pub get_descriptor_set_layout_support_khr: PFN_vkGetDescriptorSetLayoutSupport,
         }
@@ -14926,6 +15183,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_descriptor_set_layout_support_khr: unsafe {
@@ -14953,17 +15211,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_draw_indirect_count"]
+    ///VK_KHR_draw_indirect_count
     pub mod draw_indirect_count {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DRAW_INDIRECT_COUNT_NAME as NAME,
-            crate::vk::KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DRAW_INDIRECT_COUNT_NAME as NAME,
+            KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_draw_indirect_count device-level functions"]
+        ///VK_KHR_draw_indirect_count device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -14974,19 +15232,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_draw_indirect_count device-level function pointers"]
+        ///Raw VK_KHR_draw_indirect_count device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_indirect_count_khr: PFN_vkCmdDrawIndirectCount,
+            pub cmd_draw_indirect_count_khr:         PFN_vkCmdDrawIndirectCount,
             pub cmd_draw_indexed_indirect_count_khr: PFN_vkCmdDrawIndexedIndirectCount,
         }
         unsafe impl Send for DeviceFn {}
@@ -14995,9 +15255,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_indirect_count_khr: unsafe {
+                    cmd_draw_indirect_count_khr:         unsafe {
                         unsafe extern "system" fn cmd_draw_indirect_count_khr(
                             _command_buffer: CommandBuffer,
                             _buffer: Buffer,
@@ -15050,97 +15311,92 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_subgroup_extended_types"]
+    ///VK_KHR_shader_subgroup_extended_types
     pub mod shader_subgroup_extended_types {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_SUBGROUP_EXTENDED_TYPES_NAME as NAME,
-            crate::vk::KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_SUBGROUP_EXTENDED_TYPES_NAME as NAME,
+            KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_8bit_storage"]
+    ///VK_KHR_8bit_storage
     pub mod _8bit_storage {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_8BIT_STORAGE_NAME as NAME,
-            crate::vk::KHR_8BIT_STORAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_8BIT_STORAGE_NAME as NAME, KHR_8BIT_STORAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_atomic_int64"]
+    ///VK_KHR_shader_atomic_int64
     pub mod shader_atomic_int64 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_ATOMIC_INT64_NAME as NAME,
-            crate::vk::KHR_SHADER_ATOMIC_INT64_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_ATOMIC_INT64_NAME as NAME,
+            KHR_SHADER_ATOMIC_INT64_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_clock"]
+    ///VK_KHR_shader_clock
     pub mod shader_clock {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_CLOCK_NAME as NAME,
-            crate::vk::KHR_SHADER_CLOCK_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_CLOCK_NAME as NAME, KHR_SHADER_CLOCK_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_decode_h265"]
+    ///VK_KHR_video_decode_h265
     pub mod video_decode_h265 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_DECODE_H265_NAME as NAME,
-            crate::vk::KHR_VIDEO_DECODE_H265_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_DECODE_H265_NAME as NAME, KHR_VIDEO_DECODE_H265_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_global_priority"]
+    ///VK_KHR_global_priority
     pub mod global_priority {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_GLOBAL_PRIORITY_NAME as NAME,
-            crate::vk::KHR_GLOBAL_PRIORITY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_GLOBAL_PRIORITY_NAME as NAME, KHR_GLOBAL_PRIORITY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_driver_properties"]
+    ///VK_KHR_driver_properties
     pub mod driver_properties {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DRIVER_PROPERTIES_NAME as NAME,
-            crate::vk::KHR_DRIVER_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DRIVER_PROPERTIES_NAME as NAME, KHR_DRIVER_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_float_controls"]
+    ///VK_KHR_shader_float_controls
     pub mod shader_float_controls {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_FLOAT_CONTROLS_NAME as NAME,
-            crate::vk::KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_FLOAT_CONTROLS_NAME as NAME,
+            KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_depth_stencil_resolve"]
+    ///VK_KHR_depth_stencil_resolve
     pub mod depth_stencil_resolve {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DEPTH_STENCIL_RESOLVE_NAME as NAME,
-            crate::vk::KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DEPTH_STENCIL_RESOLVE_NAME as NAME,
+            KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_swapchain_mutable_format"]
+    ///VK_KHR_swapchain_mutable_format
     pub mod swapchain_mutable_format {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SWAPCHAIN_MUTABLE_FORMAT_NAME as NAME,
-            crate::vk::KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SWAPCHAIN_MUTABLE_FORMAT_NAME as NAME,
+            KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_timeline_semaphore"]
+    ///VK_KHR_timeline_semaphore
     pub mod timeline_semaphore {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_TIMELINE_SEMAPHORE_NAME as NAME,
-            crate::vk::KHR_TIMELINE_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_TIMELINE_SEMAPHORE_NAME as NAME,
+            KHR_TIMELINE_SEMAPHORE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_timeline_semaphore device-level functions"]
+        ///VK_KHR_timeline_semaphore device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15151,21 +15407,23 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_timeline_semaphore device-level function pointers"]
+        ///Raw VK_KHR_timeline_semaphore device-level function pointers
         pub struct DeviceFn {
             pub get_semaphore_counter_value_khr: PFN_vkGetSemaphoreCounterValue,
-            pub wait_semaphores_khr: PFN_vkWaitSemaphores,
-            pub signal_semaphore_khr: PFN_vkSignalSemaphore,
+            pub wait_semaphores_khr:             PFN_vkWaitSemaphores,
+            pub signal_semaphore_khr:            PFN_vkSignalSemaphore,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -15173,6 +15431,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_semaphore_counter_value_khr: unsafe {
@@ -15195,7 +15454,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    wait_semaphores_khr: unsafe {
+                    wait_semaphores_khr:             unsafe {
                         unsafe extern "system" fn wait_semaphores_khr(
                             _device: crate::vk::Device,
                             _p_wait_info: *const SemaphoreWaitInfo<'_>,
@@ -15211,7 +15470,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    signal_semaphore_khr: unsafe {
+                    signal_semaphore_khr:            unsafe {
                         unsafe extern "system" fn signal_semaphore_khr(
                             _device: crate::vk::Device,
                             _p_signal_info: *const SemaphoreSignalInfo<'_>,
@@ -15230,33 +15489,33 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_vulkan_memory_model"]
+    ///VK_KHR_vulkan_memory_model
     pub mod vulkan_memory_model {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VULKAN_MEMORY_MODEL_NAME as NAME,
-            crate::vk::KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VULKAN_MEMORY_MODEL_NAME as NAME,
+            KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_terminate_invocation"]
+    ///VK_KHR_shader_terminate_invocation
     pub mod shader_terminate_invocation {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_TERMINATE_INVOCATION_NAME as NAME,
-            crate::vk::KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_TERMINATE_INVOCATION_NAME as NAME,
+            KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_fragment_shading_rate"]
+    ///VK_KHR_fragment_shading_rate
     pub mod fragment_shading_rate {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_FRAGMENT_SHADING_RATE_NAME as NAME,
-            crate::vk::KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_FRAGMENT_SHADING_RATE_NAME as NAME,
+            KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_fragment_shading_rate instance-level functions"]
+        ///VK_KHR_fragment_shading_rate instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -15267,17 +15526,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_fragment_shading_rate instance-level function pointers"]
+        ///Raw VK_KHR_fragment_shading_rate instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_fragment_shading_rates_khr:
                 PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR,
@@ -15288,6 +15549,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_fragment_shading_rates_khr: unsafe {
@@ -15316,10 +15578,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_fragment_shading_rate device-level functions"]
+        ///VK_KHR_fragment_shading_rate device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15330,17 +15592,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_fragment_shading_rate device-level function pointers"]
+        ///Raw VK_KHR_fragment_shading_rate device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_fragment_shading_rate_khr: PFN_vkCmdSetFragmentShadingRateKHR,
         }
@@ -15350,6 +15614,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_fragment_shading_rate_khr: unsafe {
@@ -15377,17 +15642,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_dynamic_rendering_local_read"]
+    ///VK_KHR_dynamic_rendering_local_read
     pub mod dynamic_rendering_local_read {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DYNAMIC_RENDERING_LOCAL_READ_NAME as NAME,
-            crate::vk::KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DYNAMIC_RENDERING_LOCAL_READ_NAME as NAME,
+            KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_dynamic_rendering_local_read device-level functions"]
+        ///VK_KHR_dynamic_rendering_local_read device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15398,17 +15663,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_dynamic_rendering_local_read device-level function pointers"]
+        ///Raw VK_KHR_dynamic_rendering_local_read device-level function
+        /// pointers
         pub struct DeviceFn {
             pub cmd_set_rendering_attachment_locations_khr:
                 PFN_vkCmdSetRenderingAttachmentLocations,
@@ -15421,9 +15689,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_rendering_attachment_locations_khr: unsafe {
+                    cmd_set_rendering_attachment_locations_khr:     unsafe {
                         unsafe extern "system" fn cmd_set_rendering_attachment_locations_khr(
                             _command_buffer: CommandBuffer,
                             _p_location_info: *const RenderingAttachmentLocationInfo<'_>,
@@ -15467,49 +15736,47 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_quad_control"]
+    ///VK_KHR_shader_quad_control
     pub mod shader_quad_control {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_QUAD_CONTROL_NAME as NAME,
-            crate::vk::KHR_SHADER_QUAD_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_QUAD_CONTROL_NAME as NAME,
+            KHR_SHADER_QUAD_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_spirv_1_4"]
+    ///VK_KHR_spirv_1_4
     pub mod spirv_1_4 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SPIRV_1_4_NAME as NAME,
-            crate::vk::KHR_SPIRV_1_4_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SPIRV_1_4_NAME as NAME, KHR_SPIRV_1_4_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_surface_protected_capabilities"]
+    ///VK_KHR_surface_protected_capabilities
     pub mod surface_protected_capabilities {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SURFACE_PROTECTED_CAPABILITIES_NAME as NAME,
-            crate::vk::KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SURFACE_PROTECTED_CAPABILITIES_NAME as NAME,
+            KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_separate_depth_stencil_layouts"]
+    ///VK_KHR_separate_depth_stencil_layouts
     pub mod separate_depth_stencil_layouts {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_NAME as NAME,
-            crate::vk::KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_NAME as NAME,
+            KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_present_wait"]
+    ///VK_KHR_present_wait
     pub mod present_wait {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PRESENT_WAIT_NAME as NAME,
-            crate::vk::KHR_PRESENT_WAIT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PRESENT_WAIT_NAME as NAME, KHR_PRESENT_WAIT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_present_wait device-level functions"]
+        ///VK_KHR_present_wait device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15520,17 +15787,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_present_wait device-level function pointers"]
+        ///Raw VK_KHR_present_wait device-level function pointers
         pub struct DeviceFn {
             pub wait_for_present_khr: PFN_vkWaitForPresentKHR,
         }
@@ -15540,6 +15809,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     wait_for_present_khr: unsafe {
@@ -15563,25 +15833,25 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_uniform_buffer_standard_layout"]
+    ///VK_KHR_uniform_buffer_standard_layout
     pub mod uniform_buffer_standard_layout {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_NAME as NAME,
-            crate::vk::KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_NAME as NAME,
+            KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_buffer_device_address"]
+    ///VK_KHR_buffer_device_address
     pub mod buffer_device_address {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_BUFFER_DEVICE_ADDRESS_NAME as NAME,
-            crate::vk::KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_BUFFER_DEVICE_ADDRESS_NAME as NAME,
+            KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_buffer_device_address device-level functions"]
+        ///VK_KHR_buffer_device_address device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15592,20 +15862,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_buffer_device_address device-level function pointers"]
+        ///Raw VK_KHR_buffer_device_address device-level function pointers
         pub struct DeviceFn {
-            pub get_buffer_device_address_khr: PFN_vkGetBufferDeviceAddress,
-            pub get_buffer_opaque_capture_address_khr: PFN_vkGetBufferOpaqueCaptureAddress,
+            pub get_buffer_device_address_khr:                PFN_vkGetBufferDeviceAddress,
+            pub get_buffer_opaque_capture_address_khr:        PFN_vkGetBufferOpaqueCaptureAddress,
             pub get_device_memory_opaque_capture_address_khr:
                 PFN_vkGetDeviceMemoryOpaqueCaptureAddress,
         }
@@ -15615,9 +15887,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_buffer_device_address_khr: unsafe {
+                    get_buffer_device_address_khr:                unsafe {
                         unsafe extern "system" fn get_buffer_device_address_khr(
                             _device: crate::vk::Device,
                             _p_info: *const BufferDeviceAddressInfo<'_>,
@@ -15636,7 +15909,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_buffer_opaque_capture_address_khr: unsafe {
+                    get_buffer_opaque_capture_address_khr:        unsafe {
                         unsafe extern "system" fn get_buffer_opaque_capture_address_khr(
                             _device: crate::vk::Device,
                             _p_info: *const BufferDeviceAddressInfo<'_>,
@@ -15680,17 +15953,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_deferred_host_operations"]
+    ///VK_KHR_deferred_host_operations
     pub mod deferred_host_operations {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_DEFERRED_HOST_OPERATIONS_NAME as NAME,
-            crate::vk::KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_DEFERRED_HOST_OPERATIONS_NAME as NAME,
+            KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_deferred_host_operations device-level functions"]
+        ///VK_KHR_deferred_host_operations device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15701,24 +15974,26 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_deferred_host_operations device-level function pointers"]
+        ///Raw VK_KHR_deferred_host_operations device-level function pointers
         pub struct DeviceFn {
-            pub create_deferred_operation_khr: PFN_vkCreateDeferredOperationKHR,
-            pub destroy_deferred_operation_khr: PFN_vkDestroyDeferredOperationKHR,
+            pub create_deferred_operation_khr:              PFN_vkCreateDeferredOperationKHR,
+            pub destroy_deferred_operation_khr:             PFN_vkDestroyDeferredOperationKHR,
             pub get_deferred_operation_max_concurrency_khr:
                 PFN_vkGetDeferredOperationMaxConcurrencyKHR,
-            pub get_deferred_operation_result_khr: PFN_vkGetDeferredOperationResultKHR,
-            pub deferred_operation_join_khr: PFN_vkDeferredOperationJoinKHR,
+            pub get_deferred_operation_result_khr:          PFN_vkGetDeferredOperationResultKHR,
+            pub deferred_operation_join_khr:                PFN_vkDeferredOperationJoinKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -15726,9 +16001,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_deferred_operation_khr: unsafe {
+                    create_deferred_operation_khr:              unsafe {
                         unsafe extern "system" fn create_deferred_operation_khr(
                             _device: crate::vk::Device,
                             _p_allocator: *const AllocationCallbacks<'_>,
@@ -15748,7 +16024,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_deferred_operation_khr: unsafe {
+                    destroy_deferred_operation_khr:             unsafe {
                         unsafe extern "system" fn destroy_deferred_operation_khr(
                             _device: crate::vk::Device,
                             _operation: DeferredOperationKHR,
@@ -15788,7 +16064,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_deferred_operation_result_khr: unsafe {
+                    get_deferred_operation_result_khr:          unsafe {
                         unsafe extern "system" fn get_deferred_operation_result_khr(
                             _device: crate::vk::Device,
                             _operation: DeferredOperationKHR,
@@ -15808,7 +16084,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    deferred_operation_join_khr: unsafe {
+                    deferred_operation_join_khr:                unsafe {
                         unsafe extern "system" fn deferred_operation_join_khr(
                             _device: crate::vk::Device,
                             _operation: DeferredOperationKHR,
@@ -15831,17 +16107,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_pipeline_executable_properties"]
+    ///VK_KHR_pipeline_executable_properties
     pub mod pipeline_executable_properties {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PIPELINE_EXECUTABLE_PROPERTIES_NAME as NAME,
-            crate::vk::KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PIPELINE_EXECUTABLE_PROPERTIES_NAME as NAME,
+            KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_pipeline_executable_properties device-level functions"]
+        ///VK_KHR_pipeline_executable_properties device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15852,17 +16128,20 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_pipeline_executable_properties device-level function pointers"]
+        ///Raw VK_KHR_pipeline_executable_properties device-level function
+        /// pointers
         pub struct DeviceFn {
             pub get_pipeline_executable_properties_khr: PFN_vkGetPipelineExecutablePropertiesKHR,
             pub get_pipeline_executable_statistics_khr: PFN_vkGetPipelineExecutableStatisticsKHR,
@@ -15875,9 +16154,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_pipeline_executable_properties_khr: unsafe {
+                    get_pipeline_executable_properties_khr:               unsafe {
                         unsafe extern "system" fn get_pipeline_executable_properties_khr(
                             _device: crate::vk::Device,
                             _p_pipeline_info: *const PipelineInfoKHR<'_>,
@@ -15899,7 +16179,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_pipeline_executable_statistics_khr: unsafe {
+                    get_pipeline_executable_statistics_khr:               unsafe {
                         unsafe extern "system" fn get_pipeline_executable_statistics_khr(
                             _device: crate::vk::Device,
                             _p_executable_info: *const PipelineExecutableInfoKHR<'_>,
@@ -15947,17 +16227,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_map_memory2"]
+    ///VK_KHR_map_memory2
     pub mod map_memory2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAP_MEMORY2_NAME as NAME,
-            crate::vk::KHR_MAP_MEMORY2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAP_MEMORY2_NAME as NAME, KHR_MAP_MEMORY2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_map_memory2 device-level functions"]
+        ///VK_KHR_map_memory2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -15968,19 +16247,21 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_map_memory2 device-level function pointers"]
+        ///Raw VK_KHR_map_memory2 device-level function pointers
         pub struct DeviceFn {
-            pub map_memory2_khr: PFN_vkMapMemory2,
+            pub map_memory2_khr:   PFN_vkMapMemory2,
             pub unmap_memory2_khr: PFN_vkUnmapMemory2,
         }
         unsafe impl Send for DeviceFn {}
@@ -15989,9 +16270,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    map_memory2_khr: unsafe {
+                    map_memory2_khr:   unsafe {
                         unsafe extern "system" fn map_memory2_khr(
                             _device: crate::vk::Device,
                             _p_memory_map_info: *const MemoryMapInfo<'_>,
@@ -16026,49 +16308,47 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_integer_dot_product"]
+    ///VK_KHR_shader_integer_dot_product
     pub mod shader_integer_dot_product {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_INTEGER_DOT_PRODUCT_NAME as NAME,
-            crate::vk::KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_INTEGER_DOT_PRODUCT_NAME as NAME,
+            KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_pipeline_library"]
+    ///VK_KHR_pipeline_library
     pub mod pipeline_library {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PIPELINE_LIBRARY_NAME as NAME,
-            crate::vk::KHR_PIPELINE_LIBRARY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PIPELINE_LIBRARY_NAME as NAME, KHR_PIPELINE_LIBRARY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_non_semantic_info"]
+    ///VK_KHR_shader_non_semantic_info
     pub mod shader_non_semantic_info {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_NON_SEMANTIC_INFO_NAME as NAME,
-            crate::vk::KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_NON_SEMANTIC_INFO_NAME as NAME,
+            KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_present_id"]
+    ///VK_KHR_present_id
     pub mod present_id {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PRESENT_ID_NAME as NAME,
-            crate::vk::KHR_PRESENT_ID_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PRESENT_ID_NAME as NAME, KHR_PRESENT_ID_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_encode_queue"]
+    ///VK_KHR_video_encode_queue
     pub mod video_encode_queue {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_ENCODE_QUEUE_NAME as NAME,
-            crate::vk::KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_ENCODE_QUEUE_NAME as NAME,
+            KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_video_encode_queue instance-level functions"]
+        ///VK_KHR_video_encode_queue instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -16079,17 +16359,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_video_encode_queue instance-level function pointers"]
+        ///Raw VK_KHR_video_encode_queue instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_video_encode_quality_level_properties_khr:
                 PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR,
@@ -16100,6 +16382,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_video_encode_quality_level_properties_khr: unsafe {
@@ -16130,10 +16413,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_video_encode_queue device-level functions"]
+        ///VK_KHR_video_encode_queue device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16144,20 +16427,22 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_video_encode_queue device-level function pointers"]
+        ///Raw VK_KHR_video_encode_queue device-level function pointers
         pub struct DeviceFn {
             pub get_encoded_video_session_parameters_khr: PFN_vkGetEncodedVideoSessionParametersKHR,
-            pub cmd_encode_video_khr: PFN_vkCmdEncodeVideoKHR,
+            pub cmd_encode_video_khr:                     PFN_vkCmdEncodeVideoKHR,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -16165,6 +16450,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_encoded_video_session_parameters_khr: unsafe {
@@ -16190,7 +16476,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_encode_video_khr: unsafe {
+                    cmd_encode_video_khr:                     unsafe {
                         unsafe extern "system" fn cmd_encode_video_khr(
                             _command_buffer: CommandBuffer,
                             _p_encode_info: *const VideoEncodeInfoKHR<'_>,
@@ -16209,17 +16495,16 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_synchronization2"]
+    ///VK_KHR_synchronization2
     pub mod synchronization2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SYNCHRONIZATION2_NAME as NAME,
-            crate::vk::KHR_SYNCHRONIZATION2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SYNCHRONIZATION2_NAME as NAME, KHR_SYNCHRONIZATION2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_synchronization2 device-level functions"]
+        ///VK_KHR_synchronization2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16230,24 +16515,26 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_synchronization2 device-level function pointers"]
+        ///Raw VK_KHR_synchronization2 device-level function pointers
         pub struct DeviceFn {
-            pub cmd_set_event2_khr: PFN_vkCmdSetEvent2,
-            pub cmd_reset_event2_khr: PFN_vkCmdResetEvent2,
-            pub cmd_wait_events2_khr: PFN_vkCmdWaitEvents2,
+            pub cmd_set_event2_khr:        PFN_vkCmdSetEvent2,
+            pub cmd_reset_event2_khr:      PFN_vkCmdResetEvent2,
+            pub cmd_wait_events2_khr:      PFN_vkCmdWaitEvents2,
             pub cmd_pipeline_barrier2_khr: PFN_vkCmdPipelineBarrier2,
-            pub cmd_write_timestamp2_khr: PFN_vkCmdWriteTimestamp2,
-            pub queue_submit2_khr: PFN_vkQueueSubmit2,
+            pub cmd_write_timestamp2_khr:  PFN_vkCmdWriteTimestamp2,
+            pub queue_submit2_khr:         PFN_vkQueueSubmit2,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -16255,9 +16542,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_event2_khr: unsafe {
+                    cmd_set_event2_khr:        unsafe {
                         unsafe extern "system" fn cmd_set_event2_khr(
                             _command_buffer: CommandBuffer,
                             _event: Event,
@@ -16273,7 +16561,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_reset_event2_khr: unsafe {
+                    cmd_reset_event2_khr:      unsafe {
                         unsafe extern "system" fn cmd_reset_event2_khr(
                             _command_buffer: CommandBuffer,
                             _event: Event,
@@ -16289,7 +16577,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_wait_events2_khr: unsafe {
+                    cmd_wait_events2_khr:      unsafe {
                         unsafe extern "system" fn cmd_wait_events2_khr(
                             _command_buffer: CommandBuffer,
                             _event_count: u32,
@@ -16325,7 +16613,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_write_timestamp2_khr: unsafe {
+                    cmd_write_timestamp2_khr:  unsafe {
                         unsafe extern "system" fn cmd_write_timestamp2_khr(
                             _command_buffer: CommandBuffer,
                             _stage: PipelineStageFlags2,
@@ -16346,7 +16634,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    queue_submit2_khr: unsafe {
+                    queue_submit2_khr:         unsafe {
                         unsafe extern "system" fn queue_submit2_khr(
                             _queue: Queue,
                             _submit_count: u32,
@@ -16367,49 +16655,48 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_fragment_shader_barycentric"]
+    ///VK_KHR_fragment_shader_barycentric
     pub mod fragment_shader_barycentric {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_FRAGMENT_SHADER_BARYCENTRIC_NAME as NAME,
-            crate::vk::KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_FRAGMENT_SHADER_BARYCENTRIC_NAME as NAME,
+            KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_subgroup_uniform_control_flow"]
+    ///VK_KHR_shader_subgroup_uniform_control_flow
     pub mod shader_subgroup_uniform_control_flow {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_NAME as NAME,
-            crate::vk::KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_NAME as NAME,
+            KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_zero_initialize_workgroup_memory"]
+    ///VK_KHR_zero_initialize_workgroup_memory
     pub mod zero_initialize_workgroup_memory {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_NAME as NAME,
-            crate::vk::KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_NAME as NAME,
+            KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_workgroup_memory_explicit_layout"]
+    ///VK_KHR_workgroup_memory_explicit_layout
     pub mod workgroup_memory_explicit_layout {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_NAME as NAME,
-            crate::vk::KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_NAME as NAME,
+            KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_copy_commands2"]
+    ///VK_KHR_copy_commands2
     pub mod copy_commands2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_COPY_COMMANDS2_NAME as NAME,
-            crate::vk::KHR_COPY_COMMANDS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_COPY_COMMANDS2_NAME as NAME, KHR_COPY_COMMANDS2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_copy_commands2 device-level functions"]
+        ///VK_KHR_copy_commands2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16420,24 +16707,26 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_copy_commands2 device-level function pointers"]
+        ///Raw VK_KHR_copy_commands2 device-level function pointers
         pub struct DeviceFn {
-            pub cmd_copy_buffer2_khr: PFN_vkCmdCopyBuffer2,
-            pub cmd_copy_image2_khr: PFN_vkCmdCopyImage2,
+            pub cmd_copy_buffer2_khr:          PFN_vkCmdCopyBuffer2,
+            pub cmd_copy_image2_khr:           PFN_vkCmdCopyImage2,
             pub cmd_copy_buffer_to_image2_khr: PFN_vkCmdCopyBufferToImage2,
             pub cmd_copy_image_to_buffer2_khr: PFN_vkCmdCopyImageToBuffer2,
-            pub cmd_blit_image2_khr: PFN_vkCmdBlitImage2,
-            pub cmd_resolve_image2_khr: PFN_vkCmdResolveImage2,
+            pub cmd_blit_image2_khr:           PFN_vkCmdBlitImage2,
+            pub cmd_resolve_image2_khr:        PFN_vkCmdResolveImage2,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -16445,9 +16734,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_copy_buffer2_khr: unsafe {
+                    cmd_copy_buffer2_khr:          unsafe {
                         unsafe extern "system" fn cmd_copy_buffer2_khr(
                             _command_buffer: CommandBuffer,
                             _p_copy_buffer_info: *const CopyBufferInfo2<'_>,
@@ -16462,7 +16752,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_copy_image2_khr: unsafe {
+                    cmd_copy_image2_khr:           unsafe {
                         unsafe extern "system" fn cmd_copy_image2_khr(
                             _command_buffer: CommandBuffer,
                             _p_copy_image_info: *const CopyImageInfo2<'_>,
@@ -16515,7 +16805,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_blit_image2_khr: unsafe {
+                    cmd_blit_image2_khr:           unsafe {
                         unsafe extern "system" fn cmd_blit_image2_khr(
                             _command_buffer: CommandBuffer,
                             _p_blit_image_info: *const BlitImageInfo2<'_>,
@@ -16530,7 +16820,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_resolve_image2_khr: unsafe {
+                    cmd_resolve_image2_khr:        unsafe {
                         unsafe extern "system" fn cmd_resolve_image2_khr(
                             _command_buffer: CommandBuffer,
                             _p_resolve_image_info: *const ResolveImageInfo2<'_>,
@@ -16552,25 +16842,25 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_format_feature_flags2"]
+    ///VK_KHR_format_feature_flags2
     pub mod format_feature_flags2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_FORMAT_FEATURE_FLAGS2_NAME as NAME,
-            crate::vk::KHR_FORMAT_FEATURE_FLAGS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_FORMAT_FEATURE_FLAGS2_NAME as NAME,
+            KHR_FORMAT_FEATURE_FLAGS2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_ray_tracing_maintenance1"]
+    ///VK_KHR_ray_tracing_maintenance1
     pub mod ray_tracing_maintenance1 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_RAY_TRACING_MAINTENANCE1_NAME as NAME,
-            crate::vk::KHR_RAY_TRACING_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_RAY_TRACING_MAINTENANCE1_NAME as NAME,
+            KHR_RAY_TRACING_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_ray_tracing_maintenance1 device-level functions"]
+        ///VK_KHR_ray_tracing_maintenance1 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16581,17 +16871,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_ray_tracing_maintenance1 device-level function pointers"]
+        ///Raw VK_KHR_ray_tracing_maintenance1 device-level function pointers
         pub struct DeviceFn {
             pub cmd_trace_rays_indirect2_khr: PFN_vkCmdTraceRaysIndirect2KHR,
         }
@@ -16601,6 +16893,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_trace_rays_indirect2_khr: unsafe {
@@ -16626,25 +16919,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_portability_enumeration"]
+    ///VK_KHR_portability_enumeration
     pub mod portability_enumeration {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PORTABILITY_ENUMERATION_NAME as NAME,
-            crate::vk::KHR_PORTABILITY_ENUMERATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PORTABILITY_ENUMERATION_NAME as NAME,
+            KHR_PORTABILITY_ENUMERATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance4"]
+    ///VK_KHR_maintenance4
     pub mod maintenance4 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE4_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE4_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE4_NAME as NAME, KHR_MAINTENANCE4_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_maintenance4 device-level functions"]
+        ///VK_KHR_maintenance4 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16655,17 +16947,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_maintenance4 device-level function pointers"]
+        ///Raw VK_KHR_maintenance4 device-level function pointers
         pub struct DeviceFn {
             pub get_device_buffer_memory_requirements_khr: PFN_vkGetDeviceBufferMemoryRequirements,
             pub get_device_image_memory_requirements_khr: PFN_vkGetDeviceImageMemoryRequirements,
@@ -16678,9 +16972,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_device_buffer_memory_requirements_khr: unsafe {
+                    get_device_buffer_memory_requirements_khr:       unsafe {
                         unsafe extern "system" fn get_device_buffer_memory_requirements_khr(
                             _device: crate::vk::Device,
                             _p_info: *const DeviceBufferMemoryRequirements<'_>,
@@ -16701,7 +16996,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_device_image_memory_requirements_khr: unsafe {
+                    get_device_image_memory_requirements_khr:        unsafe {
                         unsafe extern "system" fn get_device_image_memory_requirements_khr(
                             _device: crate::vk::Device,
                             _p_info: *const DeviceImageMemoryRequirements<'_>,
@@ -16748,33 +17043,32 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_subgroup_rotate"]
+    ///VK_KHR_shader_subgroup_rotate
     pub mod shader_subgroup_rotate {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_SUBGROUP_ROTATE_NAME as NAME,
-            crate::vk::KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_SUBGROUP_ROTATE_NAME as NAME,
+            KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_maximal_reconvergence"]
+    ///VK_KHR_shader_maximal_reconvergence
     pub mod shader_maximal_reconvergence {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_MAXIMAL_RECONVERGENCE_NAME as NAME,
-            crate::vk::KHR_SHADER_MAXIMAL_RECONVERGENCE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_MAXIMAL_RECONVERGENCE_NAME as NAME,
+            KHR_SHADER_MAXIMAL_RECONVERGENCE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance5"]
+    ///VK_KHR_maintenance5
     pub mod maintenance5 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE5_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE5_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE5_NAME as NAME, KHR_MAINTENANCE5_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_maintenance5 device-level functions"]
+        ///VK_KHR_maintenance5 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16785,22 +17079,24 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_maintenance5 device-level function pointers"]
+        ///Raw VK_KHR_maintenance5 device-level function pointers
         pub struct DeviceFn {
-            pub cmd_bind_index_buffer2_khr: PFN_vkCmdBindIndexBuffer2,
-            pub get_rendering_area_granularity_khr: PFN_vkGetRenderingAreaGranularity,
+            pub cmd_bind_index_buffer2_khr:              PFN_vkCmdBindIndexBuffer2,
+            pub get_rendering_area_granularity_khr:      PFN_vkGetRenderingAreaGranularity,
             pub get_device_image_subresource_layout_khr: PFN_vkGetDeviceImageSubresourceLayout,
-            pub get_image_subresource_layout2_khr: PFN_vkGetImageSubresourceLayout2,
+            pub get_image_subresource_layout2_khr:       PFN_vkGetImageSubresourceLayout2,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -16808,9 +17104,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_bind_index_buffer2_khr: unsafe {
+                    cmd_bind_index_buffer2_khr:              unsafe {
                         unsafe extern "system" fn cmd_bind_index_buffer2_khr(
                             _command_buffer: CommandBuffer,
                             _buffer: Buffer,
@@ -16832,7 +17129,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_rendering_area_granularity_khr: unsafe {
+                    get_rendering_area_granularity_khr:      unsafe {
                         unsafe extern "system" fn get_rendering_area_granularity_khr(
                             _device: crate::vk::Device,
                             _p_rendering_area_info: *const RenderingAreaInfo<'_>,
@@ -16874,7 +17171,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_image_subresource_layout2_khr: unsafe {
+                    get_image_subresource_layout2_khr:       unsafe {
                         unsafe extern "system" fn get_image_subresource_layout2_khr(
                             _device: crate::vk::Device,
                             _image: Image,
@@ -16900,25 +17197,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_ray_tracing_position_fetch"]
+    ///VK_KHR_ray_tracing_position_fetch
     pub mod ray_tracing_position_fetch {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_RAY_TRACING_POSITION_FETCH_NAME as NAME,
-            crate::vk::KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_RAY_TRACING_POSITION_FETCH_NAME as NAME,
+            KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_pipeline_binary"]
+    ///VK_KHR_pipeline_binary
     pub mod pipeline_binary {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_PIPELINE_BINARY_NAME as NAME,
-            crate::vk::KHR_PIPELINE_BINARY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_PIPELINE_BINARY_NAME as NAME, KHR_PIPELINE_BINARY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_pipeline_binary device-level functions"]
+        ///VK_KHR_pipeline_binary device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -16929,22 +17225,24 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_pipeline_binary device-level function pointers"]
+        ///Raw VK_KHR_pipeline_binary device-level function pointers
         pub struct DeviceFn {
-            pub create_pipeline_binaries_khr: PFN_vkCreatePipelineBinariesKHR,
-            pub destroy_pipeline_binary_khr: PFN_vkDestroyPipelineBinaryKHR,
-            pub get_pipeline_key_khr: PFN_vkGetPipelineKeyKHR,
-            pub get_pipeline_binary_data_khr: PFN_vkGetPipelineBinaryDataKHR,
+            pub create_pipeline_binaries_khr:       PFN_vkCreatePipelineBinariesKHR,
+            pub destroy_pipeline_binary_khr:        PFN_vkDestroyPipelineBinaryKHR,
+            pub get_pipeline_key_khr:               PFN_vkGetPipelineKeyKHR,
+            pub get_pipeline_binary_data_khr:       PFN_vkGetPipelineBinaryDataKHR,
             pub release_captured_pipeline_data_khr: PFN_vkReleaseCapturedPipelineDataKHR,
         }
         unsafe impl Send for DeviceFn {}
@@ -16953,9 +17251,10 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_pipeline_binaries_khr: unsafe {
+                    create_pipeline_binaries_khr:       unsafe {
                         unsafe extern "system" fn create_pipeline_binaries_khr(
                             _device: crate::vk::Device,
                             _p_create_info: *const PipelineBinaryCreateInfoKHR<'_>,
@@ -16976,7 +17275,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_pipeline_binary_khr: unsafe {
+                    destroy_pipeline_binary_khr:        unsafe {
                         unsafe extern "system" fn destroy_pipeline_binary_khr(
                             _device: crate::vk::Device,
                             _pipeline_binary: PipelineBinaryKHR,
@@ -16996,7 +17295,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_pipeline_key_khr: unsafe {
+                    get_pipeline_key_khr:               unsafe {
                         unsafe extern "system" fn get_pipeline_key_khr(
                             _device: crate::vk::Device,
                             _p_pipeline_create_info: *const PipelineCreateInfoKHR<'_>,
@@ -17012,7 +17311,7 @@ pub mod khr {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_pipeline_binary_data_khr: unsafe {
+                    get_pipeline_binary_data_khr:       unsafe {
                         unsafe extern "system" fn get_pipeline_binary_data_khr(
                             _device: crate::vk::Device,
                             _p_info: *const PipelineBinaryDataInfoKHR<'_>,
@@ -17059,17 +17358,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_cooperative_matrix"]
+    ///VK_KHR_cooperative_matrix
     pub mod cooperative_matrix {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_COOPERATIVE_MATRIX_NAME as NAME,
-            crate::vk::KHR_COOPERATIVE_MATRIX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_COOPERATIVE_MATRIX_NAME as NAME,
+            KHR_COOPERATIVE_MATRIX_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_cooperative_matrix instance-level functions"]
+        ///VK_KHR_cooperative_matrix instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17080,17 +17379,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_cooperative_matrix instance-level function pointers"]
+        ///Raw VK_KHR_cooperative_matrix instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_cooperative_matrix_properties_khr:
                 PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR,
@@ -17101,6 +17402,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_cooperative_matrix_properties_khr: unsafe {
@@ -17128,81 +17430,78 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_compute_shader_derivatives"]
+    ///VK_KHR_compute_shader_derivatives
     pub mod compute_shader_derivatives {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_COMPUTE_SHADER_DERIVATIVES_NAME as NAME,
-            crate::vk::KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_COMPUTE_SHADER_DERIVATIVES_NAME as NAME,
+            KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_decode_av1"]
+    ///VK_KHR_video_decode_av1
     pub mod video_decode_av1 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_DECODE_AV1_NAME as NAME,
-            crate::vk::KHR_VIDEO_DECODE_AV1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_DECODE_AV1_NAME as NAME, KHR_VIDEO_DECODE_AV1_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_encode_av1"]
+    ///VK_KHR_video_encode_av1
     pub mod video_encode_av1 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_ENCODE_AV1_NAME as NAME,
-            crate::vk::KHR_VIDEO_ENCODE_AV1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_ENCODE_AV1_NAME as NAME, KHR_VIDEO_ENCODE_AV1_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_video_maintenance1"]
+    ///VK_KHR_video_maintenance1
     pub mod video_maintenance1 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_MAINTENANCE1_NAME as NAME,
-            crate::vk::KHR_VIDEO_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_MAINTENANCE1_NAME as NAME,
+            KHR_VIDEO_MAINTENANCE1_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_vertex_attribute_divisor"]
+    ///VK_KHR_vertex_attribute_divisor
     pub mod vertex_attribute_divisor {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VERTEX_ATTRIBUTE_DIVISOR_NAME as NAME,
-            crate::vk::KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VERTEX_ATTRIBUTE_DIVISOR_NAME as NAME,
+            KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_load_store_op_none"]
+    ///VK_KHR_load_store_op_none
     pub mod load_store_op_none {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_LOAD_STORE_OP_NONE_NAME as NAME,
-            crate::vk::KHR_LOAD_STORE_OP_NONE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_LOAD_STORE_OP_NONE_NAME as NAME,
+            KHR_LOAD_STORE_OP_NONE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_float_controls2"]
+    ///VK_KHR_shader_float_controls2
     pub mod shader_float_controls2 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_FLOAT_CONTROLS2_NAME as NAME,
-            crate::vk::KHR_SHADER_FLOAT_CONTROLS2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_FLOAT_CONTROLS2_NAME as NAME,
+            KHR_SHADER_FLOAT_CONTROLS2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_index_type_uint8"]
+    ///VK_KHR_index_type_uint8
     pub mod index_type_uint8 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_INDEX_TYPE_UINT8_NAME as NAME,
-            crate::vk::KHR_INDEX_TYPE_UINT8_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_INDEX_TYPE_UINT8_NAME as NAME, KHR_INDEX_TYPE_UINT8_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_line_rasterization"]
+    ///VK_KHR_line_rasterization
     pub mod line_rasterization {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_LINE_RASTERIZATION_NAME as NAME,
-            crate::vk::KHR_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_LINE_RASTERIZATION_NAME as NAME,
+            KHR_LINE_RASTERIZATION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_line_rasterization device-level functions"]
+        ///VK_KHR_line_rasterization device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -17213,17 +17512,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_line_rasterization device-level function pointers"]
+        ///Raw VK_KHR_line_rasterization device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_line_stipple_khr: PFN_vkCmdSetLineStipple,
         }
@@ -17233,6 +17534,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_line_stipple_khr: unsafe {
@@ -17259,17 +17561,17 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_calibrated_timestamps"]
+    ///VK_KHR_calibrated_timestamps
     pub mod calibrated_timestamps {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_CALIBRATED_TIMESTAMPS_NAME as NAME,
-            crate::vk::KHR_CALIBRATED_TIMESTAMPS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_CALIBRATED_TIMESTAMPS_NAME as NAME,
+            KHR_CALIBRATED_TIMESTAMPS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_calibrated_timestamps instance-level functions"]
+        ///VK_KHR_calibrated_timestamps instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17280,17 +17582,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_calibrated_timestamps instance-level function pointers"]
+        ///Raw VK_KHR_calibrated_timestamps instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_calibrateable_time_domains_khr:
                 PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR,
@@ -17301,6 +17605,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_calibrateable_time_domains_khr: unsafe {
@@ -17327,10 +17632,10 @@ pub mod khr {
                 }
             }
         }
-        #[doc = "VK_KHR_calibrated_timestamps device-level functions"]
+        ///VK_KHR_calibrated_timestamps device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -17341,17 +17646,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_calibrated_timestamps device-level function pointers"]
+        ///Raw VK_KHR_calibrated_timestamps device-level function pointers
         pub struct DeviceFn {
             pub get_calibrated_timestamps_khr: PFN_vkGetCalibratedTimestampsKHR,
         }
@@ -17361,6 +17668,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_calibrated_timestamps_khr: unsafe {
@@ -17389,25 +17697,24 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_shader_expect_assume"]
+    ///VK_KHR_shader_expect_assume
     pub mod shader_expect_assume {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_EXPECT_ASSUME_NAME as NAME,
-            crate::vk::KHR_SHADER_EXPECT_ASSUME_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_EXPECT_ASSUME_NAME as NAME,
+            KHR_SHADER_EXPECT_ASSUME_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance6"]
+    ///VK_KHR_maintenance6
     pub mod maintenance6 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE6_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE6_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE6_NAME as NAME, KHR_MAINTENANCE6_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_KHR_maintenance6 device-level functions"]
+        ///VK_KHR_maintenance6 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -17418,17 +17725,19 @@ pub mod khr {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_KHR_maintenance6 device-level function pointers"]
+        ///Raw VK_KHR_maintenance6 device-level function pointers
         pub struct DeviceFn {
             pub cmd_bind_descriptor_sets2_khr: PFN_vkCmdBindDescriptorSets2,
             pub cmd_push_constants2_khr: PFN_vkCmdPushConstants2,
@@ -17444,6 +17753,7 @@ pub mod khr {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_bind_descriptor_sets2_khr: unsafe {
@@ -17567,77 +17877,74 @@ pub mod khr {
             }
         }
     }
-    #[doc = "VK_KHR_video_encode_quantization_map"]
+    ///VK_KHR_video_encode_quantization_map
     pub mod video_encode_quantization_map {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_VIDEO_ENCODE_QUANTIZATION_MAP_NAME as NAME,
-            crate::vk::KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_VIDEO_ENCODE_QUANTIZATION_MAP_NAME as NAME,
+            KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_shader_relaxed_extended_instruction"]
+    ///VK_KHR_shader_relaxed_extended_instruction
     pub mod shader_relaxed_extended_instruction {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_NAME as NAME,
-            crate::vk::KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_NAME as NAME,
+            KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_KHR_maintenance7"]
+    ///VK_KHR_maintenance7
     pub mod maintenance7 {
         use super::super::*;
-        pub use {
-            crate::vk::KHR_MAINTENANCE7_NAME as NAME,
-            crate::vk::KHR_MAINTENANCE7_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            KHR_MAINTENANCE7_NAME as NAME, KHR_MAINTENANCE7_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged LUNARG"]
+///Extensions tagged LUNARG
 pub mod lunarg {
-    #[doc = "VK_LUNARG_direct_driver_loading"]
+    ///VK_LUNARG_direct_driver_loading
     pub mod direct_driver_loading {
         use super::super::*;
-        pub use {
-            crate::vk::LUNARG_DIRECT_DRIVER_LOADING_NAME as NAME,
-            crate::vk::LUNARG_DIRECT_DRIVER_LOADING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            LUNARG_DIRECT_DRIVER_LOADING_NAME as NAME,
+            LUNARG_DIRECT_DRIVER_LOADING_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged MESA"]
+///Extensions tagged MESA
 pub mod mesa {
-    #[doc = "VK_MESA_image_alignment_control"]
+    ///VK_MESA_image_alignment_control
     pub mod image_alignment_control {
         use super::super::*;
-        pub use {
-            crate::vk::MESA_IMAGE_ALIGNMENT_CONTROL_NAME as NAME,
-            crate::vk::MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            MESA_IMAGE_ALIGNMENT_CONTROL_NAME as NAME,
+            MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged MSFT"]
+///Extensions tagged MSFT
 pub mod msft {
-    #[doc = "VK_MSFT_layered_driver"]
+    ///VK_MSFT_layered_driver
     pub mod layered_driver {
         use super::super::*;
-        pub use {
-            crate::vk::MSFT_LAYERED_DRIVER_NAME as NAME,
-            crate::vk::MSFT_LAYERED_DRIVER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            MSFT_LAYERED_DRIVER_NAME as NAME, MSFT_LAYERED_DRIVER_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged MVK"]
+///Extensions tagged MVK
 pub mod mvk {
-    #[doc = "VK_MVK_ios_surface"]
+    ///VK_MVK_ios_surface
     pub mod ios_surface {
         use super::super::*;
-        pub use {
-            crate::vk::MVK_IOS_SURFACE_NAME as NAME,
-            crate::vk::MVK_IOS_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            MVK_IOS_SURFACE_NAME as NAME, MVK_IOS_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_MVK_ios_surface instance-level functions"]
+        ///VK_MVK_ios_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17648,17 +17955,19 @@ pub mod mvk {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_MVK_ios_surface instance-level function pointers"]
+        ///Raw VK_MVK_ios_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_ios_surface_mvk: PFN_vkCreateIOSSurfaceMVK,
         }
@@ -17668,6 +17977,7 @@ pub mod mvk {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_ios_surface_mvk: unsafe {
@@ -17694,17 +18004,16 @@ pub mod mvk {
             }
         }
     }
-    #[doc = "VK_MVK_macos_surface"]
+    ///VK_MVK_macos_surface
     pub mod macos_surface {
         use super::super::*;
-        pub use {
-            crate::vk::MVK_MACOS_SURFACE_NAME as NAME,
-            crate::vk::MVK_MACOS_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            MVK_MACOS_SURFACE_NAME as NAME, MVK_MACOS_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_MVK_macos_surface instance-level functions"]
+        ///VK_MVK_macos_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17715,17 +18024,19 @@ pub mod mvk {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_MVK_macos_surface instance-level function pointers"]
+        ///Raw VK_MVK_macos_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_mac_os_surface_mvk: PFN_vkCreateMacOSSurfaceMVK,
         }
@@ -17735,6 +18046,7 @@ pub mod mvk {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_mac_os_surface_mvk: unsafe {
@@ -17763,19 +18075,18 @@ pub mod mvk {
         }
     }
 }
-#[doc = "Extensions tagged NN"]
+///Extensions tagged NN
 pub mod nn {
-    #[doc = "VK_NN_vi_surface"]
+    ///VK_NN_vi_surface
     pub mod vi_surface {
         use super::super::*;
-        pub use {
-            crate::vk::NN_VI_SURFACE_NAME as NAME,
-            crate::vk::NN_VI_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NN_VI_SURFACE_NAME as NAME, NN_VI_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NN_vi_surface instance-level functions"]
+        ///VK_NN_vi_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17786,17 +18097,19 @@ pub mod nn {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NN_vi_surface instance-level function pointers"]
+        ///Raw VK_NN_vi_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_vi_surface_nn: PFN_vkCreateViSurfaceNN,
         }
@@ -17806,6 +18119,7 @@ pub mod nn {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_vi_surface_nn: unsafe {
@@ -17830,43 +18144,42 @@ pub mod nn {
         }
     }
 }
-#[doc = "Extensions tagged NV"]
+///Extensions tagged NV
 pub mod nv {
-    #[doc = "VK_NV_glsl_shader"]
+    ///VK_NV_glsl_shader
     pub mod glsl_shader {
         use super::super::*;
-        pub use {
-            crate::vk::NV_GLSL_SHADER_NAME as NAME,
-            crate::vk::NV_GLSL_SHADER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_GLSL_SHADER_NAME as NAME, NV_GLSL_SHADER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_dedicated_allocation"]
+    ///VK_NV_dedicated_allocation
     pub mod dedicated_allocation {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEDICATED_ALLOCATION_NAME as NAME,
-            crate::vk::NV_DEDICATED_ALLOCATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEDICATED_ALLOCATION_NAME as NAME,
+            NV_DEDICATED_ALLOCATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_corner_sampled_image"]
+    ///VK_NV_corner_sampled_image
     pub mod corner_sampled_image {
         use super::super::*;
-        pub use {
-            crate::vk::NV_CORNER_SAMPLED_IMAGE_NAME as NAME,
-            crate::vk::NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_CORNER_SAMPLED_IMAGE_NAME as NAME,
+            NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_external_memory_capabilities"]
+    ///VK_NV_external_memory_capabilities
     pub mod external_memory_capabilities {
         use super::super::*;
-        pub use {
-            crate::vk::NV_EXTERNAL_MEMORY_CAPABILITIES_NAME as NAME,
-            crate::vk::NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_EXTERNAL_MEMORY_CAPABILITIES_NAME as NAME,
+            NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_external_memory_capabilities instance-level functions"]
+        ///VK_NV_external_memory_capabilities instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -17877,17 +18190,20 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_external_memory_capabilities instance-level function pointers"]
+        ///Raw VK_NV_external_memory_capabilities instance-level function
+        /// pointers
         pub struct InstanceFn {
             pub get_physical_device_external_image_format_properties_nv:
                 PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV,
@@ -17898,6 +18214,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_external_image_format_properties_nv: unsafe {
@@ -17930,25 +18247,24 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_external_memory"]
+    ///VK_NV_external_memory
     pub mod external_memory {
         use super::super::*;
-        pub use {
-            crate::vk::NV_EXTERNAL_MEMORY_NAME as NAME,
-            crate::vk::NV_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_EXTERNAL_MEMORY_NAME as NAME, NV_EXTERNAL_MEMORY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_external_memory_win32"]
+    ///VK_NV_external_memory_win32
     pub mod external_memory_win32 {
         use super::super::*;
-        pub use {
-            crate::vk::NV_EXTERNAL_MEMORY_WIN32_NAME as NAME,
-            crate::vk::NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_EXTERNAL_MEMORY_WIN32_NAME as NAME,
+            NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_external_memory_win32 device-level functions"]
+        ///VK_NV_external_memory_win32 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -17959,17 +18275,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_external_memory_win32 device-level function pointers"]
+        ///Raw VK_NV_external_memory_win32 device-level function pointers
         pub struct DeviceFn {
             pub get_memory_win32_handle_nv: PFN_vkGetMemoryWin32HandleNV,
         }
@@ -17979,6 +18297,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_memory_win32_handle_nv: unsafe {
@@ -18006,25 +18325,24 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_win32_keyed_mutex"]
+    ///VK_NV_win32_keyed_mutex
     pub mod win32_keyed_mutex {
         use super::super::*;
-        pub use {
-            crate::vk::NV_WIN32_KEYED_MUTEX_NAME as NAME,
-            crate::vk::NV_WIN32_KEYED_MUTEX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_WIN32_KEYED_MUTEX_NAME as NAME, NV_WIN32_KEYED_MUTEX_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_clip_space_w_scaling"]
+    ///VK_NV_clip_space_w_scaling
     pub mod clip_space_w_scaling {
         use super::super::*;
-        pub use {
-            crate::vk::NV_CLIP_SPACE_W_SCALING_NAME as NAME,
-            crate::vk::NV_CLIP_SPACE_W_SCALING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_CLIP_SPACE_W_SCALING_NAME as NAME,
+            NV_CLIP_SPACE_W_SCALING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_clip_space_w_scaling device-level functions"]
+        ///VK_NV_clip_space_w_scaling device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18035,17 +18353,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_clip_space_w_scaling device-level function pointers"]
+        ///Raw VK_NV_clip_space_w_scaling device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_viewport_w_scaling_nv: PFN_vkCmdSetViewportWScalingNV,
         }
@@ -18055,6 +18375,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_viewport_w_scaling_nv: unsafe {
@@ -18082,81 +18403,76 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_sample_mask_override_coverage"]
+    ///VK_NV_sample_mask_override_coverage
     pub mod sample_mask_override_coverage {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SAMPLE_MASK_OVERRIDE_COVERAGE_NAME as NAME,
-            crate::vk::NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SAMPLE_MASK_OVERRIDE_COVERAGE_NAME as NAME,
+            NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_geometry_shader_passthrough"]
+    ///VK_NV_geometry_shader_passthrough
     pub mod geometry_shader_passthrough {
         use super::super::*;
-        pub use {
-            crate::vk::NV_GEOMETRY_SHADER_PASSTHROUGH_NAME as NAME,
-            crate::vk::NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_GEOMETRY_SHADER_PASSTHROUGH_NAME as NAME,
+            NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_viewport_array2"]
+    ///VK_NV_viewport_array2
     pub mod viewport_array2 {
         use super::super::*;
-        pub use {
-            crate::vk::NV_VIEWPORT_ARRAY2_NAME as NAME,
-            crate::vk::NV_VIEWPORT_ARRAY2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_VIEWPORT_ARRAY2_NAME as NAME, NV_VIEWPORT_ARRAY2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_viewport_swizzle"]
+    ///VK_NV_viewport_swizzle
     pub mod viewport_swizzle {
         use super::super::*;
-        pub use {
-            crate::vk::NV_VIEWPORT_SWIZZLE_NAME as NAME,
-            crate::vk::NV_VIEWPORT_SWIZZLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_VIEWPORT_SWIZZLE_NAME as NAME, NV_VIEWPORT_SWIZZLE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_fragment_coverage_to_color"]
+    ///VK_NV_fragment_coverage_to_color
     pub mod fragment_coverage_to_color {
         use super::super::*;
-        pub use {
-            crate::vk::NV_FRAGMENT_COVERAGE_TO_COLOR_NAME as NAME,
-            crate::vk::NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_FRAGMENT_COVERAGE_TO_COLOR_NAME as NAME,
+            NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_framebuffer_mixed_samples"]
+    ///VK_NV_framebuffer_mixed_samples
     pub mod framebuffer_mixed_samples {
         use super::super::*;
-        pub use {
-            crate::vk::NV_FRAMEBUFFER_MIXED_SAMPLES_NAME as NAME,
-            crate::vk::NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_FRAMEBUFFER_MIXED_SAMPLES_NAME as NAME,
+            NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_fill_rectangle"]
+    ///VK_NV_fill_rectangle
     pub mod fill_rectangle {
         use super::super::*;
-        pub use {
-            crate::vk::NV_FILL_RECTANGLE_NAME as NAME,
-            crate::vk::NV_FILL_RECTANGLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_FILL_RECTANGLE_NAME as NAME, NV_FILL_RECTANGLE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_shader_sm_builtins"]
+    ///VK_NV_shader_sm_builtins
     pub mod shader_sm_builtins {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SHADER_SM_BUILTINS_NAME as NAME,
-            crate::vk::NV_SHADER_SM_BUILTINS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SHADER_SM_BUILTINS_NAME as NAME, NV_SHADER_SM_BUILTINS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_shading_rate_image"]
+    ///VK_NV_shading_rate_image
     pub mod shading_rate_image {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SHADING_RATE_IMAGE_NAME as NAME,
-            crate::vk::NV_SHADING_RATE_IMAGE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SHADING_RATE_IMAGE_NAME as NAME, NV_SHADING_RATE_IMAGE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_shading_rate_image device-level functions"]
+        ///VK_NV_shading_rate_image device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18167,21 +18483,23 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_shading_rate_image device-level function pointers"]
+        ///Raw VK_NV_shading_rate_image device-level function pointers
         pub struct DeviceFn {
-            pub cmd_bind_shading_rate_image_nv: PFN_vkCmdBindShadingRateImageNV,
+            pub cmd_bind_shading_rate_image_nv:           PFN_vkCmdBindShadingRateImageNV,
             pub cmd_set_viewport_shading_rate_palette_nv: PFN_vkCmdSetViewportShadingRatePaletteNV,
-            pub cmd_set_coarse_sample_order_nv: PFN_vkCmdSetCoarseSampleOrderNV,
+            pub cmd_set_coarse_sample_order_nv:           PFN_vkCmdSetCoarseSampleOrderNV,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -18189,9 +18507,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_bind_shading_rate_image_nv: unsafe {
+                    cmd_bind_shading_rate_image_nv:           unsafe {
                         unsafe extern "system" fn cmd_bind_shading_rate_image_nv(
                             _command_buffer: CommandBuffer,
                             _image_view: ImageView,
@@ -18233,7 +18552,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_coarse_sample_order_nv: unsafe {
+                    cmd_set_coarse_sample_order_nv:           unsafe {
                         unsafe extern "system" fn cmd_set_coarse_sample_order_nv(
                             _command_buffer: CommandBuffer,
                             _sample_order_type: CoarseSampleOrderTypeNV,
@@ -18258,17 +18577,16 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_ray_tracing"]
+    ///VK_NV_ray_tracing
     pub mod ray_tracing {
         use super::super::*;
-        pub use {
-            crate::vk::NV_RAY_TRACING_NAME as NAME,
-            crate::vk::NV_RAY_TRACING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_RAY_TRACING_NAME as NAME, NV_RAY_TRACING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_ray_tracing device-level functions"]
+        ///VK_NV_ray_tracing device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18279,17 +18597,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_ray_tracing device-level function pointers"]
+        ///Raw VK_NV_ray_tracing device-level function pointers
         pub struct DeviceFn {
             pub create_acceleration_structure_nv: PFN_vkCreateAccelerationStructureNV,
             pub destroy_acceleration_structure_nv: PFN_vkDestroyAccelerationStructureNV,
@@ -18312,6 +18632,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_acceleration_structure_nv: unsafe {
@@ -18589,41 +18910,40 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_representative_fragment_test"]
+    ///VK_NV_representative_fragment_test
     pub mod representative_fragment_test {
         use super::super::*;
-        pub use {
-            crate::vk::NV_REPRESENTATIVE_FRAGMENT_TEST_NAME as NAME,
-            crate::vk::NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_REPRESENTATIVE_FRAGMENT_TEST_NAME as NAME,
+            NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_shader_subgroup_partitioned"]
+    ///VK_NV_shader_subgroup_partitioned
     pub mod shader_subgroup_partitioned {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SHADER_SUBGROUP_PARTITIONED_NAME as NAME,
-            crate::vk::NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SHADER_SUBGROUP_PARTITIONED_NAME as NAME,
+            NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_compute_shader_derivatives"]
+    ///VK_NV_compute_shader_derivatives
     pub mod compute_shader_derivatives {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COMPUTE_SHADER_DERIVATIVES_NAME as NAME,
-            crate::vk::NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COMPUTE_SHADER_DERIVATIVES_NAME as NAME,
+            NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_mesh_shader"]
+    ///VK_NV_mesh_shader
     pub mod mesh_shader {
         use super::super::*;
-        pub use {
-            crate::vk::NV_MESH_SHADER_NAME as NAME,
-            crate::vk::NV_MESH_SHADER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_MESH_SHADER_NAME as NAME, NV_MESH_SHADER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_mesh_shader device-level functions"]
+        ///VK_NV_mesh_shader device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18634,20 +18954,22 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_mesh_shader device-level function pointers"]
+        ///Raw VK_NV_mesh_shader device-level function pointers
         pub struct DeviceFn {
-            pub cmd_draw_mesh_tasks_nv: PFN_vkCmdDrawMeshTasksNV,
-            pub cmd_draw_mesh_tasks_indirect_nv: PFN_vkCmdDrawMeshTasksIndirectNV,
+            pub cmd_draw_mesh_tasks_nv:                PFN_vkCmdDrawMeshTasksNV,
+            pub cmd_draw_mesh_tasks_indirect_nv:       PFN_vkCmdDrawMeshTasksIndirectNV,
             pub cmd_draw_mesh_tasks_indirect_count_nv: PFN_vkCmdDrawMeshTasksIndirectCountNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -18656,9 +18978,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_draw_mesh_tasks_nv: unsafe {
+                    cmd_draw_mesh_tasks_nv:                unsafe {
                         unsafe extern "system" fn cmd_draw_mesh_tasks_nv(
                             _command_buffer: CommandBuffer,
                             _task_count: u32,
@@ -18677,7 +19000,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_draw_mesh_tasks_indirect_nv: unsafe {
+                    cmd_draw_mesh_tasks_indirect_nv:       unsafe {
                         unsafe extern "system" fn cmd_draw_mesh_tasks_indirect_nv(
                             _command_buffer: CommandBuffer,
                             _buffer: Buffer,
@@ -18728,33 +19051,32 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_fragment_shader_barycentric"]
+    ///VK_NV_fragment_shader_barycentric
     pub mod fragment_shader_barycentric {
         use super::super::*;
-        pub use {
-            crate::vk::NV_FRAGMENT_SHADER_BARYCENTRIC_NAME as NAME,
-            crate::vk::NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_FRAGMENT_SHADER_BARYCENTRIC_NAME as NAME,
+            NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_shader_image_footprint"]
+    ///VK_NV_shader_image_footprint
     pub mod shader_image_footprint {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SHADER_IMAGE_FOOTPRINT_NAME as NAME,
-            crate::vk::NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SHADER_IMAGE_FOOTPRINT_NAME as NAME,
+            NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_scissor_exclusive"]
+    ///VK_NV_scissor_exclusive
     pub mod scissor_exclusive {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SCISSOR_EXCLUSIVE_NAME as NAME,
-            crate::vk::NV_SCISSOR_EXCLUSIVE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SCISSOR_EXCLUSIVE_NAME as NAME, NV_SCISSOR_EXCLUSIVE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_scissor_exclusive device-level functions"]
+        ///VK_NV_scissor_exclusive device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18765,20 +19087,22 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_scissor_exclusive device-level function pointers"]
+        ///Raw VK_NV_scissor_exclusive device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_exclusive_scissor_enable_nv: PFN_vkCmdSetExclusiveScissorEnableNV,
-            pub cmd_set_exclusive_scissor_nv: PFN_vkCmdSetExclusiveScissorNV,
+            pub cmd_set_exclusive_scissor_nv:        PFN_vkCmdSetExclusiveScissorNV,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -18786,6 +19110,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_exclusive_scissor_enable_nv: unsafe {
@@ -18810,7 +19135,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_set_exclusive_scissor_nv: unsafe {
+                    cmd_set_exclusive_scissor_nv:        unsafe {
                         unsafe extern "system" fn cmd_set_exclusive_scissor_nv(
                             _command_buffer: CommandBuffer,
                             _first_exclusive_scissor: u32,
@@ -18835,17 +19160,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_device_diagnostic_checkpoints"]
+    ///VK_NV_device_diagnostic_checkpoints
     pub mod device_diagnostic_checkpoints {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_NAME as NAME,
-            crate::vk::NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_NAME as NAME,
+            NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_device_diagnostic_checkpoints device-level functions"]
+        ///VK_NV_device_diagnostic_checkpoints device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -18856,20 +19181,23 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_device_diagnostic_checkpoints device-level function pointers"]
+        ///Raw VK_NV_device_diagnostic_checkpoints device-level function
+        /// pointers
         pub struct DeviceFn {
-            pub cmd_set_checkpoint_nv: PFN_vkCmdSetCheckpointNV,
-            pub get_queue_checkpoint_data_nv: PFN_vkGetQueueCheckpointDataNV,
+            pub cmd_set_checkpoint_nv:         PFN_vkCmdSetCheckpointNV,
+            pub get_queue_checkpoint_data_nv:  PFN_vkGetQueueCheckpointDataNV,
             pub get_queue_checkpoint_data2_nv: PFN_vkGetQueueCheckpointData2NV,
         }
         unsafe impl Send for DeviceFn {}
@@ -18878,9 +19206,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_set_checkpoint_nv: unsafe {
+                    cmd_set_checkpoint_nv:         unsafe {
                         unsafe extern "system" fn cmd_set_checkpoint_nv(
                             _command_buffer: CommandBuffer,
                             _p_checkpoint_marker: *const c_void,
@@ -18898,7 +19227,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_queue_checkpoint_data_nv: unsafe {
+                    get_queue_checkpoint_data_nv:  unsafe {
                         unsafe extern "system" fn get_queue_checkpoint_data_nv(
                             _queue: Queue,
                             _p_checkpoint_data_count: *mut u32,
@@ -18942,25 +19271,24 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_dedicated_allocation_image_aliasing"]
+    ///VK_NV_dedicated_allocation_image_aliasing
     pub mod dedicated_allocation_image_aliasing {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_NAME as NAME,
-            crate::vk::NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_NAME as NAME,
+            NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_cooperative_matrix"]
+    ///VK_NV_cooperative_matrix
     pub mod cooperative_matrix {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COOPERATIVE_MATRIX_NAME as NAME,
-            crate::vk::NV_COOPERATIVE_MATRIX_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COOPERATIVE_MATRIX_NAME as NAME, NV_COOPERATIVE_MATRIX_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_cooperative_matrix instance-level functions"]
+        ///VK_NV_cooperative_matrix instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -18971,17 +19299,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_cooperative_matrix instance-level function pointers"]
+        ///Raw VK_NV_cooperative_matrix instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_cooperative_matrix_properties_nv:
                 PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV,
@@ -18992,6 +19322,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_cooperative_matrix_properties_nv: unsafe {
@@ -19019,17 +19350,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_coverage_reduction_mode"]
+    ///VK_NV_coverage_reduction_mode
     pub mod coverage_reduction_mode {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COVERAGE_REDUCTION_MODE_NAME as NAME,
-            crate::vk::NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COVERAGE_REDUCTION_MODE_NAME as NAME,
+            NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_coverage_reduction_mode instance-level functions"]
+        ///VK_NV_coverage_reduction_mode instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -19040,17 +19371,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_coverage_reduction_mode instance-level function pointers"]
+        ///Raw VK_NV_coverage_reduction_mode instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_supported_framebuffer_mixed_samples_combinations_nv:
                 PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV,
@@ -19061,6 +19394,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_supported_framebuffer_mixed_samples_combinations_nv: unsafe {
@@ -19085,17 +19419,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_device_generated_commands"]
+    ///VK_NV_device_generated_commands
     pub mod device_generated_commands {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEVICE_GENERATED_COMMANDS_NAME as NAME,
-            crate::vk::NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEVICE_GENERATED_COMMANDS_NAME as NAME,
+            NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_device_generated_commands device-level functions"]
+        ///VK_NV_device_generated_commands device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19106,24 +19440,26 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_device_generated_commands device-level function pointers"]
+        ///Raw VK_NV_device_generated_commands device-level function pointers
         pub struct DeviceFn {
             pub get_generated_commands_memory_requirements_nv:
                 PFN_vkGetGeneratedCommandsMemoryRequirementsNV,
             pub cmd_preprocess_generated_commands_nv: PFN_vkCmdPreprocessGeneratedCommandsNV,
-            pub cmd_execute_generated_commands_nv: PFN_vkCmdExecuteGeneratedCommandsNV,
-            pub cmd_bind_pipeline_shader_group_nv: PFN_vkCmdBindPipelineShaderGroupNV,
-            pub create_indirect_commands_layout_nv: PFN_vkCreateIndirectCommandsLayoutNV,
+            pub cmd_execute_generated_commands_nv:             PFN_vkCmdExecuteGeneratedCommandsNV,
+            pub cmd_bind_pipeline_shader_group_nv:             PFN_vkCmdBindPipelineShaderGroupNV,
+            pub create_indirect_commands_layout_nv:            PFN_vkCreateIndirectCommandsLayoutNV,
             pub destroy_indirect_commands_layout_nv: PFN_vkDestroyIndirectCommandsLayoutNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -19132,6 +19468,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_generated_commands_memory_requirements_nv: unsafe {
@@ -19155,7 +19492,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_preprocess_generated_commands_nv: unsafe {
+                    cmd_preprocess_generated_commands_nv:          unsafe {
                         unsafe extern "system" fn cmd_preprocess_generated_commands_nv(
                             _command_buffer: CommandBuffer,
                             _p_generated_commands_info: *const GeneratedCommandsInfoNV<'_>,
@@ -19175,7 +19512,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_execute_generated_commands_nv: unsafe {
+                    cmd_execute_generated_commands_nv:             unsafe {
                         unsafe extern "system" fn cmd_execute_generated_commands_nv(
                             _command_buffer: CommandBuffer,
                             _is_preprocessed: Bool32,
@@ -19196,7 +19533,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_bind_pipeline_shader_group_nv: unsafe {
+                    cmd_bind_pipeline_shader_group_nv:             unsafe {
                         unsafe extern "system" fn cmd_bind_pipeline_shader_group_nv(
                             _command_buffer: CommandBuffer,
                             _pipeline_bind_point: PipelineBindPoint,
@@ -19218,7 +19555,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_indirect_commands_layout_nv: unsafe {
+                    create_indirect_commands_layout_nv:            unsafe {
                         unsafe extern "system" fn create_indirect_commands_layout_nv(
                             _device: crate::vk::Device,
                             _p_create_info: *const IndirectCommandsLayoutCreateInfoNV<'_>,
@@ -19240,7 +19577,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_indirect_commands_layout_nv: unsafe {
+                    destroy_indirect_commands_layout_nv:           unsafe {
                         unsafe extern "system" fn destroy_indirect_commands_layout_nv(
                             _device: crate::vk::Device,
                             _indirect_commands_layout: IndirectCommandsLayoutNV,
@@ -19265,41 +19602,39 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_inherited_viewport_scissor"]
+    ///VK_NV_inherited_viewport_scissor
     pub mod inherited_viewport_scissor {
         use super::super::*;
-        pub use {
-            crate::vk::NV_INHERITED_VIEWPORT_SCISSOR_NAME as NAME,
-            crate::vk::NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_INHERITED_VIEWPORT_SCISSOR_NAME as NAME,
+            NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_present_barrier"]
+    ///VK_NV_present_barrier
     pub mod present_barrier {
         use super::super::*;
-        pub use {
-            crate::vk::NV_PRESENT_BARRIER_NAME as NAME,
-            crate::vk::NV_PRESENT_BARRIER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_PRESENT_BARRIER_NAME as NAME, NV_PRESENT_BARRIER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_device_diagnostics_config"]
+    ///VK_NV_device_diagnostics_config
     pub mod device_diagnostics_config {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEVICE_DIAGNOSTICS_CONFIG_NAME as NAME,
-            crate::vk::NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEVICE_DIAGNOSTICS_CONFIG_NAME as NAME,
+            NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_cuda_kernel_launch"]
+    ///VK_NV_cuda_kernel_launch
     pub mod cuda_kernel_launch {
         use super::super::*;
-        pub use {
-            crate::vk::NV_CUDA_KERNEL_LAUNCH_NAME as NAME,
-            crate::vk::NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_CUDA_KERNEL_LAUNCH_NAME as NAME, NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_cuda_kernel_launch device-level functions"]
+        ///VK_NV_cuda_kernel_launch device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19310,23 +19645,25 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_cuda_kernel_launch device-level function pointers"]
+        ///Raw VK_NV_cuda_kernel_launch device-level function pointers
         pub struct DeviceFn {
-            pub create_cuda_module_nv: PFN_vkCreateCudaModuleNV,
-            pub get_cuda_module_cache_nv: PFN_vkGetCudaModuleCacheNV,
-            pub create_cuda_function_nv: PFN_vkCreateCudaFunctionNV,
-            pub destroy_cuda_module_nv: PFN_vkDestroyCudaModuleNV,
-            pub destroy_cuda_function_nv: PFN_vkDestroyCudaFunctionNV,
+            pub create_cuda_module_nv:     PFN_vkCreateCudaModuleNV,
+            pub get_cuda_module_cache_nv:  PFN_vkGetCudaModuleCacheNV,
+            pub create_cuda_function_nv:   PFN_vkCreateCudaFunctionNV,
+            pub destroy_cuda_module_nv:    PFN_vkDestroyCudaModuleNV,
+            pub destroy_cuda_function_nv:  PFN_vkDestroyCudaFunctionNV,
             pub cmd_cuda_launch_kernel_nv: PFN_vkCmdCudaLaunchKernelNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -19335,9 +19672,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_cuda_module_nv: unsafe {
+                    create_cuda_module_nv:     unsafe {
                         unsafe extern "system" fn create_cuda_module_nv(
                             _device: crate::vk::Device,
                             _p_create_info: *const CudaModuleCreateInfoNV<'_>,
@@ -19357,7 +19695,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_cuda_module_cache_nv: unsafe {
+                    get_cuda_module_cache_nv:  unsafe {
                         unsafe extern "system" fn get_cuda_module_cache_nv(
                             _device: crate::vk::Device,
                             _module: CudaModuleNV,
@@ -19378,7 +19716,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_cuda_function_nv: unsafe {
+                    create_cuda_function_nv:   unsafe {
                         unsafe extern "system" fn create_cuda_function_nv(
                             _device: crate::vk::Device,
                             _p_create_info: *const CudaFunctionCreateInfoNV<'_>,
@@ -19399,7 +19737,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_cuda_module_nv: unsafe {
+                    destroy_cuda_module_nv:    unsafe {
                         unsafe extern "system" fn destroy_cuda_module_nv(
                             _device: crate::vk::Device,
                             _module: CudaModuleNV,
@@ -19418,7 +19756,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_cuda_function_nv: unsafe {
+                    destroy_cuda_function_nv:  unsafe {
                         unsafe extern "system" fn destroy_cuda_function_nv(
                             _device: crate::vk::Device,
                             _function: CudaFunctionNV,
@@ -19461,25 +19799,24 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_low_latency"]
+    ///VK_NV_low_latency
     pub mod low_latency {
         use super::super::*;
-        pub use {
-            crate::vk::NV_LOW_LATENCY_NAME as NAME,
-            crate::vk::NV_LOW_LATENCY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_LOW_LATENCY_NAME as NAME, NV_LOW_LATENCY_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_fragment_shading_rate_enums"]
+    ///VK_NV_fragment_shading_rate_enums
     pub mod fragment_shading_rate_enums {
         use super::super::*;
-        pub use {
-            crate::vk::NV_FRAGMENT_SHADING_RATE_ENUMS_NAME as NAME,
-            crate::vk::NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_FRAGMENT_SHADING_RATE_ENUMS_NAME as NAME,
+            NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_fragment_shading_rate_enums device-level functions"]
+        ///VK_NV_fragment_shading_rate_enums device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19490,17 +19827,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_fragment_shading_rate_enums device-level function pointers"]
+        ///Raw VK_NV_fragment_shading_rate_enums device-level function pointers
         pub struct DeviceFn {
             pub cmd_set_fragment_shading_rate_enum_nv: PFN_vkCmdSetFragmentShadingRateEnumNV,
         }
@@ -19510,6 +19849,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     cmd_set_fragment_shading_rate_enum_nv: unsafe {
@@ -19537,25 +19877,25 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_ray_tracing_motion_blur"]
+    ///VK_NV_ray_tracing_motion_blur
     pub mod ray_tracing_motion_blur {
         use super::super::*;
-        pub use {
-            crate::vk::NV_RAY_TRACING_MOTION_BLUR_NAME as NAME,
-            crate::vk::NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_RAY_TRACING_MOTION_BLUR_NAME as NAME,
+            NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_acquire_winrt_display"]
+    ///VK_NV_acquire_winrt_display
     pub mod acquire_winrt_display {
         use super::super::*;
-        pub use {
-            crate::vk::NV_ACQUIRE_WINRT_DISPLAY_NAME as NAME,
-            crate::vk::NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_ACQUIRE_WINRT_DISPLAY_NAME as NAME,
+            NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_acquire_winrt_display instance-level functions"]
+        ///VK_NV_acquire_winrt_display instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -19566,20 +19906,22 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_acquire_winrt_display instance-level function pointers"]
+        ///Raw VK_NV_acquire_winrt_display instance-level function pointers
         pub struct InstanceFn {
             pub acquire_winrt_display_nv: PFN_vkAcquireWinrtDisplayNV,
-            pub get_winrt_display_nv: PFN_vkGetWinrtDisplayNV,
+            pub get_winrt_display_nv:     PFN_vkGetWinrtDisplayNV,
         }
         unsafe impl Send for InstanceFn {}
         unsafe impl Sync for InstanceFn {}
@@ -19587,6 +19929,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     acquire_winrt_display_nv: unsafe {
@@ -19608,7 +19951,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_winrt_display_nv: unsafe {
+                    get_winrt_display_nv:     unsafe {
                         unsafe extern "system" fn get_winrt_display_nv(
                             _physical_device: PhysicalDevice,
                             _device_relative_id: u32,
@@ -19628,17 +19971,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_external_memory_rdma"]
+    ///VK_NV_external_memory_rdma
     pub mod external_memory_rdma {
         use super::super::*;
-        pub use {
-            crate::vk::NV_EXTERNAL_MEMORY_RDMA_NAME as NAME,
-            crate::vk::NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_EXTERNAL_MEMORY_RDMA_NAME as NAME,
+            NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_external_memory_rdma device-level functions"]
+        ///VK_NV_external_memory_rdma device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19649,17 +19992,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_external_memory_rdma device-level function pointers"]
+        ///Raw VK_NV_external_memory_rdma device-level function pointers
         pub struct DeviceFn {
             pub get_memory_remote_address_nv: PFN_vkGetMemoryRemoteAddressNV,
         }
@@ -19669,6 +20014,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_memory_remote_address_nv: unsafe {
@@ -19697,25 +20043,25 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_displacement_micromap"]
+    ///VK_NV_displacement_micromap
     pub mod displacement_micromap {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DISPLACEMENT_MICROMAP_NAME as NAME,
-            crate::vk::NV_DISPLACEMENT_MICROMAP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DISPLACEMENT_MICROMAP_NAME as NAME,
+            NV_DISPLACEMENT_MICROMAP_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_copy_memory_indirect"]
+    ///VK_NV_copy_memory_indirect
     pub mod copy_memory_indirect {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COPY_MEMORY_INDIRECT_NAME as NAME,
-            crate::vk::NV_COPY_MEMORY_INDIRECT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COPY_MEMORY_INDIRECT_NAME as NAME,
+            NV_COPY_MEMORY_INDIRECT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_copy_memory_indirect device-level functions"]
+        ///VK_NV_copy_memory_indirect device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19726,19 +20072,21 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_copy_memory_indirect device-level function pointers"]
+        ///Raw VK_NV_copy_memory_indirect device-level function pointers
         pub struct DeviceFn {
-            pub cmd_copy_memory_indirect_nv: PFN_vkCmdCopyMemoryIndirectNV,
+            pub cmd_copy_memory_indirect_nv:          PFN_vkCmdCopyMemoryIndirectNV,
             pub cmd_copy_memory_to_image_indirect_nv: PFN_vkCmdCopyMemoryToImageIndirectNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -19747,9 +20095,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_copy_memory_indirect_nv: unsafe {
+                    cmd_copy_memory_indirect_nv:          unsafe {
                         unsafe extern "system" fn cmd_copy_memory_indirect_nv(
                             _command_buffer: CommandBuffer,
                             _copy_buffer_address: DeviceAddress,
@@ -19799,17 +20148,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_memory_decompression"]
+    ///VK_NV_memory_decompression
     pub mod memory_decompression {
         use super::super::*;
-        pub use {
-            crate::vk::NV_MEMORY_DECOMPRESSION_NAME as NAME,
-            crate::vk::NV_MEMORY_DECOMPRESSION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_MEMORY_DECOMPRESSION_NAME as NAME,
+            NV_MEMORY_DECOMPRESSION_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_memory_decompression device-level functions"]
+        ///VK_NV_memory_decompression device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19820,19 +20169,21 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_memory_decompression device-level function pointers"]
+        ///Raw VK_NV_memory_decompression device-level function pointers
         pub struct DeviceFn {
-            pub cmd_decompress_memory_nv: PFN_vkCmdDecompressMemoryNV,
+            pub cmd_decompress_memory_nv:                PFN_vkCmdDecompressMemoryNV,
             pub cmd_decompress_memory_indirect_count_nv: PFN_vkCmdDecompressMemoryIndirectCountNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -19841,9 +20192,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    cmd_decompress_memory_nv: unsafe {
+                    cmd_decompress_memory_nv:                unsafe {
                         unsafe extern "system" fn cmd_decompress_memory_nv(
                             _command_buffer: CommandBuffer,
                             _decompress_region_count: u32,
@@ -19889,17 +20241,17 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_device_generated_commands_compute"]
+    ///VK_NV_device_generated_commands_compute
     pub mod device_generated_commands_compute {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DEVICE_GENERATED_COMMANDS_COMPUTE_NAME as NAME,
-            crate::vk::NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DEVICE_GENERATED_COMMANDS_COMPUTE_NAME as NAME,
+            NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_device_generated_commands_compute device-level functions"]
+        ///VK_NV_device_generated_commands_compute device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -19910,17 +20262,20 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_device_generated_commands_compute device-level function pointers"]
+        ///Raw VK_NV_device_generated_commands_compute device-level function
+        /// pointers
         pub struct DeviceFn {
             pub get_pipeline_indirect_memory_requirements_nv:
                 PFN_vkGetPipelineIndirectMemoryRequirementsNV,
@@ -19933,6 +20288,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_pipeline_indirect_memory_requirements_nv: unsafe {
@@ -19956,7 +20312,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_update_pipeline_indirect_buffer_nv: unsafe {
+                    cmd_update_pipeline_indirect_buffer_nv:       unsafe {
                         unsafe extern "system" fn cmd_update_pipeline_indirect_buffer_nv(
                             _command_buffer: CommandBuffer,
                             _pipeline_bind_point: PipelineBindPoint,
@@ -19977,7 +20333,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_pipeline_indirect_device_address_nv: unsafe {
+                    get_pipeline_indirect_device_address_nv:      unsafe {
                         unsafe extern "system" fn get_pipeline_indirect_device_address_nv(
                             _device: crate::vk::Device,
                             _p_info: *const PipelineIndirectDeviceAddressInfoNV<'_>,
@@ -20001,25 +20357,24 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_linear_color_attachment"]
+    ///VK_NV_linear_color_attachment
     pub mod linear_color_attachment {
         use super::super::*;
-        pub use {
-            crate::vk::NV_LINEAR_COLOR_ATTACHMENT_NAME as NAME,
-            crate::vk::NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_LINEAR_COLOR_ATTACHMENT_NAME as NAME,
+            NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_optical_flow"]
+    ///VK_NV_optical_flow
     pub mod optical_flow {
         use super::super::*;
-        pub use {
-            crate::vk::NV_OPTICAL_FLOW_NAME as NAME,
-            crate::vk::NV_OPTICAL_FLOW_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_OPTICAL_FLOW_NAME as NAME, NV_OPTICAL_FLOW_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_optical_flow instance-level functions"]
+        ///VK_NV_optical_flow instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -20030,17 +20385,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_optical_flow instance-level function pointers"]
+        ///Raw VK_NV_optical_flow instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_optical_flow_image_formats_nv:
                 PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV,
@@ -20051,6 +20408,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_optical_flow_image_formats_nv: unsafe {
@@ -20080,10 +20438,10 @@ pub mod nv {
                 }
             }
         }
-        #[doc = "VK_NV_optical_flow device-level functions"]
+        ///VK_NV_optical_flow device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -20094,22 +20452,24 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_optical_flow device-level function pointers"]
+        ///Raw VK_NV_optical_flow device-level function pointers
         pub struct DeviceFn {
-            pub create_optical_flow_session_nv: PFN_vkCreateOpticalFlowSessionNV,
-            pub destroy_optical_flow_session_nv: PFN_vkDestroyOpticalFlowSessionNV,
+            pub create_optical_flow_session_nv:     PFN_vkCreateOpticalFlowSessionNV,
+            pub destroy_optical_flow_session_nv:    PFN_vkDestroyOpticalFlowSessionNV,
             pub bind_optical_flow_session_image_nv: PFN_vkBindOpticalFlowSessionImageNV,
-            pub cmd_optical_flow_execute_nv: PFN_vkCmdOpticalFlowExecuteNV,
+            pub cmd_optical_flow_execute_nv:        PFN_vkCmdOpticalFlowExecuteNV,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -20117,9 +20477,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_optical_flow_session_nv: unsafe {
+                    create_optical_flow_session_nv:     unsafe {
                         unsafe extern "system" fn create_optical_flow_session_nv(
                             _device: crate::vk::Device,
                             _p_create_info: *const OpticalFlowSessionCreateInfoNV<'_>,
@@ -20140,7 +20501,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_optical_flow_session_nv: unsafe {
+                    destroy_optical_flow_session_nv:    unsafe {
                         unsafe extern "system" fn destroy_optical_flow_session_nv(
                             _device: crate::vk::Device,
                             _session: OpticalFlowSessionNV,
@@ -20183,7 +20544,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    cmd_optical_flow_execute_nv: unsafe {
+                    cmd_optical_flow_execute_nv:        unsafe {
                         unsafe extern "system" fn cmd_optical_flow_execute_nv(
                             _command_buffer: CommandBuffer,
                             _session: OpticalFlowSessionNV,
@@ -20207,33 +20568,32 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_ray_tracing_invocation_reorder"]
+    ///VK_NV_ray_tracing_invocation_reorder
     pub mod ray_tracing_invocation_reorder {
         use super::super::*;
-        pub use {
-            crate::vk::NV_RAY_TRACING_INVOCATION_REORDER_NAME as NAME,
-            crate::vk::NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_RAY_TRACING_INVOCATION_REORDER_NAME as NAME,
+            NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_extended_sparse_address_space"]
+    ///VK_NV_extended_sparse_address_space
     pub mod extended_sparse_address_space {
         use super::super::*;
-        pub use {
-            crate::vk::NV_EXTENDED_SPARSE_ADDRESS_SPACE_NAME as NAME,
-            crate::vk::NV_EXTENDED_SPARSE_ADDRESS_SPACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_EXTENDED_SPARSE_ADDRESS_SPACE_NAME as NAME,
+            NV_EXTENDED_SPARSE_ADDRESS_SPACE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_low_latency2"]
+    ///VK_NV_low_latency2
     pub mod low_latency2 {
         use super::super::*;
-        pub use {
-            crate::vk::NV_LOW_LATENCY2_NAME as NAME,
-            crate::vk::NV_LOW_LATENCY2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_LOW_LATENCY2_NAME as NAME, NV_LOW_LATENCY2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_low_latency2 device-level functions"]
+        ///VK_NV_low_latency2 device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -20244,22 +20604,24 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_low_latency2 device-level function pointers"]
+        ///Raw VK_NV_low_latency2 device-level function pointers
         pub struct DeviceFn {
-            pub set_latency_sleep_mode_nv: PFN_vkSetLatencySleepModeNV,
-            pub latency_sleep_nv: PFN_vkLatencySleepNV,
-            pub set_latency_marker_nv: PFN_vkSetLatencyMarkerNV,
-            pub get_latency_timings_nv: PFN_vkGetLatencyTimingsNV,
+            pub set_latency_sleep_mode_nv:   PFN_vkSetLatencySleepModeNV,
+            pub latency_sleep_nv:            PFN_vkLatencySleepNV,
+            pub set_latency_marker_nv:       PFN_vkSetLatencyMarkerNV,
+            pub get_latency_timings_nv:      PFN_vkGetLatencyTimingsNV,
             pub queue_notify_out_of_band_nv: PFN_vkQueueNotifyOutOfBandNV,
         }
         unsafe impl Send for DeviceFn {}
@@ -20268,9 +20630,10 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    set_latency_sleep_mode_nv: unsafe {
+                    set_latency_sleep_mode_nv:   unsafe {
                         unsafe extern "system" fn set_latency_sleep_mode_nv(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -20290,7 +20653,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    latency_sleep_nv: unsafe {
+                    latency_sleep_nv:            unsafe {
                         unsafe extern "system" fn latency_sleep_nv(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -20306,7 +20669,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    set_latency_marker_nv: unsafe {
+                    set_latency_marker_nv:       unsafe {
                         unsafe extern "system" fn set_latency_marker_nv(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -20325,7 +20688,7 @@ pub mod nv {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_latency_timings_nv: unsafe {
+                    get_latency_timings_nv:      unsafe {
                         unsafe extern "system" fn get_latency_timings_nv(
                             _device: crate::vk::Device,
                             _swapchain: SwapchainKHR,
@@ -20367,73 +20730,71 @@ pub mod nv {
             }
         }
     }
-    #[doc = "VK_NV_per_stage_descriptor_set"]
+    ///VK_NV_per_stage_descriptor_set
     pub mod per_stage_descriptor_set {
         use super::super::*;
-        pub use {
-            crate::vk::NV_PER_STAGE_DESCRIPTOR_SET_NAME as NAME,
-            crate::vk::NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_PER_STAGE_DESCRIPTOR_SET_NAME as NAME,
+            NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_descriptor_pool_overallocation"]
+    ///VK_NV_descriptor_pool_overallocation
     pub mod descriptor_pool_overallocation {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DESCRIPTOR_POOL_OVERALLOCATION_NAME as NAME,
-            crate::vk::NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DESCRIPTOR_POOL_OVERALLOCATION_NAME as NAME,
+            NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_display_stereo"]
+    ///VK_NV_display_stereo
     pub mod display_stereo {
         use super::super::*;
-        pub use {
-            crate::vk::NV_DISPLAY_STEREO_NAME as NAME,
-            crate::vk::NV_DISPLAY_STEREO_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_DISPLAY_STEREO_NAME as NAME, NV_DISPLAY_STEREO_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_raw_access_chains"]
+    ///VK_NV_raw_access_chains
     pub mod raw_access_chains {
         use super::super::*;
-        pub use {
-            crate::vk::NV_RAW_ACCESS_CHAINS_NAME as NAME,
-            crate::vk::NV_RAW_ACCESS_CHAINS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_RAW_ACCESS_CHAINS_NAME as NAME, NV_RAW_ACCESS_CHAINS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_command_buffer_inheritance"]
+    ///VK_NV_command_buffer_inheritance
     pub mod command_buffer_inheritance {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COMMAND_BUFFER_INHERITANCE_NAME as NAME,
-            crate::vk::NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COMMAND_BUFFER_INHERITANCE_NAME as NAME,
+            NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_shader_atomic_float16_vector"]
+    ///VK_NV_shader_atomic_float16_vector
     pub mod shader_atomic_float16_vector {
         use super::super::*;
-        pub use {
-            crate::vk::NV_SHADER_ATOMIC_FLOAT16_VECTOR_NAME as NAME,
-            crate::vk::NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_SHADER_ATOMIC_FLOAT16_VECTOR_NAME as NAME,
+            NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_ray_tracing_validation"]
+    ///VK_NV_ray_tracing_validation
     pub mod ray_tracing_validation {
         use super::super::*;
-        pub use {
-            crate::vk::NV_RAY_TRACING_VALIDATION_NAME as NAME,
-            crate::vk::NV_RAY_TRACING_VALIDATION_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_RAY_TRACING_VALIDATION_NAME as NAME,
+            NV_RAY_TRACING_VALIDATION_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_NV_cooperative_matrix2"]
+    ///VK_NV_cooperative_matrix2
     pub mod cooperative_matrix2 {
         use super::super::*;
-        pub use {
-            crate::vk::NV_COOPERATIVE_MATRIX2_NAME as NAME,
-            crate::vk::NV_COOPERATIVE_MATRIX2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NV_COOPERATIVE_MATRIX2_NAME as NAME,
+            NV_COOPERATIVE_MATRIX2_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NV_cooperative_matrix2 instance-level functions"]
+        ///VK_NV_cooperative_matrix2 instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -20444,17 +20805,19 @@ pub mod nv {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NV_cooperative_matrix2 instance-level function pointers"]
+        ///Raw VK_NV_cooperative_matrix2 instance-level function pointers
         pub struct InstanceFn {
             pub get_physical_device_cooperative_matrix_flexible_dimensions_properties_nv:
                 PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV,
@@ -20465,6 +20828,7 @@ pub mod nv {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_physical_device_cooperative_matrix_flexible_dimensions_properties_nv: unsafe {
@@ -20490,19 +20854,18 @@ pub mod nv {
         }
     }
 }
-#[doc = "Extensions tagged NVX"]
+///Extensions tagged NVX
 pub mod nvx {
-    #[doc = "VK_NVX_binary_import"]
+    ///VK_NVX_binary_import
     pub mod binary_import {
         use super::super::*;
-        pub use {
-            crate::vk::NVX_BINARY_IMPORT_NAME as NAME,
-            crate::vk::NVX_BINARY_IMPORT_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NVX_BINARY_IMPORT_NAME as NAME, NVX_BINARY_IMPORT_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NVX_binary_import device-level functions"]
+        ///VK_NVX_binary_import device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -20513,22 +20876,24 @@ pub mod nvx {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NVX_binary_import device-level function pointers"]
+        ///Raw VK_NVX_binary_import device-level function pointers
         pub struct DeviceFn {
-            pub create_cu_module_nvx: PFN_vkCreateCuModuleNVX,
-            pub create_cu_function_nvx: PFN_vkCreateCuFunctionNVX,
-            pub destroy_cu_module_nvx: PFN_vkDestroyCuModuleNVX,
-            pub destroy_cu_function_nvx: PFN_vkDestroyCuFunctionNVX,
+            pub create_cu_module_nvx:     PFN_vkCreateCuModuleNVX,
+            pub create_cu_function_nvx:   PFN_vkCreateCuFunctionNVX,
+            pub destroy_cu_module_nvx:    PFN_vkDestroyCuModuleNVX,
+            pub destroy_cu_function_nvx:  PFN_vkDestroyCuFunctionNVX,
             pub cmd_cu_launch_kernel_nvx: PFN_vkCmdCuLaunchKernelNVX,
         }
         unsafe impl Send for DeviceFn {}
@@ -20537,9 +20902,10 @@ pub mod nvx {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    create_cu_module_nvx: unsafe {
+                    create_cu_module_nvx:     unsafe {
                         unsafe extern "system" fn create_cu_module_nvx(
                             _device: crate::vk::Device,
                             _p_create_info: *const CuModuleCreateInfoNVX<'_>,
@@ -20556,7 +20922,7 @@ pub mod nvx {
                             ::core::mem::transmute(val)
                         }
                     },
-                    create_cu_function_nvx: unsafe {
+                    create_cu_function_nvx:   unsafe {
                         unsafe extern "system" fn create_cu_function_nvx(
                             _device: crate::vk::Device,
                             _p_create_info: *const CuFunctionCreateInfoNVX<'_>,
@@ -20576,7 +20942,7 @@ pub mod nvx {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_cu_module_nvx: unsafe {
+                    destroy_cu_module_nvx:    unsafe {
                         unsafe extern "system" fn destroy_cu_module_nvx(
                             _device: crate::vk::Device,
                             _module: CuModuleNVX,
@@ -20595,7 +20961,7 @@ pub mod nvx {
                             ::core::mem::transmute(val)
                         }
                     },
-                    destroy_cu_function_nvx: unsafe {
+                    destroy_cu_function_nvx:  unsafe {
                         unsafe extern "system" fn destroy_cu_function_nvx(
                             _device: crate::vk::Device,
                             _function: CuFunctionNVX,
@@ -20638,17 +21004,16 @@ pub mod nvx {
             }
         }
     }
-    #[doc = "VK_NVX_image_view_handle"]
+    ///VK_NVX_image_view_handle
     pub mod image_view_handle {
         use super::super::*;
-        pub use {
-            crate::vk::NVX_IMAGE_VIEW_HANDLE_NAME as NAME,
-            crate::vk::NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NVX_IMAGE_VIEW_HANDLE_NAME as NAME, NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_NVX_image_view_handle device-level functions"]
+        ///VK_NVX_image_view_handle device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -20659,21 +21024,23 @@ pub mod nvx {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_NVX_image_view_handle device-level function pointers"]
+        ///Raw VK_NVX_image_view_handle device-level function pointers
         pub struct DeviceFn {
-            pub get_image_view_handle_nvx: PFN_vkGetImageViewHandleNVX,
+            pub get_image_view_handle_nvx:   PFN_vkGetImageViewHandleNVX,
             pub get_image_view_handle64_nvx: PFN_vkGetImageViewHandle64NVX,
-            pub get_image_view_address_nvx: PFN_vkGetImageViewAddressNVX,
+            pub get_image_view_address_nvx:  PFN_vkGetImageViewAddressNVX,
         }
         unsafe impl Send for DeviceFn {}
         unsafe impl Sync for DeviceFn {}
@@ -20681,9 +21048,10 @@ pub mod nvx {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_image_view_handle_nvx: unsafe {
+                    get_image_view_handle_nvx:   unsafe {
                         unsafe extern "system" fn get_image_view_handle_nvx(
                             _device: crate::vk::Device,
                             _p_info: *const ImageViewHandleInfoNVX<'_>,
@@ -20721,7 +21089,7 @@ pub mod nvx {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_image_view_address_nvx: unsafe {
+                    get_image_view_address_nvx:  unsafe {
                         unsafe extern "system" fn get_image_view_address_nvx(
                             _device: crate::vk::Device,
                             _image_view: ImageView,
@@ -20745,76 +21113,74 @@ pub mod nvx {
             }
         }
     }
-    #[doc = "VK_NVX_multiview_per_view_attributes"]
+    ///VK_NVX_multiview_per_view_attributes
     pub mod multiview_per_view_attributes {
         use super::super::*;
-        pub use {
-            crate::vk::NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_NAME as NAME,
-            crate::vk::NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_NAME as NAME,
+            NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged QCOM"]
+///Extensions tagged QCOM
 pub mod qcom {
-    #[doc = "VK_QCOM_render_pass_shader_resolve"]
+    ///VK_QCOM_render_pass_shader_resolve
     pub mod render_pass_shader_resolve {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_RENDER_PASS_SHADER_RESOLVE_NAME as NAME,
-            crate::vk::QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_RENDER_PASS_SHADER_RESOLVE_NAME as NAME,
+            QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_render_pass_transform"]
+    ///VK_QCOM_render_pass_transform
     pub mod render_pass_transform {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_RENDER_PASS_TRANSFORM_NAME as NAME,
-            crate::vk::QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_RENDER_PASS_TRANSFORM_NAME as NAME,
+            QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_render_pass_store_ops"]
+    ///VK_QCOM_render_pass_store_ops
     pub mod render_pass_store_ops {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_RENDER_PASS_STORE_OPS_NAME as NAME,
-            crate::vk::QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_RENDER_PASS_STORE_OPS_NAME as NAME,
+            QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_rotated_copy_commands"]
+    ///VK_QCOM_rotated_copy_commands
     pub mod rotated_copy_commands {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_ROTATED_COPY_COMMANDS_NAME as NAME,
-            crate::vk::QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_ROTATED_COPY_COMMANDS_NAME as NAME,
+            QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_fragment_density_map_offset"]
+    ///VK_QCOM_fragment_density_map_offset
     pub mod fragment_density_map_offset {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_FRAGMENT_DENSITY_MAP_OFFSET_NAME as NAME,
-            crate::vk::QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_FRAGMENT_DENSITY_MAP_OFFSET_NAME as NAME,
+            QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_image_processing"]
+    ///VK_QCOM_image_processing
     pub mod image_processing {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_IMAGE_PROCESSING_NAME as NAME,
-            crate::vk::QCOM_IMAGE_PROCESSING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_IMAGE_PROCESSING_NAME as NAME, QCOM_IMAGE_PROCESSING_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_tile_properties"]
+    ///VK_QCOM_tile_properties
     pub mod tile_properties {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_TILE_PROPERTIES_NAME as NAME,
-            crate::vk::QCOM_TILE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_TILE_PROPERTIES_NAME as NAME, QCOM_TILE_PROPERTIES_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_QCOM_tile_properties device-level functions"]
+        ///VK_QCOM_tile_properties device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -20825,19 +21191,21 @@ pub mod qcom {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_QCOM_tile_properties device-level function pointers"]
+        ///Raw VK_QCOM_tile_properties device-level function pointers
         pub struct DeviceFn {
-            pub get_framebuffer_tile_properties_qcom: PFN_vkGetFramebufferTilePropertiesQCOM,
+            pub get_framebuffer_tile_properties_qcom:       PFN_vkGetFramebufferTilePropertiesQCOM,
             pub get_dynamic_rendering_tile_properties_qcom:
                 PFN_vkGetDynamicRenderingTilePropertiesQCOM,
         }
@@ -20847,9 +21215,10 @@ pub mod qcom {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
-                    get_framebuffer_tile_properties_qcom: unsafe {
+                    get_framebuffer_tile_properties_qcom:       unsafe {
                         unsafe extern "system" fn get_framebuffer_tile_properties_qcom(
                             _device: crate::vk::Device,
                             _framebuffer: Framebuffer,
@@ -20896,68 +21265,66 @@ pub mod qcom {
             }
         }
     }
-    #[doc = "VK_QCOM_multiview_per_view_viewports"]
+    ///VK_QCOM_multiview_per_view_viewports
     pub mod multiview_per_view_viewports {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_NAME as NAME,
-            crate::vk::QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_NAME as NAME,
+            QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_multiview_per_view_render_areas"]
+    ///VK_QCOM_multiview_per_view_render_areas
     pub mod multiview_per_view_render_areas {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_NAME as NAME,
-            crate::vk::QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_NAME as NAME,
+            QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_image_processing2"]
+    ///VK_QCOM_image_processing2
     pub mod image_processing2 {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_IMAGE_PROCESSING2_NAME as NAME,
-            crate::vk::QCOM_IMAGE_PROCESSING2_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_IMAGE_PROCESSING2_NAME as NAME,
+            QCOM_IMAGE_PROCESSING2_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_filter_cubic_weights"]
+    ///VK_QCOM_filter_cubic_weights
     pub mod filter_cubic_weights {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_FILTER_CUBIC_WEIGHTS_NAME as NAME,
-            crate::vk::QCOM_FILTER_CUBIC_WEIGHTS_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_FILTER_CUBIC_WEIGHTS_NAME as NAME,
+            QCOM_FILTER_CUBIC_WEIGHTS_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_ycbcr_degamma"]
+    ///VK_QCOM_ycbcr_degamma
     pub mod ycbcr_degamma {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_YCBCR_DEGAMMA_NAME as NAME,
-            crate::vk::QCOM_YCBCR_DEGAMMA_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_YCBCR_DEGAMMA_NAME as NAME, QCOM_YCBCR_DEGAMMA_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_QCOM_filter_cubic_clamp"]
+    ///VK_QCOM_filter_cubic_clamp
     pub mod filter_cubic_clamp {
         use super::super::*;
-        pub use {
-            crate::vk::QCOM_FILTER_CUBIC_CLAMP_NAME as NAME,
-            crate::vk::QCOM_FILTER_CUBIC_CLAMP_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QCOM_FILTER_CUBIC_CLAMP_NAME as NAME,
+            QCOM_FILTER_CUBIC_CLAMP_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged QNX"]
+///Extensions tagged QNX
 pub mod qnx {
-    #[doc = "VK_QNX_screen_surface"]
+    ///VK_QNX_screen_surface
     pub mod screen_surface {
         use super::super::*;
-        pub use {
-            crate::vk::QNX_SCREEN_SURFACE_NAME as NAME,
-            crate::vk::QNX_SCREEN_SURFACE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QNX_SCREEN_SURFACE_NAME as NAME, QNX_SCREEN_SURFACE_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_QNX_screen_surface instance-level functions"]
+        ///VK_QNX_screen_surface instance-level functions
         #[derive(Clone)]
         pub struct Instance {
-            pub(crate) fp: InstanceFn,
+            pub(crate) fp:     InstanceFn,
             pub(crate) handle: crate::vk::Instance,
         }
         impl Instance {
@@ -20968,17 +21335,19 @@ pub mod qnx {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &InstanceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn instance(&self) -> crate::vk::Instance {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_QNX_screen_surface instance-level function pointers"]
+        ///Raw VK_QNX_screen_surface instance-level function pointers
         pub struct InstanceFn {
             pub create_screen_surface_qnx: PFN_vkCreateScreenSurfaceQNX,
             pub get_physical_device_screen_presentation_support_qnx:
@@ -20990,6 +21359,7 @@ pub mod qnx {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     create_screen_surface_qnx: unsafe {
@@ -21038,17 +21408,17 @@ pub mod qnx {
             }
         }
     }
-    #[doc = "VK_QNX_external_memory_screen_buffer"]
+    ///VK_QNX_external_memory_screen_buffer
     pub mod external_memory_screen_buffer {
         use super::super::*;
-        pub use {
-            crate::vk::QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_NAME as NAME,
-            crate::vk::QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_NAME as NAME,
+            QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_QNX_external_memory_screen_buffer device-level functions"]
+        ///VK_QNX_external_memory_screen_buffer device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -21059,17 +21429,20 @@ pub mod qnx {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_QNX_external_memory_screen_buffer device-level function pointers"]
+        ///Raw VK_QNX_external_memory_screen_buffer device-level function
+        /// pointers
         pub struct DeviceFn {
             pub get_screen_buffer_properties_qnx: PFN_vkGetScreenBufferPropertiesQNX,
         }
@@ -21079,6 +21452,7 @@ pub mod qnx {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_screen_buffer_properties_qnx: unsafe {
@@ -21107,38 +21481,37 @@ pub mod qnx {
         }
     }
 }
-#[doc = "Extensions tagged SEC"]
+///Extensions tagged SEC
 pub mod sec {
-    #[doc = "VK_SEC_amigo_profiling"]
+    ///VK_SEC_amigo_profiling
     pub mod amigo_profiling {
         use super::super::*;
-        pub use {
-            crate::vk::SEC_AMIGO_PROFILING_NAME as NAME,
-            crate::vk::SEC_AMIGO_PROFILING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            SEC_AMIGO_PROFILING_NAME as NAME, SEC_AMIGO_PROFILING_SPEC_VERSION as SPEC_VERSION,
         };
     }
 }
-#[doc = "Extensions tagged VALVE"]
+///Extensions tagged VALVE
 pub mod valve {
-    #[doc = "VK_VALVE_mutable_descriptor_type"]
+    ///VK_VALVE_mutable_descriptor_type
     pub mod mutable_descriptor_type {
         use super::super::*;
-        pub use {
-            crate::vk::VALVE_MUTABLE_DESCRIPTOR_TYPE_NAME as NAME,
-            crate::vk::VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            VALVE_MUTABLE_DESCRIPTOR_TYPE_NAME as NAME,
+            VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION as SPEC_VERSION,
         };
     }
-    #[doc = "VK_VALVE_descriptor_set_host_mapping"]
+    ///VK_VALVE_descriptor_set_host_mapping
     pub mod descriptor_set_host_mapping {
         use super::super::*;
-        pub use {
-            crate::vk::VALVE_DESCRIPTOR_SET_HOST_MAPPING_NAME as NAME,
-            crate::vk::VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION as SPEC_VERSION,
+        pub use crate::vk::{
+            VALVE_DESCRIPTOR_SET_HOST_MAPPING_NAME as NAME,
+            VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION as SPEC_VERSION,
         };
-        #[doc = "VK_VALVE_descriptor_set_host_mapping device-level functions"]
+        ///VK_VALVE_descriptor_set_host_mapping device-level functions
         #[derive(Clone)]
         pub struct Device {
-            pub(crate) fp: DeviceFn,
+            pub(crate) fp:     DeviceFn,
             pub(crate) handle: crate::vk::Device,
         }
         impl Device {
@@ -21149,17 +21522,20 @@ pub mod valve {
                 });
                 Self { handle, fp }
             }
+
             #[inline]
             pub fn fp(&self) -> &DeviceFn {
                 &self.fp
             }
+
             #[inline]
             pub fn device(&self) -> crate::vk::Device {
                 self.handle
             }
         }
         #[derive(Clone)]
-        #[doc = "Raw VK_VALVE_descriptor_set_host_mapping device-level function pointers"]
+        ///Raw VK_VALVE_descriptor_set_host_mapping device-level function
+        /// pointers
         pub struct DeviceFn {
             pub get_descriptor_set_layout_host_mapping_info_valve:
                 PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE,
@@ -21171,6 +21547,7 @@ pub mod valve {
             pub fn load<F: FnMut(&CStr) -> *const c_void>(mut f: F) -> Self {
                 Self::load_erased(&mut f)
             }
+
             fn load_erased(_f: &mut dyn FnMut(&CStr) -> *const c_void) -> Self {
                 Self {
                     get_descriptor_set_layout_host_mapping_info_valve: unsafe {
@@ -21194,7 +21571,7 @@ pub mod valve {
                             ::core::mem::transmute(val)
                         }
                     },
-                    get_descriptor_set_host_mapping_valve: unsafe {
+                    get_descriptor_set_host_mapping_valve:             unsafe {
                         unsafe extern "system" fn get_descriptor_set_host_mapping_valve(
                             _device: crate::vk::Device,
                             _descriptor_set: DescriptorSet,

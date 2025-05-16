@@ -1,7 +1,6 @@
-use crate::vk::bitflags::*;
-use crate::vk::definitions::*;
-use crate::vk::enums::*;
 use core::ffi::*;
+
+use crate::vk::{bitflags::*, definitions::*, enums::*};
 #[allow(non_camel_case_types)]
 pub type PFN_vkGetInstanceProcAddr = unsafe extern "system" fn(
     instance: crate::vk::Instance,

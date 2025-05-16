@@ -28,6 +28,7 @@ where
         let mask = 1 << bit_index;
         byte & mask == mask
     }
+
     #[inline]
     pub fn set_bit(&mut self, index: usize, val: bool) {
         debug_assert!(index / 8 < self.storage.as_ref().len());
@@ -45,6 +46,7 @@ where
             *byte &= !mask;
         }
     }
+
     #[inline]
     pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
         debug_assert!(bit_width <= 64);
@@ -63,6 +65,7 @@ where
         }
         val
     }
+
     #[inline]
     pub fn set(&mut self, bit_offset: usize, bit_width: u8, val: u64) {
         debug_assert!(bit_width <= 64);
@@ -223,8 +226,8 @@ pub type StdVideoH264PictureType = ::core::ffi::c_uint;
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH264SpsVuiFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 2usize]>,
     pub __bindgen_padding_0: u16,
 }
 #[test]
@@ -245,6 +248,7 @@ impl StdVideoH264SpsVuiFlags {
     pub fn aspect_ratio_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_aspect_ratio_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -252,10 +256,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn overscan_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_overscan_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -263,10 +269,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn overscan_appropriate_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_overscan_appropriate_flag(&mut self, val: u32) {
         unsafe {
@@ -274,10 +282,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn video_signal_type_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_video_signal_type_present_flag(&mut self, val: u32) {
         unsafe {
@@ -285,10 +295,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn video_full_range_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_video_full_range_flag(&mut self, val: u32) {
         unsafe {
@@ -296,10 +308,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn color_description_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_color_description_present_flag(&mut self, val: u32) {
         unsafe {
@@ -307,10 +321,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn chroma_loc_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_chroma_loc_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -318,10 +334,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn timing_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_timing_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -329,10 +347,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn fixed_frame_rate_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_fixed_frame_rate_flag(&mut self, val: u32) {
         unsafe {
@@ -340,10 +360,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn bitstream_restriction_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_bitstream_restriction_flag(&mut self, val: u32) {
         unsafe {
@@ -351,10 +373,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn nal_hrd_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_nal_hrd_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -362,10 +386,12 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vcl_hrd_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vcl_hrd_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -373,6 +399,7 @@ impl StdVideoH264SpsVuiFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         aspect_ratio_info_present_flag: u32,
@@ -808,8 +835,8 @@ fn bindgen_test_layout_StdVideoH264SequenceParameterSetVui() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH264SpsFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 2usize]>,
     pub __bindgen_padding_0: u16,
 }
 #[test]
@@ -830,6 +857,7 @@ impl StdVideoH264SpsFlags {
     pub fn constraint_set0_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set0_flag(&mut self, val: u32) {
         unsafe {
@@ -837,10 +865,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constraint_set1_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set1_flag(&mut self, val: u32) {
         unsafe {
@@ -848,10 +878,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constraint_set2_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set2_flag(&mut self, val: u32) {
         unsafe {
@@ -859,10 +891,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constraint_set3_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set3_flag(&mut self, val: u32) {
         unsafe {
@@ -870,10 +904,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constraint_set4_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set4_flag(&mut self, val: u32) {
         unsafe {
@@ -881,10 +917,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constraint_set5_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constraint_set5_flag(&mut self, val: u32) {
         unsafe {
@@ -892,10 +930,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn direct_8x8_inference_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_direct_8x8_inference_flag(&mut self, val: u32) {
         unsafe {
@@ -903,10 +943,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn mb_adaptive_frame_field_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_mb_adaptive_frame_field_flag(&mut self, val: u32) {
         unsafe {
@@ -914,10 +956,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_mbs_only_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_mbs_only_flag(&mut self, val: u32) {
         unsafe {
@@ -925,10 +969,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_pic_order_always_zero_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_pic_order_always_zero_flag(&mut self, val: u32) {
         unsafe {
@@ -936,10 +982,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn separate_colour_plane_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_separate_colour_plane_flag(&mut self, val: u32) {
         unsafe {
@@ -947,10 +995,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn gaps_in_frame_num_value_allowed_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_gaps_in_frame_num_value_allowed_flag(&mut self, val: u32) {
         unsafe {
@@ -958,10 +1008,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn qpprime_y_zero_transform_bypass_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_qpprime_y_zero_transform_bypass_flag(&mut self, val: u32) {
         unsafe {
@@ -969,10 +1021,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_cropping_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_cropping_flag(&mut self, val: u32) {
         unsafe {
@@ -980,10 +1034,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn seq_scaling_matrix_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_seq_scaling_matrix_present_flag(&mut self, val: u32) {
         unsafe {
@@ -991,10 +1047,12 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vui_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vui_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -1002,6 +1060,7 @@ impl StdVideoH264SpsFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         constraint_set0_flag: u32,
@@ -1100,10 +1159,10 @@ impl StdVideoH264SpsFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH264ScalingLists {
-    pub scaling_list_present_mask: u16,
+    pub scaling_list_present_mask:       u16,
     pub use_default_scaling_matrix_mask: u16,
-    pub ScalingList4x4: [[u8; 16usize]; 6usize],
-    pub ScalingList8x8: [[u8; 64usize]; 6usize],
+    pub ScalingList4x4:                  [[u8; 16usize]; 6usize],
+    pub ScalingList8x8:                  [[u8; 64usize]; 6usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoH264ScalingLists() {
@@ -1474,8 +1533,8 @@ fn bindgen_test_layout_StdVideoH264SequenceParameterSet() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH264PpsFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -1496,6 +1555,7 @@ impl StdVideoH264PpsFlags {
     pub fn transform_8x8_mode_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_transform_8x8_mode_flag(&mut self, val: u32) {
         unsafe {
@@ -1503,10 +1563,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn redundant_pic_cnt_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_redundant_pic_cnt_present_flag(&mut self, val: u32) {
         unsafe {
@@ -1514,10 +1576,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constrained_intra_pred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constrained_intra_pred_flag(&mut self, val: u32) {
         unsafe {
@@ -1525,10 +1589,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn deblocking_filter_control_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_deblocking_filter_control_present_flag(&mut self, val: u32) {
         unsafe {
@@ -1536,10 +1602,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn weighted_pred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_weighted_pred_flag(&mut self, val: u32) {
         unsafe {
@@ -1547,10 +1615,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn bottom_field_pic_order_in_frame_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_bottom_field_pic_order_in_frame_present_flag(&mut self, val: u32) {
         unsafe {
@@ -1558,10 +1628,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn entropy_coding_mode_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_entropy_coding_mode_flag(&mut self, val: u32) {
         unsafe {
@@ -1569,10 +1641,12 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pic_scaling_matrix_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pic_scaling_matrix_present_flag(&mut self, val: u32) {
         unsafe {
@@ -1580,6 +1654,7 @@ impl StdVideoH264PpsFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         transform_8x8_mode_flag: u32,
@@ -1787,8 +1862,8 @@ fn bindgen_test_layout_StdVideoH264PictureParameterSet() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH264PictureInfoFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -1812,6 +1887,7 @@ impl StdVideoDecodeH264PictureInfoFlags {
     pub fn field_pic_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_field_pic_flag(&mut self, val: u32) {
         unsafe {
@@ -1819,10 +1895,12 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_intra(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_intra(&mut self, val: u32) {
         unsafe {
@@ -1830,10 +1908,12 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn IdrPicFlag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IdrPicFlag(&mut self, val: u32) {
         unsafe {
@@ -1841,10 +1921,12 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn bottom_field_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_bottom_field_flag(&mut self, val: u32) {
         unsafe {
@@ -1852,10 +1934,12 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_reference(&mut self, val: u32) {
         unsafe {
@@ -1863,10 +1947,12 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn complementary_field_pair(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_complementary_field_pair(&mut self, val: u32) {
         unsafe {
@@ -1874,6 +1960,7 @@ impl StdVideoDecodeH264PictureInfoFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         field_pic_flag: u32,
@@ -1915,14 +2002,14 @@ impl StdVideoDecodeH264PictureInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH264PictureInfo {
-    pub flags: StdVideoDecodeH264PictureInfoFlags,
+    pub flags:                StdVideoDecodeH264PictureInfoFlags,
     pub seq_parameter_set_id: u8,
     pub pic_parameter_set_id: u8,
-    pub reserved1: u8,
-    pub reserved2: u8,
-    pub frame_num: u16,
-    pub idr_pic_id: u16,
-    pub PicOrderCnt: [i32; 2usize],
+    pub reserved1:            u8,
+    pub reserved2:            u8,
+    pub frame_num:            u16,
+    pub idr_pic_id:           u16,
+    pub PicOrderCnt:          [i32; 2usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoDecodeH264PictureInfo() {
@@ -2024,8 +2111,8 @@ fn bindgen_test_layout_StdVideoDecodeH264PictureInfo() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH264ReferenceInfoFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -2052,6 +2139,7 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
     pub fn top_field_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_top_field_flag(&mut self, val: u32) {
         unsafe {
@@ -2059,10 +2147,12 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn bottom_field_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_bottom_field_flag(&mut self, val: u32) {
         unsafe {
@@ -2070,10 +2160,12 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn used_for_long_term_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_used_for_long_term_reference(&mut self, val: u32) {
         unsafe {
@@ -2081,10 +2173,12 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_non_existing(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_non_existing(&mut self, val: u32) {
         unsafe {
@@ -2092,6 +2186,7 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         top_field_flag: u32,
@@ -2123,9 +2218,9 @@ impl StdVideoDecodeH264ReferenceInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH264ReferenceInfo {
-    pub flags: StdVideoDecodeH264ReferenceInfoFlags,
-    pub FrameNum: u16,
-    pub reserved: u16,
+    pub flags:       StdVideoDecodeH264ReferenceInfoFlags,
+    pub FrameNum:    u16,
+    pub reserved:    u16,
     pub PicOrderCnt: [i32; 2usize],
 }
 #[test]
@@ -2276,9 +2371,9 @@ pub type StdVideoH265AspectRatioIdc = ::core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265DecPicBufMgr {
-    pub max_latency_increase_plus1: [u32; 7usize],
+    pub max_latency_increase_plus1:   [u32; 7usize],
     pub max_dec_pic_buffering_minus1: [u8; 7usize],
-    pub max_num_reorder_pics: [u8; 7usize],
+    pub max_num_reorder_pics:         [u8; 7usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265DecPicBufMgr() {
@@ -2331,11 +2426,11 @@ fn bindgen_test_layout_StdVideoH265DecPicBufMgr() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265SubLayerHrdParameters {
-    pub bit_rate_value_minus1: [u32; 32usize],
-    pub cpb_size_value_minus1: [u32; 32usize],
+    pub bit_rate_value_minus1:    [u32; 32usize],
+    pub cpb_size_value_minus1:    [u32; 32usize],
     pub cpb_size_du_value_minus1: [u32; 32usize],
     pub bit_rate_du_value_minus1: [u32; 32usize],
-    pub cbr_flag: u32,
+    pub cbr_flag:                 u32,
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265SubLayerHrdParameters() {
@@ -2411,7 +2506,7 @@ fn bindgen_test_layout_StdVideoH265SubLayerHrdParameters() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265HrdFlags {
     pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265HrdFlags() {
@@ -2431,6 +2526,7 @@ impl StdVideoH265HrdFlags {
     pub fn nal_hrd_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_nal_hrd_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -2438,10 +2534,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vcl_hrd_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vcl_hrd_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -2449,10 +2547,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sub_pic_hrd_params_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sub_pic_hrd_params_present_flag(&mut self, val: u32) {
         unsafe {
@@ -2460,10 +2560,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sub_pic_cpb_params_in_pic_timing_sei_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sub_pic_cpb_params_in_pic_timing_sei_flag(&mut self, val: u32) {
         unsafe {
@@ -2471,10 +2573,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn fixed_pic_rate_general_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 8u8) as u32) }
     }
+
     #[inline]
     pub fn set_fixed_pic_rate_general_flag(&mut self, val: u32) {
         unsafe {
@@ -2482,10 +2586,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(4usize, 8u8, val as u64)
         }
     }
+
     #[inline]
     pub fn fixed_pic_rate_within_cvs_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 8u8) as u32) }
     }
+
     #[inline]
     pub fn set_fixed_pic_rate_within_cvs_flag(&mut self, val: u32) {
         unsafe {
@@ -2493,10 +2599,12 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(12usize, 8u8, val as u64)
         }
     }
+
     #[inline]
     pub fn low_delay_hrd_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 8u8) as u32) }
     }
+
     #[inline]
     pub fn set_low_delay_hrd_flag(&mut self, val: u32) {
         unsafe {
@@ -2504,6 +2612,7 @@ impl StdVideoH265HrdFlags {
             self._bitfield_1.set(20usize, 8u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         nal_hrd_parameters_present_flag: u32,
@@ -2755,8 +2864,8 @@ fn bindgen_test_layout_StdVideoH265HrdParameters() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265VpsFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -2777,6 +2886,7 @@ impl StdVideoH265VpsFlags {
     pub fn vps_temporal_id_nesting_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vps_temporal_id_nesting_flag(&mut self, val: u32) {
         unsafe {
@@ -2784,10 +2894,12 @@ impl StdVideoH265VpsFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vps_sub_layer_ordering_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vps_sub_layer_ordering_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -2795,10 +2907,12 @@ impl StdVideoH265VpsFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vps_timing_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vps_timing_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -2806,10 +2920,12 @@ impl StdVideoH265VpsFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vps_poc_proportional_to_timing_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vps_poc_proportional_to_timing_flag(&mut self, val: u32) {
         unsafe {
@@ -2817,6 +2933,7 @@ impl StdVideoH265VpsFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         vps_temporal_id_nesting_flag: u32,
@@ -2852,8 +2969,8 @@ impl StdVideoH265VpsFlags {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265ProfileTierLevelFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -2877,6 +2994,7 @@ impl StdVideoH265ProfileTierLevelFlags {
     pub fn general_tier_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_general_tier_flag(&mut self, val: u32) {
         unsafe {
@@ -2884,10 +3002,12 @@ impl StdVideoH265ProfileTierLevelFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn general_progressive_source_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_general_progressive_source_flag(&mut self, val: u32) {
         unsafe {
@@ -2895,10 +3015,12 @@ impl StdVideoH265ProfileTierLevelFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn general_interlaced_source_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_general_interlaced_source_flag(&mut self, val: u32) {
         unsafe {
@@ -2906,10 +3028,12 @@ impl StdVideoH265ProfileTierLevelFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn general_non_packed_constraint_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_general_non_packed_constraint_flag(&mut self, val: u32) {
         unsafe {
@@ -2917,10 +3041,12 @@ impl StdVideoH265ProfileTierLevelFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn general_frame_only_constraint_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_general_frame_only_constraint_flag(&mut self, val: u32) {
         unsafe {
@@ -2928,6 +3054,7 @@ impl StdVideoH265ProfileTierLevelFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         general_tier_flag: u32,
@@ -2967,9 +3094,9 @@ impl StdVideoH265ProfileTierLevelFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265ProfileTierLevel {
-    pub flags: StdVideoH265ProfileTierLevelFlags,
+    pub flags:               StdVideoH265ProfileTierLevelFlags,
     pub general_profile_idc: StdVideoH265ProfileIdc,
-    pub general_level_idc: StdVideoH265LevelIdc,
+    pub general_level_idc:   StdVideoH265LevelIdc,
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265ProfileTierLevel() {
@@ -3174,10 +3301,10 @@ fn bindgen_test_layout_StdVideoH265VideoParameterSet() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265ScalingLists {
-    pub ScalingList4x4: [[u8; 16usize]; 6usize],
-    pub ScalingList8x8: [[u8; 64usize]; 6usize],
-    pub ScalingList16x16: [[u8; 64usize]; 6usize],
-    pub ScalingList32x32: [[u8; 64usize]; 2usize],
+    pub ScalingList4x4:         [[u8; 16usize]; 6usize],
+    pub ScalingList8x8:         [[u8; 64usize]; 6usize],
+    pub ScalingList16x16:       [[u8; 64usize]; 6usize],
+    pub ScalingList32x32:       [[u8; 64usize]; 2usize],
     pub ScalingListDCCoef16x16: [u8; 6usize],
     pub ScalingListDCCoef32x32: [u8; 2usize],
 }
@@ -3261,8 +3388,8 @@ fn bindgen_test_layout_StdVideoH265ScalingLists() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265SpsVuiFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 3usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 3usize]>,
     pub __bindgen_padding_0: u8,
 }
 #[test]
@@ -3283,6 +3410,7 @@ impl StdVideoH265SpsVuiFlags {
     pub fn aspect_ratio_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_aspect_ratio_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3290,10 +3418,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn overscan_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_overscan_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3301,10 +3431,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn overscan_appropriate_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_overscan_appropriate_flag(&mut self, val: u32) {
         unsafe {
@@ -3312,10 +3444,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn video_signal_type_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_video_signal_type_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3323,10 +3457,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn video_full_range_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_video_full_range_flag(&mut self, val: u32) {
         unsafe {
@@ -3334,10 +3470,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn colour_description_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_colour_description_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3345,10 +3483,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn chroma_loc_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_chroma_loc_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3356,10 +3496,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn neutral_chroma_indication_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_neutral_chroma_indication_flag(&mut self, val: u32) {
         unsafe {
@@ -3367,10 +3509,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn field_seq_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_field_seq_flag(&mut self, val: u32) {
         unsafe {
@@ -3378,10 +3522,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_field_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_field_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3389,10 +3535,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn default_display_window_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_default_display_window_flag(&mut self, val: u32) {
         unsafe {
@@ -3400,10 +3548,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vui_timing_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vui_timing_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3411,10 +3561,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vui_poc_proportional_to_timing_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vui_poc_proportional_to_timing_flag(&mut self, val: u32) {
         unsafe {
@@ -3422,10 +3574,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vui_hrd_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vui_hrd_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -3433,10 +3587,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn bitstream_restriction_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_bitstream_restriction_flag(&mut self, val: u32) {
         unsafe {
@@ -3444,10 +3600,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn tiles_fixed_structure_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_tiles_fixed_structure_flag(&mut self, val: u32) {
         unsafe {
@@ -3455,10 +3613,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn motion_vectors_over_pic_boundaries_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_motion_vectors_over_pic_boundaries_flag(&mut self, val: u32) {
         unsafe {
@@ -3466,10 +3626,12 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn restricted_ref_pic_lists_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_restricted_ref_pic_lists_flag(&mut self, val: u32) {
         unsafe {
@@ -3477,6 +3639,7 @@ impl StdVideoH265SpsVuiFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         aspect_ratio_info_present_flag: u32,
@@ -3952,7 +4115,7 @@ fn bindgen_test_layout_StdVideoH265PredictorPaletteEntries() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265SpsFlags {
     pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265SpsFlags() {
@@ -3972,6 +4135,7 @@ impl StdVideoH265SpsFlags {
     pub fn sps_temporal_id_nesting_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_temporal_id_nesting_flag(&mut self, val: u32) {
         unsafe {
@@ -3979,10 +4143,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn separate_colour_plane_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_separate_colour_plane_flag(&mut self, val: u32) {
         unsafe {
@@ -3990,10 +4156,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn conformance_window_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_conformance_window_flag(&mut self, val: u32) {
         unsafe {
@@ -4001,10 +4169,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_sub_layer_ordering_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_sub_layer_ordering_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4012,10 +4182,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn scaling_list_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_scaling_list_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4023,10 +4195,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_scaling_list_data_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_scaling_list_data_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4034,10 +4208,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn amp_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_amp_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4045,10 +4221,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sample_adaptive_offset_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sample_adaptive_offset_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4056,10 +4234,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pcm_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pcm_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4067,10 +4247,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pcm_loop_filter_disabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pcm_loop_filter_disabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4078,10 +4260,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn long_term_ref_pics_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_long_term_ref_pics_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4089,10 +4273,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_temporal_mvp_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_temporal_mvp_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4100,10 +4286,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn strong_intra_smoothing_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_strong_intra_smoothing_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4111,10 +4299,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn vui_parameters_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_vui_parameters_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4122,10 +4312,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_extension_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_extension_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4133,10 +4325,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_range_extension_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_range_extension_flag(&mut self, val: u32) {
         unsafe {
@@ -4144,10 +4338,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn transform_skip_rotation_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_transform_skip_rotation_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4155,10 +4351,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn transform_skip_context_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_transform_skip_context_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4166,10 +4364,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn implicit_rdpcm_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_implicit_rdpcm_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4177,10 +4377,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn explicit_rdpcm_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_explicit_rdpcm_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4188,10 +4390,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn extended_precision_processing_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_extended_precision_processing_flag(&mut self, val: u32) {
         unsafe {
@@ -4199,10 +4403,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(20usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn intra_smoothing_disabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_intra_smoothing_disabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4210,10 +4416,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(21usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn high_precision_offsets_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_high_precision_offsets_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4221,10 +4429,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(22usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn persistent_rice_adaptation_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_persistent_rice_adaptation_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4232,10 +4442,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(23usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cabac_bypass_alignment_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cabac_bypass_alignment_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4243,10 +4455,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(24usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_scc_extension_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_scc_extension_flag(&mut self, val: u32) {
         unsafe {
@@ -4254,10 +4468,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(25usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_curr_pic_ref_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_curr_pic_ref_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4265,10 +4481,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn palette_mode_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_palette_mode_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4276,10 +4494,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sps_palette_predictor_initializers_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sps_palette_predictor_initializers_present_flag(&mut self, val: u32) {
         unsafe {
@@ -4287,10 +4507,12 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn intra_boundary_filtering_disabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_intra_boundary_filtering_disabled_flag(&mut self, val: u32) {
         unsafe {
@@ -4298,6 +4520,7 @@ impl StdVideoH265SpsFlags {
             self._bitfield_1.set(29usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         sps_temporal_id_nesting_flag: u32,
@@ -4487,8 +4710,8 @@ impl StdVideoH265SpsFlags {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265ShortTermRefPicSetFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -4512,6 +4735,7 @@ impl StdVideoH265ShortTermRefPicSetFlags {
     pub fn inter_ref_pic_set_prediction_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_inter_ref_pic_set_prediction_flag(&mut self, val: u32) {
         unsafe {
@@ -4519,10 +4743,12 @@ impl StdVideoH265ShortTermRefPicSetFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_rps_sign(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_rps_sign(&mut self, val: u32) {
         unsafe {
@@ -4530,6 +4756,7 @@ impl StdVideoH265ShortTermRefPicSetFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         inter_ref_pic_set_prediction_flag: u32,
@@ -4551,20 +4778,20 @@ impl StdVideoH265ShortTermRefPicSetFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265ShortTermRefPicSet {
-    pub flags: StdVideoH265ShortTermRefPicSetFlags,
-    pub delta_idx_minus1: u32,
-    pub use_delta_flag: u16,
-    pub abs_delta_rps_minus1: u16,
-    pub used_by_curr_pic_flag: u16,
+    pub flags:                    StdVideoH265ShortTermRefPicSetFlags,
+    pub delta_idx_minus1:         u32,
+    pub use_delta_flag:           u16,
+    pub abs_delta_rps_minus1:     u16,
+    pub used_by_curr_pic_flag:    u16,
     pub used_by_curr_pic_s0_flag: u16,
     pub used_by_curr_pic_s1_flag: u16,
-    pub reserved1: u16,
-    pub reserved2: u8,
-    pub reserved3: u8,
-    pub num_negative_pics: u8,
-    pub num_positive_pics: u8,
-    pub delta_poc_s0_minus1: [u16; 16usize],
-    pub delta_poc_s1_minus1: [u16; 16usize],
+    pub reserved1:                u16,
+    pub reserved2:                u8,
+    pub reserved3:                u8,
+    pub num_negative_pics:        u8,
+    pub num_positive_pics:        u8,
+    pub delta_poc_s0_minus1:      [u16; 16usize],
+    pub delta_poc_s1_minus1:      [u16; 16usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265ShortTermRefPicSet() {
@@ -4726,7 +4953,7 @@ fn bindgen_test_layout_StdVideoH265ShortTermRefPicSet() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265LongTermRefPicsSps {
     pub used_by_curr_pic_lt_sps_flag: u32,
-    pub lt_ref_pic_poc_lsb_sps: [u32; 32usize],
+    pub lt_ref_pic_poc_lsb_sps:       [u32; 32usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265LongTermRefPicsSps() {
@@ -5263,7 +5490,7 @@ fn bindgen_test_layout_StdVideoH265SequenceParameterSet() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoH265PpsFlags {
     pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoH265PpsFlags() {
@@ -5283,6 +5510,7 @@ impl StdVideoH265PpsFlags {
     pub fn dependent_slice_segments_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_dependent_slice_segments_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5290,10 +5518,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn output_flag_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_output_flag_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5301,10 +5531,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn sign_data_hiding_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_sign_data_hiding_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5312,10 +5544,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cabac_init_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cabac_init_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5323,10 +5557,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn constrained_intra_pred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_constrained_intra_pred_flag(&mut self, val: u32) {
         unsafe {
@@ -5334,10 +5570,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn transform_skip_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_transform_skip_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5345,10 +5583,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cu_qp_delta_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cu_qp_delta_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5356,10 +5596,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_slice_chroma_qp_offsets_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_slice_chroma_qp_offsets_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5367,10 +5609,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn weighted_pred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_weighted_pred_flag(&mut self, val: u32) {
         unsafe {
@@ -5378,10 +5622,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn weighted_bipred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_weighted_bipred_flag(&mut self, val: u32) {
         unsafe {
@@ -5389,10 +5635,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn transquant_bypass_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_transquant_bypass_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5400,10 +5648,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn tiles_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_tiles_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5411,10 +5661,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn entropy_coding_sync_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_entropy_coding_sync_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5422,10 +5674,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn uniform_spacing_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_uniform_spacing_flag(&mut self, val: u32) {
         unsafe {
@@ -5433,10 +5687,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn loop_filter_across_tiles_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_loop_filter_across_tiles_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5444,10 +5700,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_loop_filter_across_slices_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_loop_filter_across_slices_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5455,10 +5713,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn deblocking_filter_control_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_deblocking_filter_control_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5466,10 +5726,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn deblocking_filter_override_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_deblocking_filter_override_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5477,10 +5739,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_deblocking_filter_disabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_deblocking_filter_disabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5488,10 +5752,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_scaling_list_data_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_scaling_list_data_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5499,10 +5765,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn lists_modification_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_lists_modification_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5510,10 +5778,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(20usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_segment_header_extension_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_segment_header_extension_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5521,10 +5791,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(21usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_extension_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_extension_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5532,10 +5804,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(22usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cross_component_prediction_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cross_component_prediction_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5543,10 +5817,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(23usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn chroma_qp_offset_list_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_chroma_qp_offset_list_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5554,10 +5830,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(24usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_curr_pic_ref_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_curr_pic_ref_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5565,10 +5843,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(25usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn residual_adaptive_colour_transform_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_residual_adaptive_colour_transform_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -5576,10 +5856,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_slice_act_qp_offsets_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_slice_act_qp_offsets_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5587,10 +5869,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_palette_predictor_initializers_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_palette_predictor_initializers_present_flag(&mut self, val: u32) {
         unsafe {
@@ -5598,10 +5882,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn monochrome_palette_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_monochrome_palette_flag(&mut self, val: u32) {
         unsafe {
@@ -5609,10 +5895,12 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(29usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pps_range_extension_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pps_range_extension_flag(&mut self, val: u32) {
         unsafe {
@@ -5620,6 +5908,7 @@ impl StdVideoH265PpsFlags {
             self._bitfield_1.set(30usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         dependent_slice_segments_enabled_flag: u32,
@@ -6255,8 +6544,8 @@ fn bindgen_test_layout_StdVideoH265PictureParameterSet() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH265PictureInfoFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -6280,6 +6569,7 @@ impl StdVideoDecodeH265PictureInfoFlags {
     pub fn IrapPicFlag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IrapPicFlag(&mut self, val: u32) {
         unsafe {
@@ -6287,10 +6577,12 @@ impl StdVideoDecodeH265PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn IdrPicFlag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IdrPicFlag(&mut self, val: u32) {
         unsafe {
@@ -6298,10 +6590,12 @@ impl StdVideoDecodeH265PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn IsReference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IsReference(&mut self, val: u32) {
         unsafe {
@@ -6309,10 +6603,12 @@ impl StdVideoDecodeH265PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn short_term_ref_pic_set_sps_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_short_term_ref_pic_set_sps_flag(&mut self, val: u32) {
         unsafe {
@@ -6320,6 +6616,7 @@ impl StdVideoDecodeH265PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         IrapPicFlag: u32,
@@ -6495,8 +6792,8 @@ fn bindgen_test_layout_StdVideoDecodeH265PictureInfo() {
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH265ReferenceInfoFlags {
-    pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
+    pub _bitfield_align_1:   [u8; 0],
+    pub _bitfield_1:         __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[test]
@@ -6523,6 +6820,7 @@ impl StdVideoDecodeH265ReferenceInfoFlags {
     pub fn used_for_long_term_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_used_for_long_term_reference(&mut self, val: u32) {
         unsafe {
@@ -6530,10 +6828,12 @@ impl StdVideoDecodeH265ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn unused_for_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_unused_for_reference(&mut self, val: u32) {
         unsafe {
@@ -6541,6 +6841,7 @@ impl StdVideoDecodeH265ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         used_for_long_term_reference: u32,
@@ -6562,7 +6863,7 @@ impl StdVideoDecodeH265ReferenceInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeH265ReferenceInfo {
-    pub flags: StdVideoDecodeH265ReferenceInfoFlags,
+    pub flags:          StdVideoDecodeH265ReferenceInfoFlags,
     pub PicOrderCntVal: i32,
 }
 #[test]
@@ -6782,7 +7083,7 @@ pub type StdVideoAV1ChromaSamplePosition = ::core::ffi::c_uint;
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1ColorConfigFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1ColorConfigFlags() {
@@ -6802,6 +7103,7 @@ impl StdVideoAV1ColorConfigFlags {
     pub fn mono_chrome(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_mono_chrome(&mut self, val: u32) {
         unsafe {
@@ -6809,10 +7111,12 @@ impl StdVideoAV1ColorConfigFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn color_range(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_color_range(&mut self, val: u32) {
         unsafe {
@@ -6820,10 +7124,12 @@ impl StdVideoAV1ColorConfigFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn separate_uv_delta_q(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_separate_uv_delta_q(&mut self, val: u32) {
         unsafe {
@@ -6831,10 +7137,12 @@ impl StdVideoAV1ColorConfigFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn color_description_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_color_description_present_flag(&mut self, val: u32) {
         unsafe {
@@ -6842,10 +7150,12 @@ impl StdVideoAV1ColorConfigFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 28u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -6853,6 +7163,7 @@ impl StdVideoAV1ColorConfigFlags {
             self._bitfield_1.set(4usize, 28u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         mono_chrome: u32,
@@ -6889,15 +7200,15 @@ impl StdVideoAV1ColorConfigFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1ColorConfig {
-    pub flags: StdVideoAV1ColorConfigFlags,
-    pub BitDepth: u8,
-    pub subsampling_x: u8,
-    pub subsampling_y: u8,
-    pub reserved1: u8,
-    pub color_primaries: StdVideoAV1ColorPrimaries,
+    pub flags:                    StdVideoAV1ColorConfigFlags,
+    pub BitDepth:                 u8,
+    pub subsampling_x:            u8,
+    pub subsampling_y:            u8,
+    pub reserved1:                u8,
+    pub color_primaries:          StdVideoAV1ColorPrimaries,
     pub transfer_characteristics: StdVideoAV1TransferCharacteristics,
-    pub matrix_coefficients: StdVideoAV1MatrixCoefficients,
-    pub chroma_sample_position: StdVideoAV1ChromaSamplePosition,
+    pub matrix_coefficients:      StdVideoAV1MatrixCoefficients,
+    pub chroma_sample_position:   StdVideoAV1ChromaSamplePosition,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1ColorConfig() {
@@ -7009,7 +7320,7 @@ fn bindgen_test_layout_StdVideoAV1ColorConfig() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1TimingInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1TimingInfoFlags() {
@@ -7029,6 +7340,7 @@ impl StdVideoAV1TimingInfoFlags {
     pub fn equal_picture_interval(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_equal_picture_interval(&mut self, val: u32) {
         unsafe {
@@ -7036,10 +7348,12 @@ impl StdVideoAV1TimingInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 31u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -7047,6 +7361,7 @@ impl StdVideoAV1TimingInfoFlags {
             self._bitfield_1.set(1usize, 31u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         equal_picture_interval: u32,
@@ -7135,7 +7450,7 @@ fn bindgen_test_layout_StdVideoAV1TimingInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1LoopFilterFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1LoopFilterFlags() {
@@ -7155,6 +7470,7 @@ impl StdVideoAV1LoopFilterFlags {
     pub fn loop_filter_delta_enabled(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_loop_filter_delta_enabled(&mut self, val: u32) {
         unsafe {
@@ -7162,10 +7478,12 @@ impl StdVideoAV1LoopFilterFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn loop_filter_delta_update(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_loop_filter_delta_update(&mut self, val: u32) {
         unsafe {
@@ -7173,10 +7491,12 @@ impl StdVideoAV1LoopFilterFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -7184,6 +7504,7 @@ impl StdVideoAV1LoopFilterFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         loop_filter_delta_enabled: u32,
@@ -7211,12 +7532,12 @@ impl StdVideoAV1LoopFilterFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1LoopFilter {
-    pub flags: StdVideoAV1LoopFilterFlags,
-    pub loop_filter_level: [u8; 4usize],
-    pub loop_filter_sharpness: u8,
-    pub update_ref_delta: u8,
-    pub loop_filter_ref_deltas: [i8; 8usize],
-    pub update_mode_delta: u8,
+    pub flags:                   StdVideoAV1LoopFilterFlags,
+    pub loop_filter_level:       [u8; 4usize],
+    pub loop_filter_sharpness:   u8,
+    pub update_ref_delta:        u8,
+    pub loop_filter_ref_deltas:  [i8; 8usize],
+    pub update_mode_delta:       u8,
     pub loop_filter_mode_deltas: [i8; 2usize],
 }
 #[test]
@@ -7309,7 +7630,7 @@ fn bindgen_test_layout_StdVideoAV1LoopFilter() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1QuantizationFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1QuantizationFlags() {
@@ -7329,6 +7650,7 @@ impl StdVideoAV1QuantizationFlags {
     pub fn using_qmatrix(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_using_qmatrix(&mut self, val: u32) {
         unsafe {
@@ -7336,10 +7658,12 @@ impl StdVideoAV1QuantizationFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn diff_uv_delta(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_diff_uv_delta(&mut self, val: u32) {
         unsafe {
@@ -7347,10 +7671,12 @@ impl StdVideoAV1QuantizationFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -7358,6 +7684,7 @@ impl StdVideoAV1QuantizationFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         using_qmatrix: u32,
@@ -7383,16 +7710,16 @@ impl StdVideoAV1QuantizationFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1Quantization {
-    pub flags: StdVideoAV1QuantizationFlags,
+    pub flags:      StdVideoAV1QuantizationFlags,
     pub base_q_idx: u8,
-    pub DeltaQYDc: i8,
-    pub DeltaQUDc: i8,
-    pub DeltaQUAc: i8,
-    pub DeltaQVDc: i8,
-    pub DeltaQVAc: i8,
-    pub qm_y: u8,
-    pub qm_u: u8,
-    pub qm_v: u8,
+    pub DeltaQYDc:  i8,
+    pub DeltaQUDc:  i8,
+    pub DeltaQUAc:  i8,
+    pub DeltaQVDc:  i8,
+    pub DeltaQVAc:  i8,
+    pub qm_y:       u8,
+    pub qm_u:       u8,
+    pub qm_v:       u8,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1Quantization() {
@@ -7514,7 +7841,7 @@ fn bindgen_test_layout_StdVideoAV1Quantization() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1Segmentation {
     pub FeatureEnabled: [u8; 8usize],
-    pub FeatureData: [[i16; 8usize]; 8usize],
+    pub FeatureData:    [[i16; 8usize]; 8usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1Segmentation() {
@@ -7556,7 +7883,7 @@ fn bindgen_test_layout_StdVideoAV1Segmentation() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1TileInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1TileInfoFlags() {
@@ -7576,6 +7903,7 @@ impl StdVideoAV1TileInfoFlags {
     pub fn uniform_tile_spacing_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_uniform_tile_spacing_flag(&mut self, val: u32) {
         unsafe {
@@ -7583,10 +7911,12 @@ impl StdVideoAV1TileInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 31u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -7594,6 +7924,7 @@ impl StdVideoAV1TileInfoFlags {
             self._bitfield_1.set(1usize, 31u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         uniform_tile_spacing_flag: u32,
@@ -7615,16 +7946,16 @@ impl StdVideoAV1TileInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1TileInfo {
-    pub flags: StdVideoAV1TileInfoFlags,
-    pub TileCols: u8,
-    pub TileRows: u8,
-    pub context_update_tile_id: u16,
+    pub flags:                   StdVideoAV1TileInfoFlags,
+    pub TileCols:                u8,
+    pub TileRows:                u8,
+    pub context_update_tile_id:  u16,
     pub tile_size_bytes_minus_1: u8,
-    pub reserved1: [u8; 7usize],
-    pub pMiColStarts: *const u16,
-    pub pMiRowStarts: *const u16,
-    pub pWidthInSbsMinus1: *const u16,
-    pub pHeightInSbsMinus1: *const u16,
+    pub reserved1:               [u8; 7usize],
+    pub pMiColStarts:            *const u16,
+    pub pMiRowStarts:            *const u16,
+    pub pWidthInSbsMinus1:       *const u16,
+    pub pHeightInSbsMinus1:      *const u16,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1TileInfo() {
@@ -7746,9 +8077,9 @@ fn bindgen_test_layout_StdVideoAV1TileInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1CDEF {
     pub cdef_damping_minus_3: u8,
-    pub cdef_bits: u8,
-    pub cdef_y_pri_strength: [u8; 8usize],
-    pub cdef_y_sec_strength: [u8; 8usize],
+    pub cdef_bits:            u8,
+    pub cdef_y_pri_strength:  [u8; 8usize],
+    pub cdef_y_sec_strength:  [u8; 8usize],
     pub cdef_uv_pri_strength: [u8; 8usize],
     pub cdef_uv_sec_strength: [u8; 8usize],
 }
@@ -7831,7 +8162,7 @@ fn bindgen_test_layout_StdVideoAV1CDEF() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1LoopRestoration {
     pub FrameRestorationType: [StdVideoAV1FrameRestorationType; 3usize],
-    pub LoopRestorationSize: [u16; 3usize],
+    pub LoopRestorationSize:  [u16; 3usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1LoopRestoration() {
@@ -7872,7 +8203,7 @@ fn bindgen_test_layout_StdVideoAV1LoopRestoration() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1GlobalMotion {
-    pub GmType: [u8; 8usize],
+    pub GmType:    [u8; 8usize],
     pub gm_params: [[i32; 6usize]; 8usize],
 }
 #[test]
@@ -7915,7 +8246,7 @@ fn bindgen_test_layout_StdVideoAV1GlobalMotion() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1FilmGrainFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1FilmGrainFlags() {
@@ -7935,6 +8266,7 @@ impl StdVideoAV1FilmGrainFlags {
     pub fn chroma_scaling_from_luma(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_chroma_scaling_from_luma(&mut self, val: u32) {
         unsafe {
@@ -7942,10 +8274,12 @@ impl StdVideoAV1FilmGrainFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn overlap_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_overlap_flag(&mut self, val: u32) {
         unsafe {
@@ -7953,10 +8287,12 @@ impl StdVideoAV1FilmGrainFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn clip_to_restricted_range(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_clip_to_restricted_range(&mut self, val: u32) {
         unsafe {
@@ -7964,10 +8300,12 @@ impl StdVideoAV1FilmGrainFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn update_grain(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_update_grain(&mut self, val: u32) {
         unsafe {
@@ -7975,10 +8313,12 @@ impl StdVideoAV1FilmGrainFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 28u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -7986,6 +8326,7 @@ impl StdVideoAV1FilmGrainFlags {
             self._bitfield_1.set(4usize, 28u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         chroma_scaling_from_luma: u32,
@@ -8023,31 +8364,31 @@ impl StdVideoAV1FilmGrainFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1FilmGrain {
-    pub flags: StdVideoAV1FilmGrainFlags,
-    pub grain_scaling_minus_8: u8,
-    pub ar_coeff_lag: u8,
-    pub ar_coeff_shift_minus_6: u8,
-    pub grain_scale_shift: u8,
-    pub grain_seed: u16,
+    pub flags:                     StdVideoAV1FilmGrainFlags,
+    pub grain_scaling_minus_8:     u8,
+    pub ar_coeff_lag:              u8,
+    pub ar_coeff_shift_minus_6:    u8,
+    pub grain_scale_shift:         u8,
+    pub grain_seed:                u16,
     pub film_grain_params_ref_idx: u8,
-    pub num_y_points: u8,
-    pub point_y_value: [u8; 14usize],
-    pub point_y_scaling: [u8; 14usize],
-    pub num_cb_points: u8,
-    pub point_cb_value: [u8; 10usize],
-    pub point_cb_scaling: [u8; 10usize],
-    pub num_cr_points: u8,
-    pub point_cr_value: [u8; 10usize],
-    pub point_cr_scaling: [u8; 10usize],
-    pub ar_coeffs_y_plus_128: [i8; 24usize],
-    pub ar_coeffs_cb_plus_128: [i8; 25usize],
-    pub ar_coeffs_cr_plus_128: [i8; 25usize],
-    pub cb_mult: u8,
-    pub cb_luma_mult: u8,
-    pub cb_offset: u16,
-    pub cr_mult: u8,
-    pub cr_luma_mult: u8,
-    pub cr_offset: u16,
+    pub num_y_points:              u8,
+    pub point_y_value:             [u8; 14usize],
+    pub point_y_scaling:           [u8; 14usize],
+    pub num_cb_points:             u8,
+    pub point_cb_value:            [u8; 10usize],
+    pub point_cb_scaling:          [u8; 10usize],
+    pub num_cr_points:             u8,
+    pub point_cr_value:            [u8; 10usize],
+    pub point_cr_scaling:          [u8; 10usize],
+    pub ar_coeffs_y_plus_128:      [i8; 24usize],
+    pub ar_coeffs_cb_plus_128:     [i8; 25usize],
+    pub ar_coeffs_cr_plus_128:     [i8; 25usize],
+    pub cb_mult:                   u8,
+    pub cb_luma_mult:              u8,
+    pub cb_offset:                 u16,
+    pub cr_mult:                   u8,
+    pub cr_luma_mult:              u8,
+    pub cr_offset:                 u16,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1FilmGrain() {
@@ -8320,7 +8661,7 @@ fn bindgen_test_layout_StdVideoAV1FilmGrain() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoAV1SequenceHeaderFlags {
     pub _bitfield_align_1: [u16; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoAV1SequenceHeaderFlags() {
@@ -8340,6 +8681,7 @@ impl StdVideoAV1SequenceHeaderFlags {
     pub fn still_picture(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_still_picture(&mut self, val: u32) {
         unsafe {
@@ -8347,10 +8689,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reduced_still_picture_header(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_reduced_still_picture_header(&mut self, val: u32) {
         unsafe {
@@ -8358,10 +8702,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn use_128x128_superblock(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_use_128x128_superblock(&mut self, val: u32) {
         unsafe {
@@ -8369,10 +8715,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_filter_intra(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_filter_intra(&mut self, val: u32) {
         unsafe {
@@ -8380,10 +8728,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_intra_edge_filter(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_intra_edge_filter(&mut self, val: u32) {
         unsafe {
@@ -8391,10 +8741,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_interintra_compound(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_interintra_compound(&mut self, val: u32) {
         unsafe {
@@ -8402,10 +8754,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_masked_compound(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_masked_compound(&mut self, val: u32) {
         unsafe {
@@ -8413,10 +8767,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_warped_motion(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_warped_motion(&mut self, val: u32) {
         unsafe {
@@ -8424,10 +8780,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_dual_filter(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_dual_filter(&mut self, val: u32) {
         unsafe {
@@ -8435,10 +8793,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_order_hint(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_order_hint(&mut self, val: u32) {
         unsafe {
@@ -8446,10 +8806,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_jnt_comp(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_jnt_comp(&mut self, val: u32) {
         unsafe {
@@ -8457,10 +8819,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_ref_frame_mvs(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_ref_frame_mvs(&mut self, val: u32) {
         unsafe {
@@ -8468,10 +8832,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_id_numbers_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_id_numbers_present_flag(&mut self, val: u32) {
         unsafe {
@@ -8479,10 +8845,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_superres(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_superres(&mut self, val: u32) {
         unsafe {
@@ -8490,10 +8858,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_cdef(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_cdef(&mut self, val: u32) {
         unsafe {
@@ -8501,10 +8871,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn enable_restoration(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_enable_restoration(&mut self, val: u32) {
         unsafe {
@@ -8512,10 +8884,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn film_grain_params_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_film_grain_params_present(&mut self, val: u32) {
         unsafe {
@@ -8523,10 +8897,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn timing_info_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_timing_info_present_flag(&mut self, val: u32) {
         unsafe {
@@ -8534,10 +8910,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn initial_display_delay_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_initial_display_delay_present_flag(&mut self, val: u32) {
         unsafe {
@@ -8545,10 +8923,12 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 13u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -8556,6 +8936,7 @@ impl StdVideoAV1SequenceHeaderFlags {
             self._bitfield_1.set(19usize, 13u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         still_picture: u32,
@@ -8857,7 +9238,7 @@ fn bindgen_test_layout_StdVideoAV1SequenceHeader() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeAV1PictureInfoFlags {
     pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoDecodeAV1PictureInfoFlags() {
@@ -8880,6 +9261,7 @@ impl StdVideoDecodeAV1PictureInfoFlags {
     pub fn error_resilient_mode(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_error_resilient_mode(&mut self, val: u32) {
         unsafe {
@@ -8887,10 +9269,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn disable_cdf_update(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_cdf_update(&mut self, val: u32) {
         unsafe {
@@ -8898,10 +9282,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn use_superres(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_use_superres(&mut self, val: u32) {
         unsafe {
@@ -8909,10 +9295,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn render_and_frame_size_different(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_render_and_frame_size_different(&mut self, val: u32) {
         unsafe {
@@ -8920,10 +9308,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_screen_content_tools(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_screen_content_tools(&mut self, val: u32) {
         unsafe {
@@ -8931,10 +9321,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_filter_switchable(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_filter_switchable(&mut self, val: u32) {
         unsafe {
@@ -8942,10 +9334,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn force_integer_mv(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_force_integer_mv(&mut self, val: u32) {
         unsafe {
@@ -8953,10 +9347,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_size_override_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_size_override_flag(&mut self, val: u32) {
         unsafe {
@@ -8964,10 +9360,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn buffer_removal_time_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_buffer_removal_time_present_flag(&mut self, val: u32) {
         unsafe {
@@ -8975,10 +9373,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_intrabc(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_intrabc(&mut self, val: u32) {
         unsafe {
@@ -8986,10 +9386,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_refs_short_signaling(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_refs_short_signaling(&mut self, val: u32) {
         unsafe {
@@ -8997,10 +9399,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_high_precision_mv(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_high_precision_mv(&mut self, val: u32) {
         unsafe {
@@ -9008,10 +9412,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_motion_mode_switchable(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_motion_mode_switchable(&mut self, val: u32) {
         unsafe {
@@ -9019,10 +9425,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn use_ref_frame_mvs(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_use_ref_frame_mvs(&mut self, val: u32) {
         unsafe {
@@ -9030,10 +9438,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn disable_frame_end_update_cdf(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_frame_end_update_cdf(&mut self, val: u32) {
         unsafe {
@@ -9041,10 +9451,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_warped_motion(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_warped_motion(&mut self, val: u32) {
         unsafe {
@@ -9052,10 +9464,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reduced_tx_set(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_reduced_tx_set(&mut self, val: u32) {
         unsafe {
@@ -9063,10 +9477,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reference_select(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_reference_select(&mut self, val: u32) {
         unsafe {
@@ -9074,10 +9490,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn skip_mode_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_skip_mode_present(&mut self, val: u32) {
         unsafe {
@@ -9085,10 +9503,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_q_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_q_present(&mut self, val: u32) {
         unsafe {
@@ -9096,10 +9516,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_lf_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_lf_present(&mut self, val: u32) {
         unsafe {
@@ -9107,10 +9529,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(20usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_lf_multi(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_lf_multi(&mut self, val: u32) {
         unsafe {
@@ -9118,10 +9542,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(21usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_enabled(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_enabled(&mut self, val: u32) {
         unsafe {
@@ -9129,10 +9555,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(22usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_update_map(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_update_map(&mut self, val: u32) {
         unsafe {
@@ -9140,10 +9568,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(23usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_temporal_update(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_temporal_update(&mut self, val: u32) {
         unsafe {
@@ -9151,10 +9581,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(24usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_update_data(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_update_data(&mut self, val: u32) {
         unsafe {
@@ -9162,10 +9594,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(25usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn UsesLr(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_UsesLr(&mut self, val: u32) {
         unsafe {
@@ -9173,10 +9607,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn usesChromaLr(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_usesChromaLr(&mut self, val: u32) {
         unsafe {
@@ -9184,10 +9620,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn apply_grain(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_apply_grain(&mut self, val: u32) {
         unsafe {
@@ -9195,10 +9633,12 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 3u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -9206,6 +9646,7 @@ impl StdVideoDecodeAV1PictureInfoFlags {
             self._bitfield_1.set(29usize, 3u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         error_resilient_mode: u32,
@@ -9377,30 +9818,30 @@ impl StdVideoDecodeAV1PictureInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeAV1PictureInfo {
-    pub flags: StdVideoDecodeAV1PictureInfoFlags,
-    pub frame_type: StdVideoAV1FrameType,
-    pub current_frame_id: u32,
-    pub OrderHint: u8,
-    pub primary_ref_frame: u8,
-    pub refresh_frame_flags: u8,
-    pub reserved1: u8,
+    pub flags:                StdVideoDecodeAV1PictureInfoFlags,
+    pub frame_type:           StdVideoAV1FrameType,
+    pub current_frame_id:     u32,
+    pub OrderHint:            u8,
+    pub primary_ref_frame:    u8,
+    pub refresh_frame_flags:  u8,
+    pub reserved1:            u8,
     pub interpolation_filter: StdVideoAV1InterpolationFilter,
-    pub TxMode: StdVideoAV1TxMode,
-    pub delta_q_res: u8,
-    pub delta_lf_res: u8,
-    pub SkipModeFrame: [u8; 2usize],
-    pub coded_denom: u8,
-    pub reserved2: [u8; 3usize],
-    pub OrderHints: [u8; 8usize],
-    pub expectedFrameId: [u32; 8usize],
-    pub pTileInfo: *const StdVideoAV1TileInfo,
-    pub pQuantization: *const StdVideoAV1Quantization,
-    pub pSegmentation: *const StdVideoAV1Segmentation,
-    pub pLoopFilter: *const StdVideoAV1LoopFilter,
-    pub pCDEF: *const StdVideoAV1CDEF,
-    pub pLoopRestoration: *const StdVideoAV1LoopRestoration,
-    pub pGlobalMotion: *const StdVideoAV1GlobalMotion,
-    pub pFilmGrain: *const StdVideoAV1FilmGrain,
+    pub TxMode:               StdVideoAV1TxMode,
+    pub delta_q_res:          u8,
+    pub delta_lf_res:         u8,
+    pub SkipModeFrame:        [u8; 2usize],
+    pub coded_denom:          u8,
+    pub reserved2:            [u8; 3usize],
+    pub OrderHints:           [u8; 8usize],
+    pub expectedFrameId:      [u32; 8usize],
+    pub pTileInfo:            *const StdVideoAV1TileInfo,
+    pub pQuantization:        *const StdVideoAV1Quantization,
+    pub pSegmentation:        *const StdVideoAV1Segmentation,
+    pub pLoopFilter:          *const StdVideoAV1LoopFilter,
+    pub pCDEF:                *const StdVideoAV1CDEF,
+    pub pLoopRestoration:     *const StdVideoAV1LoopRestoration,
+    pub pGlobalMotion:        *const StdVideoAV1GlobalMotion,
+    pub pFilmGrain:           *const StdVideoAV1FilmGrain,
 }
 #[test]
 fn bindgen_test_layout_StdVideoDecodeAV1PictureInfo() {
@@ -9662,7 +10103,7 @@ fn bindgen_test_layout_StdVideoDecodeAV1PictureInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeAV1ReferenceInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoDecodeAV1ReferenceInfoFlags() {
@@ -9685,6 +10126,7 @@ impl StdVideoDecodeAV1ReferenceInfoFlags {
     pub fn disable_frame_end_update_cdf(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_frame_end_update_cdf(&mut self, val: u32) {
         unsafe {
@@ -9692,10 +10134,12 @@ impl StdVideoDecodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_enabled(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_enabled(&mut self, val: u32) {
         unsafe {
@@ -9703,10 +10147,12 @@ impl StdVideoDecodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -9714,6 +10160,7 @@ impl StdVideoDecodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         disable_frame_end_update_cdf: u32,
@@ -9740,11 +10187,11 @@ impl StdVideoDecodeAV1ReferenceInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoDecodeAV1ReferenceInfo {
-    pub flags: StdVideoDecodeAV1ReferenceInfoFlags,
-    pub frame_type: u8,
+    pub flags:            StdVideoDecodeAV1ReferenceInfoFlags,
+    pub frame_type:       u8,
     pub RefFrameSignBias: u8,
-    pub OrderHint: u8,
-    pub SavedOrderHints: [u8; 8usize],
+    pub OrderHint:        u8,
+    pub SavedOrderHints:  [u8; 8usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoDecodeAV1ReferenceInfo() {
@@ -9815,9 +10262,9 @@ fn bindgen_test_layout_StdVideoDecodeAV1ReferenceInfo() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264WeightTableFlags {
-    pub luma_weight_l0_flag: u32,
+    pub luma_weight_l0_flag:   u32,
     pub chroma_weight_l0_flag: u32,
-    pub luma_weight_l1_flag: u32,
+    pub luma_weight_l1_flag:   u32,
     pub chroma_weight_l1_flag: u32,
 }
 #[test]
@@ -9882,17 +10329,17 @@ fn bindgen_test_layout_StdVideoEncodeH264WeightTableFlags() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264WeightTable {
-    pub flags: StdVideoEncodeH264WeightTableFlags,
-    pub luma_log2_weight_denom: u8,
+    pub flags:                    StdVideoEncodeH264WeightTableFlags,
+    pub luma_log2_weight_denom:   u8,
     pub chroma_log2_weight_denom: u8,
-    pub luma_weight_l0: [i8; 32usize],
-    pub luma_offset_l0: [i8; 32usize],
-    pub chroma_weight_l0: [[i8; 2usize]; 32usize],
-    pub chroma_offset_l0: [[i8; 2usize]; 32usize],
-    pub luma_weight_l1: [i8; 32usize],
-    pub luma_offset_l1: [i8; 32usize],
-    pub chroma_weight_l1: [[i8; 2usize]; 32usize],
-    pub chroma_offset_l1: [[i8; 2usize]; 32usize],
+    pub luma_weight_l0:           [i8; 32usize],
+    pub luma_offset_l0:           [i8; 32usize],
+    pub chroma_weight_l0:         [[i8; 2usize]; 32usize],
+    pub chroma_offset_l0:         [[i8; 2usize]; 32usize],
+    pub luma_weight_l1:           [i8; 32usize],
+    pub luma_offset_l1:           [i8; 32usize],
+    pub chroma_weight_l1:         [[i8; 2usize]; 32usize],
+    pub chroma_offset_l1:         [[i8; 2usize]; 32usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264WeightTable() {
@@ -10024,7 +10471,7 @@ fn bindgen_test_layout_StdVideoEncodeH264WeightTable() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264SliceHeaderFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264SliceHeaderFlags() {
@@ -10047,6 +10494,7 @@ impl StdVideoEncodeH264SliceHeaderFlags {
     pub fn direct_spatial_mv_pred_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_direct_spatial_mv_pred_flag(&mut self, val: u32) {
         unsafe {
@@ -10054,10 +10502,12 @@ impl StdVideoEncodeH264SliceHeaderFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn num_ref_idx_active_override_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_num_ref_idx_active_override_flag(&mut self, val: u32) {
         unsafe {
@@ -10065,10 +10515,12 @@ impl StdVideoEncodeH264SliceHeaderFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -10076,6 +10528,7 @@ impl StdVideoEncodeH264SliceHeaderFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         direct_spatial_mv_pred_flag: u32,
@@ -10104,7 +10557,7 @@ impl StdVideoEncodeH264SliceHeaderFlags {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264PictureInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264PictureInfoFlags() {
@@ -10127,6 +10580,7 @@ impl StdVideoEncodeH264PictureInfoFlags {
     pub fn IdrPicFlag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IdrPicFlag(&mut self, val: u32) {
         unsafe {
@@ -10134,10 +10588,12 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_reference(&mut self, val: u32) {
         unsafe {
@@ -10145,10 +10601,12 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn no_output_of_prior_pics_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_no_output_of_prior_pics_flag(&mut self, val: u32) {
         unsafe {
@@ -10156,10 +10614,12 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn long_term_reference_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_long_term_reference_flag(&mut self, val: u32) {
         unsafe {
@@ -10167,10 +10627,12 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn adaptive_ref_pic_marking_mode_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_adaptive_ref_pic_marking_mode_flag(&mut self, val: u32) {
         unsafe {
@@ -10178,10 +10640,12 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 27u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -10189,6 +10653,7 @@ impl StdVideoEncodeH264PictureInfoFlags {
             self._bitfield_1.set(5usize, 27u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         IdrPicFlag: u32,
@@ -10233,7 +10698,7 @@ impl StdVideoEncodeH264PictureInfoFlags {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264ReferenceInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264ReferenceInfoFlags() {
@@ -10259,6 +10724,7 @@ impl StdVideoEncodeH264ReferenceInfoFlags {
     pub fn used_for_long_term_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_used_for_long_term_reference(&mut self, val: u32) {
         unsafe {
@@ -10266,10 +10732,12 @@ impl StdVideoEncodeH264ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 31u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -10277,6 +10745,7 @@ impl StdVideoEncodeH264ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 31u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         used_for_long_term_reference: u32,
@@ -10299,7 +10768,7 @@ impl StdVideoEncodeH264ReferenceInfoFlags {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264ReferenceListsInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264ReferenceListsInfoFlags() {
@@ -10325,6 +10794,7 @@ impl StdVideoEncodeH264ReferenceListsInfoFlags {
     pub fn ref_pic_list_modification_flag_l0(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_ref_pic_list_modification_flag_l0(&mut self, val: u32) {
         unsafe {
@@ -10332,10 +10802,12 @@ impl StdVideoEncodeH264ReferenceListsInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn ref_pic_list_modification_flag_l1(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_ref_pic_list_modification_flag_l1(&mut self, val: u32) {
         unsafe {
@@ -10343,10 +10815,12 @@ impl StdVideoEncodeH264ReferenceListsInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -10354,6 +10828,7 @@ impl StdVideoEncodeH264ReferenceListsInfoFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         ref_pic_list_modification_flag_l0: u32,
@@ -10382,8 +10857,8 @@ impl StdVideoEncodeH264ReferenceListsInfoFlags {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264RefListModEntry {
     pub modification_of_pic_nums_idc: StdVideoH264ModificationOfPicNumsIdc,
-    pub abs_diff_pic_num_minus1: u16,
-    pub long_term_pic_num: u16,
+    pub abs_diff_pic_num_minus1:      u16,
+    pub long_term_pic_num:            u16,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264RefListModEntry() {
@@ -10440,10 +10915,10 @@ fn bindgen_test_layout_StdVideoEncodeH264RefListModEntry() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264RefPicMarkingEntry {
     pub memory_management_control_operation: StdVideoH264MemMgmtControlOp,
-    pub difference_of_pic_nums_minus1: u16,
-    pub long_term_pic_num: u16,
-    pub long_term_frame_idx: u16,
-    pub max_long_term_frame_idx_plus1: u16,
+    pub difference_of_pic_nums_minus1:       u16,
+    pub long_term_pic_num:                   u16,
+    pub long_term_frame_idx:                 u16,
+    pub max_long_term_frame_idx_plus1:       u16,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264RefPicMarkingEntry() {
@@ -10689,16 +11164,16 @@ fn bindgen_test_layout_StdVideoEncodeH264ReferenceListsInfo() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264PictureInfo {
-    pub flags: StdVideoEncodeH264PictureInfoFlags,
+    pub flags:                StdVideoEncodeH264PictureInfoFlags,
     pub seq_parameter_set_id: u8,
     pub pic_parameter_set_id: u8,
-    pub idr_pic_id: u16,
-    pub primary_pic_type: StdVideoH264PictureType,
-    pub frame_num: u32,
-    pub PicOrderCnt: i32,
-    pub temporal_id: u8,
-    pub reserved1: [u8; 3usize],
-    pub pRefLists: *const StdVideoEncodeH264ReferenceListsInfo,
+    pub idr_pic_id:           u16,
+    pub primary_pic_type:     StdVideoH264PictureType,
+    pub frame_num:            u32,
+    pub PicOrderCnt:          i32,
+    pub temporal_id:          u8,
+    pub reserved1:            [u8; 3usize],
+    pub pRefLists:            *const StdVideoEncodeH264ReferenceListsInfo,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264PictureInfo() {
@@ -10819,13 +11294,13 @@ fn bindgen_test_layout_StdVideoEncodeH264PictureInfo() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH264ReferenceInfo {
-    pub flags: StdVideoEncodeH264ReferenceInfoFlags,
-    pub primary_pic_type: StdVideoH264PictureType,
-    pub FrameNum: u32,
-    pub PicOrderCnt: i32,
-    pub long_term_pic_num: u16,
+    pub flags:               StdVideoEncodeH264ReferenceInfoFlags,
+    pub primary_pic_type:    StdVideoH264PictureType,
+    pub FrameNum:            u32,
+    pub PicOrderCnt:         i32,
+    pub long_term_pic_num:   u16,
     pub long_term_frame_idx: u16,
-    pub temporal_id: u8,
+    pub temporal_id:         u8,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH264ReferenceInfo() {
@@ -11048,9 +11523,9 @@ fn bindgen_test_layout_StdVideoEncodeH264SliceHeader() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265WeightTableFlags {
-    pub luma_weight_l0_flag: u16,
+    pub luma_weight_l0_flag:   u16,
     pub chroma_weight_l0_flag: u16,
-    pub luma_weight_l1_flag: u16,
+    pub luma_weight_l1_flag:   u16,
     pub chroma_weight_l1_flag: u16,
 }
 #[test]
@@ -11259,7 +11734,7 @@ fn bindgen_test_layout_StdVideoEncodeH265WeightTable() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265SliceSegmentHeaderFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265SliceSegmentHeaderFlags() {
@@ -11285,6 +11760,7 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
     pub fn first_slice_segment_in_pic_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_first_slice_segment_in_pic_flag(&mut self, val: u32) {
         unsafe {
@@ -11292,10 +11768,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn dependent_slice_segment_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_dependent_slice_segment_flag(&mut self, val: u32) {
         unsafe {
@@ -11303,10 +11781,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_sao_luma_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_sao_luma_flag(&mut self, val: u32) {
         unsafe {
@@ -11314,10 +11794,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_sao_chroma_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_sao_chroma_flag(&mut self, val: u32) {
         unsafe {
@@ -11325,10 +11807,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn num_ref_idx_active_override_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_num_ref_idx_active_override_flag(&mut self, val: u32) {
         unsafe {
@@ -11336,10 +11820,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn mvd_l1_zero_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_mvd_l1_zero_flag(&mut self, val: u32) {
         unsafe {
@@ -11347,10 +11833,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cabac_init_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cabac_init_flag(&mut self, val: u32) {
         unsafe {
@@ -11358,10 +11846,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cu_chroma_qp_offset_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cu_chroma_qp_offset_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -11369,10 +11859,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn deblocking_filter_override_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_deblocking_filter_override_flag(&mut self, val: u32) {
         unsafe {
@@ -11380,10 +11872,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_deblocking_filter_disabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_deblocking_filter_disabled_flag(&mut self, val: u32) {
         unsafe {
@@ -11391,10 +11885,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn collocated_from_l0_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_collocated_from_l0_flag(&mut self, val: u32) {
         unsafe {
@@ -11402,10 +11898,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_loop_filter_across_slices_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_loop_filter_across_slices_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -11413,10 +11911,12 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 20u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -11424,6 +11924,7 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
             self._bitfield_1.set(12usize, 20u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         first_slice_segment_in_pic_flag: u32,
@@ -11508,21 +12009,21 @@ impl StdVideoEncodeH265SliceSegmentHeaderFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265SliceSegmentHeader {
-    pub flags: StdVideoEncodeH265SliceSegmentHeaderFlags,
-    pub slice_type: StdVideoH265SliceType,
-    pub slice_segment_address: u32,
-    pub collocated_ref_idx: u8,
-    pub MaxNumMergeCand: u8,
-    pub slice_cb_qp_offset: i8,
-    pub slice_cr_qp_offset: i8,
+    pub flags:                  StdVideoEncodeH265SliceSegmentHeaderFlags,
+    pub slice_type:             StdVideoH265SliceType,
+    pub slice_segment_address:  u32,
+    pub collocated_ref_idx:     u8,
+    pub MaxNumMergeCand:        u8,
+    pub slice_cb_qp_offset:     i8,
+    pub slice_cr_qp_offset:     i8,
     pub slice_beta_offset_div2: i8,
-    pub slice_tc_offset_div2: i8,
-    pub slice_act_y_qp_offset: i8,
+    pub slice_tc_offset_div2:   i8,
+    pub slice_act_y_qp_offset:  i8,
     pub slice_act_cb_qp_offset: i8,
     pub slice_act_cr_qp_offset: i8,
-    pub slice_qp_delta: i8,
-    pub reserved1: u16,
-    pub pWeightTable: *const StdVideoEncodeH265WeightTable,
+    pub slice_qp_delta:         i8,
+    pub reserved1:              u16,
+    pub pWeightTable:           *const StdVideoEncodeH265WeightTable,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265SliceSegmentHeader() {
@@ -11700,7 +12201,7 @@ fn bindgen_test_layout_StdVideoEncodeH265SliceSegmentHeader() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265ReferenceListsInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265ReferenceListsInfoFlags() {
@@ -11726,6 +12227,7 @@ impl StdVideoEncodeH265ReferenceListsInfoFlags {
     pub fn ref_pic_list_modification_flag_l0(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_ref_pic_list_modification_flag_l0(&mut self, val: u32) {
         unsafe {
@@ -11733,10 +12235,12 @@ impl StdVideoEncodeH265ReferenceListsInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn ref_pic_list_modification_flag_l1(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_ref_pic_list_modification_flag_l1(&mut self, val: u32) {
         unsafe {
@@ -11744,10 +12248,12 @@ impl StdVideoEncodeH265ReferenceListsInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -11755,6 +12261,7 @@ impl StdVideoEncodeH265ReferenceListsInfoFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         ref_pic_list_modification_flag_l0: u32,
@@ -11890,7 +12397,7 @@ fn bindgen_test_layout_StdVideoEncodeH265ReferenceListsInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265PictureInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265PictureInfoFlags() {
@@ -11913,6 +12420,7 @@ impl StdVideoEncodeH265PictureInfoFlags {
     pub fn is_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_reference(&mut self, val: u32) {
         unsafe {
@@ -11920,10 +12428,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn IrapPicFlag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_IrapPicFlag(&mut self, val: u32) {
         unsafe {
@@ -11931,10 +12441,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn used_for_long_term_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_used_for_long_term_reference(&mut self, val: u32) {
         unsafe {
@@ -11942,10 +12454,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn discardable_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_discardable_flag(&mut self, val: u32) {
         unsafe {
@@ -11953,10 +12467,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn cross_layer_bla_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_cross_layer_bla_flag(&mut self, val: u32) {
         unsafe {
@@ -11964,10 +12480,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn pic_output_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_pic_output_flag(&mut self, val: u32) {
         unsafe {
@@ -11975,10 +12493,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn no_output_of_prior_pics_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_no_output_of_prior_pics_flag(&mut self, val: u32) {
         unsafe {
@@ -11986,10 +12506,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn short_term_ref_pic_set_sps_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_short_term_ref_pic_set_sps_flag(&mut self, val: u32) {
         unsafe {
@@ -11997,10 +12519,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn slice_temporal_mvp_enabled_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_slice_temporal_mvp_enabled_flag(&mut self, val: u32) {
         unsafe {
@@ -12008,10 +12532,12 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 23u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -12019,6 +12545,7 @@ impl StdVideoEncodeH265PictureInfoFlags {
             self._bitfield_1.set(9usize, 23u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         is_reference: u32,
@@ -12083,13 +12610,13 @@ impl StdVideoEncodeH265PictureInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265LongTermRefPics {
-    pub num_long_term_sps: u8,
-    pub num_long_term_pics: u8,
-    pub lt_idx_sps: [u8; 32usize],
-    pub poc_lsb_lt: [u8; 16usize],
-    pub used_by_curr_pic_lt_flag: u16,
+    pub num_long_term_sps:          u8,
+    pub num_long_term_pics:         u8,
+    pub lt_idx_sps:                 [u8; 32usize],
+    pub poc_lsb_lt:                 [u8; 16usize],
+    pub used_by_curr_pic_lt_flag:   u16,
     pub delta_poc_msb_present_flag: [u8; 48usize],
-    pub delta_poc_msb_cycle_lt: [u8; 48usize],
+    pub delta_poc_msb_cycle_lt:     [u8; 48usize],
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265LongTermRefPics() {
@@ -12336,7 +12863,7 @@ fn bindgen_test_layout_StdVideoEncodeH265PictureInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265ReferenceInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265ReferenceInfoFlags() {
@@ -12362,6 +12889,7 @@ impl StdVideoEncodeH265ReferenceInfoFlags {
     pub fn used_for_long_term_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_used_for_long_term_reference(&mut self, val: u32) {
         unsafe {
@@ -12369,10 +12897,12 @@ impl StdVideoEncodeH265ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn unused_for_reference(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_unused_for_reference(&mut self, val: u32) {
         unsafe {
@@ -12380,10 +12910,12 @@ impl StdVideoEncodeH265ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -12391,6 +12923,7 @@ impl StdVideoEncodeH265ReferenceInfoFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         used_for_long_term_reference: u32,
@@ -12417,10 +12950,10 @@ impl StdVideoEncodeH265ReferenceInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeH265ReferenceInfo {
-    pub flags: StdVideoEncodeH265ReferenceInfoFlags,
-    pub pic_type: StdVideoH265PictureType,
+    pub flags:          StdVideoEncodeH265ReferenceInfoFlags,
+    pub pic_type:       StdVideoH265PictureType,
     pub PicOrderCntVal: i32,
-    pub TemporalId: u8,
+    pub TemporalId:     u8,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeH265ReferenceInfo() {
@@ -12567,7 +13100,7 @@ fn bindgen_test_layout_StdVideoEncodeAV1DecoderModelInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1ExtensionHeader {
     pub temporal_id: u8,
-    pub spatial_id: u8,
+    pub spatial_id:  u8,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeAV1ExtensionHeader() {
@@ -12612,7 +13145,7 @@ fn bindgen_test_layout_StdVideoEncodeAV1ExtensionHeader() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1OperatingPointInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeAV1OperatingPointInfoFlags() {
@@ -12638,6 +13171,7 @@ impl StdVideoEncodeAV1OperatingPointInfoFlags {
     pub fn decoder_model_present_for_this_op(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_decoder_model_present_for_this_op(&mut self, val: u32) {
         unsafe {
@@ -12645,10 +13179,12 @@ impl StdVideoEncodeAV1OperatingPointInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn low_delay_mode_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_low_delay_mode_flag(&mut self, val: u32) {
         unsafe {
@@ -12656,10 +13192,12 @@ impl StdVideoEncodeAV1OperatingPointInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn initial_display_delay_present_for_this_op(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_initial_display_delay_present_for_this_op(&mut self, val: u32) {
         unsafe {
@@ -12667,10 +13205,12 @@ impl StdVideoEncodeAV1OperatingPointInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 29u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -12678,6 +13218,7 @@ impl StdVideoEncodeAV1OperatingPointInfoFlags {
             self._bitfield_1.set(3usize, 29u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         decoder_model_present_for_this_op: u32,
@@ -12814,7 +13355,7 @@ fn bindgen_test_layout_StdVideoEncodeAV1OperatingPointInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1PictureInfoFlags {
     pub _bitfield_align_1: [u8; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeAV1PictureInfoFlags() {
@@ -12837,6 +13378,7 @@ impl StdVideoEncodeAV1PictureInfoFlags {
     pub fn error_resilient_mode(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_error_resilient_mode(&mut self, val: u32) {
         unsafe {
@@ -12844,10 +13386,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn disable_cdf_update(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_cdf_update(&mut self, val: u32) {
         unsafe {
@@ -12855,10 +13399,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn use_superres(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_use_superres(&mut self, val: u32) {
         unsafe {
@@ -12866,10 +13412,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn render_and_frame_size_different(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_render_and_frame_size_different(&mut self, val: u32) {
         unsafe {
@@ -12877,10 +13425,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_screen_content_tools(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_screen_content_tools(&mut self, val: u32) {
         unsafe {
@@ -12888,10 +13438,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_filter_switchable(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_filter_switchable(&mut self, val: u32) {
         unsafe {
@@ -12899,10 +13451,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn force_integer_mv(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_force_integer_mv(&mut self, val: u32) {
         unsafe {
@@ -12910,10 +13464,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_size_override_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_size_override_flag(&mut self, val: u32) {
         unsafe {
@@ -12921,10 +13477,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn buffer_removal_time_present_flag(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_buffer_removal_time_present_flag(&mut self, val: u32) {
         unsafe {
@@ -12932,10 +13490,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_intrabc(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_intrabc(&mut self, val: u32) {
         unsafe {
@@ -12943,10 +13503,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn frame_refs_short_signaling(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_frame_refs_short_signaling(&mut self, val: u32) {
         unsafe {
@@ -12954,10 +13516,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_high_precision_mv(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_high_precision_mv(&mut self, val: u32) {
         unsafe {
@@ -12965,10 +13529,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn is_motion_mode_switchable(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_is_motion_mode_switchable(&mut self, val: u32) {
         unsafe {
@@ -12976,10 +13542,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn use_ref_frame_mvs(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_use_ref_frame_mvs(&mut self, val: u32) {
         unsafe {
@@ -12987,10 +13555,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn disable_frame_end_update_cdf(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_frame_end_update_cdf(&mut self, val: u32) {
         unsafe {
@@ -12998,10 +13568,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn allow_warped_motion(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_allow_warped_motion(&mut self, val: u32) {
         unsafe {
@@ -13009,10 +13581,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reduced_tx_set(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_reduced_tx_set(&mut self, val: u32) {
         unsafe {
@@ -13020,10 +13594,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn skip_mode_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_skip_mode_present(&mut self, val: u32) {
         unsafe {
@@ -13031,10 +13607,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_q_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_q_present(&mut self, val: u32) {
         unsafe {
@@ -13042,10 +13620,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_lf_present(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_lf_present(&mut self, val: u32) {
         unsafe {
@@ -13053,10 +13633,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn delta_lf_multi(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_delta_lf_multi(&mut self, val: u32) {
         unsafe {
@@ -13064,10 +13646,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(20usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_enabled(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_enabled(&mut self, val: u32) {
         unsafe {
@@ -13075,10 +13659,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(21usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_update_map(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_update_map(&mut self, val: u32) {
         unsafe {
@@ -13086,10 +13672,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(22usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_temporal_update(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_temporal_update(&mut self, val: u32) {
         unsafe {
@@ -13097,10 +13685,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(23usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_update_data(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_update_data(&mut self, val: u32) {
         unsafe {
@@ -13108,10 +13698,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(24usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn UsesLr(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_UsesLr(&mut self, val: u32) {
         unsafe {
@@ -13119,10 +13711,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(25usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn usesChromaLr(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_usesChromaLr(&mut self, val: u32) {
         unsafe {
@@ -13130,10 +13724,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn show_frame(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_show_frame(&mut self, val: u32) {
         unsafe {
@@ -13141,10 +13737,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn showable_frame(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_showable_frame(&mut self, val: u32) {
         unsafe {
@@ -13152,10 +13750,12 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 3u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -13163,6 +13763,7 @@ impl StdVideoEncodeAV1PictureInfoFlags {
             self._bitfield_1.set(29usize, 3u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         error_resilient_mode: u32,
@@ -13334,33 +13935,33 @@ impl StdVideoEncodeAV1PictureInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1PictureInfo {
-    pub flags: StdVideoEncodeAV1PictureInfoFlags,
-    pub frame_type: StdVideoAV1FrameType,
+    pub flags:                   StdVideoEncodeAV1PictureInfoFlags,
+    pub frame_type:              StdVideoAV1FrameType,
     pub frame_presentation_time: u32,
-    pub current_frame_id: u32,
-    pub order_hint: u8,
-    pub primary_ref_frame: u8,
-    pub refresh_frame_flags: u8,
-    pub coded_denom: u8,
-    pub render_width_minus_1: u16,
-    pub render_height_minus_1: u16,
-    pub interpolation_filter: StdVideoAV1InterpolationFilter,
-    pub TxMode: StdVideoAV1TxMode,
-    pub delta_q_res: u8,
-    pub delta_lf_res: u8,
-    pub ref_order_hint: [u8; 8usize],
-    pub ref_frame_idx: [i8; 7usize],
-    pub reserved1: [u8; 3usize],
-    pub delta_frame_id_minus_1: [u32; 7usize],
-    pub pTileInfo: *const StdVideoAV1TileInfo,
-    pub pQuantization: *const StdVideoAV1Quantization,
-    pub pSegmentation: *const StdVideoAV1Segmentation,
-    pub pLoopFilter: *const StdVideoAV1LoopFilter,
-    pub pCDEF: *const StdVideoAV1CDEF,
-    pub pLoopRestoration: *const StdVideoAV1LoopRestoration,
-    pub pGlobalMotion: *const StdVideoAV1GlobalMotion,
-    pub pExtensionHeader: *const StdVideoEncodeAV1ExtensionHeader,
-    pub pBufferRemovalTimes: *const u32,
+    pub current_frame_id:        u32,
+    pub order_hint:              u8,
+    pub primary_ref_frame:       u8,
+    pub refresh_frame_flags:     u8,
+    pub coded_denom:             u8,
+    pub render_width_minus_1:    u16,
+    pub render_height_minus_1:   u16,
+    pub interpolation_filter:    StdVideoAV1InterpolationFilter,
+    pub TxMode:                  StdVideoAV1TxMode,
+    pub delta_q_res:             u8,
+    pub delta_lf_res:            u8,
+    pub ref_order_hint:          [u8; 8usize],
+    pub ref_frame_idx:           [i8; 7usize],
+    pub reserved1:               [u8; 3usize],
+    pub delta_frame_id_minus_1:  [u32; 7usize],
+    pub pTileInfo:               *const StdVideoAV1TileInfo,
+    pub pQuantization:           *const StdVideoAV1Quantization,
+    pub pSegmentation:           *const StdVideoAV1Segmentation,
+    pub pLoopFilter:             *const StdVideoAV1LoopFilter,
+    pub pCDEF:                   *const StdVideoAV1CDEF,
+    pub pLoopRestoration:        *const StdVideoAV1LoopRestoration,
+    pub pGlobalMotion:           *const StdVideoAV1GlobalMotion,
+    pub pExtensionHeader:        *const StdVideoEncodeAV1ExtensionHeader,
+    pub pBufferRemovalTimes:     *const u32,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeAV1PictureInfo() {
@@ -13652,7 +14253,7 @@ fn bindgen_test_layout_StdVideoEncodeAV1PictureInfo() {
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1ReferenceInfoFlags {
     pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub _bitfield_1:       __BindgenBitfieldUnit<[u8; 4usize]>,
 }
 #[test]
 fn bindgen_test_layout_StdVideoEncodeAV1ReferenceInfoFlags() {
@@ -13675,6 +14276,7 @@ impl StdVideoEncodeAV1ReferenceInfoFlags {
     pub fn disable_frame_end_update_cdf(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_disable_frame_end_update_cdf(&mut self, val: u32) {
         unsafe {
@@ -13682,10 +14284,12 @@ impl StdVideoEncodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn segmentation_enabled(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
+
     #[inline]
     pub fn set_segmentation_enabled(&mut self, val: u32) {
         unsafe {
@@ -13693,10 +14297,12 @@ impl StdVideoEncodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
+
     #[inline]
     pub fn reserved(&self) -> u32 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
+
     #[inline]
     pub fn set_reserved(&mut self, val: u32) {
         unsafe {
@@ -13704,6 +14310,7 @@ impl StdVideoEncodeAV1ReferenceInfoFlags {
             self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
+
     #[inline]
     pub fn new_bitfield_1(
         disable_frame_end_update_cdf: u32,
@@ -13730,11 +14337,11 @@ impl StdVideoEncodeAV1ReferenceInfoFlags {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct StdVideoEncodeAV1ReferenceInfo {
-    pub flags: StdVideoEncodeAV1ReferenceInfoFlags,
-    pub RefFrameId: u32,
-    pub frame_type: StdVideoAV1FrameType,
-    pub OrderHint: u8,
-    pub reserved1: [u8; 3usize],
+    pub flags:            StdVideoEncodeAV1ReferenceInfoFlags,
+    pub RefFrameId:       u32,
+    pub frame_type:       StdVideoAV1FrameType,
+    pub OrderHint:        u8,
+    pub reserved1:        [u8; 3usize],
     pub pExtensionHeader: *const StdVideoEncodeAV1ExtensionHeader,
 }
 #[test]

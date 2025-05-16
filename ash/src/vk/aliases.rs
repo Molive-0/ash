@@ -1,6 +1,4 @@
-use crate::vk::bitflags::*;
-use crate::vk::definitions::*;
-use crate::vk::enums::*;
+use crate::vk::{bitflags::*, definitions::*, enums::*};
 pub type MemoryUnmapFlagsKHR = MemoryUnmapFlags;
 pub type GeometryFlagsNV = GeometryFlagsKHR;
 pub type GeometryInstanceFlagsNV = GeometryInstanceFlagsKHR;
