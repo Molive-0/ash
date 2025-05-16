@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_get_physical_device_properties2.html>
 
-use crate::prelude::*;
-use crate::vk;
-use core::mem;
-use core::ptr;
+use core::{mem, ptr};
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::get_physical_device_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFeatures2KHR.html>
@@ -67,7 +66,8 @@ impl crate::khr::get_physical_device_properties2::Instance {
         (self.fp.get_physical_device_properties2_khr)(physical_device, properties);
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_queue_family_properties2()`][Self::get_physical_device_queue_family_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_queue_family_properties2()`][Self::get_physical_device_queue_family_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_queue_family_properties2_len(
         &self,
@@ -85,7 +85,8 @@ impl crate::khr::get_physical_device_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties2KHR.html>
     ///
     /// Call [`get_physical_device_queue_family_properties2_len()`][Self::get_physical_device_queue_family_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_queue_family_properties2(
         &self,
@@ -101,7 +102,8 @@ impl crate::khr::get_physical_device_properties2::Instance {
         assert_eq!(count as usize, out.len());
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_sparse_image_format_properties2()`][Self::get_physical_device_sparse_image_format_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_sparse_image_format_properties2()`][Self::get_physical_device_sparse_image_format_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_sparse_image_format_properties2_len(
         &self,
@@ -123,7 +125,8 @@ impl crate::khr::get_physical_device_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties2KHR.html>
     ///
     /// Call [`get_physical_device_sparse_image_format_properties2_len()`][Self::get_physical_device_sparse_image_format_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_sparse_image_format_properties2(
         &self,

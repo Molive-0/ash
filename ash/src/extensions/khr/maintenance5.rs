@@ -1,9 +1,10 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_maintenance5.html>
 
+use core::mem;
+
 #[cfg(doc)]
 use crate::ext;
 use crate::vk;
-use core::mem;
 
 impl crate::khr::maintenance5::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBindIndexBuffer2KHR.html>
@@ -49,10 +50,12 @@ impl crate::khr::maintenance5::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetImageSubresourceLayout2KHR.html>
     ///
-    /// Also available as [`ext::host_image_copy::Device::get_image_subresource_layout2()`]
+    /// Also available as
+    /// [`ext::host_image_copy::Device::get_image_subresource_layout2()`]
     /// when [`VK_EXT_host_image_copy`] is enabled.
     ///
-    /// Also available as [`ext::image_compression_control::Device::get_image_subresource_layout2()`]
+    /// Also available as
+    /// [`ext::image_compression_control::Device::get_image_subresource_layout2()`]
     /// when [`VK_EXT_image_compression_control`] is enabled.
     ///
     /// [`VK_EXT_host_image_copy`]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_host_image_copy.html

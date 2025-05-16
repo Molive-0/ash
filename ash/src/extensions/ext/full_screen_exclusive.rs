@@ -1,9 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_full_screen_exclusive.html>
 
-use crate::prelude::*;
-use crate::vk;
 use alloc::vec::Vec;
 use core::mem;
+
+use crate::{prelude::*, vk};
 
 impl crate::ext::full_screen_exclusive::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkAcquireFullScreenExclusiveModeEXT.html>

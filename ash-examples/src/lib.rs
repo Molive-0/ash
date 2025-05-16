@@ -12,9 +12,10 @@ use std::{
 };
 
 use ash::{
+    Device, Entry, Instance,
     ext::debug_utils,
     khr::{surface, swapchain},
-    vk, Device, Entry, Instance,
+    vk,
 };
 use winit::{
     event::{ElementState, Event, KeyEvent, WindowEvent},
@@ -36,8 +37,9 @@ macro_rules! offset_of {
         }
     }};
 }
-/// Helper function for submitting command buffers. Immediately waits for the fence before the command buffer
-/// is executed. That way we can delay the waiting for the fences by 1 frame which is good for performance.
+/// Helper function for submitting command buffers. Immediately waits for the
+/// fence before the command buffer is executed. That way we can delay the
+/// waiting for the fences by 1 frame which is good for performance.
 /// Make sure to create the fence in a signaled state on the first use.
 #[allow(clippy::too_many_arguments)]
 pub fn record_submit_commandbuffer<F: FnOnce(&Device, vk::CommandBuffer)>(
@@ -113,7 +115,8 @@ unsafe extern "system" fn vulkan_debug_callback(
     };
 
     println!(
-        "{message_severity:?}:\n{message_type:?} [{message_id_name} ({message_id_number})] : {message}\n",
+        "{message_severity:?}:\n{message_type:?} [{message_id_name} ({message_id_number})] : \
+         {message}\n",
     );
 
     vk::FALSE
@@ -135,41 +138,41 @@ pub fn find_memorytype_index(
 }
 
 pub struct ExampleBase {
-    pub entry: Entry,
-    pub instance: Instance,
-    pub device: Device,
-    pub surface_loader: surface::Instance,
-    pub swapchain_loader: swapchain::Device,
+    pub entry:              Entry,
+    pub instance:           Instance,
+    pub device:             Device,
+    pub surface_loader:     surface::Instance,
+    pub swapchain_loader:   swapchain::Device,
     pub debug_utils_loader: debug_utils::Instance,
-    pub window: winit::window::Window,
-    pub event_loop: RefCell<EventLoop<()>>,
-    pub debug_call_back: vk::DebugUtilsMessengerEXT,
+    pub window:             winit::window::Window,
+    pub event_loop:         RefCell<EventLoop<()>>,
+    pub debug_call_back:    vk::DebugUtilsMessengerEXT,
 
-    pub pdevice: vk::PhysicalDevice,
+    pub pdevice:                  vk::PhysicalDevice,
     pub device_memory_properties: vk::PhysicalDeviceMemoryProperties,
-    pub queue_family_index: u32,
-    pub present_queue: vk::Queue,
+    pub queue_family_index:       u32,
+    pub present_queue:            vk::Queue,
 
-    pub surface: vk::SurfaceKHR,
-    pub surface_format: vk::SurfaceFormatKHR,
+    pub surface:            vk::SurfaceKHR,
+    pub surface_format:     vk::SurfaceFormatKHR,
     pub surface_resolution: vk::Extent2D,
 
-    pub swapchain: vk::SwapchainKHR,
-    pub present_images: Vec<vk::Image>,
+    pub swapchain:           vk::SwapchainKHR,
+    pub present_images:      Vec<vk::Image>,
     pub present_image_views: Vec<vk::ImageView>,
 
-    pub pool: vk::CommandPool,
-    pub draw_command_buffer: vk::CommandBuffer,
+    pub pool:                 vk::CommandPool,
+    pub draw_command_buffer:  vk::CommandBuffer,
     pub setup_command_buffer: vk::CommandBuffer,
 
-    pub depth_image: vk::Image,
-    pub depth_image_view: vk::ImageView,
+    pub depth_image:        vk::Image,
+    pub depth_image_view:   vk::ImageView,
     pub depth_image_memory: vk::DeviceMemory,
 
-    pub present_complete_semaphore: vk::Semaphore,
+    pub present_complete_semaphore:   vk::Semaphore,
     pub rendering_complete_semaphore: vk::Semaphore,
 
-    pub draw_commands_reuse_fence: vk::Fence,
+    pub draw_commands_reuse_fence:  vk::Fence,
     pub setup_commands_reuse_fence: vk::Fence,
 }
 
@@ -193,7 +196,7 @@ impl ExampleBase {
                     ..
                 } => {
                     elwp.exit();
-                }
+                },
                 Event::AboutToWait => f(),
                 _ => (),
             }
@@ -231,7 +234,8 @@ impl ExampleBase {
             #[cfg(any(target_os = "macos", target_os = "ios"))]
             {
                 extension_names.push(ash::khr::portability_enumeration::NAME.as_ptr());
-                // Enabling this extension is a requirement when using `VK_KHR_portability_subset`
+                // Enabling this extension is a requirement when using
+                // `VK_KHR_portability_subset`
                 extension_names.push(ash::khr::get_physical_device_properties2::NAME.as_ptr());
             }
 
@@ -354,7 +358,7 @@ impl ExampleBase {
             }
             let surface_resolution = match surface_capabilities.current_extent.width {
                 u32::MAX => vk::Extent2D {
-                    width: window_width,
+                    width:  window_width,
                     height: window_height,
                 },
                 _ => surface_capabilities.current_extent,
@@ -426,11 +430,11 @@ impl ExampleBase {
                             a: vk::ComponentSwizzle::A,
                         })
                         .subresource_range(vk::ImageSubresourceRange {
-                            aspect_mask: vk::ImageAspectFlags::COLOR,
-                            base_mip_level: 0,
-                            level_count: 1,
+                            aspect_mask:      vk::ImageAspectFlags::COLOR,
+                            base_mip_level:   0,
+                            level_count:      1,
                             base_array_layer: 0,
-                            layer_count: 1,
+                            layer_count:      1,
                         })
                         .image(image);
                     device.create_image_view(&create_view_info, None).unwrap()

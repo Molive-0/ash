@@ -1,7 +1,6 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_swapchain_maintenance1.html>
 
-use crate::prelude::*;
-use crate::vk;
+use crate::{prelude::*, vk};
 
 impl crate::ext::swapchain_maintenance1::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkReleaseSwapchainImagesEXT.html>

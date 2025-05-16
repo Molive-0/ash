@@ -1,5 +1,6 @@
-use generator::write_source_code;
 use std::path::Path;
+
+use generator::write_source_code;
 
 fn main() {
     let cwd = std::env::current_dir().unwrap();

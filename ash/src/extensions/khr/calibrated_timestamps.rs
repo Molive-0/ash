@@ -1,9 +1,9 @@
 //! <https://registry.khronos.org//vulkan/specs/1.3-extensions/man/html/VK_KHR_calibrated_timestamps.html>
 
-use crate::prelude::*;
-use crate::vk;
 use alloc::vec::Vec;
 use core::mem;
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::calibrated_timestamps::Device {
     /// <https://registry.khronos.org//vulkan/specs/1.3-extensions/man/html/vkGetCalibratedTimestampsKHR.html>

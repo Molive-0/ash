@@ -1,30 +1,29 @@
-use crate::vk;
-use core::ffi::c_void;
-use core::iter::Iterator;
-use core::marker::PhantomData;
 use core::mem::size_of; // TODO: Remove when bumping MSRV to 1.80
-use core::slice;
+use core::{ffi::c_void, iter::Iterator, marker::PhantomData, slice};
 #[cfg(feature = "std")]
 use std::io;
 
-/// [`Align`] handles dynamic alignment. The is useful for dynamic uniform buffers where
-/// the alignment might be different. For example a 4x4 f32 matrix has a size of 64 bytes
-/// but the min alignment for a dynamic uniform buffer might be 256 bytes. A slice of `&[Mat4x4<f32>]`
-/// has a memory layout of `[[64 bytes], [64 bytes], [64 bytes]]`, but it might need to have a memory
+use crate::vk;
+
+/// [`Align`] handles dynamic alignment. The is useful for dynamic uniform
+/// buffers where the alignment might be different. For example a 4x4 f32 matrix
+/// has a size of 64 bytes but the min alignment for a dynamic uniform buffer
+/// might be 256 bytes. A slice of `&[Mat4x4<f32>]` has a memory layout of `[[64
+/// bytes], [64 bytes], [64 bytes]]`, but it might need to have a memory
 /// layout of `[[256 bytes], [256 bytes], [256 bytes]]`.
-/// [`Align::copy_from_slice`] will copy a slice of `&[T]` directly into the host memory without
-/// an additional allocation and with the correct alignment.
+/// [`Align::copy_from_slice`] will copy a slice of `&[T]` directly into the
+/// host memory without an additional allocation and with the correct alignment.
 #[derive(Debug, Clone)]
 pub struct Align<T> {
-    ptr: *mut c_void,
+    ptr:       *mut c_void,
     elem_size: vk::DeviceSize,
-    size: vk::DeviceSize,
-    _m: PhantomData<T>,
+    size:      vk::DeviceSize,
+    _m:        PhantomData<T>,
 }
 
 #[derive(Debug)]
 pub struct AlignIter<'a, T> {
-    align: &'a mut Align<T>,
+    align:   &'a mut Align<T>,
     current: vk::DeviceSize,
 }
 
@@ -63,13 +62,14 @@ impl<T> Align<T> {
     pub fn iter_mut(&mut self) -> AlignIter<'_, T> {
         AlignIter {
             current: 0,
-            align: self,
+            align:   self,
         }
     }
 }
 
 impl<'a, T: Copy + 'a> Iterator for AlignIter<'a, T> {
     type Item = &'a mut T;
+
     fn next(&mut self) -> Option<Self::Item> {
         if self.current == self.align.size {
             return None;
@@ -87,8 +87,8 @@ impl<'a, T: Copy + 'a> Iterator for AlignIter<'a, T> {
 
 /// Decode SPIR-V from bytes.
 ///
-/// This function handles SPIR-V of arbitrary endianness gracefully, and returns correctly aligned
-/// storage.
+/// This function handles SPIR-V of arbitrary endianness gracefully, and returns
+/// correctly aligned storage.
 ///
 /// # Examples
 /// ```no_run
@@ -106,7 +106,8 @@ impl<'a, T: Copy + 'a> Iterator for AlignIter<'a, T> {
 /// ```
 #[cfg(feature = "std")]
 pub fn read_spv<R: io::Read + io::Seek>(x: &mut R) -> io::Result<Vec<u32>> {
-    // TODO use stream_len() once it is stabilized and remove the subsequent rewind() call
+    // TODO use stream_len() once it is stabilized and remove the subsequent
+    // rewind() call
     let size = x.seek(io::SeekFrom::End(0))?;
     x.rewind()?;
     if size % 4 != 0 {

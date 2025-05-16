@@ -22,7 +22,8 @@ impl crate::ext::mesh_shader::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdDrawMeshTasksIndirectEXT.html>
     ///
-    /// `buffer` contains `draw_count` [`vk::DrawMeshTasksIndirectCommandEXT`] structures starting at `offset` in bytes, holding the draw parameters.
+    /// `buffer` contains `draw_count` [`vk::DrawMeshTasksIndirectCommandEXT`]
+    /// structures starting at `offset` in bytes, holding the draw parameters.
     #[inline]
     pub unsafe fn cmd_draw_mesh_tasks_indirect(
         &self,
@@ -43,9 +44,12 @@ impl crate::ext::mesh_shader::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdDrawMeshTasksIndirectCountEXT.html>
     ///
-    /// `buffer` contains a maximum of `max_draw_count` [`vk::DrawMeshTasksIndirectCommandEXT`] structures starting at `offset` in bytes, holding the draw parameters.
-    /// `count_buffer` is the buffer containing the draw count, starting at `count_buffer_offset` in bytes.
-    /// The actual number of executed draw calls is the minimum of the count specified in `count_buffer` and `max_draw_count`.
+    /// `buffer` contains a maximum of `max_draw_count`
+    /// [`vk::DrawMeshTasksIndirectCommandEXT`] structures starting at `offset`
+    /// in bytes, holding the draw parameters. `count_buffer` is the buffer
+    /// containing the draw count, starting at `count_buffer_offset` in bytes.
+    /// The actual number of executed draw calls is the minimum of the count
+    /// specified in `count_buffer` and `max_draw_count`.
     #[inline]
     pub unsafe fn cmd_draw_mesh_tasks_indirect_count(
         &self,

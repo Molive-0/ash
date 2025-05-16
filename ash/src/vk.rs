@@ -30,8 +30,9 @@ pub use prelude::*;
 pub mod native;
 mod platform_types;
 pub use platform_types::*;
-/// Iterates through the pointer chain. Includes the item that is passed into the function.
-/// Stops at the last [`BaseOutStructure`] that has a null [`BaseOutStructure::p_next`] field.
+/// Iterates through the pointer chain. Includes the item that is passed into
+/// the function. Stops at the last [`BaseOutStructure`] that has a null
+/// [`BaseOutStructure::p_next`] field.
 pub(crate) unsafe fn ptr_chain_iter<T: ?Sized>(
     ptr: &mut T,
 ) -> impl Iterator<Item = *mut BaseOutStructure<'_>> {

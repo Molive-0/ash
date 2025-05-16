@@ -1,10 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_NV_cuda_kernel_launch.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
 use core::mem;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::nv::cuda_kernel_launch::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateCudaModuleNV.html>

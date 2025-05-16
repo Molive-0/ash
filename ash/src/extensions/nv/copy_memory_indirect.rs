@@ -5,8 +5,9 @@ use crate::vk;
 impl crate::nv::copy_memory_indirect::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdCopyMemoryIndirectNV.html>
     ///
-    /// `copy_buffer_address` is a buffer device address which is a pointer to an array of
-    /// `copy_count` number of [`vk::CopyMemoryIndirectCommandNV`] structures containing the copy
+    /// `copy_buffer_address` is a buffer device address which is a pointer to
+    /// an array of `copy_count` number of
+    /// [`vk::CopyMemoryIndirectCommandNV`] structures containing the copy
     /// parameters, each `stride` bytes apart.
     #[inline]
     pub unsafe fn cmd_copy_memory_indirect(
@@ -26,9 +27,10 @@ impl crate::nv::copy_memory_indirect::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdCopyMemoryToImageIndirectNV.html>
     ///
-    /// `copy_buffer_address` is a buffer device address which is a pointer to an array of
-    /// `image_subresources.len()` number of [`vk::CopyMemoryToImageIndirectCommandNV`] structures
-    /// containing the copy parameters, each `stride` bytes apart.
+    /// `copy_buffer_address` is a buffer device address which is a pointer to
+    /// an array of `image_subresources.len()` number of
+    /// [`vk::CopyMemoryToImageIndirectCommandNV`] structures containing the
+    /// copy parameters, each `stride` bytes apart.
     #[inline]
     pub unsafe fn cmd_copy_memory_to_image_indirect(
         &self,

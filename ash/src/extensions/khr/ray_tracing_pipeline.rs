@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_ray_tracing_pipeline.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::khr::ray_tracing_pipeline::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdTraceRaysKHR.html>
@@ -33,7 +32,8 @@ impl crate::khr::ray_tracing_pipeline::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateRayTracingPipelinesKHR.html>
     ///
-    /// Pipelines are created and returned as described for [Multiple Pipeline Creation].
+    /// Pipelines are created and returned as described for [Multiple Pipeline
+    /// Creation].
     ///
     /// [Multiple Pipeline Creation]: https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-multiple
     #[inline]
@@ -107,7 +107,9 @@ impl crate::khr::ray_tracing_pipeline::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdTraceRaysIndirectKHR.html>
     ///
-    /// `indirect_device_address` is a buffer device address which is a pointer to a [`vk::TraceRaysIndirectCommandKHR`] structure containing the trace ray parameters.
+    /// `indirect_device_address` is a buffer device address which is a pointer
+    /// to a [`vk::TraceRaysIndirectCommandKHR`] structure containing the trace
+    /// ray parameters.
     #[inline]
     pub unsafe fn cmd_trace_rays_indirect(
         &self,

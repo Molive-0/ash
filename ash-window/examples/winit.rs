@@ -5,8 +5,9 @@
 //!
 //! On instance extensions platform specific extensions need to be enabled.
 
-use ash::vk;
 use std::error::Error;
+
+use ash::vk;
 use winit::{
     dpi::PhysicalSize,
     event::{Event, KeyEvent, WindowEvent},
@@ -53,7 +54,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 window_id: _,
             } => {
                 elwp.exit();
-            }
+            },
             Event::LoopExiting => {
                 // This will be the last event before the loop terminates.
                 // TODO: How does this play with Suspended?
@@ -61,7 +62,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 if let Some(surface) = surface.take() {
                     surface_fn.destroy_surface(surface, None);
                 }
-            }
+            },
             Event::Resumed => {
                 // Create a surface from winit window.
                 let s = ash_window::create_surface(
@@ -77,14 +78,14 @@ fn main() -> Result<(), Box<dyn Error>> {
                     surface.replace(s).is_none(),
                     "Surface must not yet exist when Resumed is called"
                 );
-            }
+            },
             Event::Suspended => {
                 let surface = surface
                     .take()
                     .expect("Surface must have been created in Resumed");
                 surface_fn.destroy_surface(surface, None);
-            }
-            _ => {}
+            },
+            _ => {},
         });
         Ok(())
     }

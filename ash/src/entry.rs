@@ -1,35 +1,31 @@
-use crate::instance::Instance;
-#[cfg(doc)]
-use crate::khr;
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
-use core::ffi;
-use core::fmt;
-use core::mem;
-use core::ptr;
+use core::{ffi, fmt, mem, ptr};
 
 #[cfg(feature = "loaded")]
 use libloading::Library;
 
+#[cfg(doc)]
+use crate::khr;
+use crate::{RawPtr, instance::Instance, prelude::*, vk};
+
 /// Holds the Vulkan functions independent of a particular instance
 #[derive(Clone)]
 pub struct Entry {
-    static_fn: crate::StaticFn,
+    static_fn:    crate::StaticFn,
     entry_fn_1_0: crate::EntryFnV1_0,
     entry_fn_1_1: crate::EntryFnV1_1,
     #[cfg(feature = "loaded")]
-    _lib_guard: Option<alloc::sync::Arc<Library>>,
+    _lib_guard:   Option<alloc::sync::Arc<Library>>,
 }
 
 /// Vulkan core 1.0
 impl Entry {
     /// Load default Vulkan library for the current platform
     ///
-    /// Prefer this over [`linked()`][Self::linked()] when your application can gracefully handle
-    /// environments that lack Vulkan support, and when the build environment might not have Vulkan
-    /// development packages installed (e.g. the Vulkan SDK, or Ubuntu's `libvulkan-dev`).
+    /// Prefer this over [`linked()`][Self::linked()] when your application can
+    /// gracefully handle environments that lack Vulkan support, and when
+    /// the build environment might not have Vulkan development packages
+    /// installed (e.g. the Vulkan SDK, or Ubuntu's `libvulkan-dev`).
     ///
     /// # Safety
     ///
@@ -42,7 +38,7 @@ impl Entry {
     /// # Example
     ///
     /// ```no_run
-    /// use ash::{vk, Entry};
+    /// use ash::{Entry, vk};
     /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
     /// let entry = unsafe { Entry::load()? };
     /// let app_info = vk::ApplicationInfo {
@@ -84,21 +80,23 @@ impl Entry {
 
     /// Load entry points from a Vulkan loader linked at compile time
     ///
-    /// Compared to [`load()`][Self::load()], this is infallible, but requires that the build
-    /// environment have Vulkan development packages installed (e.g. the Vulkan SDK, or Ubuntu's
-    /// `libvulkan-dev`), and prevents the resulting binary from starting in environments that do not
+    /// Compared to [`load()`][Self::load()], this is infallible, but requires
+    /// that the build environment have Vulkan development packages
+    /// installed (e.g. the Vulkan SDK, or Ubuntu's `libvulkan-dev`), and
+    /// prevents the resulting binary from starting in environments that do not
     /// support Vulkan.
     ///
-    /// Note that instance/device functions are still fetched via `vkGetInstanceProcAddr` and
-    /// `vkGetDeviceProcAddr` for maximum performance.
+    /// Note that instance/device functions are still fetched via
+    /// `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr` for maximum
+    /// performance.
     ///
-    /// Any Vulkan function acquired directly or indirectly from this [`Entry`] may be called after it
-    /// is [dropped][drop()].
+    /// Any Vulkan function acquired directly or indirectly from this [`Entry`]
+    /// may be called after it is [dropped][drop()].
     ///
     /// # Example
     ///
     /// ```no_run
-    /// use ash::{vk, Entry};
+    /// use ash::{Entry, vk};
     /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
     /// let entry = Entry::linked();
     /// let app_info = vk::ApplicationInfo {
@@ -115,8 +113,8 @@ impl Entry {
     #[cfg(feature = "linked")]
     #[cfg_attr(docsrs, doc(cfg(feature = "linked")))]
     pub fn linked() -> Self {
-        // Sound because we're linking to Vulkan, which provides a vkGetInstanceProcAddr that has
-        // defined behavior in this use.
+        // Sound because we're linking to Vulkan, which provides a vkGetInstanceProcAddr
+        // that has defined behavior in this use.
         unsafe {
             Self::from_static_fn(crate::StaticFn {
                 get_instance_proc_addr: vkGetInstanceProcAddr,
@@ -156,8 +154,9 @@ impl Entry {
     ///
     /// # Safety
     ///
-    /// `static_fn` must contain valid function pointers that comply with the semantics specified
-    /// by Vulkan 1.0, which must remain valid for at least the lifetime of the returned [`Entry`].
+    /// `static_fn` must contain valid function pointers that comply with the
+    /// semantics specified by Vulkan 1.0, which must remain valid for at
+    /// least the lifetime of the returned [`Entry`].
     pub unsafe fn from_static_fn(static_fn: crate::StaticFn) -> Self {
         let load_fn = move |name: &ffi::CStr| {
             mem::transmute((static_fn.get_instance_proc_addr)(
@@ -241,12 +240,14 @@ impl Entry {
     ///
     /// # Safety
     ///
-    /// The resulting [`Instance`] and any function-pointer objects (e.g. [`Device`][crate::Device]
-    /// and extensions like [`khr::swapchain::Device`]) loaded from it may not be used after
-    /// this [`Entry`] object is dropped, unless it was crated using [`Entry::linked()`] or
-    /// [`Entry::from_parts_1_1()`].
+    /// The resulting [`Instance`] and any function-pointer objects (e.g.
+    /// [`Device`][crate::Device] and extensions like
+    /// [`khr::swapchain::Device`]) loaded from it may not be used after
+    /// this [`Entry`] object is dropped, unless it was crated using
+    /// [`Entry::linked()`] or [`Entry::from_parts_1_1()`].
     ///
-    /// [`Instance`] does _not_ implement [drop][drop()] semantics and can only be destroyed via
+    /// [`Instance`] does _not_ implement [drop][drop()] semantics and can only
+    /// be destroyed via
     /// [`destroy_instance()`][Instance::destroy_instance()].
     #[inline]
     pub unsafe fn create_instance(
@@ -305,10 +306,13 @@ impl Entry {
         &self.entry_fn_1_1
     }
 
-    #[deprecated = "This function is unavailable and therefore panics on Vulkan 1.0, please use `try_enumerate_instance_version()` instead"]
+    #[deprecated = "This function is unavailable and therefore panics on Vulkan 1.0, please use \
+                    `try_enumerate_instance_version()` instead"]
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceVersion.html>
     ///
-    /// Please use [`try_enumerate_instance_version()`][Self::try_enumerate_instance_version()] instead.
+    /// Please use
+    /// [`try_enumerate_instance_version()`][Self::try_enumerate_instance_version()]
+    /// instead.
     #[inline]
     pub unsafe fn enumerate_instance_version(&self) -> VkResult<u32> {
         let mut api_version = mem::MaybeUninit::uninit();

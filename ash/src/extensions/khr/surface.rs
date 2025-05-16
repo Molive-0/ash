@@ -1,10 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_surface.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
 use core::mem;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::khr::surface::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html>

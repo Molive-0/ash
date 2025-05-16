@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_debug_report.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use core::mem;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::ext::debug_report::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugReportCallbackEXT.html>

@@ -1,8 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_descriptor_buffer.html>
 
-use crate::prelude::*;
-use crate::vk;
 use core::mem;
+
+use crate::{prelude::*, vk};
 
 impl crate::ext::descriptor_buffer::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDescriptorSetLayoutSizeEXT.html>

@@ -1,11 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_NV_ray_tracing.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
-use core::mem;
-use core::mem::size_of_val; // TODO: Remove when bumping MSRV to 1.80
+use core::{mem, mem::size_of_val};
+
+use crate::{RawPtr, prelude::*, vk}; // TODO: Remove when bumping MSRV to 1.80
 
 impl crate::nv::ray_tracing::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateAccelerationStructureNV.html>
@@ -148,7 +146,8 @@ impl crate::nv::ray_tracing::Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateRayTracingPipelinesNV.html>
     ///
-    /// Pipelines are created and returned as described for [Multiple Pipeline Creation].
+    /// Pipelines are created and returned as described for [Multiple Pipeline
+    /// Creation].
     ///
     /// [Multiple Pipeline Creation]: https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-multiple
     #[inline]

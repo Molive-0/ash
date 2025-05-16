@@ -1,22 +1,23 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_shader_object.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
 use core::ptr;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::ext::shader_object::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateShadersEXT.html>
     ///
-    /// When this function returns, whether or not it succeeds, it is guaranteed that every returned
-    /// element is either [`vk::ShaderEXT::null()`] or a valid [`vk::ShaderEXT`] handle.
+    /// When this function returns, whether or not it succeeds, it is guaranteed
+    /// that every returned element is either [`vk::ShaderEXT::null()`] or a
+    /// valid [`vk::ShaderEXT`] handle.
     ///
-    /// This means that whenever shader creation fails, the application can determine which shader
-    /// the returned error pertains to by locating the first [`vk::Handle::is_null()`] element
-    /// in the returned [`Vec`]. It also means that an application can reliably clean up from a
-    /// failed call by iterating over the returned [`Vec`] and destroying every element that is not
-    /// [`vk::Handle::is_null()`].
+    /// This means that whenever shader creation fails, the application can
+    /// determine which shader the returned error pertains to by locating
+    /// the first [`vk::Handle::is_null()`] element in the returned [`Vec`].
+    /// It also means that an application can reliably clean up from a
+    /// failed call by iterating over the returned [`Vec`] and destroying every
+    /// element that is not [`vk::Handle::is_null()`].
     #[inline]
     pub unsafe fn create_shaders(
         &self,

@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_xlib_surface.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use core::mem;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::khr::xlib_surface::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateXlibSurfaceKHR.html>

@@ -1,12 +1,12 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_NV_coverage_reduction_mode.html>
 
-use crate::prelude::*;
-use crate::vk;
-use core::mem;
-use core::ptr;
+use core::{mem, ptr};
+
+use crate::{prelude::*, vk};
 
 impl crate::nv::coverage_reduction_mode::Instance {
-    /// Retrieve the number of elements to pass to [`get_physical_device_supported_framebuffer_mixed_samples_combinations()`][Self::get_physical_device_supported_framebuffer_mixed_samples_combinations()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_supported_framebuffer_mixed_samples_combinations()`][Self::get_physical_device_supported_framebuffer_mixed_samples_combinations()]
     #[inline]
     pub unsafe fn get_physical_device_supported_framebuffer_mixed_samples_combinations_len(
         &self,
@@ -27,7 +27,8 @@ impl crate::nv::coverage_reduction_mode::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.html>
     ///
     /// Call [`get_physical_device_supported_framebuffer_mixed_samples_combinations_len()`][Self::get_physical_device_supported_framebuffer_mixed_samples_combinations_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_supported_framebuffer_mixed_samples_combinations(
         &self,

@@ -1,8 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_external_memory_win32.html>
 
-use crate::prelude::*;
-use crate::vk;
 use core::mem;
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::external_memory_win32::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetMemoryWin32HandleKHR.html>

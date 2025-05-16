@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_create_renderpass2.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use core::mem;
+
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::khr::create_renderpass2::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateRenderPass2.html>

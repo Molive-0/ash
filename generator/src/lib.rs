@@ -8,9 +8,18 @@
     unused_qualifications
 )]
 
+use std::{
+    borrow::Cow,
+    collections::{BTreeMap, HashMap, HashSet},
+    fmt::Display,
+    ops::Not,
+    path::Path,
+};
+
 use heck::{ToShoutySnakeCase, ToSnakeCase, ToUpperCamelCase};
 use itertools::Itertools;
 use nom::{
+    IResult, Parser,
     branch::alt,
     bytes::complete::{tag, take_until, take_while1},
     character::complete::{
@@ -19,19 +28,11 @@ use nom::{
     combinator::{map, map_res, opt, value},
     multi::{many1, separated_list1},
     sequence::{delimited, pair, preceded, separated_pair, terminated, tuple},
-    IResult, Parser,
 };
 use once_cell::sync::Lazy;
 use proc_macro2::{Delimiter, Group, Literal, Span, TokenStream, TokenTree};
 use quote::*;
 use regex::Regex;
-use std::{
-    borrow::Cow,
-    collections::{BTreeMap, HashMap, HashSet},
-    fmt::Display,
-    ops::Not,
-    path::Path,
-};
 use syn::Ident;
 
 const DESIRED_API: &str = "vulkan";
@@ -121,8 +122,8 @@ fn parse_inverse_number(i: &str) -> IResult<&str, (CType, String)> {
     ))(i)
 }
 
-// Like a C string, but does not support quote escaping and expects at least one character.
-// If needed, use https://github.com/Geal/nom/blob/8e09f0c3029d32421b5b69fb798cef6855d0c8df/tests/json.rs#L61-L81
+// Like a C string, but does not support quote escaping and expects at least one
+// character. If needed, use https://github.com/Geal/nom/blob/8e09f0c3029d32421b5b69fb798cef6855d0c8df/tests/json.rs#L61-L81
 fn parse_c_include_string(i: &str) -> IResult<&str, String> {
     (delimited(
         char('"'),
@@ -201,7 +202,7 @@ enum CReferenceType {
 
 #[derive(Debug)]
 struct CParameterType<'a> {
-    name: &'a str,
+    name:           &'a str,
     reference_type: CReferenceType,
 }
 
@@ -226,12 +227,12 @@ fn parse_c_type(i: &str) -> IResult<&str, CParameterType<'_>> {
 
                 (Some(_), Some((Some(_), _))) if const_.is_some() => {
                     CReferenceType::PointerToConstPointerToConst
-                }
+                },
                 (Some(_), Some((Some(_), _))) => CReferenceType::PointerToConstPointer,
 
                 (Some(_), Some((None, _))) if const_.is_some() => {
                     CReferenceType::PointerToPointerToConst
-                }
+                },
                 (Some(_), Some((None, _))) => CReferenceType::PointerToPointer,
                 (None, Some(_)) => unreachable!(),
             },
@@ -241,10 +242,10 @@ fn parse_c_type(i: &str) -> IResult<&str, CParameterType<'_>> {
 
 #[derive(Debug)]
 struct CParameter<'a> {
-    type_: CParameterType<'a>,
+    type_:        CParameterType<'a>,
     // Code only used to dissect the type surrounding this field name,
     // not interested in the name itself.
-    _name: &'a str,
+    _name:        &'a str,
     static_array: Option<usize>,
 }
 
@@ -333,12 +334,15 @@ impl ConstantExt for vkxml::ExtensionEnum {
     fn constant(&self, _enum_name: &str) -> Constant {
         Constant::from_extension_enum(self).unwrap()
     }
+
     fn variant_ident(&self, enum_name: &str) -> Ident {
         variant_ident(enum_name, &self.name)
     }
+
     fn notation(&self) -> Option<&str> {
         self.notation.as_deref()
     }
+
     fn deprecated(&self) -> Option<&str> {
         todo!()
     }
@@ -350,15 +354,19 @@ impl ConstantExt for vk_parse::Enum {
             .unwrap()
             .0
     }
+
     fn variant_ident(&self, enum_name: &str) -> Ident {
         variant_ident(enum_name, &self.name)
     }
+
     fn notation(&self) -> Option<&str> {
         self.comment.as_deref()
     }
+
     fn is_alias(&self) -> bool {
         matches!(self.spec, vk_parse::EnumSpec::Alias { .. })
     }
+
     fn deprecated(&self) -> Option<&str> {
         self.deprecated.as_deref()
     }
@@ -368,12 +376,15 @@ impl ConstantExt for vkxml::Constant {
     fn constant(&self, _enum_name: &str) -> Constant {
         Constant::from_constant(self)
     }
+
     fn variant_ident(&self, enum_name: &str) -> Ident {
         variant_ident(enum_name, &self.name)
     }
+
     fn notation(&self) -> Option<&str> {
         self.notation.as_deref()
     }
+
     fn deprecated(&self) -> Option<&str> {
         todo!()
     }
@@ -395,23 +406,23 @@ impl quote::ToTokens for Constant {
             Self::Number(n) => {
                 let number = interleave_number('_', 3, &n.to_string());
                 syn::LitInt::new(&number, Span::call_site()).to_tokens(tokens);
-            }
+            },
             Self::Hex(ref s) => {
                 let number = interleave_number('_', 4, s);
                 syn::LitInt::new(&format!("0x{number}"), Span::call_site()).to_tokens(tokens);
-            }
+            },
             Self::Text(ref text) => text.to_tokens(tokens),
             Self::CExpr(ref expr) => {
                 let (rem, (_, rexpr)) = parse_cexpr(expr).expect("Unable to parse cexpr");
                 assert!(rem.is_empty());
                 tokens.extend(rexpr.parse::<TokenStream>());
-            }
+            },
             Self::BitPos(pos) => {
                 let value = 1u64 << pos;
                 let bit_string = format!("{value:b}");
                 let bit_string = interleave_number('_', 4, &bit_string);
                 syn::LitInt::new(&format!("0b{bit_string}"), Span::call_site()).to_tokens(tokens);
-            }
+            },
             Self::Alias(ref value) => tokens.extend(quote!(Self::#value)),
         }
     }
@@ -427,7 +438,8 @@ impl quote::ToTokens for ConstVal {
     }
 }
 
-// Interleaves a number, for example 100000 => 100_000. Mostly used to make clippy happy
+// Interleaves a number, for example 100000 => 100_000. Mostly used to make
+// clippy happy
 fn interleave_number(symbol: char, count: usize, n: &str) -> String {
     let number: String = n
         .chars()
@@ -459,7 +471,7 @@ impl Constant {
                 let (rem, (ty, _)) = parse_cexpr(expr).expect("Unable to parse cexpr");
                 assert!(rem.is_empty());
                 ty
-            }
+            },
             _ => unimplemented!(),
         }
     }
@@ -497,7 +509,7 @@ impl Constant {
         match &enum_.spec {
             EnumSpec::Bitpos { bitpos, extends } => {
                 Some((Self::BitPos(*bitpos as u32), extends.clone(), false))
-            }
+            },
             EnumSpec::Offset {
                 offset,
                 extends,
@@ -512,14 +524,14 @@ impl Constant {
                 let value = ext_base + (extnumber - 1) * ext_block_size + offset;
                 let value = if *positive { value } else { -value };
                 Some((Self::Number(value as i32), Some(extends.clone()), false))
-            }
+            },
             EnumSpec::Value { value, extends } => {
                 let value = value
                     .strip_prefix("0x")
                     .map(|hex| Self::Hex(hex.to_owned()))
                     .or_else(|| value.parse::<i32>().ok().map(Self::Number))?;
                 Some((value, extends.clone(), false))
-            }
+            },
             EnumSpec::Alias { alias, extends } => {
                 let base_type = extends.as_deref().or(enum_name)?;
                 let key = variant_ident(base_type, alias);
@@ -528,7 +540,7 @@ impl Constant {
                 } else {
                     Some((Self::Alias(key), Some(base_type.to_owned()), true))
                 }
-            }
+            },
             _ => None,
         }
     }
@@ -544,6 +556,7 @@ impl FeatureExt for vkxml::Feature {
         let self_minor = (self.version * 10.0) as u32 - self_major * 10;
         major == self_major && self_minor == minor
     }
+
     fn version_string(&self) -> String {
         let mut version = format!("{}", self.version);
         if version.len() == 1 {
@@ -598,8 +611,8 @@ pub trait FieldExt {
         inner_length: Option<usize>,
     ) -> TokenStream;
 
-    /// Returns reference-types wrapped in their safe variant. (Dynamic) arrays become
-    /// slices, pointers become Rust references.
+    /// Returns reference-types wrapped in their safe variant. (Dynamic) arrays
+    /// become slices, pointers become Rust references.
     fn safe_type_tokens(
         &self,
         lifetime: TokenStream,
@@ -607,12 +620,14 @@ pub trait FieldExt {
         inner_length: Option<usize>,
     ) -> TokenStream;
 
-    /// Returns the basetype ident and removes the 'Vk' prefix. When `is_ffi_param` is `true`
-    /// array types (e.g. `[f32; 3]`) will be converted to pointer types (e.g. `&[f32; 3]`),
-    /// which is needed for `C` function parameters. Set to `false` for struct definitions.
+    /// Returns the basetype ident and removes the 'Vk' prefix. When
+    /// `is_ffi_param` is `true` array types (e.g. `[f32; 3]`) will be
+    /// converted to pointer types (e.g. `&[f32; 3]`), which is needed for
+    /// `C` function parameters. Set to `false` for struct definitions.
     fn type_tokens(&self, is_ffi_param: bool, type_lifetime: Option<TokenStream>) -> TokenStream;
 
-    /// Whether this is C's `void` type (not to be mistaken with a void _pointer_!)
+    /// Whether this is C's `void` type (not to be mistaken with a void
+    /// _pointer_!)
     fn is_void(&self) -> bool;
 
     /// Exceptions for pointers to static-sized arrays,
@@ -678,7 +693,8 @@ fn name_to_tokens(type_name: &str) -> Ident {
 /// Parses and rewrites a C literal into Rust
 ///
 /// If no special pattern is recognized the original literal is returned.
-/// Any new conversions need to be added to the [`parse_cexpr()`] [`nom`] parser.
+/// Any new conversions need to be added to the [`parse_cexpr()`] [`nom`]
+/// parser.
 ///
 /// Examples:
 /// - `0x3FFU` -> `0x3ffu32`
@@ -701,7 +717,8 @@ fn convert_c_literal(lit: Literal) -> Literal {
 /// Identifiers are replaced with their Rust vk equivalent.
 ///
 /// Examples:
-/// - `VK_MAKE_VERSION(1, 2, VK_HEADER_VERSION)` -> `make_version(1, 2, HEADER_VERSION)`
+/// - `VK_MAKE_VERSION(1, 2, VK_HEADER_VERSION)` -> `make_version(1, 2,
+///   HEADER_VERSION)`
 /// - `2*VK_UUID_SIZE` -> `2 * UUID_SIZE`
 fn convert_c_expression(c_expr: &str, identifier_renames: &BTreeMap<String, Ident>) -> TokenStream {
     fn rewrite_token_stream(
@@ -722,7 +739,7 @@ fn convert_c_expression(c_expr: &str, identifier_renames: &BTreeMap<String, Iden
                         .cloned()
                         .unwrap_or_else(|| format_ident!("{}", constant_name(&name)))
                         .into()
-                }
+                },
                 TokenTree::Literal(lit) => TokenTree::Literal(convert_c_literal(lit)),
                 tt => tt,
             })
@@ -763,7 +780,8 @@ impl FieldExt for vkxml::Field {
         let ty = name_to_tokens(&self.basetype);
 
         let (const_, borrow) = match (lifetime, inner_length) {
-            // If the nested "dynamic array" has length 1, it's just a pointer which we convert to a safe borrow for convenience
+            // If the nested "dynamic array" has length 1, it's just a pointer which we convert to a
+            // safe borrow for convenience
             (Some(lifetime), Some(1)) => (quote!(), quote!(&#lifetime)),
             _ => (quote!(const), quote!(*)),
         };
@@ -788,7 +806,7 @@ impl FieldExt for vkxml::Field {
             Some(vkxml::ArrayType::Dynamic) => {
                 let ty = self.inner_type_tokens(Some(lifetime), inner_length);
                 quote!([#ty #type_lifetime])
-            }
+            },
             None => {
                 let ty = name_to_tokens(&self.basetype);
                 let pointer = self
@@ -796,7 +814,7 @@ impl FieldExt for vkxml::Field {
                     .as_ref()
                     .map(|r| r.to_safe_tokens(self.is_const, lifetime));
                 quote!(#pointer #ty #type_lifetime)
-            }
+            },
         }
     }
 
@@ -886,7 +904,7 @@ impl FieldExt for vk_parse::CommandParam {
             CReferenceType::Value => quote!(#type_name),
             CReferenceType::Pointer => {
                 quote!(*mut #type_name)
-            }
+            },
             CReferenceType::PointerToConst => quote!(*const #type_name),
             CReferenceType::PointerToPointer => quote!(*mut *mut #type_name),
             CReferenceType::PointerToPointerToConst => quote!(*mut *const #type_name),
@@ -923,22 +941,22 @@ fn generate_function_pointers<'a>(
     has_lifetimes: &HashSet<Ident>,
     doc: &str,
 ) -> (TokenStream, TokenStream) {
-    // Commands can have duplicates inside them because they are declared per features. But we only
-    // really want to generate one function pointer.
+    // Commands can have duplicates inside them because they are declared per
+    // features. But we only really want to generate one function pointer.
     let commands = commands
         .iter()
         .unique_by(|cmd| cmd.proto.name.as_str())
         .collect::<Vec<_>>();
 
     struct Command<'a> {
-        define_pfn: bool,
-        type_name: Ident,
-        pfn_type_name: Ident,
-        function_name_c: &'a str,
-        function_name_rust: Ident,
-        parameters: TokenStream,
-        parameters_unused: TokenStream,
-        returns: TokenStream,
+        define_pfn:             bool,
+        type_name:              Ident,
+        pfn_type_name:          Ident,
+        function_name_c:        &'a str,
+        function_name_rust:     Ident,
+        parameters:             TokenStream,
+        parameters_unused:      TokenStream,
+        returns:                TokenStream,
         parameter_validstructs: Vec<(Ident, Vec<String>)>,
     }
 
@@ -948,8 +966,9 @@ fn generate_function_pointers<'a>(
             let name = &cmd.proto.name;
             let pfn_type_name = format_ident!("PFN_{}", name);
 
-            // We might need to generate a function pointer for an extension, where we are given the original
-            // `cmd` and a rename back to the extension alias (typically with vendor suffix) in `rename_commands`:
+            // We might need to generate a function pointer for an extension, where we are
+            // given the original `cmd` and a rename back to the extension alias
+            // (typically with vendor suffix) in `rename_commands`:
             let function_name_c = rename_commands.get(name.as_str()).cloned().unwrap_or(name);
 
             let type_name = function_name_c.strip_prefix("vk").unwrap();
@@ -997,8 +1016,8 @@ fn generate_function_pointers<'a>(
                 .as_ref()
                 .expect("Command must have return type");
 
-            // Command aliases mean we may see the same PFN name and type multiple times, but we
-            // must only emit a single definition.
+            // Command aliases mean we may see the same PFN name and type multiple times,
+            // but we must only emit a single definition.
             let define_pfn = fn_cache.insert(name.as_str());
 
             Command {
@@ -1159,21 +1178,24 @@ fn generate_function_pointers<'a>(
     )
 }
 pub struct ExtensionConstant<'a> {
-    pub name: &'a str,
-    pub constant: Constant,
-    pub notation: Option<&'a str>,
+    pub name:       &'a str,
+    pub constant:   Constant,
+    pub notation:   Option<&'a str>,
     pub deprecated: Option<&'a str>,
 }
 impl<'a> ConstantExt for ExtensionConstant<'a> {
     fn constant(&self, _enum_name: &str) -> Constant {
         self.constant.clone()
     }
+
     fn variant_ident(&self, enum_name: &str) -> Ident {
         variant_ident(enum_name, self.name)
     }
+
     fn notation(&self) -> Option<&str> {
         self.notation
     }
+
     fn deprecated(&self) -> Option<&str> {
         self.deprecated
     }
@@ -1208,7 +1230,7 @@ pub fn generate_extension_constants<'a>(
             }
 
             match enum_.deprecated.as_deref() {
-                None | Some("true") => {}
+                None | Some("true") => {},
                 Some("aliased") => continue,
                 x => panic!("Unknown deprecation reason {x:?}"),
             }
@@ -1262,8 +1284,8 @@ pub fn generate_extension_constants<'a>(
 }
 
 pub struct ExtensionCommands<'a> {
-    vendor: &'a str,
-    raw: TokenStream,
+    vendor:     &'a str,
+    raw:        TokenStream,
     high_level: TokenStream,
 }
 
@@ -1281,7 +1303,8 @@ pub fn generate_extension_commands<'a>(
     let (vendor, extension_ident) = extension_name.split_once('_').unwrap();
     let extension_ident = match extension_ident.chars().next().unwrap().is_ascii_digit() {
         false => format_ident!("{}", extension_ident.to_lowercase()),
-        // Some extension names start with a digit, which is not a valid identifier in Rust. Prefix those with _:
+        // Some extension names start with a digit, which is not a valid identifier in Rust. Prefix
+        // those with _:
         true => format_ident!("_{}", extension_ident.to_lowercase()),
     };
 
@@ -1571,8 +1594,8 @@ pub fn variant_ident(enum_name: &str, variant_name: &str) -> Ident {
     let variant_name = variant_name.to_uppercase();
     let name = enum_name.replace("FlagBits", "");
     // TODO: Should be read from vk.xml id:2
-    // TODO: Also needs to be more robust, vendor names can be substrings from itself, id:4
-    // like NVX and NV
+    // TODO: Also needs to be more robust, vendor names can be substrings from
+    // itself, id:4 like NVX and NV
     let vendors = [
         "_AMD",
         "_AMDX",
@@ -1708,8 +1731,8 @@ pub fn generate_enum<'a>(
     for constant in &constants {
         const_cache.insert(constant.name.as_str());
         values.push(ConstantMatchInfo {
-            ident: constant.variant_ident(name),
-            is_alias: constant.is_alias(),
+            ident:         constant.variant_ident(name),
+            is_alias:      constant.is_alias(),
             is_deprecated: constant.deprecated.is_some(),
         });
     }
@@ -1786,7 +1809,7 @@ fn generate_result(ident: Ident, enum_: &vk_parse::Enums) -> TokenStream {
             ),
             _ => {
                 return None;
-            }
+            },
         };
 
         let variant_ident = variant_ident(enum_.name.as_ref().unwrap(), variant_name);
@@ -1819,8 +1842,9 @@ fn generate_result(ident: Ident, enum_: &vk_parse::Enums) -> TokenStream {
 fn is_static_array(field: &vkxml::Field) -> bool {
     match field.array {
         Some(vkxml::ArrayType::Static) => true,
-        // Ancient vkxml turns static-sized arrays with a len= attribute (new concept) into Static arrays.
-        // The len= attribute will be used to bound the static-sized array at runtime.
+        // Ancient vkxml turns static-sized arrays with a len= attribute (new concept) into Static
+        // arrays. The len= attribute will be used to bound the static-sized array at
+        // runtime.
         Some(vkxml::ArrayType::Dynamic) => field.size_enumref.is_some(),
         _ => false,
     }
@@ -1939,12 +1963,13 @@ fn derive_debug(
             .unwrap_or(false)
     });
     fn is_static_char_array(field: &vkxml::Field) -> bool {
-        // Exclude string pointers from formatting as they will always be unsafe to read, even if
-        // https://github.com/ash-rs/ash/pull/831#discussion_r1447805951 is resolved.
+        // Exclude string pointers from formatting as they will always be unsafe to
+        // read, even if https://github.com/ash-rs/ash/pull/831#discussion_r1447805951 is resolved.
         is_static_array(field) && field.basetype == "char"
     }
     fn is_static_bounded_array(field: &vkxml::Field) -> bool {
-        // Excerpt from is_static_array() for runtime-bounded static arrays that are considered "dynamic" by vkxml
+        // Excerpt from is_static_array() for runtime-bounded static arrays that are
+        // considered "dynamic" by vkxml
         matches!(field.array, Some(vkxml::ArrayType::Dynamic)) && field.size_enumref.is_some()
     }
     let contains_static_array = members.iter().any(|member| {
@@ -2049,9 +2074,9 @@ fn derive_getters_and_setters(
                     .iter()
                     .find(|m| m.vkxml_field.name.as_ref().unwrap() == objecttype)
                     .unwrap();
-                // Extensions using this type are deprecated exactly because of the existence of VkObjectType, hence
-                // there won't be an additional ash trait to support VkDebugReportObjectTypeEXT.
-                // See also https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_debug_utils.html#_description
+                // Extensions using this type are deprecated exactly because of the existence of
+                // VkObjectType, hence there won't be an additional ash trait to
+                // support VkDebugReportObjectTypeEXT. See also https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_debug_utils.html#_description
                 if objecttype_field.vkxml_field.basetype != "VkDebugReportObjectTypeEXT" {
                     return Some(objecttype);
                 }
@@ -2313,7 +2338,8 @@ fn derive_getters_and_setters(
 
     let extends_name = format_ident!("Extends{}", name);
 
-    // The `p_next` field should only be considered if this struct is also a root struct
+    // The `p_next` field should only be considered if this struct is also a root
+    // struct
     let root_struct_next_field = next_field.filter(|_| root_structs.contains(&name));
 
     // We only implement a next method for root structs with a `pnext` field.
@@ -2420,9 +2446,9 @@ pub fn manual_derives(struct_: &vkxml::Struct) -> TokenStream {
 }
 
 struct PreprocessedMember<'a> {
-    vkxml_field: &'a vkxml::Field,
+    vkxml_field:          &'a vkxml::Field,
     vk_parse_type_member: &'a vk_parse::TypeMemberDefinition,
-    deprecated: Option<TokenStream>,
+    deprecated:           Option<TokenStream>,
 }
 
 pub fn generate_struct(
@@ -2607,7 +2633,7 @@ pub fn generate_handle(handle: &vkxml::Handle) -> Option<TokenStream> {
             quote! {
                 define_handle!(#name, #ty, doc = #khronos_link);
             }
-        }
+        },
         vkxml::HandleType::NoDispatch => {
             let name = handle.name.strip_prefix("Vk").unwrap();
             let ty = format_ident!("{}", name.to_shouty_snake_case());
@@ -2615,7 +2641,7 @@ pub fn generate_handle(handle: &vkxml::Handle) -> Option<TokenStream> {
             quote! {
                 handle_nondispatchable!(#name, #ty, doc = #khronos_link);
             }
-        }
+        },
     };
     Some(tokens)
 }
@@ -2729,7 +2755,7 @@ pub fn generate_definition(
             if allowed_types.contains(typedef.name.as_str()) =>
         {
             Some(generate_typedef(typedef))
-        }
+        },
         vkxml::DefinitionsElement::Struct(ref struct_)
             if allowed_types.contains(struct_.name.as_str()) =>
         {
@@ -2740,25 +2766,25 @@ pub fn generate_definition(
                 union_types,
                 has_lifetimes,
             ))
-        }
+        },
         vkxml::DefinitionsElement::Bitmask(ref mask)
             if allowed_types.contains(mask.name.as_str()) =>
         {
             generate_bitmask(mask, bitflags_cache, const_values)
-        }
+        },
         vkxml::DefinitionsElement::Handle(ref handle)
             if allowed_types.contains(handle.name.as_str()) =>
         {
             generate_handle(handle)
-        }
+        },
         vkxml::DefinitionsElement::FuncPtr(ref fp) if allowed_types.contains(fp.name.as_str()) => {
             Some(generate_funcptr(fp, has_lifetimes))
-        }
+        },
         vkxml::DefinitionsElement::Union(ref union)
             if allowed_types.contains(union.name.as_str()) =>
         {
             Some(generate_union(union, has_lifetimes))
-        }
+        },
         _ => None,
     }
 }
@@ -2904,19 +2930,19 @@ pub fn generate_feature_extension<'a>(
 }
 
 pub struct ConstantMatchInfo {
-    pub ident: Ident,
-    pub is_alias: bool,
+    pub ident:         Ident,
+    pub is_alias:      bool,
     pub is_deprecated: bool,
 }
 
 #[derive(Default)]
 pub struct ConstantTypeInfo {
-    values: Vec<ConstantMatchInfo>,
+    values:   Vec<ConstantMatchInfo>,
     bitwidth: Option<u32>,
 }
 
 pub struct ConstDebugs {
-    core: TokenStream,
+    core:   TokenStream,
     extras: TokenStream,
 }
 
@@ -2986,7 +3012,7 @@ pub fn generate_const_debugs(const_values: &BTreeMap<Ident, ConstantTypeInfo>) -
     }
 
     ConstDebugs {
-        core: quote! {
+        core:   quote! {
             #(#core)*
         },
         extras: quote! {
@@ -3009,7 +3035,8 @@ pub fn extract_native_types(registry: &vk_parse::Registry) -> (Vec<(String, Stri
     for ty in types {
         match ty.category.as_deref() {
             Some("include") => {
-                // `category="include"` lacking an `#include` directive are generally "irrelevant" system headers.
+                // `category="include"` lacking an `#include` directive are generally
+                // "irrelevant" system headers.
                 if let vk_parse::TypeSpec::Code(code) = &ty.spec {
                     let name = ty
                         .name
@@ -3027,8 +3054,8 @@ pub fn extract_native_types(registry: &vk_parse::Registry) -> (Vec<(String, Stri
                     assert!(rem.is_empty());
                     header_includes.push((name, path));
                 }
-            }
-            Some(_) => {}
+            },
+            Some(_) => {},
             None => {
                 if let Some(header_name) = ty.requires.clone() {
                     if header_includes.iter().any(|(name, _)| name == &header_name) {
@@ -3036,7 +3063,7 @@ pub fn extract_native_types(registry: &vk_parse::Registry) -> (Vec<(String, Stri
                         header_types.push(ty.name.clone().expect("Type must have a name"));
                     }
                 }
-            }
+            },
         };
     }
 
@@ -3076,8 +3103,7 @@ pub fn generate_aliases_of_types(
 }
 pub fn write_source_code<P: AsRef<Path>>(vk_headers_dir: &Path, src_dir: P) {
     let vk_xml = vk_headers_dir.join("registry/vk.xml");
-    use std::fs::File;
-    use std::io::Write;
+    use std::{fs::File, io::Write};
     let (spec2, errors) = vk_parse::parse_file(&vk_xml).expect("Invalid xml file");
     if !errors.is_empty() {
         eprintln!("vk_parse encountered one or more errors while parsing: {errors:?}")
@@ -3143,11 +3169,11 @@ pub fn write_source_code<P: AsRef<Path>>(vk_headers_dir: &Path, src_dir: P) {
             match elem {
                 vk_parse::InterfaceItem::Type { name, .. } => {
                     acc.0.insert(name.as_str());
-                }
+                },
                 vk_parse::InterfaceItem::Command { name, .. } => {
                     acc.1.insert(name.as_str());
-                }
-                _ => {}
+                },
+                _ => {},
             };
             acc
         });

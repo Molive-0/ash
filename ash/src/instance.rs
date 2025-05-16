@@ -1,13 +1,9 @@
+use alloc::vec::Vec;
+use core::{ffi, mem, ptr};
+
 #[cfg(doc)]
 use super::Entry;
-use crate::device::Device;
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
-use alloc::vec::Vec;
-use core::ffi;
-use core::mem;
-use core::ptr;
+use crate::{RawPtr, device::Device, prelude::*, vk};
 
 /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkInstance.html>
 #[derive(Clone)]
@@ -68,7 +64,8 @@ impl Instance {
         &self.instance_fn_1_3
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_tool_properties()`][Self::get_physical_device_tool_properties()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_tool_properties()`][Self::get_physical_device_tool_properties()]
     #[inline]
     pub unsafe fn get_physical_device_tool_properties_len(
         &self,
@@ -87,7 +84,8 @@ impl Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceToolProperties.html>
     ///
     /// Call [`get_physical_device_tool_properties_len()`][Self::get_physical_device_tool_properties_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_tool_properties(
         &self,
@@ -113,7 +111,8 @@ impl Instance {
         &self.instance_fn_1_1
     }
 
-    /// Retrieve the number of elements to pass to [`enumerate_physical_device_groups()`][Self::enumerate_physical_device_groups()]
+    /// Retrieve the number of elements to pass to
+    /// [`enumerate_physical_device_groups()`][Self::enumerate_physical_device_groups()]
     #[inline]
     pub unsafe fn enumerate_physical_device_groups_len(&self) -> VkResult<usize> {
         let mut group_count = mem::MaybeUninit::uninit();
@@ -129,7 +128,8 @@ impl Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumeratePhysicalDeviceGroups.html>
     ///
     /// Call [`enumerate_physical_device_groups_len()`][Self::enumerate_physical_device_groups_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn enumerate_physical_device_groups(
         &self,
@@ -195,7 +195,8 @@ impl Instance {
         .result()
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_queue_family_properties2()`][Self::get_physical_device_queue_family_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_queue_family_properties2()`][Self::get_physical_device_queue_family_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_queue_family_properties2_len(
         &self,
@@ -215,7 +216,8 @@ impl Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties2.html>
     ///
     /// Call [`get_physical_device_queue_family_properties2_len()`][Self::get_physical_device_queue_family_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_queue_family_properties2(
         &self,
@@ -243,7 +245,8 @@ impl Instance {
         (self.instance_fn_1_1.get_physical_device_memory_properties2)(physical_device, out);
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_sparse_image_format_properties2()`][Self::get_physical_device_sparse_image_format_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_sparse_image_format_properties2()`][Self::get_physical_device_sparse_image_format_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_sparse_image_format_properties2_len(
         &self,
@@ -265,7 +268,8 @@ impl Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties2.html>
     ///
     /// Call [`get_physical_device_sparse_image_format_properties2_len()`][Self::get_physical_device_sparse_image_format_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_physical_device_sparse_image_format_properties2(
         &self,
@@ -348,14 +352,16 @@ impl Instance {
     ///
     /// # Safety
     ///
-    /// There is a [parent/child relation] between [`Instance`] and the resulting [`Device`].  The
-    /// application must not [destroy][Instance::destroy_instance()] the parent [`Instance`] object
-    /// before first [destroying][Device::destroy_device()] the returned [`Device`] child object.
-    /// [`Device`] does _not_ implement [drop][drop()] semantics and can only be destroyed via
+    /// There is a [parent/child relation] between [`Instance`] and the
+    /// resulting [`Device`].  The application must not
+    /// [destroy][Instance::destroy_instance()] the parent [`Instance`] object
+    /// before first [destroying][Device::destroy_device()] the returned
+    /// [`Device`] child object. [`Device`] does _not_ implement
+    /// [drop][drop()] semantics and can only be destroyed via
     /// [`destroy_device()`][Device::destroy_device()].
     ///
-    /// See the [`Entry::create_instance()`] documentation for more destruction ordering rules on
-    /// [`Instance`].
+    /// See the [`Entry::create_instance()`] documentation for more destruction
+    /// ordering rules on [`Instance`].
     ///
     /// [parent/child relation]: https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fundamentals-objectmodel-lifetime
     #[inline]

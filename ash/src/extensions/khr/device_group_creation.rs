@@ -1,12 +1,12 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_device_group_creation.html>
 
-use crate::prelude::*;
-use crate::vk;
-use core::mem;
-use core::ptr;
+use core::{mem, ptr};
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::device_group_creation::Instance {
-    /// Retrieve the number of elements to pass to [`enumerate_physical_device_groups()`][Self::enumerate_physical_device_groups()]
+    /// Retrieve the number of elements to pass to
+    /// [`enumerate_physical_device_groups()`][Self::enumerate_physical_device_groups()]
     #[inline]
     pub unsafe fn enumerate_physical_device_groups_len(&self) -> VkResult<usize> {
         let mut group_count = mem::MaybeUninit::uninit();
@@ -22,7 +22,8 @@ impl crate::khr::device_group_creation::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumeratePhysicalDeviceGroupsKHR.html>
     ///
     /// Call [`enumerate_physical_device_groups_len()`][Self::enumerate_physical_device_groups_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn enumerate_physical_device_groups(
         &self,

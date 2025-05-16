@@ -1,9 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_performance_query.html>
 
-use crate::prelude::*;
-use crate::vk;
-use core::mem;
-use core::ptr;
+use core::{mem, ptr};
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::performance_query::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkAcquireProfilingLockKHR.html>
@@ -23,7 +22,8 @@ impl crate::khr::performance_query::Device {
 }
 
 impl crate::khr::performance_query::Instance {
-    /// Retrieve the number of elements to pass to [`enumerate_physical_device_queue_family_performance_query_counters()`][Self::enumerate_physical_device_queue_family_performance_query_counters()]
+    /// Retrieve the number of elements to pass to
+    /// [`enumerate_physical_device_queue_family_performance_query_counters()`][Self::enumerate_physical_device_queue_family_performance_query_counters()]
     #[inline]
     pub unsafe fn enumerate_physical_device_queue_family_performance_query_counters_len(
         &self,
@@ -47,7 +47,8 @@ impl crate::khr::performance_query::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.html>
     ///
     /// Call [`enumerate_physical_device_queue_family_performance_query_counters_len()`][Self::enumerate_physical_device_queue_family_performance_query_counters_len()] to query the number of elements to pass to `out_counters` and `out_counter_descriptions`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn enumerate_physical_device_queue_family_performance_query_counters(
         &self,

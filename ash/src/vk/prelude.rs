@@ -1,5 +1,4 @@
-use core::ffi::c_char;
-use core::fmt;
+use core::{ffi::c_char, fmt};
 
 use crate::vk;
 
@@ -18,12 +17,12 @@ pub struct Packed24_8(u32);
 
 impl Packed24_8 {
     pub fn new(low_24: u32, high_8: u8) -> Self {
-        Self((low_24 & 0x00ff_ffff) | (u32::from(high_8) << 24))
+        Self((low_24 & 0x00FF_FFFF) | (u32::from(high_8) << 24))
     }
 
     /// Extracts the least-significant 24 bits (3 bytes) of this integer
     pub fn low_24(&self) -> u32 {
-        self.0 & 0xffffff
+        self.0 & 0xFFFFFF
     }
 
     /// Extracts the most significant 8 bits (single byte) of this integer
@@ -33,16 +32,17 @@ impl Packed24_8 {
 }
 
 impl vk::ColorComponentFlags {
-    /// Contraction of [`R`][Self::R] | [`G`][Self::G] | [`B`][Self::B] | [`A`][Self::A]
+    /// Contraction of [`R`][Self::R] | [`G`][Self::G] | [`B`][Self::B] |
+    /// [`A`][Self::A]
     pub const RGBA: Self = Self(Self::R.0 | Self::G.0 | Self::B.0 | Self::A.0);
 }
 
 impl From<vk::Extent2D> for vk::Extent3D {
     fn from(value: vk::Extent2D) -> Self {
         Self {
-            width: value.width,
+            width:  value.width,
             height: value.height,
-            depth: 1,
+            depth:  1,
         }
     }
 }
@@ -56,9 +56,10 @@ impl From<vk::Extent2D> for vk::Rect2D {
     }
 }
 
-/// Structures implementing this trait are layout-compatible with [`vk::BaseInStructure`] and
-/// [`vk::BaseOutStructure`]. Such structures have an `s_type` field indicating its type, which
-/// must always match the value of [`TaggedStructure::STRUCTURE_TYPE`].
+/// Structures implementing this trait are layout-compatible with
+/// [`vk::BaseInStructure`] and [`vk::BaseOutStructure`]. Such structures have
+/// an `s_type` field indicating its type, which must always match the value of
+/// [`TaggedStructure::STRUCTURE_TYPE`].
 pub unsafe trait TaggedStructure {
     const STRUCTURE_TYPE: vk::StructureType;
 }
@@ -75,7 +76,7 @@ pub(crate) fn wrap_c_str_slice_until_nul(
 #[derive(Debug)]
 pub struct CStrTooLargeForStaticArray {
     pub static_array_size: usize,
-    pub c_str_size: usize,
+    pub c_str_size:        usize,
 }
 #[cfg(feature = "std")]
 impl std::error::Error for CStrTooLargeForStaticArray {}
@@ -83,7 +84,8 @@ impl fmt::Display for CStrTooLargeForStaticArray {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
-            "static `c_char` target array of length `{}` is too small to write a `CStr` (with `NUL`-terminator) of length `{}`",
+            "static `c_char` target array of length `{}` is too small to write a `CStr` (with \
+             `NUL`-terminator) of length `{}`",
             self.static_array_size, self.c_str_size
         )
     }

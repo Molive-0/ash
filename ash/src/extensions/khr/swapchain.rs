@@ -1,12 +1,11 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_swapchain.html>
 
-#[cfg(doc)]
-use crate::khr;
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
 use core::mem;
+
+#[cfg(doc)]
+use crate::khr;
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::khr::swapchain::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateSwapchainKHR.html>
@@ -50,8 +49,9 @@ impl crate::khr::swapchain::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkAcquireNextImageKHR.html>
     ///
     /// # Returns
-    /// Returns the next image's index, and [`false`] if the swapchain is optimal for the surface
-    /// ([`vk::Result::SUCCESS`]), [`true`] if the swapchain is _suboptimal_ for the surface
+    /// Returns the next image's index, and [`false`] if the swapchain is
+    /// optimal for the surface ([`vk::Result::SUCCESS`]), [`true`] if the
+    /// swapchain is _suboptimal_ for the surface
     /// ([`vk::Result::SUBOPTIMAL_KHR`]), or [`Err`] on failure.
     #[inline]
     pub unsafe fn acquire_next_image(
@@ -80,9 +80,10 @@ impl crate::khr::swapchain::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkQueuePresentKHR.html>
     ///
     /// # Returns
-    /// Returns [`false`] if the swapchain is optimal for the surface ([`vk::Result::SUCCESS`]),
-    /// [`true`] if the swapchain is _suboptimal_ for the surface ([`vk::Result::SUBOPTIMAL_KHR`]),
-    /// or [`Err`] on failure.
+    /// Returns [`false`] if the swapchain is optimal for the surface
+    /// ([`vk::Result::SUCCESS`]), [`true`] if the swapchain is _suboptimal_
+    /// for the surface ([`vk::Result::SUBOPTIMAL_KHR`]), or [`Err`] on
+    /// failure.
     #[inline]
     pub unsafe fn queue_present(
         &self,
@@ -99,7 +100,8 @@ impl crate::khr::swapchain::Device {
 
     /// Only available since [Vulkan 1.1].
     ///
-    /// Also available as [`khr::device_group::Device::get_device_group_present_capabilities()`]
+    /// Also available as
+    /// [`khr::device_group::Device::get_device_group_present_capabilities()`]
     /// when [`VK_KHR_surface`] is enabled.
     ///
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceGroupPresentCapabilitiesKHR.html>
@@ -120,7 +122,8 @@ impl crate::khr::swapchain::Device {
 
     /// Only available since [Vulkan 1.1].
     ///
-    /// Also available as [`khr::device_group::Device::get_device_group_surface_present_modes()`]
+    /// Also available as
+    /// [`khr::device_group::Device::get_device_group_surface_present_modes()`]
     /// when [`VK_KHR_surface`] is enabled.
     ///
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceGroupSurfacePresentModesKHR.html>
@@ -152,8 +155,9 @@ impl crate::khr::swapchain::Device {
     /// [`VK_KHR_swapchain`]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_swapchain.html
     ///
     /// # Returns
-    /// Returns the next image's index, and [`false`] if the swapchain is optimal for the surface
-    /// ([`vk::Result::SUCCESS`]), [`true`] if the swapchain is _suboptimal_ for the surface
+    /// Returns the next image's index, and [`false`] if the swapchain is
+    /// optimal for the surface ([`vk::Result::SUCCESS`]), [`true`] if the
+    /// swapchain is _suboptimal_ for the surface
     /// ([`vk::Result::SUBOPTIMAL_KHR`]), or [`Err`] on failure.
     #[inline]
     pub unsafe fn acquire_next_image2(
@@ -174,7 +178,8 @@ impl crate::khr::swapchain::Device {
 impl crate::khr::swapchain::Instance {
     /// Only available since [Vulkan 1.1].
     ///
-    /// Also available as [`khr::device_group::Instance::get_physical_device_present_rectangles()`]
+    /// Also available as
+    /// [`khr::device_group::Instance::get_physical_device_present_rectangles()`]
     /// when [`VK_KHR_surface`] is enabled.
     ///
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDevicePresentRectanglesKHR.html>

@@ -1,9 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_GOOGLE_display_timing.html>
 
-use crate::prelude::*;
-use crate::vk;
 use alloc::vec::Vec;
 use core::mem;
+
+use crate::{prelude::*, vk};
 
 impl crate::google::display_timing::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPastPresentationTimingGOOGLE.html>

@@ -1,8 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_pipeline_executable_properties.html>
 
-use crate::prelude::*;
-use crate::vk;
 use alloc::vec::Vec;
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::pipeline_executable_properties::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPipelineExecutableInternalRepresentationsKHR.html>

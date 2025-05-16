@@ -1,12 +1,12 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_get_display_properties2.html>
 
-use crate::prelude::*;
-use crate::vk;
-use core::mem;
-use core::ptr;
+use core::{mem, ptr};
+
+use crate::{prelude::*, vk};
 
 impl crate::khr::get_display_properties2::Instance {
-    /// Retrieve the number of elements to pass to [`get_physical_device_display_properties2()`][Self::get_physical_device_display_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_display_properties2()`][Self::get_physical_device_display_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_display_properties2_len(
         &self,
@@ -25,7 +25,8 @@ impl crate::khr::get_display_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayProperties2KHR.html>
     ///
     /// Call [`get_physical_device_display_properties2_len()`][Self::get_physical_device_display_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     #[doc(alias = "vkGetPhysicalDeviceDisplayProperties2KHR")]
     pub unsafe fn get_physical_device_display_properties2(
@@ -44,7 +45,8 @@ impl crate::khr::get_display_properties2::Instance {
         Ok(())
     }
 
-    /// Retrieve the number of elements to pass to [`get_physical_device_display_plane_properties2()`][Self::get_physical_device_display_plane_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_physical_device_display_plane_properties2()`][Self::get_physical_device_display_plane_properties2()]
     #[inline]
     pub unsafe fn get_physical_device_display_plane_properties2_len(
         &self,
@@ -63,7 +65,8 @@ impl crate::khr::get_display_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayPlaneProperties2KHR.html>
     ///
     /// Call [`get_physical_device_display_plane_properties2_len()`][Self::get_physical_device_display_plane_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     #[doc(alias = "vkGetPhysicalDeviceDisplayPlaneProperties2KHR")]
     pub unsafe fn get_physical_device_display_plane_properties2(
@@ -82,7 +85,8 @@ impl crate::khr::get_display_properties2::Instance {
         Ok(())
     }
 
-    /// Retrieve the number of elements to pass to [`get_display_mode_properties2()`][Self::get_display_mode_properties2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_display_mode_properties2()`][Self::get_display_mode_properties2()]
     #[inline]
     pub unsafe fn get_display_mode_properties2_len(
         &self,
@@ -103,7 +107,8 @@ impl crate::khr::get_display_properties2::Instance {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayModeProperties2KHR.html>
     ///
     /// Call [`get_display_mode_properties2_len()`][Self::get_display_mode_properties2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     #[doc(alias = "vkGetDisplayModeProperties2KHR")]
     pub unsafe fn get_display_mode_properties2(

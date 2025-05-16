@@ -1,8 +1,6 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_NV_low_latency2.html>
 
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
+use crate::{RawPtr, prelude::*, vk};
 
 impl crate::nv::low_latency2::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkSetLatencySleepModeNV.html>

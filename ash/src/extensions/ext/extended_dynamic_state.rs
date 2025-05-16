@@ -1,7 +1,8 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_extended_dynamic_state.html>
 
-use crate::vk;
 use core::ptr;
+
+use crate::vk;
 
 impl crate::ext::extended_dynamic_state::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdSetCullModeEXT.html>

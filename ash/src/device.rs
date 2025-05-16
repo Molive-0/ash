@@ -1,12 +1,9 @@
 #![allow(clippy::trivially_copy_pass_by_ref)]
-use crate::prelude::*;
-use crate::vk;
-use crate::RawPtr;
 use alloc::vec::Vec;
-use core::ffi;
-use core::mem;
 use core::mem::{size_of, size_of_val}; // TODO: Remove when bumping MSRV to 1.80
-use core::ptr;
+use core::{ffi, mem, ptr};
+
+use crate::{RawPtr, prelude::*, vk};
 
 /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDevice.html>
 #[derive(Clone)]
@@ -160,9 +157,10 @@ impl Device {
         (self.device_fn_1_4.get_device_image_subresource_layout)(self.handle, info, layout)
     }
 
-    // XXX: Replicate comments from VK_EXT_host_image_copy, VK_EXT_image_compression_control
-    // and VK_KHR_maintenance5 about alternative ways to fetch and use a suffixed vesion of this
-    // function?  And retroactively update those docs?
+    // XXX: Replicate comments from VK_EXT_host_image_copy,
+    // VK_EXT_image_compression_control and VK_KHR_maintenance5 about
+    // alternative ways to fetch and use a suffixed vesion of this function?
+    // And retroactively update those docs?
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetImageSubresourceLayout2.html>
     #[inline]
     #[doc(alias = "vkGetImageSubresourceLayout2")]
@@ -492,6 +490,7 @@ impl Device {
     ) {
         (self.device_fn_1_3.cmd_copy_buffer2)(command_buffer, copy_buffer_info)
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdCopyImage2.html>
     #[inline]
     pub unsafe fn cmd_copy_image2(
@@ -501,6 +500,7 @@ impl Device {
     ) {
         (self.device_fn_1_3.cmd_copy_image2)(command_buffer, copy_image_info)
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdCopyBufferToImage2.html>
     #[inline]
     pub unsafe fn cmd_copy_buffer_to_image2(
@@ -510,6 +510,7 @@ impl Device {
     ) {
         (self.device_fn_1_3.cmd_copy_buffer_to_image2)(command_buffer, copy_buffer_to_image_info)
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdCopyImageToBuffer2.html>
     #[inline]
     pub unsafe fn cmd_copy_image_to_buffer2(
@@ -519,6 +520,7 @@ impl Device {
     ) {
         (self.device_fn_1_3.cmd_copy_image_to_buffer2)(command_buffer, copy_image_to_buffer_info)
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBlitImage2.html>
     #[inline]
     pub unsafe fn cmd_blit_image2(
@@ -528,6 +530,7 @@ impl Device {
     ) {
         (self.device_fn_1_3.cmd_blit_image2)(command_buffer, blit_image_info)
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdResolveImage2.html>
     #[inline]
     pub unsafe fn cmd_resolve_image2(
@@ -785,7 +788,8 @@ impl Device {
         )
     }
 
-    /// Retrieve the number of elements to pass to [`get_device_image_sparse_memory_requirements()`][Self::get_device_image_sparse_memory_requirements()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_device_image_sparse_memory_requirements()`][Self::get_device_image_sparse_memory_requirements()]
     #[inline]
     pub unsafe fn get_device_image_sparse_memory_requirements_len(
         &self,
@@ -806,7 +810,8 @@ impl Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceImageSparseMemoryRequirements.html>
     ///
     /// Call [`get_device_image_sparse_memory_requirements_len()`][Self::get_device_image_sparse_memory_requirements_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_device_image_sparse_memory_requirements(
         &self,
@@ -1105,7 +1110,8 @@ impl Device {
         (self.device_fn_1_1.get_buffer_memory_requirements2)(self.handle, info, out);
     }
 
-    /// Retrieve the number of elements to pass to [`get_image_sparse_memory_requirements2()`][Self::get_image_sparse_memory_requirements2()]
+    /// Retrieve the number of elements to pass to
+    /// [`get_image_sparse_memory_requirements2()`][Self::get_image_sparse_memory_requirements2()]
     #[inline]
     pub unsafe fn get_image_sparse_memory_requirements2_len(
         &self,
@@ -1124,7 +1130,8 @@ impl Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetImageSparseMemoryRequirements2.html>
     ///
     /// Call [`get_image_sparse_memory_requirements2_len()`][Self::get_image_sparse_memory_requirements2_len()] to query the number of elements to pass to `out`.
-    /// Be sure to [`Default::default()`]-initialize these elements and optionally set their `p_next` pointer.
+    /// Be sure to [`Default::default()`]-initialize these elements and
+    /// optionally set their `p_next` pointer.
     #[inline]
     pub unsafe fn get_image_sparse_memory_requirements2(
         &self,
@@ -1323,8 +1330,9 @@ impl Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetEventStatus.html>
     ///
     /// # Returns
-    /// Returns [`true`] if the event is _signaled_ ([`vk::Result::EVENT_SET`]), [`false`] if the
-    /// event is _unsignaled_ ([`vk::Result::EVENT_RESET`]), or [`Err`] on failure.
+    /// Returns [`true`] if the event is _signaled_ ([`vk::Result::EVENT_SET`]),
+    /// [`false`] if the event is _unsignaled_
+    /// ([`vk::Result::EVENT_RESET`]), or [`Err`] on failure.
     #[inline]
     pub unsafe fn get_event_status(&self, event: vk::Event) -> VkResult<bool> {
         let err_code = (self.device_fn_1_0.get_event_status)(self.handle, event);
@@ -1346,6 +1354,7 @@ impl Device {
     pub unsafe fn reset_event(&self, event: vk::Event) -> VkResult<()> {
         (self.device_fn_1_0.reset_event)(self.handle, event).result()
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdSetEvent.html>
     #[inline]
     pub unsafe fn cmd_set_event(
@@ -1356,6 +1365,7 @@ impl Device {
     ) {
         (self.device_fn_1_0.cmd_set_event)(command_buffer, event, stage_mask);
     }
+
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdResetEvent.html>
     #[inline]
     pub unsafe fn cmd_reset_event(
@@ -2410,7 +2420,8 @@ impl Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateGraphicsPipelines.html>
     ///
-    /// Pipelines are created and returned as described for [Multiple Pipeline Creation].
+    /// Pipelines are created and returned as described for [Multiple Pipeline
+    /// Creation].
     ///
     /// [Multiple Pipeline Creation]: https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-multiple
     #[inline]
@@ -2438,7 +2449,8 @@ impl Device {
 
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateComputePipelines.html>
     ///
-    /// Pipelines are created and returned as described for [Multiple Pipeline Creation].
+    /// Pipelines are created and returned as described for [Multiple Pipeline
+    /// Creation].
     ///
     /// [Multiple Pipeline Creation]: https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-multiple
     #[inline]
@@ -2705,8 +2717,9 @@ impl Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetFenceStatus.html>
     ///
     /// # Returns
-    /// Returns [`true`] if the fence is _signaled_ ([`vk::Result::SUCCESS`]), [`false`] if the
-    /// fence is _unsignaled_ ([`vk::Result::NOT_READY`]), or [`Err`] on failure.
+    /// Returns [`true`] if the fence is _signaled_ ([`vk::Result::SUCCESS`]),
+    /// [`false`] if the fence is _unsignaled_ ([`vk::Result::NOT_READY`]),
+    /// or [`Err`] on failure.
     #[inline]
     pub unsafe fn get_fence_status(&self, fence: vk::Fence) -> VkResult<bool> {
         let err_code = (self.device_fn_1_0.get_fence_status)(self.handle, fence);

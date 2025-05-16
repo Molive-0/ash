@@ -1,28 +1,22 @@
 #![warn(unused_qualifications)]
 
-use std::default::Default;
-use std::error::Error;
-use std::ffi;
-use std::io::Cursor;
-use std::mem;
 use std::mem::{align_of, size_of, size_of_val}; // TODO: Remove when bumping MSRV to 1.80
-use std::os::raw::c_void;
+use std::{default::Default, error::Error, ffi, io::Cursor, mem, os::raw::c_void};
 
-use ash::util::*;
-use ash::vk;
+use ash::{util::*, vk};
 use ash_examples::*;
 
 #[derive(Clone, Debug, Copy)]
 struct Vertex {
     pos: [f32; 4],
-    uv: [f32; 2],
+    uv:  [f32; 2],
 }
 
 #[derive(Clone, Debug, Copy)]
 pub struct Vector3 {
-    pub x: f32,
-    pub y: f32,
-    pub z: f32,
+    pub x:    f32,
+    pub y:    f32,
+    pub z:    f32,
     pub _pad: f32,
 }
 
@@ -50,11 +44,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         ];
         let color_attachment_refs = [vk::AttachmentReference {
             attachment: 0,
-            layout: vk::ImageLayout::COLOR_ATTACHMENT_OPTIMAL,
+            layout:     vk::ImageLayout::COLOR_ATTACHMENT_OPTIMAL,
         }];
         let depth_attachment_ref = vk::AttachmentReference {
             attachment: 1,
-            layout: vk::ImageLayout::DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
+            layout:     vk::ImageLayout::DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
         };
         let dependencies = [vk::SubpassDependency {
             src_subpass: vk::SUBPASS_EXTERNAL,
@@ -144,19 +138,19 @@ fn main() -> Result<(), Box<dyn Error>> {
         let vertices = [
             Vertex {
                 pos: [-1.0, -1.0, 0.0, 1.0],
-                uv: [0.0, 0.0],
+                uv:  [0.0, 0.0],
             },
             Vertex {
                 pos: [-1.0, 1.0, 0.0, 1.0],
-                uv: [0.0, 1.0],
+                uv:  [0.0, 1.0],
             },
             Vertex {
                 pos: [1.0, 1.0, 0.0, 1.0],
-                uv: [1.0, 1.0],
+                uv:  [1.0, 1.0],
             },
             Vertex {
                 pos: [1.0, -1.0, 0.0, 1.0],
-                uv: [1.0, 0.0],
+                uv:  [1.0, 0.0],
             },
         ];
         let vertex_input_buffer_info = vk::BufferCreateInfo {
@@ -210,9 +204,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             .unwrap();
 
         let uniform_color_buffer_data = Vector3 {
-            x: 1.0,
-            y: 1.0,
-            z: 1.0,
+            x:    1.0,
+            y:    1.0,
+            z:    1.0,
             _pad: 0.0,
         };
         let uniform_color_buffer_info = vk::BufferCreateInfo {
@@ -461,11 +455,11 @@ fn main() -> Result<(), Box<dyn Error>> {
             .unwrap();
         let descriptor_sizes = [
             vk::DescriptorPoolSize {
-                ty: vk::DescriptorType::UNIFORM_BUFFER,
+                ty:               vk::DescriptorType::UNIFORM_BUFFER,
                 descriptor_count: 1,
             },
             vk::DescriptorPoolSize {
-                ty: vk::DescriptorType::COMBINED_IMAGE_SAMPLER,
+                ty:               vk::DescriptorType::COMBINED_IMAGE_SAMPLER,
                 descriptor_count: 1,
             },
         ];
@@ -511,7 +505,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let uniform_color_buffer_descriptor = vk::DescriptorBufferInfo {
             buffer: uniform_color_buffer,
             offset: 0,
-            range: size_of_val(&uniform_color_buffer_data) as u64,
+            range:  size_of_val(&uniform_color_buffer_data) as u64,
         };
 
         let tex_descriptor = vk::DescriptorImageInfo {
@@ -584,22 +578,22 @@ fn main() -> Result<(), Box<dyn Error>> {
             },
         ];
         let vertex_input_binding_descriptions = [vk::VertexInputBindingDescription {
-            binding: 0,
-            stride: size_of::<Vertex>() as u32,
+            binding:    0,
+            stride:     size_of::<Vertex>() as u32,
             input_rate: vk::VertexInputRate::VERTEX,
         }];
         let vertex_input_attribute_descriptions = [
             vk::VertexInputAttributeDescription {
                 location: 0,
-                binding: 0,
-                format: vk::Format::R32G32B32A32_SFLOAT,
-                offset: offset_of!(Vertex, pos) as u32,
+                binding:  0,
+                format:   vk::Format::R32G32B32A32_SFLOAT,
+                offset:   offset_of!(Vertex, pos) as u32,
             },
             vk::VertexInputAttributeDescription {
                 location: 1,
-                binding: 0,
-                format: vk::Format::R32G32_SFLOAT,
-                offset: offset_of!(Vertex, uv) as u32,
+                binding:  0,
+                format:   vk::Format::R32G32_SFLOAT,
+                offset:   offset_of!(Vertex, uv) as u32,
             },
         ];
         let vertex_input_state_info = vk::PipelineVertexInputStateCreateInfo::default()
@@ -611,10 +605,10 @@ fn main() -> Result<(), Box<dyn Error>> {
             ..Default::default()
         };
         let viewports = [vk::Viewport {
-            x: 0.0,
-            y: 0.0,
-            width: base.surface_resolution.width as f32,
-            height: base.surface_resolution.height as f32,
+            x:         0.0,
+            y:         0.0,
+            width:     base.surface_resolution.width as f32,
+            height:    base.surface_resolution.height as f32,
             min_depth: 0.0,
             max_depth: 1.0,
         }];
@@ -651,14 +645,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         };
 
         let color_blend_attachment_states = [vk::PipelineColorBlendAttachmentState {
-            blend_enable: 0,
+            blend_enable:           0,
             src_color_blend_factor: vk::BlendFactor::SRC_COLOR,
             dst_color_blend_factor: vk::BlendFactor::ONE_MINUS_DST_COLOR,
-            color_blend_op: vk::BlendOp::ADD,
+            color_blend_op:         vk::BlendOp::ADD,
             src_alpha_blend_factor: vk::BlendFactor::ZERO,
             dst_alpha_blend_factor: vk::BlendFactor::ZERO,
-            alpha_blend_op: vk::BlendOp::ADD,
-            color_write_mask: vk::ColorComponentFlags::RGBA,
+            alpha_blend_op:         vk::BlendOp::ADD,
+            color_write_mask:       vk::ColorComponentFlags::RGBA,
         }];
         let color_blend_state = vk::PipelineColorBlendStateCreateInfo::default()
             .logic_op(vk::LogicOp::CLEAR)
@@ -706,7 +700,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 },
                 vk::ClearValue {
                     depth_stencil: vk::ClearDepthStencilValue {
-                        depth: 1.0,
+                        depth:   1.0,
                         stencil: 0,
                     },
                 },

@@ -1,10 +1,9 @@
 //! <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_AMD_shader_info.html>
 
-use crate::prelude::*;
-use crate::vk;
 use alloc::vec::Vec;
-use core::mem;
-use core::mem::size_of_val; // TODO: Remove when bumping MSRV to 1.80
+use core::{mem, mem::size_of_val};
+
+use crate::{prelude::*, vk}; // TODO: Remove when bumping MSRV to 1.80
 
 impl crate::amd::shader_info::Device {
     /// <https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetShaderInfoAMD.html> with [`vk::ShaderInfoTypeAMD::STATISTICS`]
